@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Graph View: Students by Grade -->
+    <record id="view_school_student_graph" model="ir.ui.view">
+        <field name="name">school.student.graph</field>
+        <field name="model">school.student</field>
+        <field name="arch" type="xml">
+            <graph string="Student Enrollment by Grade" type="pie">
+                <field name="grade_id"/>
+            </graph>
+        </field>
+    </record>
+
+    <!-- Pivot View: Students Demographics -->
+    <record id="view_school_student_pivot" model="ir.ui.view">
+        <field name="name">school.student.pivot</field>
+        <field name="model">school.student</field>
+        <field name="arch" type="xml">
+            <pivot string="Student Demographics Analytics">
+                <field name="grade_id" type="row"/>
+                <field name="gender" type="col"/>
+            </pivot>
+        </field>
+    </record>
+
+    <!-- Graph View: Student Fee Invoicing -->
+    <record id="view_school_fee_graph" model="ir.ui.view">
+        <field name="name">school.student.fee.graph</field>
+        <field name="model">school.student.fee</field>
+        <field name="arch" type="xml">
+            <graph string="Fee Revenue &amp; Outstanding Analysis" type="bar">
+                <field name="class_id"/>
+                <field name="amount_total" type="measure"/>
+                <field name="amount_due" type="measure"/>
+            </graph>
+        </field>
+    </record>
+
+    <!-- Pivot View: Fee Collection -->
+    <record id="view_school_fee_pivot" model="ir.ui.view">
+        <field name="name">school.student.fee.pivot</field>
+        <field name="model">school.student.fee</field>
+        <field name="arch" type="xml">
+            <pivot string="Fee Collection Matrix">
+                <field name="academic_year_id" type="row"/>
+                <field name="state" type="col"/>
+                <field name="amount_total" type="measure"/>
+                <field name="amount_paid" type="measure"/>
+                <field name="amount_due" type="measure"/>
+            </pivot>
+        </field>
+    </record>
+
+    <!-- Action for Student Dashboard -->
+    <record id="action_school_dashboard_students" model="ir.actions.act_window">
+        <field name="name">School Student Analytics Dashboard</field>
+        <field name="res_model">school.student</field>
+        <field name="view_mode">graph,pivot,kanban,list</field>
+        <field name="view_id" ref="view_school_student_graph"/>
+    </record>
+
+    <!-- Action for Fee Dashboard -->
+    <record id="action_school_dashboard_fees" model="ir.actions.act_window">
+        <field name="name">Fee Financial Analytics Dashboard</field>
+        <field name="res_model">school.student.fee</field>
+        <field name="view_mode">graph,pivot,list</field>
+        <field name="view_id" ref="view_school_fee_graph"/>
+    </record>
+
+    <!-- Menu Items under Dashboard -->
+    <menuitem id="menu_school_dashboard_students"
+              name="Student Analytics"
+              parent="menu_school_dashboard"
+              action="action_school_dashboard_students"
+              sequence="1"/>
+
+    <menuitem id="menu_school_dashboard_fees"
+              name="Fee Collection Analytics"
+              parent="menu_school_dashboard"
+              action="action_school_dashboard_fees"
+              sequence="2"/>
+</odoo>

@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+
+    <!-- ========================================================= -->
+    <!-- SCHOOL MANAGEMENT ROOT MENU -->
+    <!-- ========================================================= -->
+
+    <menuitem
+        id="menu_school_root"
+        name="School Management"
+        sequence="10"
+        web_icon="school_management,static/description/icon.png"
+        groups="base.group_user"
+    />
+
+
+    <!-- ========================================================= -->
+    <!-- DASHBOARD -->
+    <!-- ========================================================= -->
+
+    <menuitem
+        id="menu_school_dashboard"
+        name="Dashboard"
+        parent="menu_school_root"
+        sequence="1"
+    />
+
+
+    <!-- ========================================================= -->
+    <!-- STUDENTS & PARENTS -->
+    <!-- ========================================================= -->
+
+    <menuitem
+        id="menu_school_students_root"
+        name="Students &amp; Parents"
+        parent="menu_school_root"
+        sequence="2"
+    />
+
+
+    <!-- ========================================================= -->
+    <!-- ACADEMICS -->
+    <!-- ========================================================= -->
+
+    <menuitem
+        id="menu_school_academics_root"
+        name="Academics"
+        parent="menu_school_root"
+        sequence="3"
+    />
+
+
+    <!-- ========================================================= -->
+    <!-- ATTENDANCE & EXAMS -->
+    <!-- ========================================================= -->
+
+    <menuitem
+        id="menu_school_operations_root"
+        name="Attendance &amp; Exams"
+        parent="menu_school_root"
+        sequence="4"
+    />
+
+
+    <!-- ========================================================= -->
+    <!-- SCHOOL FEES -->
+    <!-- ========================================================= -->
+
+    <menuitem
+        id="menu_school_fees_root"
+        name="School Fees"
+        parent="menu_school_root"
+        sequence="5"
+    />
+
+
+    <!-- ========================================================= -->
+    <!-- TRANSPORT & FACILITIES -->
+    <!-- ========================================================= -->
+
+    <menuitem
+        id="menu_school_services_root"
+        name="Transport &amp; Facilities"
+        parent="menu_school_root"
+        sequence="6"
+    />
+
+
+    <!-- ========================================================= -->
+    <!-- CONFIGURATION -->
+    <!-- ========================================================= -->
+
+    <menuitem
+        id="menu_school_config_root"
+        name="Configuration"
+        parent="menu_school_root"
+        sequence="100"
+        groups="school_management.group_school_manager"
+    />
+
+</odoo>
