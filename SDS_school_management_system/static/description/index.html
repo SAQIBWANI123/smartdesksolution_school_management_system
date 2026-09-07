@@ -1,928 +1,311 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1.0">
-    <title>SDS School Management System | Odoo 19</title>
-    <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0
-        }
-
-        :root {
-            --ink: #17213c;
-            --muted: #64708a;
-            --soft: #f7f8fc;
-            --white: #fff;
-            --line: #e6e9f2;
-            --purple: #714b67;
-            --violet: #6857d9;
-            --blue: #3b82f6;
-            --cyan: #16b8c4;
-            --green: #16a34a;
-            --orange: #f59e0b;
-            --pink: #e75480;
-            --shadow: 0 18px 50px rgba(34, 39, 74, .10);
-            --shadow-sm: 0 7px 22px rgba(34, 39, 74, .07);
-            --radius: 22px;
-        }
-
-        html {
-            scroll-behavior: smooth
-        }
-
-        body {
-            font-family: Inter, Segoe UI, Arial, sans-serif;
-            background:
-                radial-gradient(circle at 5% 0%, rgba(113, 75, 103, .08), transparent 28%),
-                radial-gradient(circle at 100% 10%, rgba(59, 130, 246, .08), transparent 30%),
-                var(--soft);
-            color: var(--ink);
-            line-height: 1.65;
-            font-size: 15px;
-        }
-
-        a {
-            color: inherit
-        }
-
-        .wrap {
-            max-width: 1080px;
-            margin: auto;
-            padding: 24px 24px 70px
-        }
-
-        .hero-img {
-            border-radius: 26px;
-            overflow: hidden;
-            background: #fff;
-            box-shadow: var(--shadow);
-            border: 1px solid var(--line);
-            margin-bottom: 22px;
-        }
-
-        .hero-img img {
-            width: 100%;
-            display: block;
-            height: auto
-        }
-
-        .hero {
-            position: relative;
-            overflow: hidden;
-            border-radius: 28px;
-            padding: 48px;
-            background: linear-gradient(135deg, #21172f 0%, #4d2f55 43%, #6256d8 100%);
-            color: #fff;
-            box-shadow: var(--shadow);
-            margin-bottom: 18px;
-        }
-
-        .hero:before,
-        .hero:after {
-            content: "";
-            position: absolute;
-            border-radius: 50%;
-            pointer-events: none;
-            background: rgba(255, 255, 255, .09);
-        }
-
-        .hero:before {
-            width: 310px;
-            height: 310px;
-            right: -110px;
-            top: -150px
-        }
-
-        .hero:after {
-            width: 220px;
-            height: 220px;
-            left: 48%;
-            bottom: -160px
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 1;
-            max-width: 780px
-        }
-
-        .brand {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            margin-bottom: 18px;
-            font-weight: 800;
-            letter-spacing: .4px
-        }
-
-        .brand-mark {
-            width: 46px;
-            height: 46px;
-            border-radius: 14px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: linear-gradient(135deg, #fff, rgba(255, 255, 255, .72));
-            color: var(--purple);
-            font-weight: 900;
-            box-shadow: 0 8px 24px rgba(0, 0, 0, .15)
-        }
-
-        .hero h1 {
-            font-size: clamp(28px, 5vw, 46px);
-            line-height: 1.08;
-            letter-spacing: -1px;
-            margin-bottom: 14px
-        }
-
-        .hero p {
-            color: #eeeaff;
-            max-width: 760px;
-            font-size: 16px;
-            margin-bottom: 24px
-        }
-
-        .chips {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 9px
-        }
-
-        .chip {
-            padding: 7px 13px;
-            border-radius: 999px;
-            background: rgba(255, 255, 255, .13);
-            border: 1px solid rgba(255, 255, 255, .22);
-            font-size: 12px;
-            font-weight: 700
-        }
-
-        .contact {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 12px;
-            background: #fff;
-            border: 1px solid var(--line);
-            border-radius: 18px;
-            padding: 13px 18px;
-            box-shadow: var(--shadow-sm);
-            margin-bottom: 28px
-        }
-
-        .contact a {
-            text-decoration: none;
-            color: var(--muted);
-            font-size: 13px;
-            font-weight: 600;
-            padding: 5px 10px
-        }
-
-        .contact a:hover {
-            color: var(--violet)
-        }
-
-        .toc {
-            background: #fff;
-            border: 1px solid var(--line);
-            border-radius: 20px;
-            padding: 22px;
-            box-shadow: var(--shadow-sm);
-            margin-bottom: 38px
-        }
-
-        .toc-title {
-            font-weight: 800;
-            margin-bottom: 13px;
-            font-size: 15px
-        }
-
-        .toc-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 7px 16px;
-            list-style: none
-        }
-
-        .toc-grid a {
-            display: block;
-            text-decoration: none;
-            color: var(--muted);
-            padding: 7px 9px;
-            border-radius: 10px;
-            font-size: 13px;
-            font-weight: 600
-        }
-
-        .toc-grid a:hover {
-            background: #f0efff;
-            color: var(--violet)
-        }
-
-        .section {
-            margin: 0 0 48px;
-            scroll-margin-top: 18px
-        }
-
-        .kicker {
-            font-size: 11px;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            color: var(--violet);
-            font-weight: 900;
-            margin-bottom: 7px
-        }
-
-        .title {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-size: 27px;
-            line-height: 1.2;
-            margin-bottom: 12px;
-            letter-spacing: -.5px
-        }
-
-        .title .icon {
-            width: 40px;
-            height: 40px;
-            border-radius: 12px;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            background: linear-gradient(135deg, #eeeaff, #e6f4ff);
-            font-size: 19px
-        }
-
-        .lead {
-            color: var(--muted);
-            font-size: 14.5px;
-            max-width: 880px;
-            margin-bottom: 18px
-        }
-
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 16px
-        }
-
-        .card {
-            background: #fff;
-            border: 1px solid var(--line);
-            border-radius: 19px;
-            padding: 21px;
-            box-shadow: var(--shadow-sm);
-            transition: .2s ease
-        }
-
-        .card:hover {
-            transform: translateY(-3px);
-            box-shadow: var(--shadow)
-        }
-
-        .card-icon {
-            width: 44px;
-            height: 44px;
-            border-radius: 13px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 20px;
-            margin-bottom: 13px
-        }
-
-        .card h3 {
-            font-size: 16px;
-            margin-bottom: 7px
-        }
-
-        .card p,
-        .card li {
-            font-size: 13.5px;
-            color: var(--muted)
-        }
-
-        .card ul {
-            padding-left: 18px
-        }
-
-        .card li {
-            margin: 4px 0
-        }
-
-        .feature-top {
-            display: flex;
-            gap: 13px;
-            align-items: flex-start
-        }
-
-        .feature-top .card-icon {
-            flex: none
-        }
-
-        .stats {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 12px;
-            margin-top: 18px
-        }
-
-        .stat {
-            background: #fff;
-            border: 1px solid var(--line);
-            border-radius: 17px;
-            padding: 18px;
-            text-align: center;
-            box-shadow: var(--shadow-sm)
-        }
-
-        .stat strong {
-            display: block;
-            font-size: 25px;
-            color: var(--violet)
-        }
-
-        .stat span {
-            font-size: 12px;
-            color: var(--muted);
-            font-weight: 700
-        }
-
-        .shot {
-            background: #fff;
-            border: 1px solid var(--line);
-            border-radius: 22px;
-            padding: 9px;
-            box-shadow: var(--shadow);
-            margin: 18px 0;
-            overflow: hidden
-        }
-
-        .shot img {
-            width: 100%;
-            display: block;
-            border-radius: 15px;
-            height: auto
-        }
-
-        .caption {
-            font-size: 12px;
-            color: var(--muted);
-            padding: 10px 7px 3px;
-            font-weight: 600
-        }
-
-        .two {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 18px
-        }
-
-        .table-wrap {
-            overflow: auto;
-            border: 1px solid var(--line);
-            border-radius: 18px;
-            box-shadow: var(--shadow-sm);
-            background: #fff
-        }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            min-width: 560px
-        }
-
-        th {
-            background: linear-gradient(90deg, #29203d, #594bcb);
-            color: #fff;
-            text-align: left;
-            padding: 12px 15px;
-            font-size: 12px
-        }
-
-        td {
-            padding: 11px 15px;
-            border-bottom: 1px solid var(--line);
-            font-size: 13px;
-            color: var(--muted);
-            vertical-align: top
-        }
-
-        tr:last-child td {
-            border-bottom: 0
-        }
-
-        tr:nth-child(even) td {
-            background: #fafaff
-        }
-
-        .badge {
-            display: inline-block;
-            padding: 3px 9px;
-            border-radius: 999px;
-            font-size: 10.5px;
-            font-weight: 800;
-            margin-left: 5px
-        }
-
-        .green {
-            background: #dcfce7;
-            color: #15803d
-        }
-
-        .purple {
-            background: #eeeaff;
-            color: #5b4bc4
-        }
-
-        .orange {
-            background: #fff1d6;
-            color: #a85d00
-        }
-
-        .blue {
-            background: #e7f0ff;
-            color: #245fc7
-        }
-
-        .steps {
-            display: grid;
-            gap: 12px
-        }
-
-        .step {
-            display: flex;
-            gap: 13px;
-            align-items: flex-start
-        }
-
-        .num {
-            flex: none;
-            width: 34px;
-            height: 34px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #fff;
-            font-weight: 900;
-            background: linear-gradient(135deg, var(--purple), var(--violet));
-            box-shadow: 0 5px 14px rgba(104, 87, 217, .25)
-        }
-
-        .step-body {
-            background: #fff;
-            border: 1px solid var(--line);
-            border-radius: 15px;
-            padding: 13px 16px;
-            flex: 1;
-            box-shadow: var(--shadow-sm)
-        }
-
-        .step-body strong {
-            font-size: 14px
-        }
-
-        .step-body span {
-            display: block;
-            color: var(--muted);
-            font-size: 13px;
-            margin-top: 3px
-        }
-
-        .callout {
-            border-radius: 17px;
-            padding: 16px 18px;
-            margin-top: 16px;
-            border-left: 4px solid var(--violet);
-            background: #f0efff;
-            color: #51458f;
-            font-size: 13.5px
-        }
-
-        .callout.warning {
-            border-left-color: var(--orange);
-            background: #fff8e8;
-            color: #8b5a00
-        }
-
-        .modules {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 12px
-        }
-
-        .module {
-            background: #fff;
-            border: 1px solid var(--line);
-            border-radius: 16px;
-            padding: 16px;
-            text-align: center;
-            box-shadow: var(--shadow-sm)
-        }
-
-        .module b {
-            display: block;
-            font-size: 13px;
-            margin-bottom: 3px
-        }
-
-        .module span {
-            font-size: 11.5px;
-            color: var(--muted)
-        }
-
-        .support {
-            border-radius: 26px;
-            padding: 42px 28px;
-            text-align: center;
-            color: #fff;
-            background: linear-gradient(135deg, #21172f, #4d2f55 45%, #6256d8);
-            box-shadow: var(--shadow)
-        }
-
-        .support h2 {
-            font-size: 30px;
-            margin-bottom: 9px
-        }
-
-        .support p {
-            color: #eeeaff;
-            max-width: 650px;
-            margin: 0 auto 22px;
-            font-size: 14px
-        }
-
-        .support-links {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 10px
-        }
-
-        .support-links a {
-            text-decoration: none;
-            padding: 10px 16px;
-            border-radius: 999px;
-            background: rgba(255, 255, 255, .12);
-            border: 1px solid rgba(255, 255, 255, .22);
-            font-size: 13px;
-            font-weight: 700
-        }
-
-        .footer {
-            text-align: center;
-            padding-top: 26px;
-            color: #8992a7;
-            font-size: 11.5px
-        }
-
-        @media(max-width:800px) {
-
-            .grid,
-            .modules {
-                grid-template-columns: 1fr 1fr
-            }
-
-            .stats {
-                grid-template-columns: 1fr 1fr
-            }
-
-            .toc-grid {
-                grid-template-columns: 1fr 1fr
-            }
-
-            .hero {
-                padding: 34px 26px
-            }
-        }
-
-        @media(max-width:560px) {
-            .wrap {
-                padding: 12px 12px 45px
-            }
-
-            .grid,
-            .two,
-            .modules,
-            .toc-grid {
-                grid-template-columns: 1fr
-            }
-
-            .stats {
-                grid-template-columns: 1fr 1fr
-            }
-
-            .hero {
-                padding: 28px 20px;
-                border-radius: 22px
-            }
-
-            .hero h1 {
-                font-size: 30px
-            }
-
-            .title {
-                font-size: 23px
-            }
-
-            .contact {
-                justify-content: flex-start
-            }
-        }
-    </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>SDS School Management System | Odoo 19</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --ink:#17213c;
+  --muted:#64708a;
+  --soft:#f7f8fc;
+  --white:#fff;
+  --line:#e6e9f2;
+  --purple:#714b67;
+  --violet:#6857d9;
+  --blue:#3b82f6;
+  --cyan:#16b8c4;
+  --green:#16a34a;
+  --orange:#f59e0b;
+  --pink:#e75480;
+  --shadow:0 18px 50px rgba(34,39,74,.10);
+  --shadow-sm:0 7px 22px rgba(34,39,74,.07);
+  --radius:22px;
+}
+html{scroll-behavior:smooth}
+body{
+  font-family:Inter,Segoe UI,Arial,sans-serif;
+  background:
+    radial-gradient(circle at 5% 0%,rgba(113,75,103,.08),transparent 28%),
+    radial-gradient(circle at 100% 10%,rgba(59,130,246,.08),transparent 30%),
+    var(--soft);
+  color:var(--ink);line-height:1.65;font-size:15px;
+}
+a{color:inherit}
+.wrap{max-width:1080px;margin:auto;padding:24px 24px 70px}
+.hero-img{
+  border-radius:26px;overflow:hidden;background:#fff;
+  box-shadow:var(--shadow);border:1px solid var(--line);margin-bottom:22px;
+}
+.hero-img img{width:100%;display:block;height:auto}
+.hero{
+  position:relative;overflow:hidden;border-radius:28px;padding:48px;
+  background:linear-gradient(135deg,#21172f 0%,#4d2f55 43%,#6256d8 100%);
+  color:#fff;box-shadow:var(--shadow);margin-bottom:18px;
+}
+.hero:before,.hero:after{
+  content:"";position:absolute;border-radius:50%;pointer-events:none;
+  background:rgba(255,255,255,.09);
+}
+.hero:before{width:310px;height:310px;right:-110px;top:-150px}
+.hero:after{width:220px;height:220px;left:48%;bottom:-160px}
+.hero-content{position:relative;z-index:1;max-width:780px}
+.brand{display:inline-flex;align-items:center;gap:10px;margin-bottom:18px;font-weight:800;letter-spacing:.4px}
+.brand-mark{
+  width:46px;height:46px;border-radius:14px;display:flex;align-items:center;justify-content:center;
+  background:linear-gradient(135deg,#fff,rgba(255,255,255,.72));color:var(--purple);font-weight:900;
+  box-shadow:0 8px 24px rgba(0,0,0,.15)
+}
+.hero h1{font-size:clamp(28px,5vw,46px);line-height:1.08;letter-spacing:-1px;margin-bottom:14px}
+.hero p{color:#eeeaff;max-width:760px;font-size:16px;margin-bottom:24px}
+.chips{display:flex;flex-wrap:wrap;gap:9px}
+.chip{padding:7px 13px;border-radius:999px;background:rgba(255,255,255,.13);border:1px solid rgba(255,255,255,.22);font-size:12px;font-weight:700}
+.contact{
+  display:flex;justify-content:center;align-items:center;flex-wrap:wrap;gap:12px;
+  background:#fff;border:1px solid var(--line);border-radius:18px;padding:13px 18px;
+  box-shadow:var(--shadow-sm);margin-bottom:28px
+}
+.contact a{text-decoration:none;color:var(--muted);font-size:13px;font-weight:600;padding:5px 10px}
+.contact a:hover{color:var(--violet)}
+.toc{
+  background:#fff;border:1px solid var(--line);border-radius:20px;padding:22px;
+  box-shadow:var(--shadow-sm);margin-bottom:38px
+}
+.toc-title{font-weight:800;margin-bottom:13px;font-size:15px}
+.toc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:7px 16px;list-style:none}
+.toc-grid a{display:block;text-decoration:none;color:var(--muted);padding:7px 9px;border-radius:10px;font-size:13px;font-weight:600}
+.toc-grid a:hover{background:#f0efff;color:var(--violet)}
+.section{margin:0 0 48px;scroll-margin-top:18px}
+.kicker{font-size:11px;text-transform:uppercase;letter-spacing:1.5px;color:var(--violet);font-weight:900;margin-bottom:7px}
+.title{display:flex;align-items:center;gap:10px;font-size:27px;line-height:1.2;margin-bottom:12px;letter-spacing:-.5px}
+.title .icon{width:40px;height:40px;border-radius:12px;display:inline-flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#eeeaff,#e6f4ff);font-size:19px}
+.lead{color:var(--muted);font-size:14.5px;max-width:880px;margin-bottom:18px}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.card{
+  background:#fff;border:1px solid var(--line);border-radius:19px;padding:21px;
+  box-shadow:var(--shadow-sm);transition:.2s ease
+}
+.card:hover{transform:translateY(-3px);box-shadow:var(--shadow)}
+.card-icon{width:44px;height:44px;border-radius:13px;display:flex;align-items:center;justify-content:center;font-size:20px;margin-bottom:13px}
+.card h3{font-size:16px;margin-bottom:7px}
+.card p,.card li{font-size:13.5px;color:var(--muted)}
+.card ul{padding-left:18px}
+.card li{margin:4px 0}
+.feature-top{display:flex;gap:13px;align-items:flex-start}
+.feature-top .card-icon{flex:none}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:18px}
+.stat{background:#fff;border:1px solid var(--line);border-radius:17px;padding:18px;text-align:center;box-shadow:var(--shadow-sm)}
+.stat strong{display:block;font-size:25px;color:var(--violet)}
+.stat span{font-size:12px;color:var(--muted);font-weight:700}
+.shot{
+  background:#fff;border:1px solid var(--line);border-radius:22px;padding:9px;
+  box-shadow:var(--shadow);margin:18px 0;overflow:hidden
+}
+.shot img{width:100%;display:block;border-radius:15px;height:auto}
+.caption{font-size:12px;color:var(--muted);padding:10px 7px 3px;font-weight:600}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.table-wrap{overflow:auto;border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow-sm);background:#fff}
+table{width:100%;border-collapse:collapse;min-width:560px}
+th{background:linear-gradient(90deg,#29203d,#594bcb);color:#fff;text-align:left;padding:12px 15px;font-size:12px}
+td{padding:11px 15px;border-bottom:1px solid var(--line);font-size:13px;color:var(--muted);vertical-align:top}
+tr:last-child td{border-bottom:0}
+tr:nth-child(even) td{background:#fafaff}
+.badge{display:inline-block;padding:3px 9px;border-radius:999px;font-size:10.5px;font-weight:800;margin-left:5px}
+.green{background:#dcfce7;color:#15803d} .purple{background:#eeeaff;color:#5b4bc4}
+.orange{background:#fff1d6;color:#a85d00} .blue{background:#e7f0ff;color:#245fc7}
+.steps{display:grid;gap:12px}
+.step{display:flex;gap:13px;align-items:flex-start}
+.num{
+  flex:none;width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+  color:#fff;font-weight:900;background:linear-gradient(135deg,var(--purple),var(--violet));box-shadow:0 5px 14px rgba(104,87,217,.25)
+}
+.step-body{background:#fff;border:1px solid var(--line);border-radius:15px;padding:13px 16px;flex:1;box-shadow:var(--shadow-sm)}
+.step-body strong{font-size:14px}
+.step-body span{display:block;color:var(--muted);font-size:13px;margin-top:3px}
+.callout{border-radius:17px;padding:16px 18px;margin-top:16px;border-left:4px solid var(--violet);background:#f0efff;color:#51458f;font-size:13.5px}
+.callout.warning{border-left-color:var(--orange);background:#fff8e8;color:#8b5a00}
+.modules{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.module{background:#fff;border:1px solid var(--line);border-radius:16px;padding:16px;text-align:center;box-shadow:var(--shadow-sm)}
+.module b{display:block;font-size:13px;margin-bottom:3px} .module span{font-size:11.5px;color:var(--muted)}
+.support{border-radius:26px;padding:42px 28px;text-align:center;color:#fff;background:linear-gradient(135deg,#21172f,#4d2f55 45%,#6256d8);box-shadow:var(--shadow)}
+.support h2{font-size:30px;margin-bottom:9px} .support p{color:#eeeaff;max-width:650px;margin:0 auto 22px;font-size:14px}
+.support-links{display:flex;justify-content:center;flex-wrap:wrap;gap:10px}
+.support-links a{text-decoration:none;padding:10px 16px;border-radius:999px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.22);font-size:13px;font-weight:700}
+.footer{text-align:center;padding-top:26px;color:#8992a7;font-size:11.5px}
+@media(max-width:800px){
+  .grid,.modules{grid-template-columns:1fr 1fr}
+  .stats{grid-template-columns:1fr 1fr}
+  .toc-grid{grid-template-columns:1fr 1fr}
+  .hero{padding:34px 26px}
+}
+@media(max-width:560px){
+  .wrap{padding:12px 12px 45px}
+  .grid,.two,.modules,.toc-grid{grid-template-columns:1fr}
+  .stats{grid-template-columns:1fr 1fr}
+  .hero{padding:28px 20px;border-radius:22px}
+  .hero h1{font-size:30px}
+  .title{font-size:23px}
+  .contact{justify-content:flex-start}
+}
+</style>
 </head>
-
 <body>
-    <div class="wrap">
+<div class="wrap">
 
-        <div class="hero-img">
-            <img src="banner.png" alt="SDS School Management System">
-        </div>
+  <div class="hero-img">
+    <img src="banner.png" alt="SDS School Management System">
+  </div>
 
-        <section class="hero">
-            <div class="hero-content">
-                <div class="brand">
-                    <div class="brand-mark">SDS</div> SmartDesk Solution
-                </div>
-                <h1>School Management System</h1>
-                <p>A modern Odoo 19 solution for organizing students, parents, teachers, academics, attendance,
-                    examinations, fees and school facilities in one place.</p>
-                <div class="chips">
-                    <span class="chip">Odoo 19</span>
-                    <span class="chip">v19.0.1.0.0</span>
-                    <span class="chip">Education</span>
-                    <span class="chip">LGPL-3</span>
-                </div>
-            </div>
-        </section>
-
-        <div class="contact">
-            <a href="mailto:info@smartdesksolution.com">✉ info@smartdesksolution.com</a>
-            <a href="tel:+966579602616">☎ +966 579 602 616</a>
-            <a href="https://www.smartdesksolution.com" target="_blank">🌐 www.smartdesksolution.com</a>
-        </div>
-
-        <nav class="toc">
-            <div class="toc-title">✨ Documentation</div>
-            <ul class="toc-grid">
-                <li><a href="#overview">01 · Overview</a></li>
-                <li><a href="#features">02 · Key Features</a></li>
-                <li><a href="#requirements">03 · Requirements</a></li>
-                <li><a href="#installation">04 · Installation</a></li>
-                <li><a href="#setup">05 · Quick Setup</a></li>
-                <li><a href="#screenshots">06 · Screenshots</a></li>
-                <li><a href="#reports">07 · Reports & Analytics</a></li>
-                <li><a href="#support">08 · Support</a></li>
-            </ul>
-        </nav>
-
-        <section class="section" id="overview">
-            <div class="kicker">01 · Overview</div>
-            <h2 class="title"><span class="icon">📖</span>Everything your school needs</h2>
-            <p class="lead">The School Management System brings school administration into a structured Odoo workflow,
-                replacing scattered records with searchable digital information and connected academic and operational
-                records.</p>
-            <div class="stats">
-                <div class="stat"><strong>15+</strong><span>Education Models</span></div>
-                <div class="stat"><strong>3</strong><span>PDF Reports</span></div>
-                <div class="stat"><strong>1</strong><span>Unified Platform</span></div>
-                <div class="stat"><strong>19.0</strong><span>Odoo Version</span></div>
-            </div>
-        </section>
-
-        <section class="section" id="features">
-            <div class="kicker">02 · Key Features</div>
-            <h2 class="title"><span class="icon">🚀</span>Core school management</h2>
-            <p class="lead">A focused set of tools for the daily work of administrators, teachers and school staff.</p>
-            <div class="grid">
-                <div class="card">
-                    <div class="card-icon" style="background:#eeeaff">🎓</div>
-                    <h3>Students & Parents</h3>
-                    <ul>
-                        <li>Student profiles and photos</li>
-                        <li>Registration IDs and lifecycle status</li>
-                        <li>Parent/guardian relationships</li>
-                        <li>Quick attendance, fee and result metrics</li>
-                    </ul>
-                </div>
-                <div class="card">
-                    <div class="card-icon" style="background:#e9f7ff">👩‍🏫</div>
-                    <h3>Teachers & Faculty</h3>
-                    <ul>
-                        <li>Professional and contact information</li>
-                        <li>Subject assignments</li>
-                        <li>Class teacher responsibilities</li>
-                    </ul>
-                </div>
-                <div class="card">
-                    <div class="card-icon" style="background:#edf9f1">📚</div>
-                    <h3>Academic Management</h3>
-                    <ul>
-                        <li>Academic years and terms</li>
-                        <li>Grades, classes and sections</li>
-                        <li>Subjects and grade scales</li>
-                        <li>Timetable planning</li>
-                    </ul>
-                </div>
-                <div class="card">
-                    <div class="card-icon" style="background:#fff6df">✅</div>
-                    <h3>Attendance</h3>
-                    <ul>
-                        <li>Class-wise daily attendance</li>
-                        <li>Present, Absent, Late and Excused</li>
-                        <li>Submit and lock attendance records</li>
-                    </ul>
-                </div>
-                <div class="card">
-                    <div class="card-icon" style="background:#ffeef5">📝</div>
-                    <h3>Exams & Results</h3>
-                    <ul>
-                        <li>Exam setup and mark entry</li>
-                        <li>Automatic percentage and grading</li>
-                        <li>Pass/fail calculation</li>
-                        <li>Report card printing</li>
-                    </ul>
-                </div>
-                <div class="card">
-                    <div class="card-icon" style="background:#fff0e4">💳</div>
-                    <h3>Fee Management</h3>
-                    <ul>
-                        <li>Fee heads and structures</li>
-                        <li>Student fee invoices</li>
-                        <li>Paid and outstanding amounts</li>
-                        <li>Payment status tracking</li>
-                    </ul>
-                </div>
-            </div>
-        </section>
-
-        <section class="section" id="requirements">
-            <div class="kicker">03 · Requirements</div>
-            <h2 class="title"><span class="icon">⚙️</span>System requirements</h2>
-            <div class="table-wrap">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Requirement</th>
-                            <th>Specification</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Odoo</td>
-                            <td>19.0 — Community or Enterprise <span class="badge green">Required</span></td>
-                        </tr>
-                        <tr>
-                            <td>Python</td>
-                            <td>3.10 or higher</td>
-                        </tr>
-                        <tr>
-                            <td>PostgreSQL</td>
-                            <td>14 or higher</td>
-                        </tr>
-                        <tr>
-                            <td>Operating System</td>
-                            <td>Ubuntu 20.04+ / Debian 11+ for production; Windows for development</td>
-                        </tr>
-                        <tr>
-                            <td>RAM</td>
-                            <td>Minimum 4 GB; 8 GB recommended for production with 100+ concurrent users</td>
-                        </tr>
-                        <tr>
-                            <td>Dependency</td>
-                            <td><code>base</code> only</td>
-                        </tr>
-                        <tr>
-                            <td>License</td>
-                            <td>LGPL-3</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-            <div class="callout warning"><strong>Version compatibility:</strong> This release is built for Odoo 19.0.
-                Avoid installing it on older Odoo versions.</div>
-        </section>
-
-        <section class="section" id="installation">
-            <div class="kicker">04 · Installation</div>
-            <h2 class="title"><span class="icon">📦</span>Install in a few steps</h2>
-            <div class="steps">
-                <div class="step">
-                    <div class="num">1</div>
-                    <div class="step-body"><strong>Enable Developer Mode</strong><span>Open Settings → General Settings
-                            → Developer Tools and activate developer mode.</span></div>
-                </div>
-                <div class="step">
-                    <div class="num">2</div>
-                    <div class="step-body"><strong>Open Apps</strong><span>Open the Apps menu and remove the default
-                            Apps category filter if necessary.</span></div>
-                </div>
-                <div class="step">
-                    <div class="num">3</div>
-                    <div class="step-body"><strong>Search the module</strong><span>Search for <b>School Management
-                                System</b> by SmartDesk Solution and click Install.</span></div>
-                </div>
-                <div class="step">
-                    <div class="num">4</div>
-                    <div class="step-body"><strong>Verify</strong><span>The School Management menu should appear after
-                            installation.</span></div>
-                </div>
-            </div>
-            <div class="callout"><strong>Manual installation:</strong> For a ZIP installation, place the module in your
-                custom addons path, restart Odoo, update the Apps list and install it from Apps.</div>
-        </section>
-
-        <section class="section" id="setup">
-            <div class="kicker">05 · Quick Setup</div>
-            <h2 class="title"><span class="icon">🧭</span>Recommended configuration order</h2>
-            <p class="lead">Set up the academic foundation first, then add people and operational records.</p>
-            <div class="modules">
-                <div class="module"><b>1. Academic Year</b><span>Create the current year and terms.</span></div>
-                <div class="module"><b>2. Grades</b><span>Define grade levels and curriculum.</span></div>
-                <div class="module"><b>3. Subjects</b><span>Add subjects and grading rules.</span></div>
-                <div class="module"><b>4. Classes</b><span>Create sections and assign teachers.</span></div>
-                <div class="module"><b>5. Teachers</b><span>Add faculty and subject links.</span></div>
-                <div class="module"><b>6. Students</b><span>Add parents, students and enrollment.</span></div>
-                <div class="module"><b>7. Fees</b><span>Configure fee heads and structures.</span></div>
-                <div class="module"><b>8. Operations</b><span>Start attendance, exams and daily workflows.</span></div>
-            </div>
-        </section>
-
-        <section class="section" id="screenshots">
-            <div class="kicker">06 · Screenshots</div>
-            <h2 class="title"><span class="icon">🖼️</span>See the system in action</h2>
-            <div class="two">
-                <div class="shot"><img src="images/student_form.png" alt="Student Management Form">
-                    <div class="caption">Student management form</div>
-                </div>
-                <div class="shot"><img src="images/teacher_form.png" alt="Teacher and Faculty Form">
-                    <div class="caption">Teacher & faculty information</div>
-                </div>
-                <div class="shot"><img src="images/subjects.png" alt="Subjects and Courses">
-                    <div class="caption">Subjects & courses</div>
-                </div>
-                <div class="shot"><img src="images/report_card.png" alt="Academic Report Card">
-                    <div class="caption">Academic report card</div>
-                </div>
-            </div>
-        </section>
-
-        <section class="section" id="reports">
-            <div class="kicker">07 · Reports & Analytics</div>
-            <h2 class="title"><span class="icon">📊</span>Clear information for better decisions</h2>
-            <p class="lead">The module includes PDF reporting and visual information for student and fee-related
-                analysis.</p>
-            <div class="grid">
-                <div class="card">
-                    <div class="card-icon" style="background:#eeeaff">🎓</div>
-                    <h3>Academic Reports</h3>
-                    <p>Generate academic report cards with student results and grading information.</p>
-                </div>
-                <div class="card">
-                    <div class="card-icon" style="background:#fff0e4">💰</div>
-                    <h3>Fee Reports</h3>
-                    <p>Review student fee invoices, paid amounts and outstanding balances.</p>
-                </div>
-                <div class="card">
-                    <div class="card-icon" style="background:#e9f7ff">📈</div>
-                    <h3>Analytics</h3>
-                    <p>Use the included dashboards to get a quick view of student and fee information.</p>
-                </div>
-            </div>
-            <div class="two">
-                <div class="shot"><img src="images/fee_statement.png" alt="Student Fee Invoices">
-                    <div class="caption">Student fee invoices</div>
-                </div>
-                <div class="shot"><img src="images/fee_dashboard.png" alt="Fee Financial Analytics">
-                    <div class="caption">Fee financial analytics</div>
-                </div>
-            </div>
-        </section>
-
-        <section class="section" id="support">
-            <div class="support">
-                <h2>Need help?</h2>
-                <p>For installation, configuration or module-related support, contact SmartDesk Solution using the
-                    details below.</p>
-                <div class="support-links">
-                    <a href="mailto:info@smartdesksolution.com">✉ Email Support</a>
-                    <a href="tel:+966579602616">☎ +966 579 602 616</a>
-                    <a href="https://www.smartdesksolution.com" target="_blank">🌐 Visit Website</a>
-                </div>
-            </div>
-        </section>
-
-        <div class="footer">
-            SDS School Management System · Odoo 19 · Version 19.0.1.0.0 · LGPL-3 · SmartDesk Solution
-        </div>
+  <section class="hero">
+    <div class="hero-content">
+      <div class="brand"><div class="brand-mark">SDS</div> SmartDesk Solution</div>
+      <h1>School Management System</h1>
+      <p>A modern Odoo 19 solution for organizing students, parents, teachers, academics, attendance, examinations, fees and school facilities in one place.</p>
+      <div class="chips">
+        <span class="chip">Odoo 19</span>
+        <span class="chip">v19.0.1.0.0</span>
+        <span class="chip">Education</span>
+        <span class="chip">LGPL-3</span>
+      </div>
     </div>
-</body>
+  </section>
 
+  <div class="contact">
+    <a href="mailto:info@smartdesksolution.com">✉ info@smartdesksolution.com</a>
+    <a href="tel:+966579602616">☎ +966 579 602 616</a>
+    <a href="https://www.smartdesksolution.com" target="_blank">🌐 www.smartdesksolution.com</a>
+  </div>
+
+  <nav class="toc">
+    <div class="toc-title">✨ Documentation</div>
+    <ul class="toc-grid">
+      <li><a href="#overview">01 · Overview</a></li>
+      <li><a href="#features">02 · Key Features</a></li>
+      <li><a href="#requirements">03 · Requirements</a></li>
+      <li><a href="#installation">04 · Installation</a></li>
+      <li><a href="#setup">05 · Quick Setup</a></li>
+      <li><a href="#screenshots">06 · Screenshots</a></li>
+      <li><a href="#reports">07 · Reports & Analytics</a></li>
+      <li><a href="#support">08 · Support</a></li>
+    </ul>
+  </nav>
+
+  <section class="section" id="overview">
+    <div class="kicker">01 · Overview</div>
+    <h2 class="title"><span class="icon">📖</span>Everything your school needs</h2>
+    <p class="lead">The School Management System brings school administration into a structured Odoo workflow, replacing scattered records with searchable digital information and connected academic and operational records.</p>
+    <div class="stats">
+      <div class="stat"><strong>15+</strong><span>Education Models</span></div>
+      <div class="stat"><strong>3</strong><span>PDF Reports</span></div>
+      <div class="stat"><strong>1</strong><span>Unified Platform</span></div>
+      <div class="stat"><strong>19.0</strong><span>Odoo Version</span></div>
+    </div>
+  </section>
+
+  <section class="section" id="features">
+    <div class="kicker">02 · Key Features</div>
+    <h2 class="title"><span class="icon">🚀</span>Core school management</h2>
+    <p class="lead">A focused set of tools for the daily work of administrators, teachers and school staff.</p>
+    <div class="grid">
+      <div class="card"><div class="card-icon" style="background:#eeeaff">🎓</div><h3>Students & Parents</h3><ul><li>Student profiles and photos</li><li>Registration IDs and lifecycle status</li><li>Parent/guardian relationships</li><li>Quick attendance, fee and result metrics</li></ul></div>
+      <div class="card"><div class="card-icon" style="background:#e9f7ff">👩‍🏫</div><h3>Teachers & Faculty</h3><ul><li>Professional and contact information</li><li>Subject assignments</li><li>Class teacher responsibilities</li></ul></div>
+      <div class="card"><div class="card-icon" style="background:#edf9f1">📚</div><h3>Academic Management</h3><ul><li>Academic years and terms</li><li>Grades, classes and sections</li><li>Subjects and grade scales</li><li>Timetable planning</li></ul></div>
+      <div class="card"><div class="card-icon" style="background:#fff6df">✅</div><h3>Attendance</h3><ul><li>Class-wise daily attendance</li><li>Present, Absent, Late and Excused</li><li>Submit and lock attendance records</li></ul></div>
+      <div class="card"><div class="card-icon" style="background:#ffeef5">📝</div><h3>Exams & Results</h3><ul><li>Exam setup and mark entry</li><li>Automatic percentage and grading</li><li>Pass/fail calculation</li><li>Report card printing</li></ul></div>
+      <div class="card"><div class="card-icon" style="background:#fff0e4">💳</div><h3>Fee Management</h3><ul><li>Fee heads and structures</li><li>Student fee invoices</li><li>Paid and outstanding amounts</li><li>Payment status tracking</li></ul></div>
+    </div>
+  </section>
+
+  <section class="section" id="requirements">
+    <div class="kicker">03 · Requirements</div>
+    <h2 class="title"><span class="icon">⚙️</span>System requirements</h2>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Requirement</th><th>Specification</th></tr></thead>
+        <tbody>
+          <tr><td>Odoo</td><td>19.0 — Community or Enterprise <span class="badge green">Required</span></td></tr>
+          <tr><td>Python</td><td>3.10 or higher</td></tr>
+          <tr><td>PostgreSQL</td><td>14 or higher</td></tr>
+          <tr><td>Operating System</td><td>Ubuntu 20.04+ / Debian 11+ for production; Windows for development</td></tr>
+          <tr><td>RAM</td><td>Minimum 4 GB; 8 GB recommended for production with 100+ concurrent users</td></tr>
+          <tr><td>Dependency</td><td><code>base</code> only</td></tr>
+          <tr><td>License</td><td>LGPL-3</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="callout warning"><strong>Version compatibility:</strong> This release is built for Odoo 19.0. Avoid installing it on older Odoo versions.</div>
+  </section>
+
+  <section class="section" id="installation">
+    <div class="kicker">04 · Installation</div>
+    <h2 class="title"><span class="icon">📦</span>Install in a few steps</h2>
+    <div class="steps">
+      <div class="step"><div class="num">1</div><div class="step-body"><strong>Enable Developer Mode</strong><span>Open Settings → General Settings → Developer Tools and activate developer mode.</span></div></div>
+      <div class="step"><div class="num">2</div><div class="step-body"><strong>Open Apps</strong><span>Open the Apps menu and remove the default Apps category filter if necessary.</span></div></div>
+      <div class="step"><div class="num">3</div><div class="step-body"><strong>Search the module</strong><span>Search for <b>School Management System</b> by SmartDesk Solution and click Install.</span></div></div>
+      <div class="step"><div class="num">4</div><div class="step-body"><strong>Verify</strong><span>The School Management menu should appear after installation.</span></div></div>
+    </div>
+    <div class="callout"><strong>Manual installation:</strong> For a ZIP installation, place the module in your custom addons path, restart Odoo, update the Apps list and install it from Apps.</div>
+  </section>
+
+  <section class="section" id="setup">
+    <div class="kicker">05 · Quick Setup</div>
+    <h2 class="title"><span class="icon">🧭</span>Recommended configuration order</h2>
+    <p class="lead">Set up the academic foundation first, then add people and operational records.</p>
+    <div class="modules">
+      <div class="module"><b>1. Academic Year</b><span>Create the current year and terms.</span></div>
+      <div class="module"><b>2. Grades</b><span>Define grade levels and curriculum.</span></div>
+      <div class="module"><b>3. Subjects</b><span>Add subjects and grading rules.</span></div>
+      <div class="module"><b>4. Classes</b><span>Create sections and assign teachers.</span></div>
+      <div class="module"><b>5. Teachers</b><span>Add faculty and subject links.</span></div>
+      <div class="module"><b>6. Students</b><span>Add parents, students and enrollment.</span></div>
+      <div class="module"><b>7. Fees</b><span>Configure fee heads and structures.</span></div>
+      <div class="module"><b>8. Operations</b><span>Start attendance, exams and daily workflows.</span></div>
+    </div>
+  </section>
+
+  <section class="section" id="screenshots">
+    <div class="kicker">06 · Screenshots</div>
+    <h2 class="title"><span class="icon">🖼️</span>See the system in action</h2>
+    <div class="two">
+      <div class="shot"><img src="images/student_form.png" alt="Student Management Form"><div class="caption">Student management form</div></div>
+      <div class="shot"><img src="images/teacher_form.png" alt="Teacher and Faculty Form"><div class="caption">Teacher & faculty information</div></div>
+      <div class="shot"><img src="images/subjects.png" alt="Subjects and Courses"><div class="caption">Subjects & courses</div></div>
+      <div class="shot"><img src="images/report_card.png" alt="Academic Report Card"><div class="caption">Academic report card</div></div>
+    </div>
+  </section>
+
+  <section class="section" id="reports">
+    <div class="kicker">07 · Reports & Analytics</div>
+    <h2 class="title"><span class="icon">📊</span>Clear information for better decisions</h2>
+    <p class="lead">The module includes PDF reporting and visual information for student and fee-related analysis.</p>
+    <div class="grid">
+      <div class="card"><div class="card-icon" style="background:#eeeaff">🎓</div><h3>Academic Reports</h3><p>Generate academic report cards with student results and grading information.</p></div>
+      <div class="card"><div class="card-icon" style="background:#fff0e4">💰</div><h3>Fee Reports</h3><p>Review student fee invoices, paid amounts and outstanding balances.</p></div>
+      <div class="card"><div class="card-icon" style="background:#e9f7ff">📈</div><h3>Analytics</h3><p>Use the included dashboards to get a quick view of student and fee information.</p></div>
+    </div>
+    <div class="two">
+      <div class="shot"><img src="images/fee_statement.png" alt="Student Fee Invoices"><div class="caption">Student fee invoices</div></div>
+      <div class="shot"><img src="images/fee_dashboard.png" alt="Fee Financial Analytics"><div class="caption">Fee financial analytics</div></div>
+    </div>
+  </section>
+
+  <section class="section" id="support">
+    <div class="support">
+      <h2>Need help?</h2>
+      <p>For installation, configuration or module-related support, contact SmartDesk Solution using the details below.</p>
+      <div class="support-links">
+        <a href="mailto:info@smartdesksolution.com">✉ Email Support</a>
+        <a href="tel:+966579602616">☎ +966 579 602 616</a>
+        <a href="https://www.smartdesksolution.com" target="_blank">🌐 Visit Website</a>
+      </div>
+    </div>
+  </section>
+
+  <div class="footer">
+    SDS School Management System · Odoo 19 · Version 19.0.1.0.0 · LGPL-3 · SmartDesk Solution
+  </div>
+</div>
+</body>
 </html>
