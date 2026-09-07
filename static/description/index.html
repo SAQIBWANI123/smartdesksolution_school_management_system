@@ -1,75 +1,422 @@
 <!DOCTYPE html>
-<html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>School Management System | Odoo 19</title>
-<style>
-body{margin:0;background:#fff;color:#444;font-family:Arial,sans-serif;line-height:1.6}.page{max-width:1080px;margin:auto;padding:0 18px}
-.hero{text-align:center;padding:25px 0}.hero img{width:100%;border-radius:8px}.hero h1,h2,h3{color:#714b67}.hero h1{font-size:34px}.hero p{font-size:17px;max-width:850px;margin:auto}
-.badge{display:inline-block;background:#f1e8f0;color:#714b67;padding:6px 14px;border-radius:20px;margin:12px 4px;font-weight:bold;font-size:13px}
-h2{text-align:center;font-size:28px;margin:45px 0 20px}.intro{text-align:center;max-width:900px;margin:auto}
-.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.card{background:#fafafa;border:1px solid #e5e5e5;border-radius:8px;padding:18px}.card h3{font-size:18px;margin:0 0 6px}
-.two{display:grid;grid-template-columns:1fr 1fr;gap:25px;align-items:center}.shot{width:100%;border:1px solid #ddd;border-radius:6px;display:block}.caption{text-align:center;color:#777;font-size:13px}
-.step{display:flex;gap:14px;background:#fafafa;border-left:4px solid #714b67;padding:13px;margin:10px 0}.num{color:#714b67;font-weight:bold}
-table{width:100%;border-collapse:collapse}td{padding:11px;border-bottom:1px solid #eee}td:first-child{font-weight:bold;width:32%}
-.contact{background:#f4edf3;text-align:center;border-radius:8px;padding:25px;margin:45px 0}.contact a{color:#714b67;font-weight:bold;text-decoration:none}
-@media(max-width:750px){.grid,.two{grid-template-columns:1fr}}
-</style></head><body><div class="page">
+<html>
 
-<div class="hero">
-<img src="banner.png" alt="School Management System">
-<h1>School Management System</h1>
-<p>A complete school administration solution for Odoo 19 to manage students, parents, teachers, academics, attendance, examinations, fees, transport, hostel and library operations in one integrated application.</p>
-<span class="badge">Odoo 19</span><span class="badge">Education</span><span class="badge">Complete School Workflow</span><span class="badge">LGPL-3</span>
-</div>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>School Management System | Odoo 19</title>
+    <style>
+        body {
+            margin: 0;
+            background: #fff;
+            color: #444;
+            font-family: Arial, sans-serif;
+            line-height: 1.6
+        }
 
-<h2>About This Module</h2>
-<p class="intro">School Management System centralizes the core activities of a school in Odoo. Administrators and staff can manage academic structures, student records, faculty, attendance, examinations, fees and school facilities using connected records, searchable lists, forms, analytical views and printable reports.</p>
+        .page {
+            max-width: 1080px;
+            margin: auto;
+            padding: 0 18px
+        }
 
-<h2>Key Features</h2>
-<div class="grid">
-<div class="card"><h3>Student Management</h3><p>Manage admission details, class, grade, academic year, roll number, guardians, contact information and enrolment status.</p></div>
-<div class="card"><h3>Parents & Guardians</h3><p>Maintain guardian relationships, contact details, occupation and emergency information.</p></div>
-<div class="card"><h3>Teachers & Faculty</h3><p>Manage qualifications, specialization, contact information, subjects taught and class responsibilities.</p></div>
-<div class="card"><h3>Academic Management</h3><p>Configure academic years, terms, grade levels, classes, sections and subjects.</p></div>
-<div class="card"><h3>Attendance</h3><p>Record daily student attendance with Present, Absent, Late and Excused statuses.</p></div>
-<div class="card"><h3>Examinations</h3><p>Manage exams, marks, grading scales, percentages, grades and student results.</p></div>
-<div class="card"><h3>Fee Management</h3><p>Create fee structures and track invoices, payments and outstanding amounts.</p></div>
-<div class="card"><h3>Transport & Hostel</h3><p>Manage vehicles, routes, drivers, hostel rooms, wardens and student allocations.</p></div>
-<div class="card"><h3>Library</h3><p>Manage books and student issue/return records with due-date tracking.</p></div>
-</div>
+        .hero {
+            text-align: center;
+            padding: 25px 0
+        }
 
-<h2>Student Management</h2><div class="two"><div><h3>Complete Student Profile</h3><p>The student form brings academic and personal information into one record.</p><ul><li>Grade and class/section</li><li>Roll number and academic year</li><li>Admission date and enrolment status</li><li>Date of birth, gender and contact details</li><li>Parent & guardian information</li><li>Contact/address and notes</li></ul></div><div><img class="shot" src="images/student_form.png"><div class="caption">Actual Odoo screenshot — Student form</div></div></div>
+        .hero img {
+            width: 100%;
+            border-radius: 8px
+        }
 
-<h2>Teacher & Faculty Management</h2><div class="two"><div><img class="shot" src="images/teacher_form.png"><div class="caption">Actual Odoo screenshot — Teacher form</div></div><div><h3>Organize Your Faculty</h3><p>Maintain professional and contact information for teachers and connect them with subjects and class responsibilities.</p><ul><li>Qualification / degree</li><li>Specialization subject</li><li>Date of joining and gender</li><li>Email, phone and mobile</li><li>Subjects taught</li><li>Class teacher responsibilities</li></ul></div></div>
+        .hero h1,
+        h2,
+        h3 {
+            color: #714b67
+        }
 
-<h2>Subjects & Courses</h2><div class="two"><div><h3>Curriculum Configuration</h3><p>Configure subject code, name, subject type, pass marks and maximum marks. Subjects can then be used across classes and examinations.</p></div><div><img class="shot" src="images/subjects.png"><div class="caption">Actual Odoo screenshot — Subjects & Courses</div></div></div>
+        .hero h1 {
+            font-size: 34px
+        }
 
-<h2>Attendance & Examination</h2><div class="two"><div><h3>Daily Attendance</h3><p>Create attendance registers by class and date, load students from the class roster and record their status.</p><h3>Examination Results</h3><p>Record subject-wise marks and calculate maximum marks, pass marks, obtained marks, percentage and grade.</p></div><div><img class="shot" src="images/academic_report.png"><div class="caption">Actual Odoo screenshot — Academic Report Card</div></div></div>
+        .hero p {
+            font-size: 17px;
+            max-width: 850px;
+            margin: auto
+        }
 
-<h2>Academic Report Card</h2><img class="shot" src="images/report_card.png"><div class="caption">Actual Odoo screenshot — Academic Report Card</div><p class="intro">The report presents student identity, registration ID, roll number, class/section and academic year together with subject-wise maximum marks, pass marks, obtained marks and result status.</p>
+        .badge {
+            display: inline-block;
+            background: #f1e8f0;
+            color: #714b67;
+            padding: 6px 14px;
+            border-radius: 20px;
+            margin: 12px 4px;
+            font-weight: bold;
+            font-size: 13px
+        }
 
-<h2>Student Analytics</h2><div class="two"><div><img class="shot" src="images/analytics.png"><div class="caption">Actual Odoo screenshot — Student Analytics Dashboard</div></div><div><h3>Visual Analysis</h3><p>Use Odoo analytical views to review student data through graphical and pivot-style analysis and gain a quick overview of school information.</p></div></div>
+        h2 {
+            text-align: center;
+            font-size: 28px;
+            margin: 45px 0 20px
+        }
 
-<h2>Fee Management</h2><div class="two"><div><h3>Track Fees & Outstanding Amounts</h3><p>Fee records provide invoice number, student, class/section, invoice date, due date, total amount, amount paid, amount due and status.</p></div><div><img class="shot" src="images/fee_statement.png"><div class="caption">Actual Odoo screenshot — Student Fee Invoices</div></div></div>
+        .intro {
+            text-align: center;
+            max-width: 900px;
+            margin: auto
+        }
 
-<h2>Fee Financial Analytics</h2><img class="shot" src="images/fee_dashboard.png"><div class="caption">Actual Odoo screenshot — Fee Financial Analytics Dashboard</div>
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px
+        }
 
-<h2>Reports</h2><div class="grid"><div class="card"><h3>Student ID Card</h3><p>Generate a printable student identification report.</p></div><div class="card"><h3>Academic Report Card</h3><p>Print examination results with subject-wise marks and status.</p></div><div class="card"><h3>Fee Payment Receipt</h3><p>Generate printable fee payment documentation.</p></div></div>
+        .card {
+            background: #fafafa;
+            border: 1px solid #e5e5e5;
+            border-radius: 8px;
+            padding: 18px
+        }
 
-<h2>Complete School Workflow</h2>
-<div class="step"><span class="num">01</span><div><b>Academic Setup:</b> Create academic year, terms, grades, classes and subjects.</div></div>
-<div class="step"><span class="num">02</span><div><b>People:</b> Create teachers, parents/guardians and students.</div></div>
-<div class="step"><span class="num">03</span><div><b>Class & Curriculum:</b> Assign students, teachers, subjects and timetable information.</div></div>
-<div class="step"><span class="num">04</span><div><b>Daily Operations:</b> Record attendance and maintain school information.</div></div>
-<div class="step"><span class="num">05</span><div><b>Examinations:</b> Create exams, enter marks and review results.</div></div>
-<div class="step"><span class="num">06</span><div><b>Fees:</b> Configure fee structures, student fees and payments.</div></div>
-<div class="step"><span class="num">07</span><div><b>Facilities:</b> Operate transport, hostel and library records.</div></div>
-<div class="step"><span class="num">08</span><div><b>Reports:</b> Print ID cards, report cards and fee receipts and review analytics.</div></div>
+        .card h3 {
+            font-size: 18px;
+            margin: 0 0 6px
+        }
 
-<h2>Technical Information</h2><table>
-<tr><td>Module</td><td>school_management</td></tr><tr><td>Version</td><td>19.0.1.0.0</td></tr><tr><td>Odoo</td><td>19.0</td></tr><tr><td>Category</td><td>Education</td></tr><tr><td>Dependency</td><td>base</td></tr><tr><td>License</td><td>LGPL-3</td></tr><tr><td>Application</td><td>Yes</td></tr></table>
+        .two {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+            align-items: center
+        }
 
-<h2>Installation</h2><div class="step"><span class="num">1</span><div>Copy <b>school_management</b> into a directory included in Odoo's <b>addons_path</b>.</div></div><div class="step"><span class="num">2</span><div>Restart Odoo and update the Apps list.</div></div><div class="step"><span class="num">3</span><div>Search for <b>School Management System</b> and install it.</div></div><div class="step"><span class="num">4</span><div>Configure academic years, classes, subjects, teachers, students and school services.</div></div>
+        .shot {
+            width: 100%;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            display: block
+        }
 
-<div class="contact"><h2 style="margin:0 0 10px">Support & Contact</h2><p>For installation, configuration, customization or support:</p><p><b>Email:</b> <a href="mailto:info@smartdesksolutions.com">info@smartdesksolutions.com</a></p><p><b>Phone:</b> <a href="tel:+966560792470">+966 56 079 2470</a></p><p><b>Smart Desk Solutions</b></p></div>
-<p style="text-align:center;color:#777;padding-bottom:35px">School Management System for Odoo 19 • Simplify School Management. Focus on Education.</p>
-</div></body></html>
+        .caption {
+            text-align: center;
+            color: #777;
+            font-size: 13px
+        }
+
+        .step {
+            display: flex;
+            gap: 14px;
+            background: #fafafa;
+            border-left: 4px solid #714b67;
+            padding: 13px;
+            margin: 10px 0
+        }
+
+        .num {
+            color: #714b67;
+            font-weight: bold
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse
+        }
+
+        td {
+            padding: 11px;
+            border-bottom: 1px solid #eee
+        }
+
+        td:first-child {
+            font-weight: bold;
+            width: 32%
+        }
+
+        .contact {
+            background: #f4edf3;
+            text-align: center;
+            border-radius: 8px;
+            padding: 25px;
+            margin: 45px 0
+        }
+
+        .contact a {
+            color: #714b67;
+            font-weight: bold;
+            text-decoration: none
+        }
+
+        @media(max-width:750px) {
+
+            .grid,
+            .two {
+                grid-template-columns: 1fr
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="page">
+
+        <div class="hero">
+            <img src="banner.png" alt="School Management System">
+            <h1>School Management System</h1>
+            <p>A complete school administration solution for Odoo 19 to manage students, parents, teachers, academics,
+                attendance, examinations, fees, transport, hostel and library operations in one integrated application.
+            </p>
+            <span class="badge">Odoo 19</span><span class="badge">Education</span><span class="badge">Complete School
+                Workflow</span><span class="badge">LGPL-3</span>
+        </div>
+
+        <h2>About This Module</h2>
+        <p class="intro">School Management System centralizes the core activities of a school in Odoo. Administrators
+            and staff can manage academic structures, student records, faculty, attendance, examinations, fees and
+            school facilities using connected records, searchable lists, forms, analytical views and printable reports.
+        </p>
+
+        <h2>Key Features</h2>
+        <div class="grid">
+            <div class="card">
+                <h3>Student Management</h3>
+                <p>Manage admission details, class, grade, academic year, roll number, guardians, contact information
+                    and enrolment status.</p>
+            </div>
+            <div class="card">
+                <h3>Parents & Guardians</h3>
+                <p>Maintain guardian relationships, contact details, occupation and emergency information.</p>
+            </div>
+            <div class="card">
+                <h3>Teachers & Faculty</h3>
+                <p>Manage qualifications, specialization, contact information, subjects taught and class
+                    responsibilities.</p>
+            </div>
+            <div class="card">
+                <h3>Academic Management</h3>
+                <p>Configure academic years, terms, grade levels, classes, sections and subjects.</p>
+            </div>
+            <div class="card">
+                <h3>Attendance</h3>
+                <p>Record daily student attendance with Present, Absent, Late and Excused statuses.</p>
+            </div>
+            <div class="card">
+                <h3>Examinations</h3>
+                <p>Manage exams, marks, grading scales, percentages, grades and student results.</p>
+            </div>
+            <div class="card">
+                <h3>Fee Management</h3>
+                <p>Create fee structures and track invoices, payments and outstanding amounts.</p>
+            </div>
+            <div class="card">
+                <h3>Transport & Hostel</h3>
+                <p>Manage vehicles, routes, drivers, hostel rooms, wardens and student allocations.</p>
+            </div>
+            <div class="card">
+                <h3>Library</h3>
+                <p>Manage books and student issue/return records with due-date tracking.</p>
+            </div>
+        </div>
+
+        <h2>Student Management</h2>
+        <div class="two">
+            <div>
+                <h3>Complete Student Profile</h3>
+                <p>The student form brings academic and personal information into one record.</p>
+                <ul>
+                    <li>Grade and class/section</li>
+                    <li>Roll number and academic year</li>
+                    <li>Admission date and enrolment status</li>
+                    <li>Date of birth, gender and contact details</li>
+                    <li>Parent & guardian information</li>
+                    <li>Contact/address and notes</li>
+                </ul>
+            </div>
+            <div><img class="shot" src="images/student_form.png">
+                <div class="caption">Actual Odoo screenshot — Student form</div>
+            </div>
+        </div>
+
+        <h2>Teacher & Faculty Management</h2>
+        <div class="two">
+            <div><img class="shot" src="images/teacher_form.png">
+                <div class="caption">Actual Odoo screenshot — Teacher form</div>
+            </div>
+            <div>
+                <h3>Organize Your Faculty</h3>
+                <p>Maintain professional and contact information for teachers and connect them with subjects and class
+                    responsibilities.</p>
+                <ul>
+                    <li>Qualification / degree</li>
+                    <li>Specialization subject</li>
+                    <li>Date of joining and gender</li>
+                    <li>Email, phone and mobile</li>
+                    <li>Subjects taught</li>
+                    <li>Class teacher responsibilities</li>
+                </ul>
+            </div>
+        </div>
+
+        <h2>Subjects & Courses</h2>
+        <div class="two">
+            <div>
+                <h3>Curriculum Configuration</h3>
+                <p>Configure subject code, name, subject type, pass marks and maximum marks. Subjects can then be used
+                    across classes and examinations.</p>
+            </div>
+            <div><img class="shot" src="images/subjects.png">
+                <div class="caption">Actual Odoo screenshot — Subjects & Courses</div>
+            </div>
+        </div>
+
+        <h2>Attendance & Examination</h2>
+        <div class="two">
+            <div>
+                <h3>Daily Attendance</h3>
+                <p>Create attendance registers by class and date, load students from the class roster and record their
+                    status.</p>
+                <h3>Examination Results</h3>
+                <p>Record subject-wise marks and calculate maximum marks, pass marks, obtained marks, percentage and
+                    grade.</p>
+            </div>
+            <div><img class="shot" src="images/academic_report.png">
+                <div class="caption">Actual Odoo screenshot — Academic Report Card</div>
+            </div>
+        </div>
+
+        <h2>Academic Report Card</h2><img class="shot" src="images/report_card.png">
+        <div class="caption">Actual Odoo screenshot — Academic Report Card</div>
+        <p class="intro">The report presents student identity, registration ID, roll number, class/section and academic
+            year together with subject-wise maximum marks, pass marks, obtained marks and result status.</p>
+
+        <h2>Student Analytics</h2>
+        <div class="two">
+            <div><img class="shot" src="images/analytics.png">
+                <div class="caption">Actual Odoo screenshot — Student Analytics Dashboard</div>
+            </div>
+            <div>
+                <h3>Visual Analysis</h3>
+                <p>Use Odoo analytical views to review student data through graphical and pivot-style analysis and gain
+                    a quick overview of school information.</p>
+            </div>
+        </div>
+
+        <h2>Fee Management</h2>
+        <div class="two">
+            <div>
+                <h3>Track Fees & Outstanding Amounts</h3>
+                <p>Fee records provide invoice number, student, class/section, invoice date, due date, total amount,
+                    amount paid, amount due and status.</p>
+            </div>
+            <div><img class="shot" src="images/fee_statement.png">
+                <div class="caption">Actual Odoo screenshot — Student Fee Invoices</div>
+            </div>
+        </div>
+
+        <h2>Fee Financial Analytics</h2><img class="shot" src="images/fee_dashboard.png">
+        <div class="caption">Actual Odoo screenshot — Fee Financial Analytics Dashboard</div>
+
+        <h2>Reports</h2>
+        <div class="grid">
+            <div class="card">
+                <h3>Student ID Card</h3>
+                <p>Generate a printable student identification report.</p>
+            </div>
+            <div class="card">
+                <h3>Academic Report Card</h3>
+                <p>Print examination results with subject-wise marks and status.</p>
+            </div>
+            <div class="card">
+                <h3>Fee Payment Receipt</h3>
+                <p>Generate printable fee payment documentation.</p>
+            </div>
+        </div>
+
+        <h2>Complete School Workflow</h2>
+        <div class="step"><span class="num">01</span>
+            <div><b>Academic Setup:</b> Create academic year, terms, grades, classes and subjects.</div>
+        </div>
+        <div class="step"><span class="num">02</span>
+            <div><b>People:</b> Create teachers, parents/guardians and students.</div>
+        </div>
+        <div class="step"><span class="num">03</span>
+            <div><b>Class & Curriculum:</b> Assign students, teachers, subjects and timetable information.</div>
+        </div>
+        <div class="step"><span class="num">04</span>
+            <div><b>Daily Operations:</b> Record attendance and maintain school information.</div>
+        </div>
+        <div class="step"><span class="num">05</span>
+            <div><b>Examinations:</b> Create exams, enter marks and review results.</div>
+        </div>
+        <div class="step"><span class="num">06</span>
+            <div><b>Fees:</b> Configure fee structures, student fees and payments.</div>
+        </div>
+        <div class="step"><span class="num">07</span>
+            <div><b>Facilities:</b> Operate transport, hostel and library records.</div>
+        </div>
+        <div class="step"><span class="num">08</span>
+            <div><b>Reports:</b> Print ID cards, report cards and fee receipts and review analytics.</div>
+        </div>
+
+        <h2>Technical Information</h2>
+        <table>
+            <tr>
+                <td>Module</td>
+                <td>school_management</td>
+            </tr>
+            <tr>
+                <td>Version</td>
+                <td>19.0.1.0.0</td>
+            </tr>
+            <tr>
+                <td>Odoo</td>
+                <td>19.0</td>
+            </tr>
+            <tr>
+                <td>Category</td>
+                <td>Education</td>
+            </tr>
+            <tr>
+                <td>Dependency</td>
+                <td>base</td>
+            </tr>
+            <tr>
+                <td>License</td>
+                <td>LGPL-3</td>
+            </tr>
+            <tr>
+                <td>Application</td>
+                <td>Yes</td>
+            </tr>
+        </table>
+
+        <h2>Installation</h2>
+        <div class="step"><span class="num">1</span>
+            <div>Copy <b>school_management</b> into a directory included in Odoo's <b>addons_path</b>.</div>
+        </div>
+        <div class="step"><span class="num">2</span>
+            <div>Restart Odoo and update the Apps list.</div>
+        </div>
+        <div class="step"><span class="num">3</span>
+            <div>Search for <b>School Management System</b> and install it.</div>
+        </div>
+        <div class="step"><span class="num">4</span>
+            <div>Configure academic years, classes, subjects, teachers, students and school services.</div>
+        </div>
+
+        <div class="contact">
+            <h2 style="margin:0 0 10px">Support & Contact</h2>
+            <p>For installation, configuration, customization or support:</p>
+            <p><b>Email:</b> <a href="mailto:info@smartdesksolutions.com">info@smartdesksolutions.com</a></p>
+            <p><b>Phone:</b> <a href="tel:+966560792470">+966 56 079 2470</a></p>
+            <p><b>Smart Desk Solutions</b></p>
+        </div>
+        <p style="text-align:center;color:#777;padding-bottom:35px">School Management System for Odoo 19 • Simplify
+            School Management. Focus on Education.</p>
+    </div>
+</body>
+
+</html>
