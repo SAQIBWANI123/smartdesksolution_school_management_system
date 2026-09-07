@@ -1,13 +1,10 @@
 <!DOCTYPE html>
-<!DOCTYPE html>
-
 <html lang="en">
 
 <head>
-    <meta charset="utf-8" />
-    <meta content="width=device-width,initial-scale=1.0" name="viewport" />
-    <title>SDS School Management System | Odoo 19 Documentation</title>
-
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>SDS School Management System | Odoo 19</title>
     <style>
         * {
             box-sizing: border-box;
@@ -16,34 +13,21 @@
         }
 
         :root {
-            --navy: #0d1b3e;
-            --blue: #1a56db;
-            --blue-mid: #2563eb;
-            --blue-light: #eff6ff;
-            --blue-border: #bfdbfe;
-            --cyan: #06b6d4;
+            --ink: #17213c;
+            --muted: #64708a;
+            --soft: #f7f8fc;
+            --white: #fff;
+            --line: #e6e9f2;
             --purple: #714b67;
-            --purple-light: #f3eef1;
+            --violet: #6857d9;
+            --blue: #3b82f6;
+            --cyan: #16b8c4;
             --green: #16a34a;
-            --green-light: #f0fdf4;
-            --amber: #d97706;
-            --amber-light: #fffbeb;
-            --red: #dc2626;
-            --gray-50: #f8fafc;
-            --gray-100: #f1f5f9;
-            --gray-200: #e2e8f0;
-            --gray-300: #cbd5e1;
-            --gray-400: #94a3b8;
-            --gray-500: #64748b;
-            --gray-600: #475569;
-            --gray-700: #334155;
-            --gray-800: #1e293b;
-            --white: #ffffff;
-            --shadow-sm: 0 1px 3px rgba(0, 0, 0, .08), 0 1px 2px rgba(0, 0, 0, .06);
-            --shadow-md: 0 4px 12px rgba(0, 0, 0, .08), 0 2px 6px rgba(0, 0, 0, .05);
-            --shadow-lg: 0 12px 32px rgba(0, 0, 0, .10), 0 4px 12px rgba(0, 0, 0, .06);
-            --radius: 14px;
-            --radius-sm: 8px;
+            --orange: #f59e0b;
+            --pink: #e75480;
+            --shadow: 0 18px 50px rgba(34, 39, 74, .10);
+            --shadow-sm: 0 7px 22px rgba(34, 39, 74, .07);
+            --radius: 22px;
         }
 
         html {
@@ -51,2408 +35,892 @@
         }
 
         body {
-            font-family: 'Inter', sans-serif;
-            background: var(--gray-50);
-            color: var(--gray-800);
-            line-height: 1.7;
-            font-size: 15px
+            font-family: Inter, Segoe UI, Arial, sans-serif;
+            background:
+                radial-gradient(circle at 5% 0%, rgba(113, 75, 103, .08), transparent 28%),
+                radial-gradient(circle at 100% 10%, rgba(59, 130, 246, .08), transparent 30%),
+                var(--soft);
+            color: var(--ink);
+            line-height: 1.65;
+            font-size: 15px;
         }
 
-        /* ─── LAYOUT ───────────────────────── */
+        a {
+            color: inherit
+        }
+
         .wrap {
-            max-width: 1000px;
-            margin: 0 auto;
-            padding: 0 28px 80px
+            max-width: 1080px;
+            margin: auto;
+            padding: 24px 24px 70px
         }
 
-        /* ─── BANNER ───────────────────────── */
-        .banner-wrap {
-            width: 100%;
-            border-radius: 20px;
+        .hero-img {
+            border-radius: 26px;
             overflow: hidden;
-            box-shadow: var(--shadow-lg);
-            margin-bottom: 0
+            background: #fff;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--line);
+            margin-bottom: 22px;
         }
 
-        .banner-wrap img {
+        .hero-img img {
             width: 100%;
-            height: auto;
-            display: block
+            display: block;
+            height: auto
         }
 
-        /* ─── HEADER CARD ──────────────────── */
-        .header-card {
-            background: linear-gradient(135deg, var(--navy) 0%, #1e3a8a 55%, #1d4ed8 100%);
-            border-radius: 20px;
-            padding: 50px 48px;
-            margin: 28px 0;
-            display: flex;
-            align-items: center;
-            gap: 40px;
-            flex-wrap: wrap;
+        .hero {
             position: relative;
             overflow: hidden;
-            box-shadow: var(--shadow-lg);
-        }
-
-        .header-card::before {
-            content: '';
-            position: absolute;
-            top: -80px;
-            right: -80px;
-            width: 300px;
-            height: 300px;
-            border-radius: 50%;
-            background: rgba(99, 179, 237, .08);
-            pointer-events: none;
-        }
-
-        .header-card::after {
-            content: '';
-            position: absolute;
-            bottom: -60px;
-            left: 30%;
-            width: 200px;
-            height: 200px;
-            border-radius: 50%;
-            background: rgba(99, 179, 237, .05);
-            pointer-events: none;
-        }
-
-        .header-logo img {
-            height: 68px;
-            width: auto;
-            position: relative;
-            z-index: 1
-        }
-
-        .header-text {
-            flex: 1;
-            min-width: 280px;
-            position: relative;
-            z-index: 1
-        }
-
-        .header-text h1 {
-            font-family: 'Poppins', sans-serif;
-            font-size: clamp(22px, 3.5vw, 32px);
-            font-weight: 900;
+            border-radius: 28px;
+            padding: 48px;
+            background: linear-gradient(135deg, #21172f 0%, #4d2f55 43%, #6256d8 100%);
             color: #fff;
-            line-height: 1.15;
-            margin-bottom: 12px
+            box-shadow: var(--shadow);
+            margin-bottom: 18px;
         }
 
-        .header-text p {
-            color: #c7d2fe;
-            font-size: 14.5px;
-            line-height: 1.7;
-            max-width: 560px;
-            margin-bottom: 18px
+        .hero:before,
+        .hero:after {
+            content: "";
+            position: absolute;
+            border-radius: 50%;
+            pointer-events: none;
+            background: rgba(255, 255, 255, .09);
         }
 
-        .meta-row {
+        .hero:before {
+            width: 310px;
+            height: 310px;
+            right: -110px;
+            top: -150px
+        }
+
+        .hero:after {
+            width: 220px;
+            height: 220px;
+            left: 48%;
+            bottom: -160px
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 780px
+        }
+
+        .brand {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 18px;
+            font-weight: 800;
+            letter-spacing: .4px
+        }
+
+        .brand-mark {
+            width: 46px;
+            height: 46px;
+            border-radius: 14px;
             display: flex;
-            flex-wrap: wrap;
-            gap: 8px
-        }
-
-        .meta-chip {
-            background: rgba(255, 255, 255, .13);
-            border: 1px solid rgba(255, 255, 255, .22);
-            color: #e0e7ff;
-            padding: 4px 13px;
-            border-radius: 20px;
-            font-size: 12px;
-            font-weight: 600
-        }
-
-        /* ─── CONTACT BAR ──────────────────── */
-        .contact-bar {
-            background: var(--white);
-            border: 1px solid var(--gray-200);
-            border-radius: 12px;
-            padding: 16px 24px;
-            display: flex;
-            flex-wrap: wrap;
             align-items: center;
             justify-content: center;
-            gap: 20px;
-            margin-bottom: 40px;
-            box-shadow: var(--shadow-sm)
+            background: linear-gradient(135deg, #fff, rgba(255, 255, 255, .72));
+            color: var(--purple);
+            font-weight: 900;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, .15)
         }
 
-        .contact-item {
+        .hero h1 {
+            font-size: clamp(28px, 5vw, 46px);
+            line-height: 1.08;
+            letter-spacing: -1px;
+            margin-bottom: 14px
+        }
+
+        .hero p {
+            color: #eeeaff;
+            max-width: 760px;
+            font-size: 16px;
+            margin-bottom: 24px
+        }
+
+        .chips {
             display: flex;
-            align-items: center;
-            gap: 8px;
-            font-size: 13.5px;
-            color: var(--gray-700);
-            font-weight: 500;
-            text-decoration: none
+            flex-wrap: wrap;
+            gap: 9px
         }
 
-        .contact-item:hover {
-            color: var(--blue)
+        .chip {
+            padding: 7px 13px;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, .13);
+            border: 1px solid rgba(255, 255, 255, .22);
+            font-size: 12px;
+            font-weight: 700
         }
 
-        .contact-item .ci-icon {
-            font-size: 16px
-        }
-
-        /* ─── TOC ──────────────────────────── */
-        .toc-card {
-            background: var(--white);
-            border: 1px solid var(--gray-200);
-            border-radius: var(--radius);
-            padding: 30px 34px;
-            margin-bottom: 44px;
-            box-shadow: var(--shadow-sm)
-        }
-
-        .toc-card h2 {
-            font-size: 15px;
-            font-weight: 700;
-            color: var(--navy);
-            margin-bottom: 16px;
-            padding-bottom: 12px;
-            border-bottom: 2px solid var(--gray-200);
+        .contact {
             display: flex;
+            justify-content: center;
             align-items: center;
-            gap: 8px
+            flex-wrap: wrap;
+            gap: 12px;
+            background: #fff;
+            border: 1px solid var(--line);
+            border-radius: 18px;
+            padding: 13px 18px;
+            box-shadow: var(--shadow-sm);
+            margin-bottom: 28px
+        }
+
+        .contact a {
+            text-decoration: none;
+            color: var(--muted);
+            font-size: 13px;
+            font-weight: 600;
+            padding: 5px 10px
+        }
+
+        .contact a:hover {
+            color: var(--violet)
+        }
+
+        .toc {
+            background: #fff;
+            border: 1px solid var(--line);
+            border-radius: 20px;
+            padding: 22px;
+            box-shadow: var(--shadow-sm);
+            margin-bottom: 38px
+        }
+
+        .toc-title {
+            font-weight: 800;
+            margin-bottom: 13px;
+            font-size: 15px
         }
 
         .toc-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 6px 32px
+            grid-template-columns: repeat(3, 1fr);
+            gap: 7px 16px;
+            list-style: none
         }
 
-        .toc-grid li {
-            font-size: 13.5px;
-            list-style: none;
-            padding: 4px 0;
-            border-bottom: 1px dashed var(--gray-200)
-        }
-
-        .toc-grid li a {
-            color: var(--blue);
+        .toc-grid a {
+            display: block;
             text-decoration: none;
-            font-weight: 500;
+            color: var(--muted);
+            padding: 7px 9px;
+            border-radius: 10px;
+            font-size: 13px;
+            font-weight: 600
+        }
+
+        .toc-grid a:hover {
+            background: #f0efff;
+            color: var(--violet)
+        }
+
+        .section {
+            margin: 0 0 48px;
+            scroll-margin-top: 18px
+        }
+
+        .kicker {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--violet);
+            font-weight: 900;
+            margin-bottom: 7px
+        }
+
+        .title {
             display: flex;
             align-items: center;
-            gap: 8px
+            gap: 10px;
+            font-size: 27px;
+            line-height: 1.2;
+            margin-bottom: 12px;
+            letter-spacing: -.5px
         }
 
-        .toc-grid li a:hover {
-            color: var(--navy)
-        }
-
-        .toc-num {
+        .title .icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 12px;
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            width: 20px;
-            height: 20px;
-            background: var(--blue-light);
-            color: var(--blue);
-            border-radius: 50%;
-            font-size: 11px;
-            font-weight: 700;
-            flex-shrink: 0
+            background: linear-gradient(135deg, #eeeaff, #e6f4ff);
+            font-size: 19px
         }
 
-        /* ─── SECTIONS ─────────────────────── */
-        .doc-section {
-            margin-bottom: 60px;
-            scroll-margin-top: 20px
+        .lead {
+            color: var(--muted);
+            font-size: 14.5px;
+            max-width: 880px;
+            margin-bottom: 18px
         }
 
-        .section-label {
-            font-size: 11px;
-            font-weight: 700;
-            color: var(--blue);
-            letter-spacing: 1.2px;
-            text-transform: uppercase;
-            margin-bottom: 8px
-        }
-
-        h2.sec-title {
-            font-family: 'Poppins', sans-serif;
-            font-size: clamp(20px, 3vw, 26px);
-            font-weight: 800;
-            color: var(--navy);
-            margin-bottom: 16px;
-            padding-bottom: 14px;
-            border-bottom: 2px solid var(--gray-200);
-            display: flex;
-            align-items: center;
-            gap: 12px
-        }
-
-        h2.sec-title .si {
-            font-size: 22px
-        }
-
-        h3.sub-title {
-            font-family: 'Poppins', sans-serif;
-            font-size: 17px;
-            font-weight: 700;
-            color: var(--navy);
-            margin: 28px 0 12px
-        }
-
-        p.doc-p {
-            color: var(--gray-600);
-            line-height: 1.8;
-            margin-bottom: 14px;
-            font-size: 14.5px
-        }
-
-        /* ─── SCREENSHOT ───────────────────── */
-        .screenshot-wrap {
-            margin: 24px 0;
-            border-radius: var(--radius);
-            overflow: hidden;
-            box-shadow: var(--shadow-lg);
-            border: 1px solid var(--gray-200)
-        }
-
-        .screenshot-wrap img {
-            width: 100%;
-            height: auto;
-            display: block
-        }
-
-        .screenshot-cap {
-            background: var(--gray-100);
-            border-top: 1px solid var(--gray-200);
-            padding: 9px 16px;
-            font-size: 12.5px;
-            color: var(--gray-500);
-            font-weight: 500;
-            display: flex;
-            align-items: center;
-            gap: 6px
-        }
-
-        /* ─── FEATURE GRID ─────────────────── */
-        .feat-grid {
+        .grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px;
-            margin: 20px 0
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px
         }
 
-        .feat-card {
-            background: var(--white);
-            border: 1px solid var(--gray-200);
-            border-radius: var(--radius);
-            padding: 24px;
+        .card {
+            background: #fff;
+            border: 1px solid var(--line);
+            border-radius: 19px;
+            padding: 21px;
             box-shadow: var(--shadow-sm);
-            transition: all .22s ease
+            transition: .2s ease
         }
 
-        .feat-card:hover {
-            box-shadow: var(--shadow-lg);
-            border-color: var(--blue-border);
-            transform: translateY(-2px)
+        .card:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow)
         }
 
-        .fc-icon {
-            width: 46px;
-            height: 46px;
-            border-radius: 12px;
+        .card-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 13px;
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 20px;
-            margin-bottom: 14px
+            margin-bottom: 13px
         }
 
-        .fc-tag {
-            font-size: 10px;
-            font-weight: 700;
-            color: var(--blue);
-            letter-spacing: 1px;
-            text-transform: uppercase;
+        .card h3 {
+            font-size: 16px;
             margin-bottom: 7px
         }
 
-        .feat-card h4 {
-            font-size: 15.5px;
-            font-weight: 700;
-            color: var(--navy);
-            margin-bottom: 9px
-        }
-
-        .feat-card ul {
-            padding-left: 16px;
-            color: var(--gray-600);
-            font-size: 13.5px
-        }
-
-        .feat-card ul li {
-            margin-bottom: 4px;
-            line-height: 1.5
-        }
-
-        /* ─── TWO COL ──────────────────────── */
-        .two-col {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 24px;
-            margin: 16px 0
-        }
-
-        @media(max-width:620px) {
-            .two-col {
-                grid-template-columns: 1fr
-            }
-        }
-
-        /* ─── TABLE ────────────────────────── */
-        .doc-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 16px 0;
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: var(--shadow-sm);
-            border: 1px solid var(--gray-200)
-        }
-
-        .doc-table thead tr {
-            background: linear-gradient(90deg, var(--navy), #1e3a8a)
-        }
-
-        .doc-table thead th {
-            padding: 13px 18px;
-            font-size: 12.5px;
-            font-weight: 700;
-            text-align: left;
-            color: #fff;
-            letter-spacing: .3px
-        }
-
-        .doc-table tbody tr {
-            border-bottom: 1px solid var(--gray-200);
-            transition: background .15s
-        }
-
-        .doc-table tbody tr:hover {
-            background: var(--blue-light)
-        }
-
-        .doc-table tbody tr:last-child {
-            border-bottom: none
-        }
-
-        .doc-table tbody tr:nth-child(even) {
-            background: var(--gray-50)
-        }
-
-        .doc-table tbody tr:nth-child(even):hover {
-            background: var(--blue-light)
-        }
-
-        .doc-table td {
-            padding: 12px 18px;
+        .card p,
+        .card li {
             font-size: 13.5px;
-            color: var(--gray-600);
-            vertical-align: top
+            color: var(--muted)
         }
 
-        .doc-table td:first-child {
-            font-weight: 600;
-            color: var(--gray-800);
-            width: 35%
+        .card ul {
+            padding-left: 18px
         }
 
-        code.inline {
-            background: var(--gray-100);
-            border: 1px solid var(--gray-200);
-            border-radius: 5px;
-            padding: 2px 7px;
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 12px;
-            color: var(--navy)
+        .card li {
+            margin: 4px 0
         }
 
-        /* ─── CODE BLOCK ───────────────────── */
-        .code-block {
-            background: #0f172a;
-            border-radius: 10px;
-            padding: 18px 22px;
-            margin: 14px 0;
-            overflow-x: auto;
-            box-shadow: var(--shadow-md)
-        }
-
-        .code-block .cb-lang {
-            font-size: 10px;
-            color: #64748b;
-            margin-bottom: 8px;
-            font-family: 'Inter', sans-serif;
-            font-weight: 600;
-            letter-spacing: .8px;
-            text-transform: uppercase
-        }
-
-        .code-block pre {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 13px;
-            color: #e2e8f0;
-            line-height: 1.65;
-            white-space: pre
-        }
-
-        /* ─── STEPS ────────────────────────── */
-        .steps {
+        .feature-top {
             display: flex;
-            flex-direction: column;
-            gap: 14px;
-            margin: 16px 0
-        }
-
-        .step {
-            display: flex;
-            gap: 16px;
+            gap: 13px;
             align-items: flex-start
         }
 
-        .step-num {
-            width: 34px;
-            height: 34px;
-            min-width: 34px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, var(--blue), var(--blue-mid));
-            color: #fff;
-            font-weight: 800;
-            font-size: 13px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 2px 8px rgba(26, 86, 219, .3)
+        .feature-top .card-icon {
+            flex: none
         }
 
-        .step-body {
-            background: var(--white);
-            border: 1px solid var(--gray-200);
-            border-radius: var(--radius-sm);
-            padding: 14px 18px;
-            flex: 1;
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 12px;
+            margin-top: 18px
+        }
+
+        .stat {
+            background: #fff;
+            border: 1px solid var(--line);
+            border-radius: 17px;
+            padding: 18px;
+            text-align: center;
             box-shadow: var(--shadow-sm)
         }
 
-        .step-body h4 {
-            font-size: 14.5px;
-            font-weight: 700;
-            color: var(--navy);
-            margin-bottom: 5px
-        }
-
-        .step-body p,
-        .step-body span {
-            font-size: 13.5px;
-            color: var(--gray-600);
-            line-height: 1.6
-        }
-
-        /* ─── CALLOUT BOXES ────────────────── */
-        .callout {
-            border-radius: 10px;
-            padding: 15px 18px;
-            margin: 18px 0;
-            display: flex;
-            gap: 12px;
-            align-items: flex-start;
-            font-size: 13.5px;
-            line-height: 1.65
-        }
-
-        .callout .co-icon {
-            font-size: 17px;
-            flex-shrink: 0;
-            margin-top: 1px
-        }
-
-        .callout-note {
-            background: #eff6ff;
-            border-left: 4px solid var(--blue)
-        }
-
-        .callout-note .co-text {
-            color: #1e40af
-        }
-
-        .callout-warn {
-            background: var(--amber-light);
-            border-left: 4px solid var(--amber)
-        }
-
-        .callout-warn .co-text {
-            color: #92400e
-        }
-
-        .callout-tip {
-            background: var(--green-light);
-            border-left: 4px solid var(--green)
-        }
-
-        .callout-tip .co-text {
-            color: #14532d
-        }
-
-        .callout-danger {
-            background: #fff1f2;
-            border-left: 4px solid var(--red)
-        }
-
-        .callout-danger .co-text {
-            color: #9f1239
-        }
-
-        .callout strong {
+        .stat strong {
             display: block;
-            font-weight: 700;
-            margin-bottom: 3px
+            font-size: 25px;
+            color: var(--violet)
         }
 
-        /* ─── BADGES ───────────────────────── */
-        .badge {
-            display: inline-block;
-            padding: 3px 10px;
-            border-radius: 20px;
-            font-size: 11.5px;
+        .stat span {
+            font-size: 12px;
+            color: var(--muted);
             font-weight: 700
         }
 
-        .b-green {
+        .shot {
+            background: #fff;
+            border: 1px solid var(--line);
+            border-radius: 22px;
+            padding: 9px;
+            box-shadow: var(--shadow);
+            margin: 18px 0;
+            overflow: hidden
+        }
+
+        .shot img {
+            width: 100%;
+            display: block;
+            border-radius: 15px;
+            height: auto
+        }
+
+        .caption {
+            font-size: 12px;
+            color: var(--muted);
+            padding: 10px 7px 3px;
+            font-weight: 600
+        }
+
+        .two {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 18px
+        }
+
+        .table-wrap {
+            overflow: auto;
+            border: 1px solid var(--line);
+            border-radius: 18px;
+            box-shadow: var(--shadow-sm);
+            background: #fff
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 560px
+        }
+
+        th {
+            background: linear-gradient(90deg, #29203d, #594bcb);
+            color: #fff;
+            text-align: left;
+            padding: 12px 15px;
+            font-size: 12px
+        }
+
+        td {
+            padding: 11px 15px;
+            border-bottom: 1px solid var(--line);
+            font-size: 13px;
+            color: var(--muted);
+            vertical-align: top
+        }
+
+        tr:last-child td {
+            border-bottom: 0
+        }
+
+        tr:nth-child(even) td {
+            background: #fafaff
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 3px 9px;
+            border-radius: 999px;
+            font-size: 10.5px;
+            font-weight: 800;
+            margin-left: 5px
+        }
+
+        .green {
             background: #dcfce7;
             color: #15803d
         }
 
-        .b-blue {
-            background: #dbeafe;
-            color: #1d4ed8
+        .purple {
+            background: #eeeaff;
+            color: #5b4bc4
         }
 
-        .b-amber {
-            background: #fef3c7;
-            color: #b45309
+        .orange {
+            background: #fff1d6;
+            color: #a85d00
         }
 
-        .b-red {
-            background: #fee2e2;
-            color: #b91c1c
+        .blue {
+            background: #e7f0ff;
+            color: #245fc7
         }
 
-        .b-purple {
-            background: #f3e8ff;
-            color: #7e22ce
+        .steps {
+            display: grid;
+            gap: 12px
         }
 
-        .b-gray {
-            background: var(--gray-100);
-            color: var(--gray-600)
-        }
-
-        /* ─── MODEL CARDS ──────────────────── */
-        .model-card {
-            background: var(--white);
-            border: 1px solid var(--gray-200);
-            border-radius: var(--radius);
-            padding: 24px;
-            margin-bottom: 20px;
-            box-shadow: var(--shadow-sm)
-        }
-
-        .model-name {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 13px;
-            color: var(--blue);
-            font-weight: 700;
-            background: var(--blue-light);
-            display: inline-block;
-            padding: 3px 10px;
-            border-radius: 6px;
-            margin-bottom: 10px
-        }
-
-        .model-card h4 {
-            font-size: 16px;
-            font-weight: 700;
-            color: var(--navy);
-            margin-bottom: 10px
-        }
-
-        .model-card p {
-            font-size: 13.5px;
-            color: var(--gray-600);
-            margin-bottom: 10px
-        }
-
-        /* ─── WORKFLOW TIMELINE ────────────── */
-        .timeline {
-            position: relative;
-            padding-left: 36px;
-            margin: 20px 0
-        }
-
-        .timeline::before {
-            content: '';
-            position: absolute;
-            left: 14px;
-            top: 8px;
-            bottom: 8px;
-            width: 2px;
-            background: linear-gradient(to bottom, var(--blue), var(--cyan));
-            border-radius: 2px
-        }
-
-        .tl-item {
-            position: relative;
-            margin-bottom: 20px
-        }
-
-        .tl-dot {
-            position: absolute;
-            left: -29px;
-            top: 12px;
-            width: 16px;
-            height: 16px;
-            border-radius: 50%;
-            background: var(--blue);
-            border: 3px solid var(--white);
-            box-shadow: 0 0 0 2px var(--blue);
-            z-index: 1
-        }
-
-        .tl-box {
-            background: var(--white);
-            border: 1px solid var(--gray-200);
-            border-radius: var(--radius-sm);
-            padding: 14px 18px;
-            box-shadow: var(--shadow-sm)
-        }
-
-        .tl-box h4 {
-            font-size: 14.5px;
-            font-weight: 700;
-            color: var(--navy);
-            margin-bottom: 5px
-        }
-
-        .tl-box p {
-            font-size: 13.5px;
-            color: var(--gray-600)
-        }
-
-        /* ─── CHANGELOG ────────────────────── */
-        .cl-item {
-            background: var(--white);
-            border: 1px solid var(--gray-200);
-            border-radius: var(--radius);
-            padding: 22px 26px;
-            margin-bottom: 16px;
-            box-shadow: var(--shadow-sm)
-        }
-
-        .cl-ver {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 14px;
-            font-weight: 700;
-            color: var(--blue)
-        }
-
-        .cl-date {
-            font-size: 12px;
-            color: var(--gray-400);
-            margin: 4px 0 12px
-        }
-
-        .cl-item ul {
-            padding-left: 18px;
-            font-size: 13.5px;
-            color: var(--gray-600)
-        }
-
-        .cl-item ul li {
-            margin-bottom: 5px
-        }
-
-        /* ─── FAQ ──────────────────────────── */
-        .faq-item {
-            background: var(--white);
-            border: 1px solid var(--gray-200);
-            border-radius: var(--radius);
-            padding: 22px 26px;
-            margin-bottom: 14px;
-            box-shadow: var(--shadow-sm)
-        }
-
-        .faq-q {
-            font-size: 15px;
-            font-weight: 700;
-            color: var(--navy);
-            margin-bottom: 9px;
+        .step {
             display: flex;
+            gap: 13px;
+            align-items: flex-start
+        }
+
+        .num {
+            flex: none;
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-weight: 900;
+            background: linear-gradient(135deg, var(--purple), var(--violet));
+            box-shadow: 0 5px 14px rgba(104, 87, 217, .25)
+        }
+
+        .step-body {
+            background: #fff;
+            border: 1px solid var(--line);
+            border-radius: 15px;
+            padding: 13px 16px;
+            flex: 1;
+            box-shadow: var(--shadow-sm)
+        }
+
+        .step-body strong {
+            font-size: 14px
+        }
+
+        .step-body span {
+            display: block;
+            color: var(--muted);
+            font-size: 13px;
+            margin-top: 3px
+        }
+
+        .callout {
+            border-radius: 17px;
+            padding: 16px 18px;
+            margin-top: 16px;
+            border-left: 4px solid var(--violet);
+            background: #f0efff;
+            color: #51458f;
+            font-size: 13.5px
+        }
+
+        .callout.warning {
+            border-left-color: var(--orange);
+            background: #fff8e8;
+            color: #8b5a00
+        }
+
+        .modules {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 12px
+        }
+
+        .module {
+            background: #fff;
+            border: 1px solid var(--line);
+            border-radius: 16px;
+            padding: 16px;
+            text-align: center;
+            box-shadow: var(--shadow-sm)
+        }
+
+        .module b {
+            display: block;
+            font-size: 13px;
+            margin-bottom: 3px
+        }
+
+        .module span {
+            font-size: 11.5px;
+            color: var(--muted)
+        }
+
+        .support {
+            border-radius: 26px;
+            padding: 42px 28px;
+            text-align: center;
+            color: #fff;
+            background: linear-gradient(135deg, #21172f, #4d2f55 45%, #6256d8);
+            box-shadow: var(--shadow)
+        }
+
+        .support h2 {
+            font-size: 30px;
+            margin-bottom: 9px
+        }
+
+        .support p {
+            color: #eeeaff;
+            max-width: 650px;
+            margin: 0 auto 22px;
+            font-size: 14px
+        }
+
+        .support-links {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
             gap: 10px
         }
 
-        .faq-q .fq-i {
-            color: var(--blue);
-            font-size: 17px;
-            flex-shrink: 0
-        }
-
-        .faq-a {
-            font-size: 13.5px;
-            color: var(--gray-600);
-            line-height: 1.75;
-            padding-left: 27px
-        }
-
-        /* ─── SUPPORT ──────────────────────── */
-        .support-wrap {
-            background: linear-gradient(135deg, var(--navy) 0%, #1e3a8a 100%);
-            border-radius: 20px;
-            padding: 50px 44px;
-            text-align: center;
-            box-shadow: var(--shadow-lg)
-        }
-
-        .support-wrap img {
-            height: 56px;
-            margin-bottom: 22px
-        }
-
-        .support-wrap h3 {
-            font-family: 'Poppins', sans-serif;
-            font-size: 26px;
-            font-weight: 800;
-            color: #fff;
-            margin-bottom: 12px
-        }
-
-        .support-wrap p {
-            color: #c7d2fe;
-            font-size: 14.5px;
-            max-width: 500px;
-            margin: 0 auto 30px
-        }
-
-        .support-btns {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 14px
-        }
-
-        .support-btn {
-            background: rgba(255, 255, 255, .12);
-            border: 1px solid rgba(255, 255, 255, .25);
-            color: #fff;
-            padding: 13px 26px;
-            border-radius: 50px;
-            font-size: 14px;
-            font-weight: 600;
+        .support-links a {
             text-decoration: none;
-            display: flex;
-            align-items: center;
-            gap: 9px;
-            transition: all .2s
+            padding: 10px 16px;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, .12);
+            border: 1px solid rgba(255, 255, 255, .22);
+            font-size: 13px;
+            font-weight: 700
         }
 
-        .support-btn:hover {
-            background: rgba(255, 255, 255, .22);
-            transform: translateY(-2px)
+        .footer {
+            text-align: center;
+            padding-top: 26px;
+            color: #8992a7;
+            font-size: 11.5px
         }
 
-        /* ─── FOOTER ───────────────────────── */
-        .doc-footer {
-            margin-top: 48px;
-            padding-top: 28px;
-            border-top: 2px solid var(--gray-200);
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            gap: 14px
-        }
+        @media(max-width:800px) {
 
-        .doc-footer img {
-            height: 36px
-        }
-
-        .doc-footer p {
-            font-size: 12.5px;
-            color: var(--gray-400)
-        }
-
-        .doc-footer a {
-            color: var(--blue);
-            text-decoration: none
-        }
-
-        /* ─── RESPONSIVE ───────────────────── */
-        @media(max-width:680px) {
-            .header-card {
-                padding: 30px 24px
+            .grid,
+            .modules {
+                grid-template-columns: 1fr 1fr
             }
 
+            .stats {
+                grid-template-columns: 1fr 1fr
+            }
+
+            .toc-grid {
+                grid-template-columns: 1fr 1fr
+            }
+
+            .hero {
+                padding: 34px 26px
+            }
+        }
+
+        @media(max-width:560px) {
+            .wrap {
+                padding: 12px 12px 45px
+            }
+
+            .grid,
+            .two,
+            .modules,
             .toc-grid {
                 grid-template-columns: 1fr
             }
 
-            .support-wrap {
-                padding: 32px 20px
+            .stats {
+                grid-template-columns: 1fr 1fr
             }
 
-            .doc-footer {
-                justify-content: center;
-                text-align: center
+            .hero {
+                padding: 28px 20px;
+                border-radius: 22px
             }
-        }
 
-        .sds-text-brand {
-            width: 68px;
-            height: 68px;
-            border-radius: 18px;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            background: linear-gradient(135deg, #714b67, #5b5ce2);
-            color: #fff;
-            font-family: Arial, sans-serif;
-            font-size: 18px;
-            font-weight: 900;
-            letter-spacing: .5px;
-            box-shadow: 0 12px 26px rgba(23, 27, 58, .18);
-        }
+            .hero h1 {
+                font-size: 30px
+            }
 
-        .banner-wrap img,
-        .screenshot-wrap img {
-            max-width: 100%;
-            height: auto;
+            .title {
+                font-size: 23px
+            }
+
+            .contact {
+                justify-content: flex-start
+            }
         }
     </style>
 </head>
 
 <body>
     <div class="wrap">
-        <!-- BANNER -->
-        <div class="banner-wrap"><img alt="School Management System Banner" class="" src="banner.png" /></div>
-        <!-- HEADER -->
-        <div class="header-card">
-            <div class="header-logo">
-                <div class="sds-text-brand">SDS</div>
-            </div>
-            <div class="header-text">
-                <h1>School Management System<br />Complete Documentation</h1>
-                <p>A fully integrated Odoo 19 module for modern school administration — built by SmartDesk Solution.
-                    Covers students, parents, teachers, academics, attendance, examinations, timetables, fees,
-                    transport, hostel, library and analytics from one unified platform.</p>
-                <div class="meta-row">
-                    <span class="meta-chip">v19.0.1.0.0</span>
-                    <span class="meta-chip">Odoo 19 Community &amp; Enterprise</span>
-                    <span class="meta-chip">License: LGPL-3</span>
-                    <span class="meta-chip">Category: Education</span>
-                    <span class="meta-chip">Author: SmartDesk Solution</span>
-                </div>
-            </div>
-        </div>
-        <!-- CONTACT BAR -->
-        <div class="contact-bar">
-            <a class="contact-item" href="mailto:info@smartdesksolution.com"><span class="ci-icon">✉️</span>
-                info@smartdesksolution.com</a>
-            <a class="contact-item" href="tel:+966579602616"><span class="ci-icon">📞</span> +966 579 602 616</a>
-            <a class="contact-item" href="https://www.smartdesksolution.com" target="_blank"><span
-                    class="ci-icon">🌐</span> www.smartdesksolution.com</a>
+
+        <div class="hero-img">
+            <img src="banner.png" alt="SDS School Management System">
         </div>
 
-        <!-- ===================== 1. OVERVIEW ===================== -->
-        <div class="doc-section" id="s-overview">
-            <div class="section-label">Section 1</div>
-            <h2 class="sec-title"><span class="si">📖</span> Module Overview</h2>
-            <p class="doc-p">The <strong>School Management System</strong> by SmartDesk Solution is a comprehensive,
-                enterprise-grade Odoo 19 module that brings every aspect of school administration into a single,
-                integrated application. It replaces disconnected spreadsheets, paper registers and standalone tools with
-                structured, searchable digital records.</p>
-            <p class="doc-p">Built natively on Odoo's framework, it inherits all platform capabilities — user roles,
-                audit logging, chatter messaging, scheduled actions, email notifications and multi-company support —
-                while layering on a complete education-specific data model with 15+ models, 3 PDF reports, analytics
-                dashboards and a configurable timetable engine.</p>
-            <div class="feat-grid">
-                <div class="feat-card">
-                    <div class="fc-icon" style="background:#eff6ff">🎓</div>
-                    <div class="fc-tag">Students &amp; Parents</div>
-                    <h4>People Management</h4>
+        <section class="hero">
+            <div class="hero-content">
+                <div class="brand">
+                    <div class="brand-mark">SDS</div> SmartDesk Solution
+                </div>
+                <h1>School Management System</h1>
+                <p>A modern Odoo 19 solution for organizing students, parents, teachers, academics, attendance,
+                    examinations, fees and school facilities in one place.</p>
+                <div class="chips">
+                    <span class="chip">Odoo 19</span>
+                    <span class="chip">v19.0.1.0.0</span>
+                    <span class="chip">Education</span>
+                    <span class="chip">LGPL-3</span>
+                </div>
+            </div>
+        </section>
+
+        <div class="contact">
+            <a href="mailto:info@smartdesksolution.com">✉ info@smartdesksolution.com</a>
+            <a href="tel:+966579602616">☎ +966 579 602 616</a>
+            <a href="https://www.smartdesksolution.com" target="_blank">🌐 www.smartdesksolution.com</a>
+        </div>
+
+        <nav class="toc">
+            <div class="toc-title">✨ Documentation</div>
+            <ul class="toc-grid">
+                <li><a href="#overview">01 · Overview</a></li>
+                <li><a href="#features">02 · Key Features</a></li>
+                <li><a href="#requirements">03 · Requirements</a></li>
+                <li><a href="#installation">04 · Installation</a></li>
+                <li><a href="#setup">05 · Quick Setup</a></li>
+                <li><a href="#screenshots">06 · Screenshots</a></li>
+                <li><a href="#reports">07 · Reports & Analytics</a></li>
+                <li><a href="#support">08 · Support</a></li>
+            </ul>
+        </nav>
+
+        <section class="section" id="overview">
+            <div class="kicker">01 · Overview</div>
+            <h2 class="title"><span class="icon">📖</span>Everything your school needs</h2>
+            <p class="lead">The School Management System brings school administration into a structured Odoo workflow,
+                replacing scattered records with searchable digital information and connected academic and operational
+                records.</p>
+            <div class="stats">
+                <div class="stat"><strong>15+</strong><span>Education Models</span></div>
+                <div class="stat"><strong>3</strong><span>PDF Reports</span></div>
+                <div class="stat"><strong>1</strong><span>Unified Platform</span></div>
+                <div class="stat"><strong>19.0</strong><span>Odoo Version</span></div>
+            </div>
+        </section>
+
+        <section class="section" id="features">
+            <div class="kicker">02 · Key Features</div>
+            <h2 class="title"><span class="icon">🚀</span>Core school management</h2>
+            <p class="lead">A focused set of tools for the daily work of administrators, teachers and school staff.</p>
+            <div class="grid">
+                <div class="card">
+                    <div class="card-icon" style="background:#eeeaff">🎓</div>
+                    <h3>Students & Parents</h3>
                     <ul>
-                        <li>Complete student profiles with photo</li>
-                        <li>Auto-generated Registration IDs</li>
-                        <li>Status workflow: Draft → Enrolled → Promoted → Graduated</li>
-                        <li>Smart button metrics (Attendance %, Fee Due, Books, Results)</li>
-                        <li>Parent/Guardian linkage with emergency contact flag</li>
+                        <li>Student profiles and photos</li>
+                        <li>Registration IDs and lifecycle status</li>
+                        <li>Parent/guardian relationships</li>
+                        <li>Quick attendance, fee and result metrics</li>
                     </ul>
                 </div>
-                <div class="feat-card">
-                    <div class="fc-icon" style="background:#f0fdf4">📚</div>
-                    <div class="fc-tag">Academics</div>
-                    <h4>Academic Structure</h4>
+                <div class="card">
+                    <div class="card-icon" style="background:#e9f7ff">👩‍🏫</div>
+                    <h3>Teachers & Faculty</h3>
                     <ul>
-                        <li>Academic Years with Terms/Semesters</li>
-                        <li>Grade Levels with curriculum subjects</li>
-                        <li>Classes &amp; Sections with capacity and room number</li>
-                        <li>Subject Allocations per class (subject + teacher + periods/week)</li>
-                        <li>Configurable Grade Scale (A+, A, B … F with GPA)</li>
+                        <li>Professional and contact information</li>
+                        <li>Subject assignments</li>
+                        <li>Class teacher responsibilities</li>
                     </ul>
                 </div>
-                <div class="feat-card">
-                    <div class="fc-icon" style="background:#fefce8">📅</div>
-                    <div class="fc-tag">Operations</div>
-                    <h4>Daily Operations</h4>
+                <div class="card">
+                    <div class="card-icon" style="background:#edf9f1">📚</div>
+                    <h3>Academic Management</h3>
                     <ul>
-                        <li>Class-wise daily attendance with auto-load from enrollment</li>
-                        <li>4 attendance statuses: Present, Absent, Late, Excused</li>
-                        <li>Weekly timetable with 7 periods per day (Mon–Sat)</li>
-                        <li>Submit/lock attendance register per day</li>
+                        <li>Academic years and terms</li>
+                        <li>Grades, classes and sections</li>
+                        <li>Subjects and grade scales</li>
+                        <li>Timetable planning</li>
                     </ul>
                 </div>
-                <div class="feat-card">
-                    <div class="fc-icon" style="background:#fdf4ff">📝</div>
-                    <div class="fc-tag">Examinations</div>
-                    <h4>Exams &amp; Results</h4>
+                <div class="card">
+                    <div class="card-icon" style="background:#fff6df">✅</div>
+                    <h3>Attendance</h3>
                     <ul>
-                        <li>Exam creation with date range and grade linkage</li>
-                        <li>Subject-wise mark entry per student</li>
-                        <li>Auto percentage, grade letter &amp; pass/fail calculation</li>
-                        <li>Teacher comments on each result</li>
-                        <li>Academic Report Card PDF printout</li>
+                        <li>Class-wise daily attendance</li>
+                        <li>Present, Absent, Late and Excused</li>
+                        <li>Submit and lock attendance records</li>
                     </ul>
                 </div>
-                <div class="feat-card">
-                    <div class="fc-icon" style="background:#fff7ed">💰</div>
-                    <div class="fc-tag">Finance</div>
-                    <h4>Fee Management</h4>
+                <div class="card">
+                    <div class="card-icon" style="background:#ffeef5">📝</div>
+                    <h3>Exams & Results</h3>
                     <ul>
-                        <li>Fee Heads (Tuition, Admission, Exam, Transport …)</li>
-                        <li>Fee Structures per grade + academic year</li>
-                        <li>Student Invoice with line-by-line breakdown</li>
-                        <li>Payment tracking: Amount Paid, Amount Due</li>
-                        <li>Status: Draft → Posted → Partially Paid → Fully Paid</li>
+                        <li>Exam setup and mark entry</li>
+                        <li>Automatic percentage and grading</li>
+                        <li>Pass/fail calculation</li>
+                        <li>Report card printing</li>
                     </ul>
                 </div>
-                <div class="feat-card">
-                    <div class="fc-icon" style="background:#f0fdf4">🚌</div>
-                    <div class="fc-tag">Facilities</div>
-                    <h4>Facilities Management</h4>
+                <div class="card">
+                    <div class="card-icon" style="background:#fff0e4">💳</div>
+                    <h3>Fee Management</h3>
                     <ul>
-                        <li>Transport: Vehicles, Routes, Student Subscriptions</li>
-                        <li>Hostel: Buildings (Boys/Girls/Staff), Rooms, Allocations</li>
-                        <li>Library: Book Catalogue, Issue, Return, Overdue &amp; Fine tracking</li>
+                        <li>Fee heads and structures</li>
+                        <li>Student fee invoices</li>
+                        <li>Paid and outstanding amounts</li>
+                        <li>Payment status tracking</li>
                     </ul>
                 </div>
             </div>
-        </div>
-        <!-- ===================== 2. REQUIREMENTS ===================== -->
-        <div class="doc-section" id="s-requirements">
-            <div class="section-label">Section 2</div>
-            <h2 class="sec-title"><span class="si">⚙️</span> System Requirements</h2>
-            <table class="doc-table">
-                <thead>
-                    <tr>
-                        <th>Requirement</th>
-                        <th>Specification</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Odoo Version</td>
-                        <td>19.0 (Community or Enterprise) <span class="badge b-green">Required</span></td>
-                    </tr>
-                    <tr>
-                        <td>Python</td>
-                        <td>3.10 or higher</td>
-                    </tr>
-                    <tr>
-                        <td>PostgreSQL</td>
-                        <td>14 or higher</td>
-                    </tr>
-                    <tr>
-                        <td>Operating System</td>
-                        <td>Ubuntu 20.04+ / Debian 11+ (production); Windows supported for development only</td>
-                    </tr>
-                    <tr>
-                        <td>RAM</td>
-                        <td>Minimum 4 GB (8 GB recommended for production with 100+ concurrent users)</td>
-                    </tr>
-                    <tr>
-                        <td>Disk</td>
-                        <td>Minimum 10 GB free space for Odoo + data storage</td>
-                    </tr>
-                    <tr>
-                        <td>Browser</td>
-                        <td>Chrome 90+, Firefox 90+, Edge 90+, Safari 15+</td>
-                    </tr>
-                    <tr>
-                        <td>Odoo Dependencies</td>
-                        <td><code class="inline">base</code> only — no additional Odoo modules required</td>
-                    </tr>
-                    <tr>
-                        <td>License</td>
-                        <td>LGPL-3 (source code open; can be extended by creating a dependent module)</td>
-                    </tr>
-                    <tr>
-                        <td>Demo Data</td>
-                        <td>Included — installs sample school with Grade 10, sample student Alice Smith, subjects, and
-                            fee invoice</td>
-                    </tr>
-                </tbody>
-            </table>
-            <div class="callout callout-warn">
-                <div class="co-icon">⚠️</div>
-                <div class="co-text"><strong>Version Compatibility</strong>This module is built exclusively for Odoo
-                    19.0. Installing it on Odoo 16, 17 or 18 will cause Python import errors and database migration
-                    failures. Do not attempt cross-version installation.</div>
+        </section>
+
+        <section class="section" id="requirements">
+            <div class="kicker">03 · Requirements</div>
+            <h2 class="title"><span class="icon">⚙️</span>System requirements</h2>
+            <div class="table-wrap">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Requirement</th>
+                            <th>Specification</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Odoo</td>
+                            <td>19.0 — Community or Enterprise <span class="badge green">Required</span></td>
+                        </tr>
+                        <tr>
+                            <td>Python</td>
+                            <td>3.10 or higher</td>
+                        </tr>
+                        <tr>
+                            <td>PostgreSQL</td>
+                            <td>14 or higher</td>
+                        </tr>
+                        <tr>
+                            <td>Operating System</td>
+                            <td>Ubuntu 20.04+ / Debian 11+ for production; Windows for development</td>
+                        </tr>
+                        <tr>
+                            <td>RAM</td>
+                            <td>Minimum 4 GB; 8 GB recommended for production with 100+ concurrent users</td>
+                        </tr>
+                        <tr>
+                            <td>Dependency</td>
+                            <td><code>base</code> only</td>
+                        </tr>
+                        <tr>
+                            <td>License</td>
+                            <td>LGPL-3</td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
-        </div>
-        <!-- ===================== 3. INSTALLATION ===================== -->
-        <div class="doc-section" id="s-install">
-            <div class="section-label">Section 3</div>
-            <h2 class="sec-title"><span class="si">📦</span> Installation Guide</h2>
-            <h3 class="sub-title">Method A — Odoo App Store (Recommended)</h3>
+            <div class="callout warning"><strong>Version compatibility:</strong> This release is built for Odoo 19.0.
+                Avoid installing it on older Odoo versions.</div>
+        </section>
+
+        <section class="section" id="installation">
+            <div class="kicker">04 · Installation</div>
+            <h2 class="title"><span class="icon">📦</span>Install in a few steps</h2>
             <div class="steps">
                 <div class="step">
-                    <div class="step-num">1</div>
-                    <div class="step-body">
-                        <h4>Enable Developer Mode</h4><span>Go to <strong>Settings → General Settings → Developer
-                                Tools</strong> and click <em>Activate the developer mode</em>, or add <code
-                                class="inline">?debug=1</code> to your URL.</span>
-                    </div>
+                    <div class="num">1</div>
+                    <div class="step-body"><strong>Enable Developer Mode</strong><span>Open Settings → General Settings
+                            → Developer Tools and activate developer mode.</span></div>
                 </div>
                 <div class="step">
-                    <div class="step-num">2</div>
-                    <div class="step-body">
-                        <h4>Open Apps Menu</h4><span>Click the main hamburger menu and select <strong>Apps</strong>.
-                            Remove the default <em>Apps</em> category filter.</span>
-                    </div>
+                    <div class="num">2</div>
+                    <div class="step-body"><strong>Open Apps</strong><span>Open the Apps menu and remove the default
+                            Apps category filter if necessary.</span></div>
                 </div>
                 <div class="step">
-                    <div class="step-num">3</div>
-                    <div class="step-body">
-                        <h4>Search and Install</h4><span>Search for <strong>School Management System</strong> by
-                            <em>SmartDesk Solution</em>. Click <strong>Install</strong> and wait for completion.</span>
-                    </div>
+                    <div class="num">3</div>
+                    <div class="step-body"><strong>Search the module</strong><span>Search for <b>School Management
+                                System</b> by SmartDesk Solution and click Install.</span></div>
                 </div>
                 <div class="step">
-                    <div class="step-num">4</div>
-                    <div class="step-body">
-                        <h4>Verify Installation</h4><span>A new top-level menu item <strong>School Management</strong>
-                            appears in the navigation bar. Log out and back in if it does not appear immediately.</span>
-                    </div>
+                    <div class="num">4</div>
+                    <div class="step-body"><strong>Verify</strong><span>The School Management menu should appear after
+                            installation.</span></div>
                 </div>
             </div>
-            <h3 class="sub-title">Method B — Manual ZIP Installation</h3>
-            <div class="steps">
-                <div class="step">
-                    <div class="step-num">1</div>
-                    <div class="step-body">
-                        <h4>Extract Module</h4><span>Unzip the downloaded file and copy the <code
-                                class="inline">school_management</code> folder to your custom addons directory.</span>
-                    </div>
+            <div class="callout"><strong>Manual installation:</strong> For a ZIP installation, place the module in your
+                custom addons path, restart Odoo, update the Apps list and install it from Apps.</div>
+        </section>
+
+        <section class="section" id="setup">
+            <div class="kicker">05 · Quick Setup</div>
+            <h2 class="title"><span class="icon">🧭</span>Recommended configuration order</h2>
+            <p class="lead">Set up the academic foundation first, then add people and operational records.</p>
+            <div class="modules">
+                <div class="module"><b>1. Academic Year</b><span>Create the current year and terms.</span></div>
+                <div class="module"><b>2. Grades</b><span>Define grade levels and curriculum.</span></div>
+                <div class="module"><b>3. Subjects</b><span>Add subjects and grading rules.</span></div>
+                <div class="module"><b>4. Classes</b><span>Create sections and assign teachers.</span></div>
+                <div class="module"><b>5. Teachers</b><span>Add faculty and subject links.</span></div>
+                <div class="module"><b>6. Students</b><span>Add parents, students and enrollment.</span></div>
+                <div class="module"><b>7. Fees</b><span>Configure fee heads and structures.</span></div>
+                <div class="module"><b>8. Operations</b><span>Start attendance, exams and daily workflows.</span></div>
+            </div>
+        </section>
+
+        <section class="section" id="screenshots">
+            <div class="kicker">06 · Screenshots</div>
+            <h2 class="title"><span class="icon">🖼️</span>See the system in action</h2>
+            <div class="two">
+                <div class="shot"><img src="images/student_form.png" alt="Student Management Form">
+                    <div class="caption">Student management form</div>
                 </div>
-                <div class="step">
-                    <div class="step-num">2</div>
-                    <div class="step-body">
-                        <h4>Update odoo.conf</h4>
-                        <div class="code-block">
-                            <div class="cb-lang">odoo.conf</div>
-                            <pre>addons_path = /opt/odoo/addons,/opt/odoo/custom-addons</pre>
-                        </div>
-                    </div>
+                <div class="shot"><img src="images/teacher_form.png" alt="Teacher and Faculty Form">
+                    <div class="caption">Teacher & faculty information</div>
                 </div>
-                <div class="step">
-                    <div class="step-num">3</div>
-                    <div class="step-body">
-                        <h4>Restart Odoo</h4>
-                        <div class="code-block">
-                            <div class="cb-lang">bash</div>
-                            <pre>sudo systemctl restart odoo</pre>
-                        </div>
-                    </div>
+                <div class="shot"><img src="images/subjects.png" alt="Subjects and Courses">
+                    <div class="caption">Subjects & courses</div>
                 </div>
-                <div class="step">
-                    <div class="step-num">4</div>
-                    <div class="step-body">
-                        <h4>Update Apps List &amp; Install</h4><span>In Odoo go to <strong>Apps → Update Apps
-                                List</strong>, search for <em>School Management System</em>, and click
-                            <strong>Install</strong>.</span>
-                    </div>
+                <div class="shot"><img src="images/report_card.png" alt="Academic Report Card">
+                    <div class="caption">Academic report card</div>
                 </div>
             </div>
-            <div class="callout callout-tip">
-                <div class="co-icon">✅</div>
-                <div class="co-text"><strong>After Installation</strong>The module ships with demo data. On first
-                    install you will see a sample <em>school1</em> company, Grade 10, student <em>Alice Smith</em>
-                    (STU/2026/0001), sample subjects, a fee invoice (FEE/2026/0001) for 1,550.00, and a printed academic
-                    report card — all visible in the screenshots below.</div>
-            </div>
-        </div>
-        <!-- ===================== 4. CONFIGURATION ===================== -->
-        <div class="doc-section" id="s-config">
-            <div class="section-label">Section 4</div>
-            <h2 class="sec-title"><span class="si">🔧</span> Initial Configuration</h2>
-            <p class="doc-p">Complete these steps in the exact order shown. Each step depends on the previous one — for
-                example, you cannot create a Class without a Grade, and cannot enroll a Student without a Class.</p>
-            <div class="timeline">
-                <div class="tl-item">
-                    <div class="tl-dot"></div>
-                    <div class="tl-box">
-                        <h4>1. Create Academic Year</h4>
-                        <p>School → Configuration → Academic Years. Set name (e.g. 2026-2027), start/end dates, mark as
-                            <em>Current</em>. Optionally add Terms (Semester 1, Semester 2).
-                        </p>
-                    </div>
+        </section>
+
+        <section class="section" id="reports">
+            <div class="kicker">07 · Reports & Analytics</div>
+            <h2 class="title"><span class="icon">📊</span>Clear information for better decisions</h2>
+            <p class="lead">The module includes PDF reporting and visual information for student and fee-related
+                analysis.</p>
+            <div class="grid">
+                <div class="card">
+                    <div class="card-icon" style="background:#eeeaff">🎓</div>
+                    <h3>Academic Reports</h3>
+                    <p>Generate academic report cards with student results and grading information.</p>
                 </div>
-                <div class="tl-item">
-                    <div class="tl-dot"></div>
-                    <div class="tl-box">
-                        <h4>2. Create Grade Levels</h4>
-                        <p>Configuration → Grade Levels. Add each grade (e.g. Grade 10, code G10). Link curriculum
-                            subjects to each grade after subjects are created.</p>
-                    </div>
+                <div class="card">
+                    <div class="card-icon" style="background:#fff0e4">💰</div>
+                    <h3>Fee Reports</h3>
+                    <p>Review student fee invoices, paid amounts and outstanding balances.</p>
                 </div>
-                <div class="tl-item">
-                    <div class="tl-dot"></div>
-                    <div class="tl-box">
-                        <h4>3. Create Subjects</h4>
-                        <p>Academics → Subjects &amp; Courses. Add subjects with code, type (Theory / Practical / Both /
-                            Elective), pass mark and maximum mark.</p>
-                    </div>
-                </div>
-                <div class="tl-item">
-                    <div class="tl-dot"></div>
-                    <div class="tl-box">
-                        <h4>4. Create Classes &amp; Sections</h4>
-                        <p>Configuration → Classes &amp; Sections. Link each class to a Grade, add section letter (A, B,
-                            C), assign Academic Year, Class Teacher and room number.</p>
-                    </div>
-                </div>
-                <div class="tl-item">
-                    <div class="tl-dot"></div>
-                    <div class="tl-box">
-                        <h4>5. Add Teachers</h4>
-                        <p>Faculty → Teachers. Fill qualification, specialization, date of joining, gender, contact
-                            details. Use the <em>Teaches Subjects</em> tab to link subjects.</p>
-                    </div>
-                </div>
-                <div class="tl-item">
-                    <div class="tl-dot"></div>
-                    <div class="tl-box">
-                        <h4>6. Configure Grade Scale</h4>
-                        <p>Configuration → Grade Scale. Define letter grades (A+, A, B+, B, C, F) with percentage ranges
-                            and GPA points. This drives automatic grading on exam results.</p>
-                    </div>
-                </div>
-                <div class="tl-item">
-                    <div class="tl-dot"></div>
-                    <div class="tl-box">
-                        <h4>7. Add Parents, then Students</h4>
-                        <p>Create parent records first. Then create student records, link them to parents, assign grade,
-                            class/section and academic year. Click <strong>Enroll Student</strong> to move from Draft to
-                            Enrolled.</p>
-                    </div>
-                </div>
-                <div class="tl-item">
-                    <div class="tl-dot"></div>
-                    <div class="tl-box">
-                        <h4>8. Set Up Fee Structures</h4>
-                        <p>School Fees → Fee Heads: create fee categories. School Fees → Fee Structures: define amounts
-                            per grade per academic year. Generate student invoices from student fee records.</p>
-                    </div>
+                <div class="card">
+                    <div class="card-icon" style="background:#e9f7ff">📈</div>
+                    <h3>Analytics</h3>
+                    <p>Use the included dashboards to get a quick view of student and fee information.</p>
                 </div>
             </div>
-        </div>
-        <!-- ===================== 5. MENU ===================== -->
-        <div class="doc-section" id="s-menu">
-            <div class="section-label">Section 5</div>
-            <h2 class="sec-title"><span class="si">🗂️</span> Menu Structure</h2>
-            <p class="doc-p">After installation, the <strong>School Management</strong> top-level menu contains these
-                sub-menus as seen in the Odoo navigation bar in every screenshot:</p>
-            <table class="doc-table">
-                <thead>
-                    <tr>
-                        <th>Menu Item</th>
-                        <th>Contains</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Dashboard</td>
-                        <td>School overview dashboard with key statistics and charts</td>
-                    </tr>
-                    <tr>
-                        <td>Students &amp; Parents</td>
-                        <td>Student list/form, Parent list/form, Student Analytics Dashboard</td>
-                    </tr>
-                    <tr>
-                        <td>Academics</td>
-                        <td>Academic Years, Terms, Grade Levels, Classes, Subjects &amp; Courses, Timetables, Grade
-                            Scale</td>
-                    </tr>
-                    <tr>
-                        <td>Attendance &amp; Exams</td>
-                        <td>Attendance Registers, Examinations, Exam Results / Report Cards</td>
-                    </tr>
-                    <tr>
-                        <td>School Fees</td>
-                        <td>Fee Heads, Fee Structures, Student Fee Invoices, Fee Financial Analytics</td>
-                    </tr>
-                    <tr>
-                        <td>Transport &amp; Facilities</td>
-                        <td>Vehicles, Routes, Transport Registrations, Hostel Buildings, Hostel Rooms, Allocations,
-                            Library Books, Issue Records</td>
-                    </tr>
-                    <tr>
-                        <td>Configuration</td>
-                        <td>Grade Levels, Classes, Grade Scale, Sequences (admin only)</td>
-                    </tr>
-                </tbody>
-            </table>
-            <div class="callout callout-note">
-                <div class="co-icon">ℹ️</div>
-                <div class="co-text"><strong>Teachers &amp; Faculty</strong>Teacher records are accessible under
-                    <strong>Students &amp; Parents → Teachers &amp; Faculty</strong> and also linked from the
-                    Configuration menu. The Faculty section shows a teacher form with Professional Info, Contact Info,
-                    Teaches Subjects tab, and Class Teacher Responsibilities tab.
+            <div class="two">
+                <div class="shot"><img src="images/fee_statement.png" alt="Student Fee Invoices">
+                    <div class="caption">Student fee invoices</div>
+                </div>
+                <div class="shot"><img src="images/fee_dashboard.png" alt="Fee Financial Analytics">
+                    <div class="caption">Fee financial analytics</div>
                 </div>
             </div>
-        </div>
-        <!-- ===================== 6. STUDENT ===================== -->
-        <div class="doc-section" id="s-student">
-            <div class="section-label">Section 6</div>
-            <h2 class="sec-title"><span class="si">🎓</span> Student Management</h2>
-            <p class="doc-p">The student form (<code class="inline">school.student</code>) is the central record in the
-                system. Every other module — attendance, exams, fees, library, transport, hostel — links back to the
-                student record.</p>
-            <div class="screenshot-wrap">
-                <img alt="Student Management Form" class="" src="images/student_form.png" />
-                <div class="screenshot-cap">📸 Student Form — showing Academic Information, Personal Information tabs,
-                    and smart button metrics (Attendance %, Fee Due, Books Issued, Exam Results)</div>
-            </div>
-            <h3 class="sub-title">Student Form Fields</h3>
-            <div class="two-col">
-                <table class="doc-table">
-                    <thead>
-                        <tr>
-                            <th>Field</th>
-                            <th>Details</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Student Name</td>
-                            <td>Required text field</td>
-                        </tr>
-                        <tr>
-                            <td>Registration ID</td>
-                            <td>Auto-generated sequence <code class="inline">STU/YYYY/0001</code></td>
-                        </tr>
-                        <tr>
-                            <td>Roll Number</td>
-                            <td>Manual entry per class</td>
-                        </tr>
-                        <tr>
-                            <td>Date of Birth</td>
-                            <td>Date — required</td>
-                        </tr>
-                        <tr>
-                            <td>Gender</td>
-                            <td>Male / Female / Other</td>
-                        </tr>
-                        <tr>
-                            <td>Blood Group</td>
-                            <td>A+, A-, B+, B-, AB+, AB-, O+, O-</td>
-                        </tr>
-                        <tr>
-                            <td>Admission Date</td>
-                            <td>Defaults to today</td>
-                        </tr>
-                        <tr>
-                            <td>Email / Phone</td>
-                            <td>Contact information</td>
-                        </tr>
-                    </tbody>
-                </table>
-                <table class="doc-table">
-                    <thead>
-                        <tr>
-                            <th>Field</th>
-                            <th>Details</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Grade Level</td>
-                            <td>Links to <code class="inline">school.grade</code></td>
-                        </tr>
-                        <tr>
-                            <td>Class / Section</td>
-                            <td>Filtered by selected grade</td>
-                        </tr>
-                        <tr>
-                            <td>Academic Year</td>
-                            <td>Links to <code class="inline">school.academic.year</code></td>
-                        </tr>
-                        <tr>
-                            <td>Primary Guardian</td>
-                            <td>Many2one to <code class="inline">school.parent</code></td>
-                        </tr>
-                        <tr>
-                            <td>Parents / Guardians</td>
-                            <td>Many2many (multiple guardians)</td>
-                        </tr>
-                        <tr>
-                            <td>Medical Notes</td>
-                            <td>Free text for allergies/conditions</td>
-                        </tr>
-                        <tr>
-                            <td>Student Photo</td>
-                            <td>Image upload field</td>
-                        </tr>
-                        <tr>
-                            <td>Address</td>
-                            <td>Street, City, State, ZIP, Country</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-            <h3 class="sub-title">Status Workflow</h3>
-            <p class="doc-p">Each student record moves through a defined lifecycle triggered by action buttons visible
-                at the top of the form:</p>
-            <div class="steps">
-                <div class="step">
-                    <div class="step-num" style="background:#94a3b8">D</div>
-                    <div class="step-body">
-                        <h4>Draft <span class="badge b-gray">Default</span></h4>
-                        <p>New student record created but not yet formally enrolled. Attendance and fees are not
-                            generated yet.</p>
-                    </div>
-                </div>
-                <div class="step">
-                    <div class="step-num" style="background:#16a34a">E</div>
-                    <div class="step-body">
-                        <h4>Enrolled <span class="badge b-green">Active</span></h4>
-                        <p>Click <strong>Enroll Student</strong>. The student is now active in the system — attendance
-                            can be recorded, fees generated, library books issued.</p>
-                    </div>
-                </div>
-                <div class="step">
-                    <div class="step-num" style="background:#1a56db">P</div>
-                    <div class="step-body">
-                        <h4>Promoted</h4>
-                        <p>Student successfully completed the academic year and is promoted to the next grade.</p>
-                    </div>
-                </div>
-                <div class="step">
-                    <div class="step-num" style="background:#7c3aed">G</div>
-                    <div class="step-body">
-                        <h4>Graduated</h4>
-                        <p>Student has completed all grades and graduated from the school.</p>
-                    </div>
-                </div>
-                <div class="step">
-                    <div class="step-num" style="background:#dc2626">S</div>
-                    <div class="step-body">
-                        <h4>Suspended <span class="badge b-red">Inactive</span></h4>
-                        <p>Student is temporarily or permanently suspended. Click <strong>Suspend</strong> on the form.
-                        </p>
-                    </div>
+        </section>
+
+        <section class="section" id="support">
+            <div class="support">
+                <h2>Need help?</h2>
+                <p>For installation, configuration or module-related support, contact SmartDesk Solution using the
+                    details below.</p>
+                <div class="support-links">
+                    <a href="mailto:info@smartdesksolution.com">✉ Email Support</a>
+                    <a href="tel:+966579602616">☎ +966 579 602 616</a>
+                    <a href="https://www.smartdesksolution.com" target="_blank">🌐 Visit Website</a>
                 </div>
             </div>
-            <h3 class="sub-title">Smart Button Metrics</h3>
-            <p class="doc-p">The smart buttons at the top of the student form display computed stats in real time —
-                click any button to navigate directly to the related records:</p>
-            <div class="two-col">
-                <div class="feat-card">
-                    <div class="fc-tag">Smart Button</div>
-                    <h4>% Attendance</h4>
-                    <p style="font-size:13.5px;color:var(--gray-600)">Shows the student's overall attendance percentage
-                        computed from all <code class="inline">school.attendance.line</code> records.</p>
-                </div>
-                <div class="feat-card">
-                    <div class="fc-tag">Smart Button</div>
-                    <h4>Fee Due</h4>
-                    <p style="font-size:13.5px;color:var(--gray-600)">Displays the total outstanding fee balance across
-                        all student invoices.</p>
-                </div>
-                <div class="feat-card">
-                    <div class="fc-tag">Smart Button</div>
-                    <h4>Books Issued</h4>
-                    <p style="font-size:13.5px;color:var(--gray-600)">Count of library books currently borrowed by the
-                        student.</p>
-                </div>
-                <div class="feat-card">
-                    <div class="fc-tag">Smart Button</div>
-                    <h4>Exam Results</h4>
-                    <p style="font-size:13.5px;color:var(--gray-600)">Number of exam result records (report cards)
-                        associated with this student.</p>
-                </div>
-            </div>
-        </div>
-        <!-- ===================== 7. TEACHERS ===================== -->
-        <div class="doc-section" id="s-teacher">
-            <div class="section-label">Section 7</div>
-            <h2 class="sec-title"><span class="si">👩‍🏫</span> Teachers &amp; Faculty</h2>
-            <p class="doc-p">The teacher module (<code class="inline">school.teacher</code>) stores professional and
-                contact details for all teaching staff. Each teacher is linked to subjects they teach and classes where
-                they serve as class teacher.</p>
-            <div class="screenshot-wrap">
-                <img alt="Teacher &amp; Faculty Form" class="" src="images/teacher_form.png" />
-                <div class="screenshot-cap">📸 Teacher Form — Professional Info (Qualification, Specialization, Date of
-                    Joining, Gender) and Contact Info sections, with Teaches Subjects and Class Teacher Responsibilities
-                    tabs</div>
-            </div>
-            <div class="two-col">
-                <table class="doc-table">
-                    <thead>
-                        <tr>
-                            <th>Field</th>
-                            <th>Details</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Teacher Name</td>
-                            <td>Required — full name</td>
-                        </tr>
-                        <tr>
-                            <td>Teacher ID</td>
-                            <td>Auto-sequence <code class="inline">TCH/0001</code></td>
-                        </tr>
-                        <tr>
-                            <td>Qualification / Degree</td>
-                            <td>e.g. B.Ed, M.Sc, PhD</td>
-                        </tr>
-                        <tr>
-                            <td>Specialization Subject</td>
-                            <td>Primary teaching specialization</td>
-                        </tr>
-                        <tr>
-                            <td>Date of Joining</td>
-                            <td>Defaults to today</td>
-                        </tr>
-                        <tr>
-                            <td>Gender</td>
-                            <td>Male / Female / Other</td>
-                        </tr>
-                    </tbody>
-                </table>
-                <table class="doc-table">
-                    <thead>
-                        <tr>
-                            <th>Field</th>
-                            <th>Details</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Email</td>
-                            <td>Professional email</td>
-                        </tr>
-                        <tr>
-                            <td>Phone</td>
-                            <td>Office phone</td>
-                        </tr>
-                        <tr>
-                            <td>Mobile</td>
-                            <td>Mobile contact</td>
-                        </tr>
-                        <tr>
-                            <td>Teacher Photo</td>
-                            <td>Image upload</td>
-                        </tr>
-                        <tr>
-                            <td>Teaches Subjects (tab)</td>
-                            <td>Many2many to <code class="inline">school.subject</code></td>
-                        </tr>
-                        <tr>
-                            <td>Class Teacher Of (tab)</td>
-                            <td>Classes where this teacher is assigned as class teacher</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-        <!-- ===================== 8. PARENTS ===================== -->
-        <div class="doc-section" id="s-parent">
-            <div class="section-label">Section 8</div>
-            <h2 class="sec-title"><span class="si">👨‍👩‍👧</span> Parents &amp; Guardians</h2>
-            <p class="doc-p">The parent module (<code class="inline">school.parent</code>) maintains guardian
-                information and links them to their children enrolled in the school. One parent record can be linked to
-                multiple students (siblings).</p>
-            <table class="doc-table">
-                <thead>
-                    <tr>
-                        <th>Field</th>
-                        <th>Details</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Guardian Name</td>
-                        <td>Required — full name</td>
-                    </tr>
-                    <tr>
-                        <td>Relation Type</td>
-                        <td>Father / Mother / Legal Guardian</td>
-                    </tr>
-                    <tr>
-                        <td>Occupation</td>
-                        <td>Employment / profession</td>
-                    </tr>
-                    <tr>
-                        <td>Annual Income</td>
-                        <td>Optional — float field</td>
-                    </tr>
-                    <tr>
-                        <td>Email / Phone / Mobile</td>
-                        <td>Contact details</td>
-                    </tr>
-                    <tr>
-                        <td>Children / Wards</td>
-                        <td>Many2many link to <code class="inline">school.student</code></td>
-                    </tr>
-                    <tr>
-                        <td>Is Emergency Contact</td>
-                        <td>Boolean flag — defaults to True</td>
-                    </tr>
-                </tbody>
-            </table>
-            <div class="callout callout-note">
-                <div class="co-icon">ℹ️</div>
-                <div class="co-text"><strong>Create Parents Before Students</strong>Always create the parent/guardian
-                    record first, then link them when creating the student record using the <em>Parents / Guardians</em>
-                    and <em>Primary Guardian</em> fields on the student form.</div>
-            </div>
-        </div>
-        <!-- ===================== 9. ACADEMIC STRUCTURE ===================== -->
-        <div class="doc-section" id="s-academic">
-            <div class="section-label">Section 9</div>
-            <h2 class="sec-title"><span class="si">🏫</span> Academic Structure</h2>
-            <p class="doc-p">The academic structure is the backbone of the entire module. It must be configured before
-                any students, attendance, exams or fees can be created.</p>
-            <div class="feat-grid">
-                <div class="feat-card">
-                    <div class="fc-tag">school.academic.year</div>
-                    <h4>Academic Year</h4>
-                    <ul>
-                        <li>Name, Code, Start Date, End Date</li>
-                        <li>Active / Current flags (only one year can be current)</li>
-                        <li>On change of Current = True, all other years are automatically de-flagged</li>
-                        <li>Contains multiple Terms</li>
-                    </ul>
-                </div>
-                <div class="feat-card">
-                    <div class="fc-tag">school.academic.term</div>
-                    <h4>Terms / Semesters</h4>
-                    <ul>
-                        <li>Name, Code, Start Date, End Date</li>
-                        <li>Belongs to one Academic Year</li>
-                        <li>Used to filter exams and timetables by term</li>
-                    </ul>
-                </div>
-                <div class="feat-card">
-                    <div class="fc-tag">school.grade</div>
-                    <h4>Grade Levels</h4>
-                    <ul>
-                        <li>Name, Code, Sequence (controls display order)</li>
-                        <li>Many2many link to curriculum Subjects</li>
-                        <li>Lists all Classes under this grade</li>
-                    </ul>
-                </div>
-                <div class="feat-card">
-                    <div class="fc-tag">school.class</div>
-                    <h4>Classes &amp; Sections</h4>
-                    <ul>
-                        <li>Auto-computed name: "Grade 10 - A (2026-2027)"</li>
-                        <li>Linked to Grade, Section, Academic Year, Class Teacher</li>
-                        <li>Room Number and Capacity</li>
-                        <li>Lists all enrolled students (One2many)</li>
-                        <li>Subject Allocations tab</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-        <!-- ===================== 10. SUBJECTS ===================== -->
-        <div class="doc-section" id="s-subject">
-            <div class="section-label">Section 10</div>
-            <h2 class="sec-title"><span class="si">📘</span> Subjects &amp; Curriculum</h2>
-            <p class="doc-p">Subjects are the building blocks of the curriculum. They are linked to grades, allocated to
-                classes with a specific teacher, and used in exam mark entry.</p>
-            <div class="screenshot-wrap">
-                <img alt="Subjects &amp; Courses List" class="" src="images/subjects.png" />
-                <div class="screenshot-cap">📸 Subjects &amp; Courses — showing Subject Code, Subject Name, Subject
-                    Type, Pass Mark and Maximum Mark for 4 subjects: MATH101, PHY101, ENG101, CS101</div>
-            </div>
-            <div class="two-col">
-                <table class="doc-table">
-                    <thead>
-                        <tr>
-                            <th>Field</th>
-                            <th>Details</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Subject Name</td>
-                            <td>Required — e.g. Advanced Mathematics</td>
-                        </tr>
-                        <tr>
-                            <td>Subject Code</td>
-                            <td>Required — e.g. MATH101</td>
-                        </tr>
-                        <tr>
-                            <td>Subject Type</td>
-                            <td>Theory / Practical / Theory &amp; Practical / Elective</td>
-                        </tr>
-                        <tr>
-                            <td>Pass Mark</td>
-                            <td>Minimum score to pass — default 40.0</td>
-                        </tr>
-                        <tr>
-                            <td>Maximum Mark</td>
-                            <td>Full marks — default 100.0</td>
-                        </tr>
-                        <tr>
-                            <td>Syllabus / Notes</td>
-                            <td>Free text for curriculum notes</td>
-                        </tr>
-                        <tr>
-                            <td>Qualified Teachers</td>
-                            <td>Many2many to <code class="inline">school.teacher</code></td>
-                        </tr>
-                    </tbody>
-                </table>
-                <div class="feat-card" style="height:fit-content">
-                    <div class="fc-tag">school.subject.allocation</div>
-                    <h4>Subject Allocation</h4>
-                    <p style="font-size:13.5px;color:var(--gray-600);margin-bottom:10px">Links a subject to a specific
-                        class with an assigned teacher and weekly period count. Configured on the Class form's Subject
-                        Allocations tab.</p>
-                    <ul>
-                        <li>Class / Section (required)</li>
-                        <li>Subject (required)</li>
-                        <li>Assigned Teacher (required)</li>
-                        <li>Periods per Week (default: 4)</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-        <!-- ===================== 11. TIMETABLE ===================== -->
-        <div class="doc-section" id="s-timetable">
-            <div class="section-label">Section 11</div>
-            <h2 class="sec-title"><span class="si">🗓️</span> Timetable &amp; Scheduling</h2>
-            <p class="doc-p">The timetable module (<code class="inline">school.timetable</code>) generates weekly class
-                schedules with up to 7 time slots per day across Monday to Saturday.</p>
-            <div class="two-col">
-                <table class="doc-table">
-                    <thead>
-                        <tr>
-                            <th>Period</th>
-                            <th>Time Slot</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Period 1</td>
-                            <td>08:30 – 09:15</td>
-                        </tr>
-                        <tr>
-                            <td>Period 2</td>
-                            <td>09:15 – 10:00</td>
-                        </tr>
-                        <tr>
-                            <td>Period 3</td>
-                            <td>10:15 – 11:00</td>
-                        </tr>
-                        <tr>
-                            <td>Period 4</td>
-                            <td>11:00 – 11:45</td>
-                        </tr>
-                        <tr>
-                            <td>Period 5</td>
-                            <td>12:30 – 01:15</td>
-                        </tr>
-                        <tr>
-                            <td>Period 6</td>
-                            <td>01:15 – 02:00</td>
-                        </tr>
-                        <tr>
-                            <td>Period 7</td>
-                            <td>02:00 – 02:45</td>
-                        </tr>
-                    </tbody>
-                </table>
-                <div>
-                    <div class="feat-card" style="margin-bottom:16px">
-                        <div class="fc-tag">Timetable Header</div>
-                        <h4>Schedule Configuration</h4>
-                        <ul>
-                            <li>Class / Section (required)</li>
-                            <li>Academic Year (required)</li>
-                            <li>Term (optional filter)</li>
-                            <li>Active toggle to enable/disable schedule</li>
-                        </ul>
-                    </div>
-                    <div class="feat-card">
-                        <div class="fc-tag">Timetable Lines</div>
-                        <h4>Period Entries</h4>
-                        <ul>
-                            <li>Day of Week (Mon–Sat)</li>
-                            <li>Period Slot (P1–P7)</li>
-                            <li>Subject (required)</li>
-                            <li>Teacher (required)</li>
-                            <li>Room / Lab number</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- ===================== 12. ATTENDANCE ===================== -->
-        <div class="doc-section" id="s-attendance">
-            <div class="section-label">Section 12</div>
-            <h2 class="sec-title"><span class="si">✅</span> Attendance Tracking</h2>
-            <p class="doc-p">The attendance module creates a daily register per class. Teachers can auto-load all
-                enrolled students with a single click, mark statuses, and submit/lock the register for the day.</p>
-            <div class="feat-grid">
-                <div class="feat-card">
-                    <div class="fc-tag">school.attendance</div>
-                    <h4>Attendance Register</h4>
-                    <ul>
-                        <li>Date (default: today)</li>
-                        <li>Class / Section (required)</li>
-                        <li>Teacher / Staff (required)</li>
-                        <li>Present Count &amp; Absent Count (computed)</li>
-                        <li>Status: Draft → Submitted</li>
-                    </ul>
-                </div>
-                <div class="feat-card">
-                    <div class="fc-tag">school.attendance.line</div>
-                    <h4>Per-Student Record</h4>
-                    <ul>
-                        <li>Student (required)</li>
-                        <li>Roll Number (auto-filled from student)</li>
-                        <li>Status: Present / Absent / Late / Excused</li>
-                        <li>Remarks (optional free text)</li>
-                    </ul>
-                </div>
-                <div class="feat-card">
-                    <div class="fc-tag">Auto-Load Action</div>
-                    <h4>Load Students Button</h4>
-                    <ul>
-                        <li>Click <strong>Load Students</strong> on the register</li>
-                        <li>All enrolled students in the selected class are added automatically</li>
-                        <li>Default status set to <em>Present</em></li>
-                        <li>Teacher can then change individual statuses</li>
-                    </ul>
-                </div>
-            </div>
-            <div class="callout callout-note">
-                <div class="co-icon">ℹ️</div>
-                <div class="co-text"><strong>Attendance Percentage Calculation</strong>Each student's attendance
-                    percentage displayed on their smart button is computed from all <code
-                        class="inline">school.attendance.line</code> records. Present and Late are counted as attended;
-                    Absent and Excused are counted as missed.</div>
-            </div>
-        </div>
-        <!-- ===================== 13. EXAMS ===================== -->
-        <div class="doc-section" id="s-exam">
-            <div class="section-label">Section 13</div>
-            <h2 class="sec-title"><span class="si">📝</span> Examinations &amp; Results</h2>
-            <p class="doc-p">The examination module manages the full assessment cycle — from creating an exam event to
-                entering marks per student and printing the Academic Report Card PDF.</p>
-            <div class="screenshot-wrap">
-                <img alt="Academic Report Card Screenshot" class="" src="images/report_card.png" />
-                <div class="screenshot-cap">📸 Academic Report Card — Student: Alice Smith (STU/2026/0001), Grade 10-A,
-                    Academic Year 2026-2027, Roll Number 10A-01, showing subject-wise marks for MATH101, PHY101, ENG101,
-                    CS101</div>
-            </div>
-            <div class="two-col">
-                <div class="feat-card">
-                    <div class="fc-tag">school.exam</div>
-                    <h4>Examination Record</h4>
-                    <ul>
-                        <li>Exam Name (e.g. Midterm 2026, Final Exam)</li>
-                        <li>Auto-code: <code class="inline">EXM/0001</code></li>
-                        <li>Academic Year &amp; Term linkage</li>
-                        <li>Grade Level (required)</li>
-                        <li>Start Date &amp; End Date</li>
-                        <li>Status: Draft → Ongoing → Completed</li>
-                        <li>Instructions / Notes field</li>
-                    </ul>
-                </div>
-                <div class="feat-card">
-                    <div class="fc-tag">school.grade.scale</div>
-                    <h4>Grade Scale System</h4>
-                    <ul>
-                        <li>Grade Letter (A+, A, B+, B, C, D, F)</li>
-                        <li>Minimum % and Maximum % range</li>
-                        <li>GPA Points (4.0, 3.7, 3.3 …)</li>
-                        <li>Remarks (Outstanding, Excellent, Pass, Fail)</li>
-                        <li>Ordered by min percentage descending</li>
-                    </ul>
-                </div>
-            </div>
-            <h3 class="sub-title">Exam Result (Report Card) — <code class="inline">school.exam.result</code></h3>
-            <table class="doc-table">
-                <thead>
-                    <tr>
-                        <th>Field</th>
-                        <th>Computed / Manual</th>
-                        <th>Details</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Reference</td>
-                        <td><span class="badge b-blue">Computed</span></td>
-                        <td>Auto-name: "Report Card: Alice Smith - Midterm 2026"</td>
-                    </tr>
-                    <tr>
-                        <td>Exam</td>
-                        <td><span class="badge b-amber">Manual</span></td>
-                        <td>Links to <code class="inline">school.exam</code></td>
-                    </tr>
-                    <tr>
-                        <td>Student</td>
-                        <td><span class="badge b-amber">Manual</span></td>
-                        <td>Links to <code class="inline">school.student</code></td>
-                    </tr>
-                    <tr>
-                        <td>Class / Section</td>
-                        <td><span class="badge b-blue">Computed</span></td>
-                        <td>Auto-filled from student's class</td>
-                    </tr>
-                    <tr>
-                        <td>Subject Marks (lines)</td>
-                        <td><span class="badge b-amber">Manual</span></td>
-                        <td>Max marks, Pass marks, Obtained marks per subject</td>
-                    </tr>
-                    <tr>
-                        <td>Total Max / Obtained Marks</td>
-                        <td><span class="badge b-blue">Computed</span></td>
-                        <td>Sum of all subject lines</td>
-                    </tr>
-                    <tr>
-                        <td>Percentage</td>
-                        <td><span class="badge b-blue">Computed</span></td>
-                        <td>(Total Obtained / Total Max) × 100</td>
-                    </tr>
-                    <tr>
-                        <td>Grade Letter</td>
-                        <td><span class="badge b-blue">Computed</span></td>
-                        <td>Looked up from <code class="inline">school.grade.scale</code></td>
-                    </tr>
-                    <tr>
-                        <td>Result Status</td>
-                        <td><span class="badge b-blue">Computed</span></td>
-                        <td>Passed / Failed (based on all subject statuses)</td>
-                    </tr>
-                    <tr>
-                        <td>Teacher Comments</td>
-                        <td><span class="badge b-amber">Manual</span></td>
-                        <td>Free text remarks from class teacher</td>
-                    </tr>
-                </tbody>
-            </table>
-            <div class="screenshot-wrap">
-                <img alt="Printed Academic Report Card" class="" src="images/report_card.png" />
-                <div class="screenshot-cap">📸 Academic Report Card PDF — showing student identity block, class
-                    information, report date, and subject-wise marks table with Max Marks, Pass Marks, Obtained Marks
-                    and Status columns</div>
-            </div>
-            <div class="screenshot-wrap">
-                <img alt="Student Analytics Dashboard" class="" src="images/fee_dashboard.png" />
-                <div class="screenshot-cap">📸 School Student Analytics Dashboard — pie chart view of student
-                    distribution by Grade Level (Grade 10), with bar and line chart toggle options and Measures filter
-                </div>
-            </div>
-        </div>
-        <!-- ===================== 14. FEES ===================== -->
-        <div class="doc-section" id="s-fee">
-            <div class="section-label">Section 14</div>
-            <h2 class="sec-title"><span class="si">💳</span> Fee Management</h2>
-            <p class="doc-p">The fee module tracks all student financial transactions — from defining fee categories and
-                structures to generating invoices, recording payments and printing receipts.</p>
-            <div class="screenshot-wrap">
-                <img alt="Student Fee Invoices List" class="" src="images/fee_statement.png" />
-                <div class="screenshot-cap">📸 Student Fee Invoices — Invoice No FEE/2026/0001, Student Alice Smith,
-                    Grade 10-A (2026-2027), Invoice Date Apr 5, Due Date May 5, Total 1,550.00, Amount Paid 0.00, Amount
-                    Due 1,550.00, Status: Posted / Invoiced</div>
-            </div>
-            <div class="feat-grid">
-                <div class="feat-card">
-                    <div class="fc-tag">school.fee.head</div>
-                    <h4>Fee Heads</h4>
-                    <ul>
-                        <li>Fee Head Name (e.g. Tuition Fee)</li>
-                        <li>Code (e.g. TF01)</li>
-                        <li>Description</li>
-                        <li>Reusable across multiple structures</li>
-                    </ul>
-                </div>
-                <div class="feat-card">
-                    <div class="fc-tag">school.fee.structure</div>
-                    <h4>Fee Structure</h4>
-                    <ul>
-                        <li>Structure Name</li>
-                        <li>Grade Level (required)</li>
-                        <li>Academic Year (required)</li>
-                        <li>Line items: Fee Head + Amount</li>
-                        <li>Total Amount auto-computed</li>
-                    </ul>
-                </div>
-                <div class="feat-card">
-                    <div class="fc-tag">school.student.fee</div>
-                    <h4>Student Invoice</h4>
-                    <ul>
-                        <li>Auto-sequence: <code class="inline">FEE/YYYY/0001</code></li>
-                        <li>Student, Class, Academic Year</li>
-                        <li>Invoice Date &amp; Due Date</li>
-                        <li>Line breakdown (fee head + amount)</li>
-                        <li>Amount Paid (manual entry)</li>
-                        <li>Amount Due (computed)</li>
-                    </ul>
-                </div>
-            </div>
-            <h3 class="sub-title">Invoice Status Workflow</h3>
-            <div class="steps">
-                <div class="step">
-                    <div class="step-num" style="background:#94a3b8">D</div>
-                    <div class="step-body">
-                        <h4>Draft</h4>
-                        <p>Invoice created but not confirmed. Can be edited freely.</p>
-                    </div>
-                </div>
-                <div class="step">
-                    <div class="step-num" style="background:#1a56db">P</div>
-                    <div class="step-body">
-                        <h4>Posted / Invoiced <span class="badge b-blue">As seen in screenshot</span></h4>
-                        <p>Invoice confirmed and sent to parent. Amount Due = Total Amount.</p>
-                    </div>
-                </div>
-                <div class="step">
-                    <div class="step-num" style="background:#d97706">PP</div>
-                    <div class="step-body">
-                        <h4>Partially Paid</h4>
-                        <p>Amount Paid &gt; 0 but Amount Due &gt; 0. Auto-set when payment recorded.</p>
-                    </div>
-                </div>
-                <div class="step">
-                    <div class="step-num" style="background:#16a34a">✓</div>
-                    <div class="step-body">
-                        <h4>Fully Paid</h4>
-                        <p>Amount Paid = Total Amount. Amount Due = 0. Auto-set by computed field.</p>
-                    </div>
-                </div>
-                <div class="step">
-                    <div class="step-num" style="background:#dc2626">X</div>
-                    <div class="step-body">
-                        <h4>Cancelled</h4>
-                        <p>Invoice voided. No payment expected.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="screenshot-wrap">
-                <img alt="Fee Financial Analytics Dashboard" class="" src="images/fee_dashboard.png" />
-                <div class="screenshot-cap">📸 Fee Financial Analytics Dashboard — bar chart showing Amount Due
-                    (1,550.00) for Grade 10-A (2026-2027), with pivot, line, pie chart and Gantt toggle options</div>
-            </div>
-        </div>
-        <!-- ===================== 15. TRANSPORT ===================== -->
-        <div class="doc-section" id="s-transport">
-            <div class="section-label">Section 15</div>
-            <h2 class="sec-title"><span class="si">🚌</span> Transport Management</h2>
-            <p class="doc-p">The transport module handles school vehicles, routes with pickup points and monthly fares,
-                and per-student route subscriptions.</p>
-            <div class="feat-grid">
-                <div class="feat-card">
-                    <div class="fc-tag">school.transport.vehicle</div>
-                    <h4>Vehicles / Buses</h4>
-                    <ul>
-                        <li>Vehicle Plate / Registration No</li>
-                        <li>Vehicle Model</li>
-                        <li>Driver Name &amp; Contact Phone</li>
-                        <li>Seating Capacity</li>
-                        <li>Linked Routes (One2many)</li>
-                    </ul>
-                </div>
-                <div class="feat-card">
-                    <div class="fc-tag">school.transport.route</div>
-                    <h4>Routes</h4>
-                    <ul>
-                        <li>Route Name (e.g. Route A – North City)</li>
-                        <li>Route Code</li>
-                        <li>Assigned Vehicle</li>
-                        <li>Monthly Fare amount</li>
-                        <li>Pickup &amp; Drop Points (text)</li>
-                        <li>Student Subscriptions (One2many)</li>
-                    </ul>
-                </div>
-                <div class="feat-card">
-                    <div class="fc-tag">school.transport.registration</div>
-                    <h4>Student Subscriptions</h4>
-                    <ul>
-                        <li>Student (required)</li>
-                        <li>Route (required)</li>
-                        <li>Pickup Point</li>
-                        <li>Monthly Fare (auto-filled from route)</li>
-                        <li>Status: Active / Cancelled</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-        <!-- ===================== 16. HOSTEL ===================== -->
-        <div class="doc-section" id="s-hostel">
-            <div class="section-label">Section 16</div>
-            <h2 class="sec-title"><span class="si">🏠</span> Hostel Management</h2>
-            <p class="doc-p">Manages hostel buildings, individual rooms with bed capacity and monthly rent, and student
-                bed allocations.</p>
-            <div class="feat-grid">
-                <div class="feat-card">
-                    <div class="fc-tag">school.hostel.building</div>
-                    <h4>Buildings / Blocks</h4>
-                    <ul>
-                        <li>Building Name (e.g. Boys Hostel – Block A)</li>
-                        <li>Code, Type: Boys / Girls / Staff Quarters</li>
-                        <li>Warden Name &amp; Contact Phone</li>
-                        <li>List of Rooms (One2many)</li>
-                    </ul>
-                </div>
-                <div class="feat-card">
-                    <div class="fc-tag">school.hostel.room</div>
-                    <h4>Rooms</h4>
-                    <ul>
-                        <li>Room Number</li>
-                        <li>Building (required)</li>
-                        <li>Bed Capacity (default: 2)</li>
-                        <li>Monthly Rent</li>
-                        <li>Occupied Beds (computed from active allocations)</li>
-                    </ul>
-                </div>
-                <div class="feat-card">
-                    <div class="fc-tag">school.hostel.allocation</div>
-                    <h4>Bed Allocations</h4>
-                    <ul>
-                        <li>Student (required)</li>
-                        <li>Room (required)</li>
-                        <li>Allocation Date (default: today)</li>
-                        <li>Status: Active / Vacated</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-        <!-- ===================== 17. LIBRARY ===================== -->
-        <div class="doc-section" id="s-library">
-            <div class="section-label">Section 17</div>
-            <h2 class="sec-title"><span class="si">📗</span> Library Management</h2>
-            <p class="doc-p">A full library catalogue and issue/return tracking system with overdue detection and fine
-                management.</p>
-            <div class="two-col">
-                <div class="feat-card">
-                    <div class="fc-tag">school.library.book</div>
-                    <h4>Book Catalogue</h4>
-                    <ul>
-                        <li>Book Title (required)</li>
-                        <li>Auto Book Code: <code class="inline">BK/00001</code></li>
-                        <li>ISBN No</li>
-                        <li>Author(s) (required)</li>
-                        <li>Publisher &amp; Edition / Year</li>
-                        <li>Category: Textbook / Reference / Fiction / Non-Fiction / Journal</li>
-                        <li>Total Copies</li>
-                        <li>Available Copies (computed: Total − Issued)</li>
-                    </ul>
-                </div>
-                <div class="feat-card">
-                    <div class="fc-tag">school.library.issue</div>
-                    <h4>Issue Records</h4>
-                    <ul>
-                        <li>Issue Ref: Auto <code class="inline">ISS/0001</code></li>
-                        <li>Book Title (required)</li>
-                        <li>Student (required)</li>
-                        <li>Class / Section (auto from student)</li>
-                        <li>Issue Date &amp; Due Date</li>
-                        <li>Return Date</li>
-                        <li>Status: Issued / Returned / Overdue</li>
-                        <li>Late Fine Amount</li>
-                        <li><strong>Return Book</strong> button sets Return Date to today</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-        <!-- ===================== 18. REPORTS ===================== -->
-        <div class="doc-section" id="s-reports">
-            <div class="section-label">Section 18</div>
-            <h2 class="sec-title"><span class="si">📊</span> Reports &amp; Analytics</h2>
-            <p class="doc-p">The module includes 3 PDF reports (rendered via Odoo's QWeb PDF engine) and 2 analytics
-                dashboards.</p>
-            <h3 class="sub-title">PDF Reports</h3>
-            <table class="doc-table">
-                <thead>
-                    <tr>
-                        <th>Report Name</th>
-                        <th>Model</th>
-                        <th>Trigger</th>
-                        <th>File Name</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Student ID Card</td>
-                        <td><code class="inline">school.student</code></td>
-                        <td>Print menu on Student form</td>
-                        <td><code class="inline">Student_ID_Card_STU/2026/0001</code></td>
-                    </tr>
-                    <tr>
-                        <td>Academic Report Card</td>
-                        <td><code class="inline">school.exam.result</code></td>
-                        <td>Print menu on Exam Result form</td>
-                        <td><code class="inline">Report_Card_Alice Smith</code></td>
-                    </tr>
-                    <tr>
-                        <td>Fee Payment Receipt</td>
-                        <td><code class="inline">school.student.fee</code></td>
-                        <td>Print menu on Student Fee form</td>
-                        <td><code class="inline">Fee_Receipt_FEE/2026/0001</code></td>
-                    </tr>
-                </tbody>
-            </table>
-            <h3 class="sub-title">Analytics Dashboards</h3>
-            <div class="two-col">
-                <div>
-                    <div class="screenshot-wrap"><img alt="Student Analytics Dashboard" class=""
-                            src="images/fee_dashboard.png" />
-                        <div class="screenshot-cap">📸 Student Analytics Dashboard — accessible from Students &amp;
-                            Parents menu. Supports bar, line, and pie chart views with the Measures filter.</div>
-                    </div>
-                </div>
-                <div>
-                    <div class="screenshot-wrap"><img alt="Fee Financial Analytics Dashboard" class=""
-                            src="images/fee_dashboard.png" />
-                        <div class="screenshot-cap">📸 Fee Financial Analytics Dashboard — accessible from School Fees
-                            menu. Shows Amount Due by class with bar, line, pie, Gantt and cohort views.</div>
-                    </div>
-                </div>
-            </div>
-            <div class="callout callout-note">
-                <div class="co-icon">ℹ️</div>
-                <div class="co-text"><strong>Odoo Graph Views</strong>Both dashboards use Odoo's native graph view —
-                    users can switch between Bar Chart, Line Chart, Pie Chart using the toolbar icons, and use the
-                    <strong>Measures</strong> dropdown to select which field to visualize (e.g. Amount Due, Student
-                    Count).
-                </div>
-            </div>
-        </div>
-        <!-- ===================== 19. ACCESS ===================== -->
-        <div class="doc-section" id="s-access">
-            <div class="section-label">Section 19</div>
-            <h2 class="sec-title"><span class="si">🔐</span> Access Rights &amp; Security</h2>
-            <p class="doc-p">The module defines 4 security groups in <code class="inline">school_security.xml</code>.
-                Assign them via <strong>Settings → Users &amp; Companies → Users</strong>.</p>
-            <table class="doc-table">
-                <thead>
-                    <tr>
-                        <th>Group</th>
-                        <th>Technical Name</th>
-                        <th>Access Level</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>School / Student <span class="badge b-gray">Portal level</span></td>
-                        <td><code class="inline">group_school_student</code></td>
-                        <td>Read-only access to own student record and results via portal</td>
-                    </tr>
-                    <tr>
-                        <td>School / Parent or Guardian <span class="badge b-gray">Portal level</span></td>
-                        <td><code class="inline">group_school_parent</code></td>
-                        <td>Read-only access to linked children's records via portal</td>
-                    </tr>
-                    <tr>
-                        <td>School / Teacher or Faculty <span class="badge b-blue">Internal user</span></td>
-                        <td><code class="inline">group_school_teacher</code></td>
-                        <td>Read students in own class; create/submit attendance; enter exam marks. Implies base
-                            internal user rights.</td>
-                    </tr>
-                    <tr>
-                        <td>School / Administrator <span class="badge b-purple">Full access</span></td>
-                        <td><code class="inline">group_school_manager</code></td>
-                        <td>Full CRUD access to all school records, configuration, reports and dashboards. Implies
-                            Teacher rights.</td>
-                    </tr>
-                </tbody>
-            </table>
-            <div class="callout callout-tip">
-                <div class="co-icon">💡</div>
-                <div class="co-text"><strong>Administrator inherits Teacher</strong>The Administrator group uses <code
-                        class="inline">implied_ids</code> to automatically include all Teacher permissions. You only
-                    need to assign one group per user — not both.</div>
-            </div>
-        </div>
-        <!-- ===================== 20. TROUBLESHOOTING ===================== -->
-        <div class="doc-section" id="s-troubleshoot">
-            <div class="section-label">Section 20</div>
-            <h2 class="sec-title"><span class="si">🛠️</span> Troubleshooting</h2>
-            <table class="doc-table">
-                <thead>
-                    <tr>
-                        <th>Issue</th>
-                        <th>Likely Cause</th>
-                        <th>Solution</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Module not visible in Apps</td>
-                        <td>Addons path not set or apps list not refreshed</td>
-                        <td>Add module folder path to <code class="inline">addons_path</code> in <code
-                                class="inline">odoo.conf</code>, restart Odoo, then click <em>Apps → Update Apps
-                                List</em></td>
-                    </tr>
-                    <tr>
-                        <td>School Management menu missing</td>
-                        <td>User has no school group assigned</td>
-                        <td>Assign <em>School / Administrator</em> or <em>School / Teacher</em> role under Settings →
-                            Users</td>
-                    </tr>
-                    <tr>
-                        <td>Class field empty / no options</td>
-                        <td>Grade not selected first, or no classes created</td>
-                        <td>Select the Grade Level first — class list is domain-filtered by grade. Then create classes
-                            under Configuration.</td>
-                    </tr>
-                    <tr>
-                        <td>Load Students button does nothing</td>
-                        <td>Class has no enrolled students</td>
-                        <td>Enroll students into the class first (change their status from Draft to Enrolled)</td>
-                    </tr>
-                    <tr>
-                        <td>Exam result percentage is 0</td>
-                        <td>No marks entered in subject lines</td>
-                        <td>Open the Exam Result form, go to Subject Marks tab, add lines for each subject and enter
-                            obtained marks</td>
-                    </tr>
-                    <tr>
-                        <td>Fee Invoice Amount Due not updating</td>
-                        <td>Computed fields not re-triggered</td>
-                        <td>Save the record and re-open. If still wrong, run <code class="inline">odoo shell</code> and
-                            call <code class="inline">rec._compute_amounts()</code> manually or upgrade the module.</td>
-                    </tr>
-                    <tr>
-                        <td>PDF report gives blank output</td>
-                        <td>QWeb template not finding data</td>
-                        <td>Ensure the related record has all required fields filled. Check Odoo logs at <code
-                                class="inline">/var/log/odoo/</code> for QWeb render errors.</td>
-                    </tr>
-                    <tr>
-                        <td>Module upgrade breaks data</td>
-                        <td>New version has model changes</td>
-                        <td>Always backup database before upgrading: <code
-                                class="inline">pg_dump dbname &gt; backup.sql</code>. Then run <code
-                                class="inline">odoo -u school_management</code>.</td>
-                    </tr>
-                    <tr>
-                        <td>Available copies shows wrong count</td>
-                        <td>Stored computed field cache stale</td>
-                        <td>Force recompute: go to the book record and save. Or run module upgrade to recompute all
-                            stored fields.</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-        <!-- ===================== 21. CHANGELOG ===================== -->
-        <div class="doc-section" id="s-changelog">
-            <div class="section-label">Section 21</div>
-            <h2 class="sec-title"><span class="si">📝</span> Changelog</h2>
-            <div class="cl-item">
-                <div class="cl-ver">v19.0.1.0.0 <span class="badge b-green" style="margin-left:8px">Latest
-                        Release</span></div>
-                <div class="cl-date">Initial Release — 2025 | Odoo 19.0</div>
-                <ul>
-                    <li>Full school administration module built natively for Odoo 19.0</li>
-                    <li><strong>Student Management:</strong> Complete profile, photo, status workflow (Draft → Enrolled
-                        → Promoted → Graduated/Suspended), auto Registration ID sequence, smart button metrics</li>
-                    <li><strong>Teacher &amp; Faculty:</strong> Professional info, subject links, class teacher
-                        assignment, auto Teacher ID sequence</li>
-                    <li><strong>Parents &amp; Guardians:</strong> Relation types (Father/Mother/Guardian), emergency
-                        contact flag, multi-child linkage</li>
-                    <li><strong>Academic Structure:</strong> Academic Years with current flag auto-toggle, Terms, Grade
-                        Levels with curriculum subjects, Classes &amp; Sections with auto-computed names and student
-                        counts, Subject Allocations</li>
-                    <li><strong>Subjects &amp; Courses:</strong> 4 subject types, pass mark, max mark, qualified
-                        teachers, syllabus notes</li>
-                    <li><strong>Timetable:</strong> Weekly schedule with 7 period slots (Mon–Sat), subject + teacher +
-                        room per slot</li>
-                    <li><strong>Attendance:</strong> Class-wise daily register, auto-load students, 4 statuses,
-                        submit/lock action, present/absent counters</li>
-                    <li><strong>Examinations:</strong> Exam records with lifecycle (Draft/Ongoing/Completed),
-                        configurable Grade Scale with GPA, Exam Results with auto percentage + grade + pass/fail
-                        computation, teacher comments</li>
-                    <li><strong>Fee Management:</strong> Fee Heads, Fee Structures per grade/year, Student Fee Invoices
-                        with line breakdown, Amount Paid/Due tracking, 5-state workflow</li>
-                    <li><strong>Transport:</strong> Vehicles, Routes with pickup points and fares, Student Subscriptions
-                    </li>
-                    <li><strong>Hostel:</strong> Buildings (Boys/Girls/Staff), Rooms with bed capacity and rent,
-                        Allocations with occupied count computation</li>
-                    <li><strong>Library:</strong> Book Catalogue with auto available copies, Issue/Return records,
-                        overdue status, fine tracking, Return Book action button</li>
-                    <li><strong>PDF Reports:</strong> Student ID Card, Academic Report Card, Fee Payment Receipt (all
-                        QWeb PDF via print menu)</li>
-                    <li><strong>Analytics Dashboards:</strong> Student Analytics Dashboard (Students &amp; Parents
-                        menu), Fee Financial Analytics Dashboard (School Fees menu)</li>
-                    <li><strong>Security:</strong> 4 access groups (Student, Parent/Guardian, Teacher, Administrator)
-                        with implied rights hierarchy</li>
-                    <li><strong>Sequences:</strong> Auto-generated codes for Student (STU/), Teacher (TCH/), Exam
-                        (EXM/), Fee Invoice (FEE/), Library Book (BK/), Issue (ISS/)</li>
-                    <li><strong>Demo Data:</strong> Sample school setup with Grade 10, Class 10-A, 4 subjects
-                        (MATH101/PHY101/ENG101/CS101), student Alice Smith with fee invoice and report card</li>
-                    <li><strong>Menu Structure:</strong> 7 main menu groups — Dashboard, Students &amp; Parents,
-                        Academics, Attendance &amp; Exams, School Fees, Transport &amp; Facilities, Configuration</li>
-                </ul>
-            </div>
-        </div>
-        <!-- ===================== 22. SUPPORT ===================== -->
-        <div class="doc-section" id="s-support">
-            <div class="section-label">Section 22</div>
-            <h2 class="sec-title"><span class="si">🤝</span> Support &amp; Contact</h2>
-            <div class="support-wrap">
-                <div class="sds-text-brand">SDS</div>
-                <h3>SmartDesk Solution</h3>
-                <p>For installation help, customization, bug reports, feature requests or general support — reach our
-                    team directly. We respond within 1 business day.</p>
-                <div class="support-btns">
-                    <a class="support-btn" href="mailto:info@smartdesksolution.com">✉️ info@smartdesksolution.com</a>
-                    <a class="support-btn" href="tel:+966579602616">📞 +966 579 602 616</a>
-                    <a class="support-btn" href="https://www.smartdesksolution.com" target="_blank">🌐
-                        www.smartdesksolution.com</a>
-                </div>
-            </div>
-            <div class="callout callout-tip" style="margin-top:22px">
-                <div class="co-icon">💡</div>
-                <div class="co-text"><strong>When contacting support, please include:</strong> Your Odoo version
-                    (Community/Enterprise), module version (v19.0.1.0.0), a description of the issue, any error messages
-                    from Odoo logs (<code class="inline">/var/log/odoo/odoo-server.log</code>), and screenshots if
-                    applicable.</div>
-            </div>
-        </div>
-        <!-- FOOTER -->
-        <div class="doc-footer">
-            <div class="sds-text-brand">SDS</div>
-            <p>School Management System v19.0.1.0.0  ·  License: LGPL-3  ·  © 2025 <a
-                    href="https://www.smartdesksolution.com" target="_blank">SmartDesk Solution</a>  ·  All
-                rights reserved</p>
+        </section>
+
+        <div class="footer">
+            SDS School Management System · Odoo 19 · Version 19.0.1.0.0 · LGPL-3 · SmartDesk Solution
         </div>
     </div>
 </body>
