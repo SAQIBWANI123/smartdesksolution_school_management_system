@@ -997,6 +997,301 @@
                 height: 240px;
             }
         }
+
+        /* =========================================================
+           BEAUTIFUL V2 THEME — DESIGN ONLY
+           Content and image references are intentionally unchanged.
+           ========================================================= */
+        :root {
+            --sds-primary: #6d4aff;
+            --sds-primary-dark: #4f35c8;
+            --sds-purple: #8b5cf6;
+            --sds-cyan: #16b8d4;
+            --sds-pink: #ec4899;
+            --sds-green: #10b981;
+            --sds-ink: #111827;
+            --sds-muted: #667085;
+            --sds-soft: #f7f7ff;
+            --sds-border: #e8e7f5;
+            --sds-shadow: 0 18px 55px rgba(51, 39, 120, .11);
+        }
+
+        body {
+            background:
+                radial-gradient(circle at 8% 4%, rgba(109, 74, 255, .055), transparent 24%),
+                radial-gradient(circle at 94% 18%, rgba(22, 184, 212, .045), transparent 22%),
+                #ffffff;
+            color: var(--sds-ink);
+        }
+
+        .sds-page {
+            max-width: 1220px;
+            padding: 22px 16px 64px;
+        }
+
+        .sds-header {
+            position: relative;
+            padding: 11px 18px;
+            border: 1px solid rgba(109, 74, 255, .13);
+            border-radius: 24px;
+            background: rgba(255, 255, 255, .94);
+            box-shadow: 0 12px 38px rgba(41, 31, 91, .08);
+        }
+
+        .sds-header:after {
+            content: "";
+            position: absolute;
+            left: 22px;
+            right: 22px;
+            bottom: -1px;
+            height: 2px;
+            border-radius: 10px;
+            background: linear-gradient(90deg, var(--sds-primary), var(--sds-purple), var(--sds-cyan));
+            opacity: .8;
+        }
+
+        .sds-brand img {
+            width: 168px;
+            max-height: 72px;
+        }
+
+        .sds-nav span {
+            color: #475467;
+            transition: none;
+        }
+
+        .sds-nav .active {
+            color: #ffffff;
+            background: linear-gradient(135deg, var(--sds-primary), var(--sds-purple));
+            box-shadow: 0 7px 18px rgba(109, 74, 255, .22);
+        }
+
+        .sds-odoo-badge {
+            border: 1px solid rgba(109, 74, 255, .22);
+            color: #33205f;
+            background: linear-gradient(135deg, #faf9ff, #f1edff);
+            box-shadow: 0 6px 18px rgba(109, 74, 255, .08);
+        }
+
+        .sds-odoo-dot {
+            background: linear-gradient(135deg, var(--sds-primary), var(--sds-pink));
+            box-shadow: 0 0 0 5px rgba(109, 74, 255, .08);
+        }
+
+        .sds-hero {
+            margin-top: 22px;
+            padding: 62px 46px 48px;
+            border: 1px solid rgba(109, 74, 255, .14);
+            border-radius: 34px;
+            background:
+                radial-gradient(circle at 91% 9%, rgba(139, 92, 246, .25), transparent 29%),
+                radial-gradient(circle at 76% 85%, rgba(22, 184, 212, .15), transparent 31%),
+                radial-gradient(circle at 12% 82%, rgba(236, 72, 153, .08), transparent 28%),
+                linear-gradient(135deg, #fbfaff 0%, #f4f0ff 48%, #f8fdff 100%);
+            box-shadow: 0 24px 65px rgba(65, 46, 137, .13);
+        }
+
+        .sds-eyebrow {
+            display: inline-block;
+            padding: 7px 12px;
+            margin-bottom: 14px;
+            border-radius: 999px;
+            color: var(--sds-primary-dark);
+            background: rgba(109, 74, 255, .08);
+            border: 1px solid rgba(109, 74, 255, .12);
+            letter-spacing: 1.7px;
+        }
+
+        .sds-hero-title {
+            font-size: 50px;
+            letter-spacing: -1.4px;
+            color: #101828;
+        }
+
+        .sds-hero-title span {
+            background: linear-gradient(90deg, var(--sds-primary-dark), var(--sds-purple), var(--sds-pink));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .sds-hero-description {
+            color: #5d6678;
+            font-size: 16px;
+            line-height: 1.8;
+        }
+
+        /* Give common cards a cleaner premium appearance without changing content. */
+        .sds-card,
+        .sds-feature-card,
+        .sds-info-card,
+        .sds-screenshot-card,
+        .sds-workflow-card,
+        .sds-tech-card {
+            border: 1px solid var(--sds-border) !important;
+            border-radius: 22px !important;
+            box-shadow: 0 12px 34px rgba(40, 34, 92, .07) !important;
+            background: #ffffff !important;
+        }
+
+        .sds-section {
+            margin-top: 68px;
+        }
+
+        .sds-section-title {
+            color: #101828;
+            letter-spacing: -.5px;
+        }
+
+        .sds-text,
+        .sds-lead {
+            color: var(--sds-muted);
+        }
+
+        /* Section heading accent. */
+        .sds-section-title:after {
+            content: "";
+            display: block;
+            width: 52px;
+            height: 4px;
+            margin-top: 12px;
+            border-radius: 10px;
+            background: linear-gradient(90deg, var(--sds-primary), var(--sds-cyan));
+        }
+
+        .sds-center .sds-section-title:after {
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Feature icon treatment. */
+        .sds-feature-icon,
+        .sds-icon,
+        .sds-step-number {
+            background: linear-gradient(135deg, #eeeaff, #e8faff) !important;
+            color: var(--sds-primary-dark) !important;
+            border-color: rgba(109, 74, 255, .12) !important;
+        }
+
+        /* Screenshot frames. */
+        .sds-screenshot-card img,
+        .sds-image-card img {
+            border-radius: 15px;
+        }
+
+        /* Workflow connectors and badges. */
+        .sds-badge,
+        .sds-pill {
+            border-radius: 999px !important;
+            background: #f2efff !important;
+            color: var(--sds-primary-dark) !important;
+            border-color: #ddd6fe !important;
+        }
+
+        /* Technical / compatibility strip. */
+        .sds-strip,
+        .sds-info-strip {
+            border: 1px solid rgba(109, 74, 255, .12) !important;
+            border-radius: 20px !important;
+            background: linear-gradient(90deg, #faf9ff, #f5fcff) !important;
+            box-shadow: 0 10px 28px rgba(40, 34, 92, .06) !important;
+        }
+
+        /* Tables and code-like information blocks. */
+        .sds-table,
+        .sds-table td,
+        .sds-table th {
+            border-color: #ecebf4 !important;
+        }
+
+        .sds-table th {
+            background: #f7f5ff !important;
+            color: #3f2a91 !important;
+        }
+
+        /* Callout / note blocks. */
+        .sds-note,
+        .sds-callout {
+            border-left: 4px solid var(--sds-primary) !important;
+            border-radius: 0 16px 16px 0 !important;
+            background: linear-gradient(90deg, #f7f5ff, #fbfdff) !important;
+        }
+
+        .sds-footer {
+            margin-top: 70px;
+            border-radius: 24px;
+            background: linear-gradient(135deg, #15112d, #25174d 58%, #123b4a) !important;
+            color: #ffffff !important;
+            box-shadow: 0 20px 55px rgba(20, 16, 48, .18);
+        }
+
+        .sds-footer a {
+            color: #dcd4ff !important;
+        }
+
+        @media (max-width: 800px) {
+            .sds-page {
+                padding-left: 10px;
+                padding-right: 10px;
+            }
+
+            .sds-hero {
+                padding: 40px 22px 30px;
+                border-radius: 24px;
+            }
+
+            .sds-hero-title {
+                font-size: 36px;
+            }
+
+            .sds-section {
+                margin-top: 48px;
+            }
+
+            .sds-header {
+                border-radius: 18px;
+            }
+        }
+
+
+        .sds-brand-mark {
+            display: inline-flex;
+            align-items: center;
+            gap: 9px;
+            min-height: 52px;
+        }
+
+        .sds-brand-symbol {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 46px;
+            height: 46px;
+            border-radius: 14px;
+            color: #ffffff;
+            background: linear-gradient(135deg, #6f3cc3, #18b6c9);
+            font-size: 13px;
+            font-weight: 900;
+            letter-spacing: .5px;
+            box-shadow: 0 8px 20px rgba(111, 60, 195, .22);
+        }
+
+        .sds-brand-name {
+            color: #17203d;
+            font-size: 13px;
+            line-height: 1.2;
+            font-weight: 800;
+            max-width: 130px;
+        }
+
+        .sds-footer-brand {
+            justify-content: center;
+            margin-bottom: 12px;
+        }
+
+        .sds-footer-brand .sds-brand-name {
+            color: #ffffff;
+        }
     </style>
 </head>
 
@@ -1011,7 +1306,10 @@
             <table class="sds-header-table">
                 <tr>
                     <td class="sds-brand">
-                        <img src="smartdesk-logo.png" alt="Smart Desk Solution">
+                        <div class="sds-brand-mark">
+                            <span class="sds-brand-symbol">SDS</span>
+                            <span class="sds-brand-name">Smart Desk Solution</span>
+                        </div>
                     </td>
 
                     <td class="sds-nav">
@@ -1375,7 +1673,7 @@
 
                     <td>
                         <div class="sds-screenshot-card">
-                            <img src="screenshots/student_form.png" alt="Student Admission Form">
+                            <img src="images/student_form.png" alt="Student Admission Form">
                         </div>
                     </td>
                 </tr>
@@ -1405,7 +1703,7 @@
 
                     <td>
                         <div class="sds-screenshot-card">
-                            <img src="screenshots/teacher_form.png" alt="Teacher Form">
+                            <img src="images/teacher_form.png" alt="Teacher Form">
                         </div>
                     </td>
                 </tr>
@@ -1461,7 +1759,7 @@
             </table>
 
             <div style="margin-top:24px;" class="sds-screenshot-card">
-                <img src="screenshots/subjects.png" alt="Subjects and Courses"
+                <img src="images/subjects.png" alt="Subjects and Courses"
                     style="display:block;width:100%;height:340px;object-fit:contain;background:#f8f8fb;border-radius:12px;">
             </div>
         </section>
@@ -1509,7 +1807,7 @@
             </table>
 
             <div style="margin-top:24px;" class="sds-screenshot-card">
-                <img src="screenshots/analytics.png" alt="Student Analytics"
+                <img src="images/fee_dashboard.png" alt="Student Analytics"
                     style="display:block;width:100%;height:340px;object-fit:contain;background:#f8f8fb;border-radius:12px;">
             </div>
         </section>
@@ -1536,7 +1834,7 @@
                 <tr>
                     <td>
                         <div class="sds-screenshot-card">
-                            <img src="screenshots/fee_statement.png" alt="Student Fee Statement">
+                            <img src="images/fee_statement.png" alt="Student Fee Statement">
                             <div class="sds-screenshot-title">
                                 Student Fee Invoices
                             </div>
@@ -1549,7 +1847,7 @@
 
                     <td>
                         <div class="sds-screenshot-card">
-                            <img src="screenshots/fee_dashboard.png" alt="Fee Dashboard">
+                            <img src="images/fee_dashboard.png" alt="Fee Dashboard">
                             <div class="sds-screenshot-title">
                                 Fee Financial Analytics
                             </div>
@@ -1663,7 +1961,7 @@
                 <tr>
                     <td>
                         <div class="sds-screenshot-card">
-                            <img src="screenshots/student_form.png" alt="Student Management">
+                            <img src="images/student_form.png" alt="Student Management">
                             <div class="sds-screenshot-title">Student Management</div>
                             <p class="sds-screenshot-description">
                                 Student profile, academic information and personal details.
@@ -1673,7 +1971,7 @@
 
                     <td>
                         <div class="sds-screenshot-card">
-                            <img src="screenshots/teacher_form.png" alt="Teachers and Faculty">
+                            <img src="images/teacher_form.png" alt="Teachers and Faculty">
                             <div class="sds-screenshot-title">Teachers &amp; Faculty</div>
                             <p class="sds-screenshot-description">
                                 Teacher qualifications, contacts, subjects and responsibilities.
@@ -1685,7 +1983,7 @@
                 <tr>
                     <td>
                         <div class="sds-screenshot-card">
-                            <img src="screenshots/subjects.png" alt="Subjects">
+                            <img src="images/subjects.png" alt="Subjects">
                             <div class="sds-screenshot-title">Subjects &amp; Courses</div>
                             <p class="sds-screenshot-description">
                                 Subject codes, names, types, pass marks and maximum marks.
@@ -1695,7 +1993,7 @@
 
                     <td>
                         <div class="sds-screenshot-card">
-                            <img src="screenshots/academic_report.png" alt="Academic Report Card">
+                            <img src="images/report_card.png" alt="Academic Report Card">
                             <div class="sds-screenshot-title">Academic Report Card</div>
                             <p class="sds-screenshot-description">
                                 Student details, marks, result status and printable academic
@@ -1761,7 +2059,7 @@
             </table>
 
             <div style="margin-top:25px;text-align:center;">
-                <img src="screenshots/report_card.png" alt="Report Card"
+                <img src="images/report_card.png" alt="Report Card"
                     style="width:100%;max-width:900px;height:340px;object-fit:contain;background:#ffffff;border-radius:15px;padding:8px;">
             </div>
         </section>
@@ -1956,7 +2254,10 @@
          ========================================================= -->
         <section class="sds-section sds-support">
 
-            <img src="smartdesk-logo.png" alt="Smart Desk Solution">
+            <div class="sds-brand-mark sds-footer-brand">
+                <span class="sds-brand-symbol">SDS</span>
+                <span class="sds-brand-name">Smart Desk Solution</span>
+            </div>
 
             <div class="sds-eyebrow">
                 Smart Desk Solution
