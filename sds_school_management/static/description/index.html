@@ -1,422 +1,2001 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>School Management System | Odoo 19</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SDS School Management System | Odoo 19</title>
+
     <style>
+        /* =========================================================
+           SDS SCHOOL MANAGEMENT SYSTEM
+           ODOO 19 APP STORE DOCUMENTATION
+           ========================================================= */
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
             margin: 0;
-            background: #fff;
-            color: #444;
-            font-family: Arial, sans-serif;
-            line-height: 1.6
+            padding: 0;
+            background: #ffffff;
+            color: #18213f;
+            font-family: Arial, Helvetica, sans-serif;
+            line-height: 1.65;
         }
 
-        .page {
-            max-width: 1080px;
-            margin: auto;
-            padding: 0 18px
+        .sds-page {
+            max-width: 1180px;
+            margin: 0 auto;
+            padding: 18px 14px 50px;
         }
 
-        .hero {
-            text-align: center;
-            padding: 25px 0
+        .sds-page img {
+            max-width: 100%;
+            height: auto;
         }
 
-        .hero img {
+        .sds-page a {
+            text-decoration: none;
+        }
+
+        .sds-container {
             width: 100%;
-            border-radius: 8px
         }
 
-        .hero h1,
-        h2,
-        h3 {
-            color: #714b67
+        .sds-center {
+            text-align: center;
         }
 
-        .hero h1 {
-            font-size: 34px
+        .sds-eyebrow {
+            margin: 0 0 8px;
+            color: #6f3cc3;
+            font-size: 12px;
+            font-weight: 800;
+            letter-spacing: 2px;
+            text-transform: uppercase;
         }
 
-        .hero p {
-            font-size: 17px;
+        .sds-title {
+            margin: 0;
+            color: #17203d;
+            font-size: 42px;
+            line-height: 1.12;
+            font-weight: 800;
+        }
+
+        .sds-section-title {
+            margin: 0 0 12px;
+            color: #17203d;
+            font-size: 31px;
+            line-height: 1.2;
+            font-weight: 800;
+        }
+
+        .sds-text {
+            margin: 0;
+            color: #667085;
+            font-size: 15px;
+        }
+
+        .sds-lead {
             max-width: 850px;
-            margin: auto
+            margin: 0 auto;
+            color: #667085;
+            font-size: 16px;
+            line-height: 1.8;
         }
 
-        .badge {
+        .sds-section {
+            margin-top: 58px;
+        }
+
+        /* =========================
+           TOP HEADER
+           ========================= */
+
+        .sds-header {
+            padding: 14px 20px;
+            border: 1px solid #e6e0f4;
+            border-radius: 22px;
+            background: #ffffff;
+            box-shadow: 0 12px 35px rgba(62, 42, 100, 0.08);
+        }
+
+        .sds-header-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .sds-header-table td {
+            vertical-align: middle;
+            padding: 4px 8px;
+        }
+
+        .sds-brand {
+            width: 25%;
+        }
+
+        .sds-brand img {
+            width: 155px;
+            max-height: 68px;
+            object-fit: contain;
+            display: block;
+        }
+
+        .sds-nav {
+            width: 50%;
+            text-align: center;
+        }
+
+        .sds-nav span {
             display: inline-block;
-            background: #f1e8f0;
-            color: #714b67;
-            padding: 6px 14px;
+            margin: 3px 5px;
+            padding: 7px 10px;
+            color: #24305b;
+            font-size: 11px;
+            font-weight: 700;
+            border-radius: 18px;
+        }
+
+        .sds-nav .active {
+            color: #5c2bb1;
+            background: #eee6ff;
+        }
+
+        .sds-header-badge {
+            width: 25%;
+            text-align: right;
+        }
+
+        .sds-odoo-badge {
+            display: inline-block;
+            padding: 9px 14px;
+            border: 1px solid #9a74e7;
+            border-radius: 18px;
+            color: #33205f;
+            background: #fbf9ff;
+            font-size: 12px;
+            font-weight: 800;
+        }
+
+        .sds-odoo-dot {
+            display: inline-block;
+            width: 22px;
+            height: 22px;
+            margin-right: 6px;
+            vertical-align: middle;
+            border-radius: 50%;
+            background: #7b3fc5;
+        }
+
+        /* =========================
+           HERO
+           ========================= */
+
+        .sds-hero {
+            margin-top: 18px;
+            padding: 54px 42px 42px;
+            overflow: hidden;
+            border-radius: 30px;
+            background:
+                radial-gradient(circle at 88% 15%, rgba(164, 126, 255, 0.25), transparent 34%),
+                radial-gradient(circle at 60% 85%, rgba(118, 78, 213, 0.16), transparent 38%),
+                linear-gradient(135deg, #faf8ff 0%, #f2ecff 50%, #ffffff 100%);
+            border: 1px solid #e7ddfa;
+            box-shadow: 0 20px 55px rgba(73, 40, 126, 0.12);
+        }
+
+        .sds-hero-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .sds-hero-table td {
+            width: 50%;
+            vertical-align: middle;
+            padding: 10px;
+        }
+
+        .sds-hero-copy {
+            padding-right: 30px;
+        }
+
+        .sds-hero-title {
+            margin: 0 0 18px;
+            color: #19213d;
+            font-size: 48px;
+            line-height: 1.05;
+            font-weight: 850;
+        }
+
+        .sds-hero-title span {
+            color: #5d25ad;
+        }
+
+        .sds-hero-description {
+            margin: 0 0 20px;
+            color: #5f6780;
+            font-size: 16px;
+            line-height: 1.75;
+        }
+
+        .sds-check-list {
+            margin: 0 0 24px;
+            padding: 0;
+            list-style: none;
+        }
+
+        .sds-check-list li {
+            margin: 8px 0;
+            color: #34405f;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .sds-check {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            margin-right: 8px;
+            text-align: center;
+            line-height: 20px;
+            border-radius: 50%;
+            background: #25a56a;
+            color: #ffffff;
+            font-size: 12px;
+            font-weight: 800;
+        }
+
+        .sds-button {
+            display: inline-block;
+            margin: 3px 6px 3px 0;
+            padding: 12px 23px;
+            border-radius: 28px;
+            background: linear-gradient(135deg, #682bb8, #8a4bd0);
+            color: #ffffff !important;
+            font-size: 13px;
+            font-weight: 800;
+            box-shadow: 0 10px 24px rgba(102, 42, 181, 0.24);
+        }
+
+        .sds-button-outline {
+            display: inline-block;
+            margin: 3px 0;
+            padding: 11px 22px;
+            border: 1px solid #9a76e8;
+            border-radius: 28px;
+            background: #ffffff;
+            color: #5924ad !important;
+            font-size: 13px;
+            font-weight: 800;
+        }
+
+        .sds-hero-image {
+            position: relative;
+            text-align: center;
+        }
+
+        .sds-hero-image img {
+            width: 100%;
+            max-width: 540px;
+            border-radius: 22px;
+            box-shadow: 0 25px 50px rgba(52, 31, 90, 0.20);
+        }
+
+        .sds-image-caption {
+            margin-top: 12px;
+            color: #6940a4;
+            font-size: 12px;
+            font-weight: 700;
+            font-style: italic;
+        }
+
+        /* =========================
+           INFO STRIP
+           ========================= */
+
+        .sds-info-strip {
+            margin-top: 20px;
+            padding: 18px 12px;
+            border: 1px solid #e6def5;
+            border-radius: 22px;
+            background: #ffffff;
+            box-shadow: 0 12px 30px rgba(62, 42, 100, 0.07);
+        }
+
+        .sds-info-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .sds-info-table td {
+            width: 20%;
+            padding: 8px 12px;
+            text-align: center;
+            border-right: 1px solid #ebe6f3;
+            vertical-align: middle;
+        }
+
+        .sds-info-table td:last-child {
+            border-right: 0;
+        }
+
+        .sds-info-icon {
+            display: inline-block;
+            width: 38px;
+            height: 38px;
+            margin-right: 7px;
+            vertical-align: middle;
+            line-height: 38px;
+            border-radius: 50%;
+            background: #eee5ff;
+            color: #6932b9;
+            font-size: 17px;
+            font-weight: 800;
+        }
+
+        .sds-info-label {
+            display: inline-block;
+            vertical-align: middle;
+            text-align: left;
+            color: #1e294b;
+            font-size: 12px;
+            font-weight: 800;
+        }
+
+        .sds-info-label small {
+            display: block;
+            color: #737b91;
+            font-size: 11px;
+            font-weight: 500;
+        }
+
+        /* =========================
+           ABOUT
+           ========================= */
+
+        .sds-about {
+            padding: 35px;
+            border-radius: 25px;
+            background: linear-gradient(135deg, #ffffff, #faf8ff);
+            border: 1px solid #ebe5f5;
+        }
+
+        .sds-about-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .sds-about-table td {
+            width: 50%;
+            vertical-align: middle;
+            padding: 10px;
+        }
+
+        .sds-quote {
+            padding: 24px;
             border-radius: 20px;
-            margin: 12px 4px;
-            font-weight: bold;
-            font-size: 13px
+            background: linear-gradient(135deg, #f3edff, #faf7ff);
+            border: 1px solid #e4d9fb;
+            color: #5c4a81;
+            font-size: 14px;
+            font-style: italic;
         }
 
-        h2 {
-            text-align: center;
-            font-size: 28px;
-            margin: 45px 0 20px
+        .sds-quote strong {
+            display: block;
+            margin-top: 10px;
+            color: #6b3eb1;
+            font-size: 12px;
+            font-style: normal;
         }
 
-        .intro {
-            text-align: center;
-            max-width: 900px;
-            margin: auto
+        /* =========================
+           SECTION HEADER
+           ========================= */
+
+        .sds-heading {
+            margin-bottom: 25px;
         }
 
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 16px
+        .sds-heading-line {
+            width: 46px;
+            height: 4px;
+            margin: 0 0 12px;
+            border-radius: 10px;
+            background: linear-gradient(90deg, #7b2fc1, #d64ea7);
         }
 
-        .card {
-            background: #fafafa;
-            border: 1px solid #e5e5e5;
-            border-radius: 8px;
-            padding: 18px
+        .sds-center .sds-heading-line {
+            margin-left: auto;
+            margin-right: auto;
         }
 
-        .card h3 {
-            font-size: 18px;
-            margin: 0 0 6px
-        }
+        /* =========================
+           FEATURE CARDS
+           ========================= */
 
-        .two {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 25px;
-            align-items: center
-        }
-
-        .shot {
+        .sds-features {
             width: 100%;
-            border: 1px solid #ddd;
-            border-radius: 6px;
-            display: block
+            border-collapse: separate;
+            border-spacing: 10px;
+            margin: -10px;
         }
 
-        .caption {
+        .sds-feature-cell {
+            width: 25%;
+            vertical-align: top;
+        }
+
+        .sds-feature-card {
+            min-height: 175px;
+            padding: 20px;
+            border: 1px solid #e8e2f2;
+            border-radius: 20px;
+            background: #ffffff;
+            box-shadow: 0 9px 25px rgba(54, 37, 86, 0.06);
+        }
+
+        .sds-feature-icon {
+            width: 46px;
+            height: 46px;
+            margin-bottom: 12px;
             text-align: center;
-            color: #777;
-            font-size: 13px
+            line-height: 46px;
+            border-radius: 14px;
+            background: #f0e8ff;
+            color: #6a31ba;
+            font-size: 20px;
+            font-weight: 800;
         }
 
-        .step {
-            display: flex;
-            gap: 14px;
-            background: #fafafa;
-            border-left: 4px solid #714b67;
+        .sds-feature-card h3 {
+            margin: 0 0 7px;
+            color: #20294b;
+            font-size: 17px;
+            line-height: 1.25;
+        }
+
+        .sds-feature-card p {
+            margin: 0;
+            color: #71798c;
+            font-size: 12px;
+            line-height: 1.65;
+        }
+
+        /* =========================
+           SCREENSHOT SECTIONS
+           ========================= */
+
+        .sds-showcase {
+            padding: 35px;
+            border-radius: 26px;
+            background: linear-gradient(135deg, #f8f4ff, #ffffff);
+            border: 1px solid #e9e0f8;
+        }
+
+        .sds-showcase-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .sds-showcase-table td {
+            width: 50%;
+            vertical-align: middle;
+            padding: 12px;
+        }
+
+        .sds-screenshot-card {
             padding: 13px;
-            margin: 10px 0
+            border-radius: 18px;
+            background: #ffffff;
+            border: 1px solid #e6e1ec;
+            box-shadow: 0 12px 30px rgba(44, 31, 69, 0.08);
         }
 
-        .num {
-            color: #714b67;
-            font-weight: bold
-        }
-
-        table {
+        .sds-screenshot-card img {
+            display: block;
             width: 100%;
-            border-collapse: collapse
+            height: 330px;
+            object-fit: contain;
+            background: #f8f8fb;
+            border: 1px solid #e7e3eb;
+            border-radius: 12px;
         }
 
-        td {
-            padding: 11px;
-            border-bottom: 1px solid #eee
+        .sds-screenshot-title {
+            margin: 13px 3px 4px;
+            color: #5d2aa9;
+            font-size: 18px;
+            font-weight: 800;
         }
 
-        td:first-child {
-            font-weight: bold;
-            width: 32%
+        .sds-screenshot-description {
+            margin: 0 3px;
+            color: #70788b;
+            font-size: 13px;
         }
 
-        .contact {
-            background: #f4edf3;
+        /* =========================
+           ADMISSION HIGHLIGHT
+           ========================= */
+
+        .sds-admission {
+            padding: 38px;
+            border-radius: 28px;
+            background:
+                radial-gradient(circle at 80% 20%, rgba(167, 126, 244, 0.18), transparent 30%),
+                linear-gradient(135deg, #f7f1ff, #ffffff);
+            border: 1px solid #e5d9fa;
+        }
+
+        .sds-admission-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .sds-admission-table td {
+            width: 50%;
+            padding: 12px;
+            vertical-align: middle;
+        }
+
+        .sds-admission-list {
+            margin: 18px 0 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .sds-admission-list li {
+            margin: 8px 0;
+            color: #4e5872;
+            font-size: 13px;
+        }
+
+        .sds-admission-list li:before {
+            content: "✓";
+            display: inline-block;
+            width: 21px;
+            height: 21px;
+            margin-right: 7px;
             text-align: center;
-            border-radius: 8px;
-            padding: 25px;
-            margin: 45px 0
+            line-height: 21px;
+            border-radius: 50%;
+            background: #6d32bd;
+            color: #ffffff;
+            font-size: 11px;
+            font-weight: 800;
         }
 
-        .contact a {
-            color: #714b67;
-            font-weight: bold;
-            text-decoration: none
+        .sds-admission-note {
+            margin-top: 18px;
+            padding: 16px 18px;
+            border-left: 4px solid #6d32bd;
+            border-radius: 0 14px 14px 0;
+            background: #eee4ff;
+            color: #4f3190;
+            font-size: 13px;
+            font-weight: 700;
         }
 
-        @media(max-width:750px) {
+        /* =========================
+           FEE / MODULE SHOWCASE
+           ========================= */
 
-            .grid,
-            .two {
-                grid-template-columns: 1fr
+        .sds-card-grid {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 12px;
+            margin: -12px;
+        }
+
+        .sds-card-grid td {
+            width: 33.333%;
+            vertical-align: top;
+        }
+
+        .sds-mini-card {
+            min-height: 190px;
+            padding: 23px;
+            border-radius: 20px;
+            background: #ffffff;
+            border: 1px solid #e8e2f0;
+            box-shadow: 0 9px 25px rgba(52, 38, 77, 0.06);
+        }
+
+        .sds-mini-card h3 {
+            margin: 0 0 9px;
+            color: #5e2ba8;
+            font-size: 18px;
+        }
+
+        .sds-mini-card p {
+            margin: 0;
+            color: #70788b;
+            font-size: 13px;
+        }
+
+        /* =========================
+           WORKFLOW
+           ========================= */
+
+        .sds-workflow {
+            padding: 35px;
+            border-radius: 25px;
+            background: #faf8ff;
+            border: 1px solid #e7dff3;
+        }
+
+        .sds-workflow-table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 8px;
+            margin: -8px;
+        }
+
+        .sds-workflow-table td {
+            width: 16.666%;
+            vertical-align: top;
+            text-align: center;
+        }
+
+        .sds-step {
+            min-height: 170px;
+            padding: 18px 10px;
+            border-radius: 18px;
+            background: #ffffff;
+            border: 1px solid #e6e0ed;
+        }
+
+        .sds-step-number {
+            width: 42px;
+            height: 42px;
+            margin: 0 auto 10px;
+            line-height: 42px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #7134bd, #a05cdb);
+            color: #ffffff;
+            font-size: 13px;
+            font-weight: 800;
+        }
+
+        .sds-step h3 {
+            margin: 0 0 6px;
+            color: #252e50;
+            font-size: 15px;
+        }
+
+        .sds-step p {
+            margin: 0;
+            color: #7a8191;
+            font-size: 11px;
+            line-height: 1.55;
+        }
+
+        /* =========================
+           REPORTS
+           ========================= */
+
+        .sds-reports {
+            padding: 36px;
+            border-radius: 27px;
+            background: linear-gradient(135deg, #30205d, #6432a2);
+            color: #ffffff;
+            box-shadow: 0 20px 45px rgba(54, 30, 92, 0.18);
+        }
+
+        .sds-reports .sds-eyebrow {
+            color: #dbcaff;
+        }
+
+        .sds-reports .sds-section-title {
+            color: #ffffff;
+        }
+
+        .sds-report-table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 10px;
+            margin: -10px;
+        }
+
+        .sds-report-table td {
+            width: 33.333%;
+            vertical-align: top;
+        }
+
+        .sds-report-card {
+            min-height: 145px;
+            padding: 22px;
+            border-radius: 17px;
+            background: rgba(255, 255, 255, 0.10);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+        }
+
+        .sds-report-card h3 {
+            margin: 0 0 8px;
+            color: #ffffff;
+            font-size: 17px;
+        }
+
+        .sds-report-card p {
+            margin: 0;
+            color: #e2dced;
+            font-size: 12px;
+        }
+
+        /* =========================
+           TECHNICAL
+           ========================= */
+
+        .sds-tech {
+            padding: 35px;
+            border-radius: 25px;
+            background: #f8f6fb;
+            border: 1px solid #e7dfed;
+        }
+
+        .sds-tech-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .sds-tech-table td {
+            width: 50%;
+            vertical-align: top;
+            padding: 10px 18px;
+        }
+
+        .sds-tech-item {
+            padding: 13px 0;
+            border-bottom: 1px solid #e4dfe9;
+            color: #5e6679;
+            font-size: 13px;
+        }
+
+        .sds-tech-label {
+            color: #6130a9;
+            font-weight: 800;
+        }
+
+        /* =========================
+           INSTALLATION
+           ========================= */
+
+        .sds-install-table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 10px;
+            margin: -10px;
+        }
+
+        .sds-install-table td {
+            width: 25%;
+            vertical-align: top;
+        }
+
+        .sds-install-card {
+            min-height: 170px;
+            padding: 22px;
+            border-radius: 19px;
+            background: #ffffff;
+            border: 1px solid #e8e2ed;
+            box-shadow: 0 8px 23px rgba(54, 40, 76, 0.06);
+        }
+
+        .sds-install-card .sds-step-number {
+            margin: 0 0 12px;
+        }
+
+        .sds-install-card h3 {
+            margin: 0 0 7px;
+            color: #263050;
+            font-size: 16px;
+        }
+
+        .sds-install-card p {
+            margin: 0;
+            color: #747c8d;
+            font-size: 12px;
+        }
+
+        /* =========================
+           SUPPORT
+           ========================= */
+
+        .sds-support {
+            padding: 42px 25px;
+            border-radius: 27px;
+            text-align: center;
+            background:
+                radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.16), transparent 28%),
+                linear-gradient(135deg, #6428ad, #9149c9);
+            color: #ffffff;
+            box-shadow: 0 18px 42px rgba(100, 39, 171, 0.22);
+        }
+
+        .sds-support img {
+            width: 180px;
+            max-height: 70px;
+            object-fit: contain;
+            margin-bottom: 13px;
+        }
+
+        .sds-support .sds-eyebrow {
+            color: #e7d8ff;
+        }
+
+        .sds-support h2 {
+            margin: 5px 0 10px;
+            color: #ffffff;
+            font-size: 31px;
+        }
+
+        .sds-support p {
+            max-width: 720px;
+            margin: 0 auto 18px;
+            color: #f2eaff;
+            font-size: 14px;
+        }
+
+        .sds-support a {
+            color: #ffffff !important;
+            font-weight: 800;
+            font-size: 13px;
+        }
+
+        /* =========================
+           FOOTER
+           ========================= */
+
+        .sds-footer {
+            margin-top: 38px;
+            padding-top: 22px;
+            border-top: 1px solid #e9e4ef;
+            text-align: center;
+            color: #8a91a0;
+            font-size: 11px;
+        }
+
+        /* =========================
+           RESPONSIVE
+           ========================= */
+
+        @media (max-width: 900px) {
+
+            .sds-hero-table td,
+            .sds-about-table td,
+            .sds-showcase-table td,
+            .sds-admission-table td {
+                display: block;
+                width: 100%;
+            }
+
+            .sds-hero-copy {
+                padding-right: 0;
+                padding-bottom: 20px;
+            }
+
+            .sds-feature-cell {
+                width: 50%;
+            }
+
+            .sds-info-table td {
+                width: 50%;
+            }
+
+            .sds-info-table td:nth-child(2) {
+                border-right: 0;
+            }
+
+            .sds-workflow-table td {
+                width: 33.333%;
+            }
+
+            .sds-install-table td {
+                width: 50%;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .sds-page {
+                padding: 8px 5px 30px;
+            }
+
+            .sds-header {
+                padding: 15px;
+            }
+
+            .sds-header-table,
+            .sds-header-table tbody,
+            .sds-header-table tr,
+            .sds-header-table td {
+                display: block;
+                width: 100%;
+                text-align: center;
+            }
+
+            .sds-brand img {
+                margin: 0 auto;
+            }
+
+            .sds-nav {
+                margin: 10px 0;
+            }
+
+            .sds-header-badge {
+                text-align: center;
+            }
+
+            .sds-hero {
+                padding: 30px 20px;
+            }
+
+            .sds-hero-title {
+                font-size: 34px;
+            }
+
+            .sds-title {
+                font-size: 32px;
+            }
+
+            .sds-section-title {
+                font-size: 26px;
+            }
+
+            .sds-feature-cell,
+            .sds-info-table td,
+            .sds-workflow-table td,
+            .sds-install-table td {
+                width: 100%;
+            }
+
+            .sds-info-table,
+            .sds-info-table tbody,
+            .sds-info-table tr,
+            .sds-info-table td {
+                display: block;
+            }
+
+            .sds-info-table td {
+                border-right: 0;
+                border-bottom: 1px solid #ebe6f3;
+            }
+
+            .sds-info-table td:last-child {
+                border-bottom: 0;
+            }
+
+            .sds-card-grid,
+            .sds-card-grid tbody,
+            .sds-card-grid tr,
+            .sds-card-grid td,
+            .sds-report-table,
+            .sds-report-table tbody,
+            .sds-report-table tr,
+            .sds-report-table td {
+                display: block;
+                width: 100%;
+            }
+
+            .sds-showcase,
+            .sds-admission,
+            .sds-about,
+            .sds-workflow,
+            .sds-tech,
+            .sds-reports {
+                padding: 24px 16px;
+            }
+
+            .sds-screenshot-card img {
+                height: 240px;
             }
         }
     </style>
 </head>
 
 <body>
-    <div class="page">
 
-        <div class="hero">
-            <img src="banner.png" alt="School Management System">
-            <h1>School Management System</h1>
-            <p>A complete school administration solution for Odoo 19 to manage students, parents, teachers, academics,
-                attendance, examinations, fees, transport, hostel and library operations in one integrated application.
+    <div class="sds-page">
+
+        <!-- =========================================================
+         HEADER
+         ========================================================= -->
+        <header class="sds-header">
+            <table class="sds-header-table">
+                <tr>
+                    <td class="sds-brand">
+                        <img src="smartdesk-logo.png" alt="Smart Desk Solution">
+                    </td>
+
+                    <td class="sds-nav">
+                        <span class="active">School Management</span>
+                        <span>Students</span>
+                        <span>Academics</span>
+                        <span>Attendance</span>
+                        <span>Fees</span>
+                        <span>Transport</span>
+                        <span>Reports</span>
+                    </td>
+
+                    <td class="sds-header-badge">
+                        <span class="sds-odoo-badge">
+                            <span class="sds-odoo-dot"></span>
+                            Odoo 19<br>
+                            <small>Ready for Odoo 19</small>
+                        </span>
+                    </td>
+                </tr>
+            </table>
+        </header>
+
+
+        <!-- =========================================================
+         HERO
+         ========================================================= -->
+        <section class="sds-hero">
+            <table class="sds-hero-table">
+                <tr>
+                    <td>
+                        <div class="sds-hero-copy">
+
+                            <div class="sds-eyebrow">
+                                Complete • Modern • Smart
+                            </div>
+
+                            <h1 class="sds-hero-title">
+                                School Management<br>
+                                <span>System</span>
+                            </h1>
+
+                            <p class="sds-hero-description">
+                                A complete school administration solution for Odoo 19 to manage
+                                students, parents, teachers, academics, attendance, examinations,
+                                fees, transport, hostel and library operations in one integrated application.
+                            </p>
+
+                            <ul class="sds-check-list">
+                                <li>
+                                    <span class="sds-check">✓</span>
+                                    Easy to use
+                                </li>
+                                <li>
+                                    <span class="sds-check">✓</span>
+                                    Fully integrated with Odoo
+                                </li>
+                                <li>
+                                    <span class="sds-check">✓</span>
+                                    Modern and responsive design
+                                </li>
+                                <li>
+                                    <span class="sds-check">✓</span>
+                                    Complete school workflow
+                                </li>
+                            </ul>
+
+                            <a href="#features" class="sds-button">
+                                Get Started&nbsp; →
+                            </a>
+
+                            <a href="#screenshots" class="sds-button-outline">
+                                View Screenshots
+                            </a>
+
+                        </div>
+                    </td>
+
+                    <td>
+                        <div class="sds-hero-image">
+                            <img src="banner.png" alt="SDS School Management System">
+                            <div class="sds-image-caption">
+                                Simplify School Management. Focus on Education.
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </section>
+
+
+        <!-- =========================================================
+         INFORMATION STRIP
+         ========================================================= -->
+        <section class="sds-info-strip">
+            <table class="sds-info-table">
+                <tr>
+                    <td>
+                        <span class="sds-info-icon">19</span>
+                        <span class="sds-info-label">
+                            Odoo 19
+                            <small>Compatible</small>
+                        </span>
+                    </td>
+
+                    <td>
+                        <span class="sds-info-icon">ED</span>
+                        <span class="sds-info-label">
+                            Education
+                            <small>Category</small>
+                        </span>
+                    </td>
+
+                    <td>
+                        <span class="sds-info-icon">✓</span>
+                        <span class="sds-info-label">
+                            Complete
+                            <small>School Workflow</small>
+                        </span>
+                    </td>
+
+                    <td>
+                        <span class="sds-info-icon">LG</span>
+                        <span class="sds-info-label">
+                            LGPL-3
+                            <small>License</small>
+                        </span>
+                    </td>
+
+                    <td>
+                        <span class="sds-info-label">
+                            Version 19.0.1.0.0
+                            <small>Smart Desk Solution</small>
+                        </span>
+                    </td>
+                </tr>
+            </table>
+        </section>
+
+
+        <!-- =========================================================
+         ABOUT
+         ========================================================= -->
+        <section class="sds-section sds-about">
+            <table class="sds-about-table">
+                <tr>
+                    <td>
+                        <div class="sds-eyebrow">About the Module</div>
+
+                        <h2 class="sds-section-title">
+                            Everything Your School Needs in One Place
+                        </h2>
+
+                        <p class="sds-text">
+                            School Management System centralizes the core activities of a school
+                            in Odoo. Administrators and staff can manage academic structures,
+                            student records, faculty, attendance, examinations, fees and school
+                            facilities using connected records, searchable lists, forms,
+                            analytical views and printable reports.
+                        </p>
+                    </td>
+
+                    <td>
+                        <div class="sds-quote">
+                            “Education is the most powerful weapon which you can use to change
+                            the world.”
+                            <strong>— Nelson Mandela</strong>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </section>
+
+
+        <!-- =========================================================
+         FEATURES
+         ========================================================= -->
+        <section id="features" class="sds-section">
+
+            <div class="sds-heading">
+                <div class="sds-heading-line"></div>
+                <div class="sds-eyebrow">Powerful Capabilities</div>
+                <h2 class="sds-section-title">Key Features</h2>
+                <p class="sds-text">
+                    An all-in-one solution for organized school administration.
+                </p>
+            </div>
+
+            <table class="sds-features">
+                <tr>
+                    <td class="sds-feature-cell">
+                        <div class="sds-feature-card">
+                            <div class="sds-feature-icon">ST</div>
+                            <h3>Student Management</h3>
+                            <p>
+                                Manage complete student records, profiles, academic information,
+                                admission details and contacts.
+                            </p>
+                        </div>
+                    </td>
+
+                    <td class="sds-feature-cell">
+                        <div class="sds-feature-card">
+                            <div class="sds-feature-icon">PG</div>
+                            <h3>Parents &amp; Guardians</h3>
+                            <p>
+                                Maintain parent and guardian information connected with student
+                                records.
+                            </p>
+                        </div>
+                    </td>
+
+                    <td class="sds-feature-cell">
+                        <div class="sds-feature-card">
+                            <div class="sds-feature-icon">TF</div>
+                            <h3>Teachers &amp; Faculty</h3>
+                            <p>
+                                Manage teacher profiles, qualifications, specialization,
+                                contacts and responsibilities.
+                            </p>
+                        </div>
+                    </td>
+
+                    <td class="sds-feature-cell">
+                        <div class="sds-feature-card">
+                            <div class="sds-feature-icon">AC</div>
+                            <h3>Academic Management</h3>
+                            <p>
+                                Manage academic years, grades, classes, sections, subjects
+                                and curriculum-related information.
+                            </p>
+                        </div>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="sds-feature-cell">
+                        <div class="sds-feature-card">
+                            <div class="sds-feature-icon">AT</div>
+                            <h3>Attendance Management</h3>
+                            <p>
+                                Record and review daily student attendance as part of the
+                                school's operational workflow.
+                            </p>
+                        </div>
+                    </td>
+
+                    <td class="sds-feature-cell">
+                        <div class="sds-feature-card">
+                            <div class="sds-feature-icon">EX</div>
+                            <h3>Examinations &amp; Results</h3>
+                            <p>
+                                Manage examinations, marks, grading and academic result
+                                information.
+                            </p>
+                        </div>
+                    </td>
+
+                    <td class="sds-feature-cell">
+                        <div class="sds-feature-card">
+                            <div class="sds-feature-icon">FE</div>
+                            <h3>Fee Management</h3>
+                            <p>
+                                Create fee structures, manage invoices and payments and
+                                monitor outstanding amounts.
+                            </p>
+                        </div>
+                    </td>
+
+                    <td class="sds-feature-cell">
+                        <div class="sds-feature-card">
+                            <div class="sds-feature-icon">TR</div>
+                            <h3>Transport &amp; Hostel</h3>
+                            <p>
+                                Maintain supported transport, hostel and facility-related
+                                school records.
+                            </p>
+                        </div>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="sds-feature-cell">
+                        <div class="sds-feature-card">
+                            <div class="sds-feature-icon">LB</div>
+                            <h3>Library Management</h3>
+                            <p>
+                                Manage books, issues, returns and related library records.
+                            </p>
+                        </div>
+                    </td>
+
+                    <td class="sds-feature-cell">
+                        <div class="sds-feature-card">
+                            <div class="sds-feature-icon">RP</div>
+                            <h3>Reports &amp; Analytics</h3>
+                            <p>
+                                Generate printable reports and use analytical views to
+                                review school information.
+                            </p>
+                        </div>
+                    </td>
+
+                    <td class="sds-feature-cell">
+                        <div class="sds-feature-card">
+                            <div class="sds-feature-icon">ID</div>
+                            <h3>Student ID Cards</h3>
+                            <p>
+                                Generate printable student identification information
+                                from student records.
+                            </p>
+                        </div>
+                    </td>
+
+                    <td class="sds-feature-cell">
+                        <div class="sds-feature-card">
+                            <div class="sds-feature-icon">RC</div>
+                            <h3>Report Cards</h3>
+                            <p>
+                                Generate academic report cards with student result information.
+                            </p>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </section>
+
+
+        <!-- =========================================================
+         STUDENT ADMISSION
+         ========================================================= -->
+        <section class="sds-section sds-admission">
+            <table class="sds-admission-table">
+                <tr>
+                    <td>
+                        <div class="sds-eyebrow">01 • Student Admission</div>
+
+                        <h2 class="sds-section-title">
+                            Streamline Student Admission
+                        </h2>
+
+                        <p class="sds-text">
+                            Keep admission and student information organized from the beginning.
+                            The student form provides a structured place for academic and
+                            personal information.
+                        </p>
+
+                        <ul class="sds-admission-list">
+                            <li>Complete student registration information</li>
+                            <li>Academic information</li>
+                            <li>Personal details</li>
+                            <li>Parent &amp; guardian information</li>
+                            <li>Contact, address and notes</li>
+                        </ul>
+
+                        <div class="sds-admission-note">
+                            A smooth admission process creates the first step towards
+                            a brighter future.
+                        </div>
+                    </td>
+
+                    <td>
+                        <div class="sds-screenshot-card">
+                            <img src="screenshots/student_form.png" alt="Student Admission Form">
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </section>
+
+
+        <!-- =========================================================
+         TEACHERS
+         ========================================================= -->
+        <section class="sds-section sds-showcase">
+            <table class="sds-showcase-table">
+                <tr>
+                    <td>
+                        <div class="sds-eyebrow">02 • Faculty Management</div>
+
+                        <h2 class="sds-section-title">
+                            Manage Teachers &amp; Faculty
+                        </h2>
+
+                        <p class="sds-text">
+                            Maintain teacher profiles, qualifications, specialization,
+                            joining information, contact details and academic responsibilities
+                            in a structured Odoo interface.
+                        </p>
+                    </td>
+
+                    <td>
+                        <div class="sds-screenshot-card">
+                            <img src="screenshots/teacher_form.png" alt="Teacher Form">
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </section>
+
+
+        <!-- =========================================================
+         ACADEMIC MANAGEMENT
+         ========================================================= -->
+        <section class="sds-section">
+            <div class="sds-heading">
+                <div class="sds-heading-line"></div>
+                <div class="sds-eyebrow">03 • Academic Management</div>
+                <h2 class="sds-section-title">Organize Academic Information</h2>
+                <p class="sds-text">
+                    Configure subjects and academic structures with connected school records.
+                </p>
+            </div>
+
+            <table class="sds-card-grid">
+                <tr>
+                    <td>
+                        <div class="sds-mini-card">
+                            <h3>Subjects &amp; Courses</h3>
+                            <p>
+                                Manage subject codes, names, types, pass marks and maximum
+                                marks for academic activities.
+                            </p>
+                        </div>
+                    </td>
+
+                    <td>
+                        <div class="sds-mini-card">
+                            <h3>Academic Structure</h3>
+                            <p>
+                                Organize academic years, grade levels, classes and sections
+                                for day-to-day school management.
+                            </p>
+                        </div>
+                    </td>
+
+                    <td>
+                        <div class="sds-mini-card">
+                            <h3>Academic Results</h3>
+                            <p>
+                                Connect examinations and marks with student records to
+                                support result management and reporting.
+                            </p>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+
+            <div style="margin-top:24px;" class="sds-screenshot-card">
+                <img src="screenshots/subjects.png" alt="Subjects and Courses"
+                    style="display:block;width:100%;height:340px;object-fit:contain;background:#f8f8fb;border-radius:12px;">
+            </div>
+        </section>
+
+
+        <!-- =========================================================
+         ATTENDANCE + EXAMS
+         ========================================================= -->
+        <section class="sds-section">
+            <table class="sds-card-grid">
+                <tr>
+                    <td>
+                        <div class="sds-mini-card">
+                            <div class="sds-feature-icon">AT</div>
+                            <h3>Attendance Management</h3>
+                            <p>
+                                Track daily attendance for students and keep attendance
+                                information connected with school operations.
+                            </p>
+                        </div>
+                    </td>
+
+                    <td>
+                        <div class="sds-mini-card">
+                            <div class="sds-feature-icon">EX</div>
+                            <h3>Examinations &amp; Results</h3>
+                            <p>
+                                Manage examinations, marks and grading and review academic
+                                results through structured records.
+                            </p>
+                        </div>
+                    </td>
+
+                    <td>
+                        <div class="sds-mini-card">
+                            <div class="sds-feature-icon">AN</div>
+                            <h3>Analytics</h3>
+                            <p>
+                                Use Odoo analytical views to review available student
+                                and school information.
+                            </p>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+
+            <div style="margin-top:24px;" class="sds-screenshot-card">
+                <img src="screenshots/analytics.png" alt="Student Analytics"
+                    style="display:block;width:100%;height:340px;object-fit:contain;background:#f8f8fb;border-radius:12px;">
+            </div>
+        </section>
+
+
+        <!-- =========================================================
+         FEE MANAGEMENT
+         ========================================================= -->
+        <section class="sds-section">
+
+            <div class="sds-heading">
+                <div class="sds-heading-line"></div>
+                <div class="sds-eyebrow">04 • Fee Management</div>
+                <h2 class="sds-section-title">
+                    Clear and Structured Fee Management
+                </h2>
+                <p class="sds-text">
+                    Manage fee structures, student invoices, payments and outstanding amounts
+                    using connected Odoo records.
+                </p>
+            </div>
+
+            <table class="sds-showcase-table">
+                <tr>
+                    <td>
+                        <div class="sds-screenshot-card">
+                            <img src="screenshots/fee_statement.png" alt="Student Fee Statement">
+                            <div class="sds-screenshot-title">
+                                Student Fee Invoices
+                            </div>
+                            <p class="sds-screenshot-description">
+                                Review invoice number, student, invoice date, due date,
+                                total amount, paid amount, due amount and status.
+                            </p>
+                        </div>
+                    </td>
+
+                    <td>
+                        <div class="sds-screenshot-card">
+                            <img src="screenshots/fee_dashboard.png" alt="Fee Dashboard">
+                            <div class="sds-screenshot-title">
+                                Fee Financial Analytics
+                            </div>
+                            <p class="sds-screenshot-description">
+                                Review fee-related information using Odoo analytical
+                                views and available grouping dimensions.
+                            </p>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </section>
+
+
+        <!-- =========================================================
+         WORKFLOW
+         ========================================================= -->
+        <section class="sds-section sds-workflow">
+
+            <div class="sds-heading sds-center">
+                <div class="sds-heading-line"></div>
+                <div class="sds-eyebrow">Complete School Workflow</div>
+                <h2 class="sds-section-title">From Admission to Reporting</h2>
+                <p class="sds-text">
+                    Connect the major school activities in one organized workflow.
+                </p>
+            </div>
+
+            <table class="sds-workflow-table">
+                <tr>
+                    <td>
+                        <div class="sds-step">
+                            <div class="sds-step-number">01</div>
+                            <h3>Setup</h3>
+                            <p>
+                                Academic years, grades, classes, sections and subjects.
+                            </p>
+                        </div>
+                    </td>
+
+                    <td>
+                        <div class="sds-step">
+                            <div class="sds-step-number">02</div>
+                            <h3>Admission</h3>
+                            <p>
+                                Student profile, parent/guardian and admission information.
+                            </p>
+                        </div>
+                    </td>
+
+                    <td>
+                        <div class="sds-step">
+                            <div class="sds-step-number">03</div>
+                            <h3>Academics</h3>
+                            <p>
+                                Teachers, subjects, classes and examinations.
+                            </p>
+                        </div>
+                    </td>
+
+                    <td>
+                        <div class="sds-step">
+                            <div class="sds-step-number">04</div>
+                            <h3>Operations</h3>
+                            <p>
+                                Attendance, fees, transport, hostel and library.
+                            </p>
+                        </div>
+                    </td>
+
+                    <td>
+                        <div class="sds-step">
+                            <div class="sds-step-number">05</div>
+                            <h3>Results</h3>
+                            <p>
+                                Marks, results, analytics and academic reports.
+                            </p>
+                        </div>
+                    </td>
+
+                    <td>
+                        <div class="sds-step">
+                            <div class="sds-step-number">06</div>
+                            <h3>Reporting</h3>
+                            <p>
+                                Printable documents and management information.
+                            </p>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </section>
+
+
+        <!-- =========================================================
+         REAL ODOO SCREENSHOTS
+         ========================================================= -->
+        <section id="screenshots" class="sds-section">
+
+            <div class="sds-heading sds-center">
+                <div class="sds-heading-line"></div>
+                <div class="sds-eyebrow">Application Screenshots</div>
+                <h2 class="sds-section-title">See the Application in Action</h2>
+                <p class="sds-lead">
+                    Screenshots from the supplied Odoo module, presented in a clean format
+                    for easy viewing.
+                </p>
+            </div>
+
+            <table class="sds-showcase-table">
+                <tr>
+                    <td>
+                        <div class="sds-screenshot-card">
+                            <img src="screenshots/student_form.png" alt="Student Management">
+                            <div class="sds-screenshot-title">Student Management</div>
+                            <p class="sds-screenshot-description">
+                                Student profile, academic information and personal details.
+                            </p>
+                        </div>
+                    </td>
+
+                    <td>
+                        <div class="sds-screenshot-card">
+                            <img src="screenshots/teacher_form.png" alt="Teachers and Faculty">
+                            <div class="sds-screenshot-title">Teachers &amp; Faculty</div>
+                            <p class="sds-screenshot-description">
+                                Teacher qualifications, contacts, subjects and responsibilities.
+                            </p>
+                        </div>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <div class="sds-screenshot-card">
+                            <img src="screenshots/subjects.png" alt="Subjects">
+                            <div class="sds-screenshot-title">Subjects &amp; Courses</div>
+                            <p class="sds-screenshot-description">
+                                Subject codes, names, types, pass marks and maximum marks.
+                            </p>
+                        </div>
+                    </td>
+
+                    <td>
+                        <div class="sds-screenshot-card">
+                            <img src="screenshots/academic_report.png" alt="Academic Report Card">
+                            <div class="sds-screenshot-title">Academic Report Card</div>
+                            <p class="sds-screenshot-description">
+                                Student details, marks, result status and printable academic
+                                information.
+                            </p>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </section>
+
+
+        <!-- =========================================================
+         REPORTING
+         ========================================================= -->
+        <section class="sds-section sds-reports">
+
+            <div class="sds-center">
+                <div class="sds-eyebrow">Reporting</div>
+
+                <h2 class="sds-section-title">
+                    Turn School Records into Useful Reports
+                </h2>
+
+                <p class="sds-lead" style="color:#e4dcef;">
+                    Use structured printable documents to support academic review,
+                    student administration and financial operations.
+                </p>
+            </div>
+
+            <table class="sds-report-table" style="margin-top:25px;">
+                <tr>
+                    <td>
+                        <div class="sds-report-card">
+                            <h3>Student ID Card</h3>
+                            <p>
+                                Generate printable student identification information
+                                from student records.
+                            </p>
+                        </div>
+                    </td>
+
+                    <td>
+                        <div class="sds-report-card">
+                            <h3>Academic Report Card</h3>
+                            <p>
+                                Print academic marks, result information and student
+                                academic details.
+                            </p>
+                        </div>
+                    </td>
+
+                    <td>
+                        <div class="sds-report-card">
+                            <h3>Fee Payment Receipt</h3>
+                            <p>
+                                Generate printable fee payment information for
+                                school administration.
+                            </p>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+
+            <div style="margin-top:25px;text-align:center;">
+                <img src="screenshots/report_card.png" alt="Report Card"
+                    style="width:100%;max-width:900px;height:340px;object-fit:contain;background:#ffffff;border-radius:15px;padding:8px;">
+            </div>
+        </section>
+
+
+        <!-- =========================================================
+         ONLINE ADMISSION NOTE
+         ========================================================= -->
+        <section class="sds-section sds-showcase">
+            <div class="sds-heading sds-center">
+                <div class="sds-heading-line"></div>
+                <div class="sds-eyebrow">Online Admission</div>
+                <h2 class="sds-section-title">
+                    Extend the Admission Experience to the Website
+                </h2>
+            </div>
+
+            <table class="sds-card-grid">
+                <tr>
+                    <td>
+                        <div class="sds-mini-card">
+                            <h3>Application Capture</h3>
+                            <p>
+                                A Website/Portal extension can provide an online admission
+                                form for applicants or parents.
+                            </p>
+                        </div>
+                    </td>
+
+                    <td>
+                        <div class="sds-mini-card">
+                            <h3>Review &amp; Validation</h3>
+                            <p>
+                                Submitted applications can be reviewed by school staff
+                                before creating or confirming student records.
+                            </p>
+                        </div>
+                    </td>
+
+                    <td>
+                        <div class="sds-mini-card">
+                            <h3>Admission Workflow</h3>
+                            <p>
+                                Approved applications can be connected to the internal
+                                student admission process.
+                            </p>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+
+            <p
+                style="margin:22px 0 0;padding:14px 17px;border-radius:12px;background:#f1eaff;color:#5b3b91;font-size:12px;">
+                <strong>Implementation note:</strong>
+                The supplied release contains the internal student admission form.
+                A public Website/Portal application requires a Website/Portal extension.
             </p>
-            <span class="badge">Odoo 19</span><span class="badge">Education</span><span class="badge">Complete School
-                Workflow</span><span class="badge">LGPL-3</span>
-        </div>
+        </section>
 
-        <h2>About This Module</h2>
-        <p class="intro">School Management System centralizes the core activities of a school in Odoo. Administrators
-            and staff can manage academic structures, student records, faculty, attendance, examinations, fees and
-            school facilities using connected records, searchable lists, forms, analytical views and printable reports.
-        </p>
 
-        <h2>Key Features</h2>
-        <div class="grid">
-            <div class="card">
-                <h3>Student Management</h3>
-                <p>Manage admission details, class, grade, academic year, roll number, guardians, contact information
-                    and enrolment status.</p>
-            </div>
-            <div class="card">
-                <h3>Parents & Guardians</h3>
-                <p>Maintain guardian relationships, contact details, occupation and emergency information.</p>
-            </div>
-            <div class="card">
-                <h3>Teachers & Faculty</h3>
-                <p>Manage qualifications, specialization, contact information, subjects taught and class
-                    responsibilities.</p>
-            </div>
-            <div class="card">
-                <h3>Academic Management</h3>
-                <p>Configure academic years, terms, grade levels, classes, sections and subjects.</p>
-            </div>
-            <div class="card">
-                <h3>Attendance</h3>
-                <p>Record daily student attendance with Present, Absent, Late and Excused statuses.</p>
-            </div>
-            <div class="card">
-                <h3>Examinations</h3>
-                <p>Manage exams, marks, grading scales, percentages, grades and student results.</p>
-            </div>
-            <div class="card">
-                <h3>Fee Management</h3>
-                <p>Create fee structures and track invoices, payments and outstanding amounts.</p>
-            </div>
-            <div class="card">
-                <h3>Transport & Hostel</h3>
-                <p>Manage vehicles, routes, drivers, hostel rooms, wardens and student allocations.</p>
-            </div>
-            <div class="card">
-                <h3>Library</h3>
-                <p>Manage books and student issue/return records with due-date tracking.</p>
-            </div>
-        </div>
+        <!-- =========================================================
+         TECHNICAL INFORMATION
+         ========================================================= -->
+        <section class="sds-section sds-tech">
 
-        <h2>Student Management</h2>
-        <div class="two">
-            <div>
-                <h3>Complete Student Profile</h3>
-                <p>The student form brings academic and personal information into one record.</p>
-                <ul>
-                    <li>Grade and class/section</li>
-                    <li>Roll number and academic year</li>
-                    <li>Admission date and enrolment status</li>
-                    <li>Date of birth, gender and contact details</li>
-                    <li>Parent & guardian information</li>
-                    <li>Contact/address and notes</li>
-                </ul>
-            </div>
-            <div><img class="shot" src="images/student_form.png">
-                <div class="caption">Actual Odoo screenshot — Student form</div>
-            </div>
-        </div>
+            <table class="sds-tech-table">
+                <tr>
+                    <td>
+                        <div class="sds-eyebrow">Technical Information</div>
 
-        <h2>Teacher & Faculty Management</h2>
-        <div class="two">
-            <div><img class="shot" src="images/teacher_form.png">
-                <div class="caption">Actual Odoo screenshot — Teacher form</div>
-            </div>
-            <div>
-                <h3>Organize Your Faculty</h3>
-                <p>Maintain professional and contact information for teachers and connect them with subjects and class
-                    responsibilities.</p>
-                <ul>
-                    <li>Qualification / degree</li>
-                    <li>Specialization subject</li>
-                    <li>Date of joining and gender</li>
-                    <li>Email, phone and mobile</li>
-                    <li>Subjects taught</li>
-                    <li>Class teacher responsibilities</li>
-                </ul>
-            </div>
-        </div>
+                        <h2 class="sds-section-title">
+                            Built for Odoo 19
+                        </h2>
 
-        <h2>Subjects & Courses</h2>
-        <div class="two">
-            <div>
-                <h3>Curriculum Configuration</h3>
-                <p>Configure subject code, name, subject type, pass marks and maximum marks. Subjects can then be used
-                    across classes and examinations.</p>
-            </div>
-            <div><img class="shot" src="images/subjects.png">
-                <div class="caption">Actual Odoo screenshot — Subjects & Courses</div>
-            </div>
-        </div>
+                        <div class="sds-tech-item">
+                            <span class="sds-tech-label">Technical Module:</span><br>
+                            school_management
+                        </div>
 
-        <h2>Attendance & Examination</h2>
-        <div class="two">
-            <div>
-                <h3>Daily Attendance</h3>
-                <p>Create attendance registers by class and date, load students from the class roster and record their
-                    status.</p>
-                <h3>Examination Results</h3>
-                <p>Record subject-wise marks and calculate maximum marks, pass marks, obtained marks, percentage and
-                    grade.</p>
-            </div>
-            <div><img class="shot" src="images/academic_report.png">
-                <div class="caption">Actual Odoo screenshot — Academic Report Card</div>
-            </div>
-        </div>
+                        <div class="sds-tech-item">
+                            <span class="sds-tech-label">Version:</span><br>
+                            19.0.1.0.0
+                        </div>
 
-        <h2>Academic Report Card</h2><img class="shot" src="images/report_card.png">
-        <div class="caption">Actual Odoo screenshot — Academic Report Card</div>
-        <p class="intro">The report presents student identity, registration ID, roll number, class/section and academic
-            year together with subject-wise maximum marks, pass marks, obtained marks and result status.</p>
+                        <div class="sds-tech-item">
+                            <span class="sds-tech-label">Odoo:</span><br>
+                            19.0
+                        </div>
 
-        <h2>Student Analytics</h2>
-        <div class="two">
-            <div><img class="shot" src="images/analytics.png">
-                <div class="caption">Actual Odoo screenshot — Student Analytics Dashboard</div>
+                        <div class="sds-tech-item">
+                            <span class="sds-tech-label">Category:</span><br>
+                            Education
+                        </div>
+                    </td>
+
+                    <td>
+                        <div class="sds-tech-item">
+                            <span class="sds-tech-label">License:</span><br>
+                            LGPL-3
+                        </div>
+
+                        <div class="sds-tech-item">
+                            <span class="sds-tech-label">Application:</span><br>
+                            Yes
+                        </div>
+
+                        <div class="sds-tech-item">
+                            <span class="sds-tech-label">Author:</span><br>
+                            Smart Desk Solution
+                        </div>
+
+                        <div class="sds-tech-item">
+                            <span class="sds-tech-label">Website:</span><br>
+                            <a href="https://www.smartdesksolution.com" target="_blank" style="color:#6130a9;">
+                                www.smartdesksolution.com
+                            </a>
+                        </div>
+
+                        <div class="sds-tech-item">
+                            <span class="sds-tech-label">Email:</span><br>
+                            <a href="mailto:info@smartdesksolution.com" style="color:#6130a9;">
+                                info@smartdesksolution.com
+                            </a>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </section>
+
+
+        <!-- =========================================================
+         INSTALLATION
+         ========================================================= -->
+        <section class="sds-section">
+
+            <div class="sds-heading sds-center">
+                <div class="sds-heading-line"></div>
+                <div class="sds-eyebrow">Installation</div>
+                <h2 class="sds-section-title">Get Started in Four Steps</h2>
             </div>
-            <div>
-                <h3>Visual Analysis</h3>
-                <p>Use Odoo analytical views to review student data through graphical and pivot-style analysis and gain
-                    a quick overview of school information.</p>
+
+            <table class="sds-install-table">
+                <tr>
+                    <td>
+                        <div class="sds-install-card">
+                            <div class="sds-step-number">01</div>
+                            <h3>Copy the Module</h3>
+                            <p>
+                                Copy the module into an Odoo directory included in
+                                <strong>addons_path</strong>.
+                            </p>
+                        </div>
+                    </td>
+
+                    <td>
+                        <div class="sds-install-card">
+                            <div class="sds-step-number">02</div>
+                            <h3>Restart Odoo</h3>
+                            <p>
+                                Restart the Odoo server after adding the module to the
+                                addons directory.
+                            </p>
+                        </div>
+                    </td>
+
+                    <td>
+                        <div class="sds-install-card">
+                            <div class="sds-step-number">03</div>
+                            <h3>Update Apps</h3>
+                            <p>
+                                Update the Odoo Apps list so the new module can be found.
+                            </p>
+                        </div>
+                    </td>
+
+                    <td>
+                        <div class="sds-install-card">
+                            <div class="sds-step-number">04</div>
+                            <h3>Install</h3>
+                            <p>
+                                Search for School Management System and install the module.
+                            </p>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </section>
+
+
+        <!-- =========================================================
+         SUPPORT
+         ========================================================= -->
+        <section class="sds-section sds-support">
+
+            <img src="smartdesk-logo.png" alt="Smart Desk Solution">
+
+            <div class="sds-eyebrow">
+                Smart Desk Solution
             </div>
-        </div>
 
-        <h2>Fee Management</h2>
-        <div class="two">
-            <div>
-                <h3>Track Fees & Outstanding Amounts</h3>
-                <p>Fee records provide invoice number, student, class/section, invoice date, due date, total amount,
-                    amount paid, amount due and status.</p>
-            </div>
-            <div><img class="shot" src="images/fee_statement.png">
-                <div class="caption">Actual Odoo screenshot — Student Fee Invoices</div>
-            </div>
-        </div>
+            <h2>Need Support?</h2>
 
-        <h2>Fee Financial Analytics</h2><img class="shot" src="images/fee_dashboard.png">
-        <div class="caption">Actual Odoo screenshot — Fee Financial Analytics Dashboard</div>
+            <p>
+                For installation, configuration, customization or module-related assistance,
+                contact our support team.
+            </p>
 
-        <h2>Reports</h2>
-        <div class="grid">
-            <div class="card">
-                <h3>Student ID Card</h3>
-                <p>Generate a printable student identification report.</p>
-            </div>
-            <div class="card">
-                <h3>Academic Report Card</h3>
-                <p>Print examination results with subject-wise marks and status.</p>
-            </div>
-            <div class="card">
-                <h3>Fee Payment Receipt</h3>
-                <p>Generate printable fee payment documentation.</p>
-            </div>
-        </div>
+            <a href="mailto:info@smartdesksolution.com">
+                info@smartdesksolution.com
+            </a>
 
-        <h2>Complete School Workflow</h2>
-        <div class="step"><span class="num">01</span>
-            <div><b>Academic Setup:</b> Create academic year, terms, grades, classes and subjects.</div>
-        </div>
-        <div class="step"><span class="num">02</span>
-            <div><b>People:</b> Create teachers, parents/guardians and students.</div>
-        </div>
-        <div class="step"><span class="num">03</span>
-            <div><b>Class & Curriculum:</b> Assign students, teachers, subjects and timetable information.</div>
-        </div>
-        <div class="step"><span class="num">04</span>
-            <div><b>Daily Operations:</b> Record attendance and maintain school information.</div>
-        </div>
-        <div class="step"><span class="num">05</span>
-            <div><b>Examinations:</b> Create exams, enter marks and review results.</div>
-        </div>
-        <div class="step"><span class="num">06</span>
-            <div><b>Fees:</b> Configure fee structures, student fees and payments.</div>
-        </div>
-        <div class="step"><span class="num">07</span>
-            <div><b>Facilities:</b> Operate transport, hostel and library records.</div>
-        </div>
-        <div class="step"><span class="num">08</span>
-            <div><b>Reports:</b> Print ID cards, report cards and fee receipts and review analytics.</div>
-        </div>
+            <span style="padding:0 8px;color:#ffffff;">•</span>
 
-        <h2>Technical Information</h2>
-        <table>
-            <tr>
-                <td>Module</td>
-                <td>school_management</td>
-            </tr>
-            <tr>
-                <td>Version</td>
-                <td>19.0.1.0.0</td>
-            </tr>
-            <tr>
-                <td>Odoo</td>
-                <td>19.0</td>
-            </tr>
-            <tr>
-                <td>Category</td>
-                <td>Education</td>
-            </tr>
-            <tr>
-                <td>Dependency</td>
-                <td>base</td>
-            </tr>
-            <tr>
-                <td>License</td>
-                <td>LGPL-3</td>
-            </tr>
-            <tr>
-                <td>Application</td>
-                <td>Yes</td>
-            </tr>
-        </table>
+            <a href="https://www.smartdesksolution.com" target="_blank">
+                www.smartdesksolution.com
+            </a>
+        </section>
 
-        <h2>Installation</h2>
-        <div class="step"><span class="num">1</span>
-            <div>Copy <b>school_management</b> into a directory included in Odoo's <b>addons_path</b>.</div>
-        </div>
-        <div class="step"><span class="num">2</span>
-            <div>Restart Odoo and update the Apps list.</div>
-        </div>
-        <div class="step"><span class="num">3</span>
-            <div>Search for <b>School Management System</b> and install it.</div>
-        </div>
-        <div class="step"><span class="num">4</span>
-            <div>Configure academic years, classes, subjects, teachers, students and school services.</div>
-        </div>
 
-        <div class="contact">
-            <h2 style="margin:0 0 10px">Support & Contact</h2>
-            <p>For installation, configuration, customization or support:</p>
-            <p><b>Email:</b> <a href="mailto:info@smartdesksolutions.com">info@smartdesksolutions.com</a></p>
-            <p><b>Phone:</b> <a href="tel:+966560792470">+966 56 079 2470</a></p>
-            <p><b>Smart Desk Solutions</b></p>
-        </div>
-        <p style="text-align:center;color:#777;padding-bottom:35px">School Management System for Odoo 19 • Simplify
-            School Management. Focus on Education.</p>
+        <!-- =========================================================
+         FOOTER
+         ========================================================= -->
+        <footer class="sds-footer">
+            <strong>SDS School Management System</strong>
+            &nbsp;•&nbsp;
+            Odoo 19
+            &nbsp;•&nbsp;
+            Smart Desk Solution
+            <br>
+            Version 19.0.1.0.0
+        </footer>
+
     </div>
+
 </body>
 
 </html>
