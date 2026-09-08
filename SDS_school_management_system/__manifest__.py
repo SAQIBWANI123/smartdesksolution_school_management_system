@@ -2,6 +2,7 @@
     'name': 'School Management System',
     'version': '19.0.1.0.0',
     'category': 'Education',
+    'author': 'smartdesksolution',
     'summary': 'Complete Enterprise School Management System for Odoo 19',
     'description': """
 Comprehensive School Management System for Odoo 19.
@@ -49,6 +50,9 @@ Key Features:
     'demo': [
         'demo/school_demo_data.xml',
     ],
+    'images': [
+    'static/description/icon.png',
+],
     'installable': True,
     'application': True,
     'license': 'LGPL-3',
