@@ -5,1390 +5,722 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <title>SDS School Management System | Odoo 19</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
-        rel="stylesheet">
-    <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0
-        }
-
-        :root {
-            --ink: #0f172a;
-            --ink2: #1e293b;
-            --muted: #64748b;
-            --soft: #f1f5f9;
-            --white: #ffffff;
-            --line: #e2e8f0;
-            --purple: #7c3aed;
-            --purple-light: #8b5cf6;
-            --violet: #6366f1;
-            --blue: #3b82f6;
-            --blue-dark: #1d4ed8;
-            --cyan: #06b6d4;
-            --green: #10b981;
-            --orange: #f59e0b;
-            --pink: #ec4899;
-            --red: #ef4444;
-            --teal: #14b8a6;
-            --grad-hero: linear-gradient(135deg, #1e1b4b 0%, #312e81 35%, #4f46e5 70%, #6366f1 100%);
-            --grad-purple: linear-gradient(135deg, #7c3aed, #6366f1);
-            --grad-blue: linear-gradient(135deg, #2563eb, #06b6d4);
-            --grad-green: linear-gradient(135deg, #059669, #10b981);
-            --grad-orange: linear-gradient(135deg, #d97706, #f59e0b);
-            --grad-pink: linear-gradient(135deg, #db2777, #ec4899);
-            --grad-teal: linear-gradient(135deg, #0d9488, #14b8a6);
-            --shadow: 0 20px 60px rgba(15, 23, 42, .12);
-            --shadow-md: 0 10px 30px rgba(15, 23, 42, .09);
-            --shadow-sm: 0 4px 16px rgba(15, 23, 42, .06);
-            --radius: 24px;
-        }
-
-        html {
-            scroll-behavior: smooth
-        }
-
-        body {
-            font-family: 'Inter', Segoe UI, Arial, sans-serif;
-            background: #f8faff;
-            color: var(--ink);
-            line-height: 1.7;
-            font-size: 15px;
-            background-image:
-                radial-gradient(ellipse at 0% 0%, rgba(99, 102, 241, .07) 0%, transparent 50%),
-                radial-gradient(ellipse at 100% 0%, rgba(6, 182, 212, .06) 0%, transparent 40%),
-                radial-gradient(ellipse at 50% 100%, rgba(124, 58, 237, .05) 0%, transparent 50%);
-        }
-
-        a {
-            color: inherit;
-            text-decoration: none
-        }
-
-        .wrap {
-            max-width: 1100px;
-            margin: auto;
-            padding: 30px 24px 80px
-        }
-
-        /* ── HERO BANNER IMAGE ── */
-        .hero-img {
-            border-radius: 28px;
-            overflow: hidden;
-            box-shadow: var(--shadow);
-            margin-bottom: 24px;
-            border: 1px solid rgba(99, 102, 241, .15);
-            position: relative;
-        }
-
-        .hero-img::after {
-            content: "";
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(to bottom, transparent 60%, rgba(15, 23, 42, .3));
-            border-radius: 28px;
-            pointer-events: none;
-        }
-
-        .hero-img img {
-            width: 100%;
-            display: block;
-            height: auto
-        }
-
-        /* ── HERO SECTION ── */
-        .hero {
-            position: relative;
-            overflow: hidden;
-            border-radius: 28px;
-            padding: 56px 52px;
-            background: var(--grad-hero);
-            color: #fff;
-            box-shadow: var(--shadow);
-            margin-bottom: 20px;
-        }
-
-        .hero::before {
-            content: "";
-            position: absolute;
-            inset: 0;
-            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-        }
-
-        .hero-deco {
-            position: absolute;
-            border-radius: 50%;
-            pointer-events: none;
-            filter: blur(60px);
-            opacity: .35;
-        }
-
-        .hero-deco-1 {
-            width: 400px;
-            height: 400px;
-            right: -100px;
-            top: -200px;
-            background: rgba(99, 102, 241, .6)
-        }
-
-        .hero-deco-2 {
-            width: 300px;
-            height: 300px;
-            left: 40%;
-            bottom: -180px;
-            background: rgba(6, 182, 212, .5)
-        }
-
-        .hero-deco-3 {
-            width: 200px;
-            height: 200px;
-            left: -80px;
-            top: 50%;
-            background: rgba(124, 58, 237, .5)
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 1;
-            max-width: 800px
-        }
-
-        .brand {
-            display: inline-flex;
-            align-items: center;
-            gap: 12px;
-            margin-bottom: 22px;
-            font-weight: 800;
-            letter-spacing: .3px;
-            font-size: 14px;
-            background: rgba(255, 255, 255, .1);
-            border: 1px solid rgba(255, 255, 255, .18);
-            padding: 8px 14px 8px 8px;
-            border-radius: 999px;
-            backdrop-filter: blur(8px);
-        }
-
-        .brand-mark {
-            width: 36px;
-            height: 36px;
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: linear-gradient(135deg, #fff, rgba(255, 255, 255, .85));
-            color: var(--purple);
-            font-weight: 900;
-            font-size: 12px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, .2)
-        }
-
-        .hero h1 {
-            font-size: clamp(30px, 5vw, 52px);
-            line-height: 1.05;
-            letter-spacing: -1.5px;
-            margin-bottom: 16px;
-            font-weight: 900;
-            background: linear-gradient(135deg, #fff 0%, rgba(255, 255, 255, .85) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .hero p {
-            color: rgba(255, 255, 255, .8);
-            max-width: 720px;
-            font-size: 16px;
-            margin-bottom: 28px;
-            line-height: 1.7;
-        }
-
-        .chips {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px
-        }
-
-        .chip {
-            padding: 7px 16px;
-            border-radius: 999px;
-            background: rgba(255, 255, 255, .1);
-            border: 1px solid rgba(255, 255, 255, .2);
-            font-size: 12px;
-            font-weight: 700;
-            letter-spacing: .3px;
-            backdrop-filter: blur(8px);
-            transition: .2s;
-        }
-
-        .chip:hover {
-            background: rgba(255, 255, 255, .18)
-        }
-
-        /* ── CONTACT BAR ── */
-        .contact {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 4px;
-            background: #fff;
-            border: 1px solid var(--line);
-            border-radius: 20px;
-            padding: 10px 16px;
-            box-shadow: var(--shadow-sm);
-            margin-bottom: 32px;
-        }
-
-        .contact a {
-            text-decoration: none;
-            color: var(--muted);
-            font-size: 13px;
-            font-weight: 600;
-            padding: 7px 14px;
-            border-radius: 12px;
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            transition: .2s;
-        }
-
-        .contact a:hover {
-            color: var(--violet);
-            background: rgba(99, 102, 241, .07)
-        }
-
-        .contact-sep {
-            width: 1px;
-            height: 20px;
-            background: var(--line)
-        }
-
-        /* ── TABLE OF CONTENTS ── */
-        .toc {
-            background: #fff;
-            border: 1px solid var(--line);
-            border-radius: 22px;
-            padding: 26px;
-            box-shadow: var(--shadow-sm);
-            margin-bottom: 44px;
-            background: linear-gradient(135deg, #fff 0%, #f8f7ff 100%);
-        }
-
-        .toc-title {
-            font-weight: 800;
-            margin-bottom: 16px;
-            font-size: 14px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            color: var(--ink2);
-        }
-
-        .toc-title::before {
-            content: "";
-            width: 24px;
-            height: 3px;
-            background: var(--grad-purple);
-            border-radius: 2px;
-            display: inline-block
-        }
-
-        .toc-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 8px 12px;
-            list-style: none
-        }
-
-        .toc-grid a {
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            text-decoration: none;
-            color: var(--muted);
-            padding: 9px 12px;
-            border-radius: 12px;
-            font-size: 12.5px;
-            font-weight: 600;
-            border: 1px solid transparent;
-            transition: .2s;
-        }
-
-        .toc-grid a:hover {
-            background: #ede9fe;
-            color: var(--purple);
-            border-color: rgba(124, 58, 237, .15)
-        }
-
-        /* ── SECTION HEADINGS ── */
-        .section {
-            margin: 0 0 56px;
-            scroll-margin-top: 20px
-        }
-
-        .kicker {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            font-size: 11px;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            color: var(--purple);
-            font-weight: 900;
-            margin-bottom: 10px;
-            background: rgba(124, 58, 237, .08);
-            padding: 5px 12px;
-            border-radius: 999px;
-            border: 1px solid rgba(124, 58, 237, .15);
-        }
-
-        .title {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            font-size: 28px;
-            line-height: 1.2;
-            margin-bottom: 14px;
-            letter-spacing: -.7px;
-            font-weight: 800
-        }
-
-        .title .icon {
-            width: 44px;
-            height: 44px;
-            border-radius: 14px;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 20px;
-            flex: none;
-            box-shadow: 0 4px 14px rgba(99, 102, 241, .2);
-        }
-
-        .lead {
-            color: var(--muted);
-            font-size: 15px;
-            max-width: 800px;
-            margin-bottom: 22px;
-            line-height: 1.75
-        }
-
-        /* ── STATS ── */
-        .stats {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 14px;
-            margin-top: 22px
-        }
-
-        .stat {
-            background: #fff;
-            border: 1px solid var(--line);
-            border-radius: 20px;
-            padding: 22px 18px;
-            text-align: center;
-            box-shadow: var(--shadow-sm);
-            position: relative;
-            overflow: hidden;
-            transition: .25s;
-        }
-
-        .stat:hover {
-            transform: translateY(-4px);
-            box-shadow: var(--shadow-md)
-        }
-
-        .stat::before {
-            content: "";
-            position: absolute;
-            inset: 0;
-            opacity: .04;
-            background: var(--grad-purple);
-        }
-
-        .stat strong {
-            display: block;
-            font-size: 30px;
-            font-weight: 900;
-            margin-bottom: 4px;
-            color: var(--purple)
-        }
-
-        .stat span {
-            font-size: 12px;
-            color: var(--muted);
-            font-weight: 700;
-            letter-spacing: .3px;
-            text-transform: uppercase
-        }
-
-        /* ── FEATURE CARDS ── */
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 18px
-        }
-
-        .card {
-            background: #fff;
-            border: 1px solid var(--line);
-            border-radius: 22px;
-            padding: 24px;
-            box-shadow: var(--shadow-sm);
-            transition: .25s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .card::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 3px;
-            background: var(--grad-purple);
-            opacity: 0;
-            transition: .25s;
-        }
-
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow-md)
-        }
-
-        .card:hover::before {
-            opacity: 1
-        }
-
-        .card-icon {
-            width: 52px;
-            height: 52px;
-            border-radius: 16px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 24px;
-            margin-bottom: 16px;
-            box-shadow: 0 4px 14px rgba(0, 0, 0, .08);
-        }
-
-        .card h3 {
-            font-size: 16px;
-            margin-bottom: 9px;
-            font-weight: 700;
-            color: var(--ink2)
-        }
-
-        .card p,
-        .card li {
-            font-size: 13.5px;
-            color: var(--muted);
-            line-height: 1.65
-        }
-
-        .card ul {
-            padding-left: 0;
-            list-style: none
-        }
-
-        .card li {
-            margin: 5px 0;
-            padding-left: 18px;
-            position: relative
-        }
-
-        .card li::before {
-            content: "→";
-            position: absolute;
-            left: 0;
-            color: var(--purple);
-            font-size: 11px;
-            font-weight: 700;
-            top: 1px
-        }
-
-        /* ── SCREENSHOTS ── */
-        .shot {
-            background: #fff;
-            border: 1px solid var(--line);
-            border-radius: 22px;
-            padding: 10px;
-            box-shadow: var(--shadow-md);
-            margin: 20px 0;
-            overflow: hidden;
-            transition: .25s;
-        }
-
-        .shot:hover {
-            box-shadow: var(--shadow);
-            transform: scale(1.01)
-        }
-
-        .shot img {
-            width: 100%;
-            display: block;
-            border-radius: 15px;
-            height: auto
-        }
-
-        .caption {
-            font-size: 12px;
-            color: var(--muted);
-            padding: 11px 8px 4px;
-            font-weight: 700;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            letter-spacing: .2px;
-        }
-
-        .caption::before {
-            content: "📷";
-            font-size: 11px
-        }
-
-        .two {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px
-        }
-
-        /* ── TABLE ── */
-        .table-wrap {
-            overflow: auto;
-            border: 1px solid var(--line);
-            border-radius: 22px;
-            box-shadow: var(--shadow-sm);
-            background: #fff
-        }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            min-width: 560px
-        }
-
-        thead {
-            position: sticky;
-            top: 0;
-            z-index: 1
-        }
-
-        th {
-            background: var(--grad-hero);
-            color: #fff;
-            text-align: left;
-            padding: 14px 18px;
-            font-size: 12px;
-            font-weight: 800;
-            letter-spacing: .5px;
-            text-transform: uppercase;
-        }
-
-        th:first-child {
-            border-radius: 22px 0 0 0
-        }
-
-        th:last-child {
-            border-radius: 0 22px 0 0
-        }
-
-        td {
-            padding: 13px 18px;
-            border-bottom: 1px solid var(--line);
-            font-size: 13.5px;
-            color: var(--muted);
-            vertical-align: top
-        }
-
-        tr:last-child td {
-            border-bottom: 0
-        }
-
-        tr:nth-child(even) td {
-            background: #f8f7ff
-        }
-
-        tr:hover td {
-            background: #f0eeff
-        }
-
-        td code {
-            background: #f1f5f9;
-            border: 1px solid var(--line);
-            border-radius: 6px;
-            padding: 2px 8px;
-            font-size: 12px;
-            color: var(--ink2);
-            font-family: monospace;
-        }
-
-        .badge {
-            display: inline-block;
-            padding: 3px 10px;
-            border-radius: 999px;
-            font-size: 10.5px;
-            font-weight: 800;
-            margin-left: 6px;
-            letter-spacing: .3px;
-        }
-
-        .green {
-            background: #d1fae5;
-            color: #065f46
-        }
-
-        .purple {
-            background: #ede9fe;
-            color: #5b21b6
-        }
-
-        .orange {
-            background: #fef3c7;
-            color: #92400e
-        }
-
-        .blue {
-            background: #dbeafe;
-            color: #1e40af
-        }
-
-        /* ── INSTALL STEPS ── */
-        .steps {
-            display: grid;
-            gap: 14px
-        }
-
-        .step {
-            display: flex;
-            gap: 16px;
-            align-items: flex-start
-        }
-
-        .num {
-            flex: none;
-            width: 38px;
-            height: 38px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #fff;
-            font-weight: 900;
-            font-size: 15px;
-            background: var(--grad-purple);
-            box-shadow: 0 6px 18px rgba(99, 102, 241, .35);
-        }
-
-        .step-body {
-            background: #fff;
-            border: 1px solid var(--line);
-            border-radius: 18px;
-            padding: 15px 20px;
-            flex: 1;
-            box-shadow: var(--shadow-sm);
-            border-left: 3px solid transparent;
-            transition: .2s;
-        }
-
-        .step-body:hover {
-            border-left-color: var(--purple);
-            transform: translateX(3px)
-        }
-
-        .step-body strong {
-            font-size: 14px;
-            font-weight: 700;
-            color: var(--ink2)
-        }
-
-        .step-body span {
-            display: block;
-            color: var(--muted);
-            font-size: 13.5px;
-            margin-top: 4px;
-            line-height: 1.6
-        }
-
-        /* ── CALLOUTS ── */
-        .callout {
-            border-radius: 18px;
-            padding: 18px 20px;
-            margin-top: 18px;
-            border-left: 4px solid var(--violet);
-            background: linear-gradient(135deg, #ede9fe, #e0e7ff);
-            color: #4c1d95;
-            font-size: 13.5px;
-            line-height: 1.6;
-            display: flex;
-            align-items: flex-start;
-            gap: 10px;
-        }
-
-        .callout::before {
-            content: "💡";
-            font-size: 16px;
-            flex: none;
-            margin-top: 1px
-        }
-
-        .callout.warning {
-            border-left-color: var(--orange);
-            background: linear-gradient(135deg, #fef3c7, #fde68a30);
-            color: #78350f;
-        }
-
-        .callout.warning::before {
-            content: "⚠️"
-        }
-
-        /* ── SETUP MODULES ── */
-        .modules {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 14px
-        }
-
-        .module {
-            background: #fff;
-            border: 1px solid var(--line);
-            border-radius: 18px;
-            padding: 20px 16px;
-            text-align: center;
-            box-shadow: var(--shadow-sm);
-            transition: .25s;
-            position: relative;
-            overflow: hidden;
-            cursor: default;
-        }
-
-        .module:hover {
-            transform: translateY(-4px);
-            box-shadow: var(--shadow-md)
-        }
-
-        .module::before {
-            content: "";
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            height: 3px;
-            background: var(--grad-purple);
-        }
-
-        .module b {
-            display: block;
-            font-size: 13px;
-            margin-bottom: 6px;
-            color: var(--ink2);
-            font-weight: 800;
-        }
-
-        .module span {
-            font-size: 12px;
-            color: var(--muted);
-            line-height: 1.5
-        }
-
-        .module-num {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 30px;
-            height: 30px;
-            border-radius: 50%;
-            background: var(--grad-purple);
-            color: #fff;
-            font-size: 12px;
-            font-weight: 900;
-            margin: 0 auto 10px;
-        }
-
-        /* ── SUPPORT SECTION ── */
-        .support {
-            border-radius: 28px;
-            padding: 56px 40px;
-            text-align: center;
-            color: #fff;
-            background: var(--grad-hero);
-            box-shadow: var(--shadow);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .support::before {
-            content: "";
-            position: absolute;
-            inset: 0;
-            background: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Ccircle cx='20' cy='20' r='3'/%3E%3C/g%3E%3C/svg%3E");
-        }
-
-        .support-deco {
-            position: absolute;
-            border-radius: 50%;
-            filter: blur(70px);
-            opacity: .3;
-            pointer-events: none
-        }
-
-        .support-deco-1 {
-            width: 350px;
-            height: 350px;
-            right: -100px;
-            top: -150px;
-            background: rgba(99, 102, 241, .7)
-        }
-
-        .support-deco-2 {
-            width: 250px;
-            height: 250px;
-            left: -80px;
-            bottom: -120px;
-            background: rgba(6, 182, 212, .6)
-        }
-
-        .support-inner {
-            position: relative;
-            z-index: 1
-        }
-
-        .support h2 {
-            font-size: 34px;
-            margin-bottom: 12px;
-            font-weight: 900;
-            letter-spacing: -.5px
-        }
-
-        .support p {
-            color: rgba(255, 255, 255, .8);
-            max-width: 600px;
-            margin: 0 auto 30px;
-            font-size: 15px;
-            line-height: 1.7
-        }
-
-        .support-links {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 12px
-        }
-
-        .support-links a {
-            text-decoration: none;
-            padding: 12px 22px;
-            border-radius: 14px;
-            background: rgba(255, 255, 255, .12);
-            border: 1px solid rgba(255, 255, 255, .22);
-            font-size: 13.5px;
-            font-weight: 700;
-            backdrop-filter: blur(8px);
-            transition: .2s;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .support-links a:hover {
-            background: rgba(255, 255, 255, .22);
-            transform: translateY(-2px)
-        }
-
-        /* ── FOOTER ── */
-        .footer {
-            text-align: center;
-            padding-top: 32px;
-            color: #94a3b8;
-            font-size: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 6px;
-            flex-wrap: wrap;
-        }
-
-        .footer span {
-            padding: 3px 10px;
-            background: rgba(99, 102, 241, .08);
-            border-radius: 999px;
-            color: var(--muted);
-            font-weight: 600;
-            border: 1px solid rgba(99, 102, 241, .12);
-        }
-
-        /* ── DIVIDER ── */
-        .divider {
-            height: 1px;
-            background: linear-gradient(90deg, transparent, var(--line), transparent);
-            margin: 0 0 44px;
-        }
-
-        /* ── RESPONSIVE ── */
-        @media(max-width:900px) {
-
-            .grid,
-            .modules {
-                grid-template-columns: 1fr 1fr
-            }
-
-            .stats {
-                grid-template-columns: 1fr 1fr
-            }
-
-            .toc-grid {
-                grid-template-columns: 1fr 1fr 1fr
-            }
-
-            .hero {
-                padding: 40px 32px
-            }
-        }
-
-        @media(max-width:620px) {
-            .wrap {
-                padding: 14px 14px 50px
-            }
-
-            .grid,
-            .two,
-            .modules,
-            .toc-grid {
-                grid-template-columns: 1fr
-            }
-
-            .stats {
-                grid-template-columns: 1fr 1fr
-            }
-
-            .hero {
-                padding: 32px 22px;
-                border-radius: 22px
-            }
-
-            .hero h1 {
-                font-size: 32px
-            }
-
-            .title {
-                font-size: 24px
-            }
-
-            .contact {
-                justify-content: flex-start
-            }
-
-            .toc-grid {
-                grid-template-columns: 1fr 1fr
-            }
-
-            .support {
-                padding: 40px 24px
-            }
-        }
-    </style>
 </head>
 
-<body>
-    <div class="wrap">
+<body
+    style="margin:0;padding:0;font-family:Arial,sans-serif;background:#f8faff;color:#0f172a;font-size:15px;line-height:1.7;">
 
-        <div class="hero-img">
-            <img src="banner.png" alt="SDS School Management System">
+    <div style="max-width:1000px;margin:0 auto;padding:30px 20px 60px;">
+
+        <!-- BANNER -->
+        <div
+            style="border-radius:16px;overflow:hidden;margin-bottom:24px;box-shadow:0 8px 32px rgba(15,23,42,.13);border:1px solid #e0e7ff;">
+            <img src="banner.png" alt="SDS School Management System" style="width:100%;display:block;height:auto;">
         </div>
 
-        <section class="hero">
-            <div class="hero-deco hero-deco-1"></div>
-            <div class="hero-deco hero-deco-2"></div>
-            <div class="hero-deco hero-deco-3"></div>
-            <div class="hero-content">
-                <div class="brand">
-                    <div class="brand-mark">
-                        <img src="images/logo.png" alt="SDS Logo"
-                            onerror="this.style.display='none';this.parentNode.innerHTML='SDS'"
-                            style="width:26px;height:26px;object-fit:contain;border-radius:6px;">
-                    </div>
-                    SmartDesk Solution
-                </div>
-                <h1>School Management<br>System</h1>
-                <p>A modern Odoo 19 solution for organizing students, parents, teachers, academics, attendance,
-                    examinations, fees and school facilities — all in one unified platform.</p>
-                <div class="chips">
-                    <span class="chip">🎓 Odoo 19</span>
-                    <span class="chip">📦 v19.0.1.0.0</span>
-                    <span class="chip">🏫 Education</span>
-                    <span class="chip">⚖️ LGPL-3</span>
-                </div>
+        <!-- HERO -->
+        <div
+            style="background:linear-gradient(135deg,#1e1b4b 0%,#312e81 40%,#4f46e5 75%,#6366f1 100%);border-radius:20px;padding:48px 44px;margin-bottom:20px;box-shadow:0 16px 48px rgba(15,23,42,.18);color:#fff;">
+
+            <!-- Brand -->
+            <div
+                style="display:inline-block;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);border-radius:999px;padding:7px 16px 7px 8px;margin-bottom:22px;">
+                <img src="images/logo.png" alt="SDS Logo"
+                    style="width:28px;height:28px;object-fit:contain;border-radius:8px;vertical-align:middle;margin-right:8px;"
+                    onerror="this.style.display='none'">
+                <strong style="font-size:13px;vertical-align:middle;letter-spacing:.3px;">SmartDesk Solution</strong>
             </div>
-        </section>
 
-        <div class="contact">
-            <a href="mailto:info@smartdesksolution.com">✉️ info@smartdesksolution.com</a>
-            <div class="contact-sep"></div>
-            <a href="tel:+966579602616">📞 +966 579 602 616</a>
-            <div class="contact-sep"></div>
-            <a href="https://www.smartdesksolution.com" target="_blank">🌐 www.smartdesksolution.com</a>
+            <h1
+                style="font-size:44px;font-weight:900;line-height:1.08;letter-spacing:-1.5px;margin:0 0 14px;color:#fff;">
+                School Management<br>System</h1>
+            <p style="color:rgba(255,255,255,.82);font-size:16px;margin:0 0 26px;max-width:700px;line-height:1.7;">A
+                modern Odoo 19 solution for organizing students, parents, teachers, academics, attendance, examinations,
+                fees and school facilities — all in one unified platform.</p>
+
+            <!-- Chips -->
+            <div>
+                <span
+                    style="display:inline-block;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.22);border-radius:999px;padding:6px 14px;font-size:12px;font-weight:700;margin:4px 4px 4px 0;">🎓
+                    Odoo 19</span>
+                <span
+                    style="display:inline-block;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.22);border-radius:999px;padding:6px 14px;font-size:12px;font-weight:700;margin:4px 4px 4px 0;">📦
+                    v19.0.1.0.0</span>
+                <span
+                    style="display:inline-block;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.22);border-radius:999px;padding:6px 14px;font-size:12px;font-weight:700;margin:4px 4px 4px 0;">🏫
+                    Education</span>
+                <span
+                    style="display:inline-block;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.22);border-radius:999px;padding:6px 14px;font-size:12px;font-weight:700;margin:4px 4px 4px 0;">⚖️
+                    LGPL-3</span>
+            </div>
         </div>
 
-        <nav class="toc">
-            <div class="toc-title">Documentation Index</div>
-            <ul class="toc-grid">
-                <li><a href="#overview">📖 Overview</a></li>
-                <li><a href="#features">🚀 Key Features</a></li>
-                <li><a href="#requirements">⚙️ Requirements</a></li>
-                <li><a href="#installation">📦 Installation</a></li>
-                <li><a href="#setup">🧭 Quick Setup</a></li>
-                <li><a href="#screenshots">🖼️ Screenshots</a></li>
-                <li><a href="#reports">📊 Reports</a></li>
-                <li><a href="#support">💬 Support</a></li>
-            </ul>
-        </nav>
+        <!-- CONTACT BAR -->
+        <div
+            style="background:#fff;border:1px solid #e2e8f0;border-radius:16px;padding:14px 20px;margin-bottom:30px;box-shadow:0 2px 12px rgba(15,23,42,.06);text-align:center;">
+            <a href="mailto:info@smartdesksolution.com"
+                style="color:#64748b;font-size:13px;font-weight:600;text-decoration:none;margin:0 12px;">✉️
+                info@smartdesksolution.com</a>
+            <span style="color:#e2e8f0;font-size:18px;vertical-align:middle;">|</span>
+            <a href="tel:+966579602616"
+                style="color:#64748b;font-size:13px;font-weight:600;text-decoration:none;margin:0 12px;">📞 +966 579 602
+                616</a>
+            <span style="color:#e2e8f0;font-size:18px;vertical-align:middle;">|</span>
+            <a href="https://www.smartdesksolution.com" target="_blank"
+                style="color:#64748b;font-size:13px;font-weight:600;text-decoration:none;margin:0 12px;">🌐
+                www.smartdesksolution.com</a>
+        </div>
 
-        <!-- OVERVIEW -->
-        <section class="section" id="overview">
-            <div class="kicker">01 · Overview</div>
-            <h2 class="title">
-                <span class="icon" style="background:linear-gradient(135deg,#ede9fe,#ddd6fe)">📖</span>
+        <!-- TABLE OF CONTENTS -->
+        <div
+            style="background:linear-gradient(135deg,#fff 0%,#f5f3ff 100%);border:1px solid #e2e8f0;border-radius:18px;padding:24px;margin-bottom:40px;box-shadow:0 2px 12px rgba(15,23,42,.06);">
+            <div
+                style="font-weight:800;font-size:14px;color:#1e293b;margin-bottom:16px;display:flex;align-items:center;gap:8px;">
+                <span
+                    style="display:inline-block;width:22px;height:3px;background:linear-gradient(90deg,#7c3aed,#6366f1);border-radius:2px;vertical-align:middle;margin-right:6px;"></span>
+                Documentation Index
+            </div>
+            <table style="width:100%;border-collapse:collapse;">
+                <tr>
+                    <td style="padding:5px 8px;"><a href="#overview"
+                            style="color:#64748b;font-size:13px;font-weight:600;text-decoration:none;">📖 Overview</a>
+                    </td>
+                    <td style="padding:5px 8px;"><a href="#features"
+                            style="color:#64748b;font-size:13px;font-weight:600;text-decoration:none;">🚀 Key
+                            Features</a></td>
+                    <td style="padding:5px 8px;"><a href="#requirements"
+                            style="color:#64748b;font-size:13px;font-weight:600;text-decoration:none;">⚙️
+                            Requirements</a></td>
+                    <td style="padding:5px 8px;"><a href="#installation"
+                            style="color:#64748b;font-size:13px;font-weight:600;text-decoration:none;">📦
+                            Installation</a></td>
+                </tr>
+                <tr>
+                    <td style="padding:5px 8px;"><a href="#setup"
+                            style="color:#64748b;font-size:13px;font-weight:600;text-decoration:none;">🧭 Quick
+                            Setup</a></td>
+                    <td style="padding:5px 8px;"><a href="#screenshots"
+                            style="color:#64748b;font-size:13px;font-weight:600;text-decoration:none;">🖼️
+                            Screenshots</a></td>
+                    <td style="padding:5px 8px;"><a href="#reports"
+                            style="color:#64748b;font-size:13px;font-weight:600;text-decoration:none;">📊 Reports</a>
+                    </td>
+                    <td style="padding:5px 8px;"><a href="#support"
+                            style="color:#64748b;font-size:13px;font-weight:600;text-decoration:none;">💬 Support</a>
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+        <!-- ═══════════════════════════════════════ -->
+        <!-- SECTION 01: OVERVIEW                   -->
+        <!-- ═══════════════════════════════════════ -->
+        <div id="overview" style="margin-bottom:50px;">
+            <div
+                style="display:inline-block;background:rgba(124,58,237,.08);border:1px solid rgba(124,58,237,.18);border-radius:999px;padding:4px 14px;font-size:11px;font-weight:900;color:#7c3aed;letter-spacing:2px;text-transform:uppercase;margin-bottom:10px;">
+                01 · Overview</div>
+            <h2 style="font-size:26px;font-weight:800;margin:0 0 12px;letter-spacing:-.5px;color:#1e293b;">
+                <span
+                    style="display:inline-block;background:linear-gradient(135deg,#ede9fe,#ddd6fe);border-radius:12px;width:40px;height:40px;text-align:center;line-height:40px;font-size:18px;margin-right:10px;vertical-align:middle;">📖</span>
                 Everything your school needs
             </h2>
-            <p class="lead">The School Management System brings school administration into a structured Odoo workflow,
-                replacing scattered records with searchable digital information and connected academic and operational
-                records.</p>
-            <div class="stats">
-                <div class="stat"><strong>15+</strong><span>Education Models</span></div>
-                <div class="stat"><strong>3</strong><span>PDF Reports</span></div>
-                <div class="stat"><strong>1</strong><span>Unified Platform</span></div>
-                <div class="stat"><strong>19.0</strong><span>Odoo Version</span></div>
-            </div>
-        </section>
+            <p style="color:#64748b;font-size:15px;margin:0 0 22px;line-height:1.75;">The School Management System
+                brings school administration into a structured Odoo workflow, replacing scattered records with
+                searchable digital information and connected academic and operational records.</p>
 
-        <div class="divider"></div>
+            <!-- Stats -->
+            <table style="width:100%;border-collapse:separate;border-spacing:12px;">
+                <tr>
+                    <td
+                        style="background:#fff;border:1px solid #e2e8f0;border-radius:18px;padding:22px 16px;text-align:center;box-shadow:0 2px 12px rgba(15,23,42,.06);">
+                        <strong
+                            style="display:block;font-size:32px;font-weight:900;color:#7c3aed;margin-bottom:4px;">15+</strong>
+                        <span
+                            style="font-size:11px;color:#64748b;font-weight:700;text-transform:uppercase;letter-spacing:.3px;">Education
+                            Models</span>
+                    </td>
+                    <td
+                        style="background:#fff;border:1px solid #e2e8f0;border-radius:18px;padding:22px 16px;text-align:center;box-shadow:0 2px 12px rgba(15,23,42,.06);">
+                        <strong
+                            style="display:block;font-size:32px;font-weight:900;color:#7c3aed;margin-bottom:4px;">3</strong>
+                        <span
+                            style="font-size:11px;color:#64748b;font-weight:700;text-transform:uppercase;letter-spacing:.3px;">PDF
+                            Reports</span>
+                    </td>
+                    <td
+                        style="background:#fff;border:1px solid #e2e8f0;border-radius:18px;padding:22px 16px;text-align:center;box-shadow:0 2px 12px rgba(15,23,42,.06);">
+                        <strong
+                            style="display:block;font-size:32px;font-weight:900;color:#7c3aed;margin-bottom:4px;">1</strong>
+                        <span
+                            style="font-size:11px;color:#64748b;font-weight:700;text-transform:uppercase;letter-spacing:.3px;">Unified
+                            Platform</span>
+                    </td>
+                    <td
+                        style="background:#fff;border:1px solid #e2e8f0;border-radius:18px;padding:22px 16px;text-align:center;box-shadow:0 2px 12px rgba(15,23,42,.06);">
+                        <strong
+                            style="display:block;font-size:32px;font-weight:900;color:#7c3aed;margin-bottom:4px;">19.0</strong>
+                        <span
+                            style="font-size:11px;color:#64748b;font-weight:700;text-transform:uppercase;letter-spacing:.3px;">Odoo
+                            Version</span>
+                    </td>
+                </tr>
+            </table>
+        </div>
 
-        <!-- FEATURES -->
-        <section class="section" id="features">
-            <div class="kicker">02 · Key Features</div>
-            <h2 class="title">
-                <span class="icon" style="background:linear-gradient(135deg,#fde68a,#fef3c7)">🚀</span>
+        <hr style="border:none;border-top:1px solid #e2e8f0;margin:0 0 40px;">
+
+        <!-- ═══════════════════════════════════════ -->
+        <!-- SECTION 02: FEATURES                   -->
+        <!-- ═══════════════════════════════════════ -->
+        <div id="features" style="margin-bottom:50px;">
+            <div
+                style="display:inline-block;background:rgba(124,58,237,.08);border:1px solid rgba(124,58,237,.18);border-radius:999px;padding:4px 14px;font-size:11px;font-weight:900;color:#7c3aed;letter-spacing:2px;text-transform:uppercase;margin-bottom:10px;">
+                02 · Key Features</div>
+            <h2 style="font-size:26px;font-weight:800;margin:0 0 8px;letter-spacing:-.5px;color:#1e293b;">
+                <span
+                    style="display:inline-block;background:linear-gradient(135deg,#fde68a,#fef3c7);border-radius:12px;width:40px;height:40px;text-align:center;line-height:40px;font-size:18px;margin-right:10px;vertical-align:middle;">🚀</span>
                 Core school management
             </h2>
-            <p class="lead">A focused set of tools for the daily work of administrators, teachers and school staff.</p>
-            <div class="grid">
-                <div class="card">
-                    <div class="card-icon" style="background:linear-gradient(135deg,#ede9fe,#ddd6fe)">🎓</div>
-                    <h3>Students & Parents</h3>
-                    <ul>
-                        <li>Student profiles and photos</li>
-                        <li>Registration IDs and lifecycle status</li>
-                        <li>Parent/guardian relationships</li>
-                        <li>Quick attendance, fee and result metrics</li>
-                    </ul>
-                </div>
-                <div class="card">
-                    <div class="card-icon" style="background:linear-gradient(135deg,#e0f2fe,#bae6fd)">👩‍🏫</div>
-                    <h3>Teachers & Faculty</h3>
-                    <ul>
-                        <li>Professional and contact information</li>
-                        <li>Subject assignments</li>
-                        <li>Class teacher responsibilities</li>
-                    </ul>
-                </div>
-                <div class="card">
-                    <div class="card-icon" style="background:linear-gradient(135deg,#d1fae5,#a7f3d0)">📚</div>
-                    <h3>Academic Management</h3>
-                    <ul>
-                        <li>Academic years and terms</li>
-                        <li>Grades, classes and sections</li>
-                        <li>Subjects and grade scales</li>
-                        <li>Timetable planning</li>
-                    </ul>
-                </div>
-                <div class="card">
-                    <div class="card-icon" style="background:linear-gradient(135deg,#fef3c7,#fde68a)">✅</div>
-                    <h3>Attendance</h3>
-                    <ul>
-                        <li>Class-wise daily attendance</li>
-                        <li>Present, Absent, Late and Excused</li>
-                        <li>Submit and lock attendance records</li>
-                    </ul>
-                </div>
-                <div class="card">
-                    <div class="card-icon" style="background:linear-gradient(135deg,#fce7f3,#fbcfe8)">📝</div>
-                    <h3>Exams & Results</h3>
-                    <ul>
-                        <li>Exam setup and mark entry</li>
-                        <li>Automatic percentage and grading</li>
-                        <li>Pass/fail calculation</li>
-                        <li>Report card printing</li>
-                    </ul>
-                </div>
-                <div class="card">
-                    <div class="card-icon" style="background:linear-gradient(135deg,#ffedd5,#fed7aa)">💳</div>
-                    <h3>Fee Management</h3>
-                    <ul>
-                        <li>Fee heads and structures</li>
-                        <li>Student fee invoices</li>
-                        <li>Paid and outstanding amounts</li>
-                        <li>Payment status tracking</li>
-                    </ul>
-                </div>
-            </div>
-        </section>
+            <p style="color:#64748b;font-size:15px;margin:0 0 22px;">A focused set of tools for the daily work of
+                administrators, teachers and school staff.</p>
 
-        <div class="divider"></div>
+            <!-- Row 1 -->
+            <table style="width:100%;border-collapse:separate;border-spacing:14px;margin-bottom:0;">
+                <tr>
+                    <td
+                        style="width:33%;background:#fff;border:1px solid #e2e8f0;border-radius:20px;padding:22px;vertical-align:top;box-shadow:0 2px 12px rgba(15,23,42,.06);border-top:3px solid #7c3aed;">
+                        <div
+                            style="background:linear-gradient(135deg,#ede9fe,#ddd6fe);border-radius:14px;width:48px;height:48px;text-align:center;line-height:48px;font-size:22px;margin-bottom:14px;">
+                            🎓</div>
+                        <strong style="font-size:15px;color:#1e293b;display:block;margin-bottom:10px;">Students &amp;
+                            Parents</strong>
+                        <ul style="margin:0;padding-left:18px;color:#64748b;font-size:13.5px;">
+                            <li style="margin-bottom:5px;">Student profiles and photos</li>
+                            <li style="margin-bottom:5px;">Registration IDs and lifecycle status</li>
+                            <li style="margin-bottom:5px;">Parent/guardian relationships</li>
+                            <li style="margin-bottom:5px;">Quick attendance, fee and result metrics</li>
+                        </ul>
+                    </td>
+                    <td
+                        style="width:33%;background:#fff;border:1px solid #e2e8f0;border-radius:20px;padding:22px;vertical-align:top;box-shadow:0 2px 12px rgba(15,23,42,.06);border-top:3px solid #3b82f6;">
+                        <div
+                            style="background:linear-gradient(135deg,#e0f2fe,#bae6fd);border-radius:14px;width:48px;height:48px;text-align:center;line-height:48px;font-size:22px;margin-bottom:14px;">
+                            👩‍🏫</div>
+                        <strong style="font-size:15px;color:#1e293b;display:block;margin-bottom:10px;">Teachers &amp;
+                            Faculty</strong>
+                        <ul style="margin:0;padding-left:18px;color:#64748b;font-size:13.5px;">
+                            <li style="margin-bottom:5px;">Professional and contact information</li>
+                            <li style="margin-bottom:5px;">Subject assignments</li>
+                            <li style="margin-bottom:5px;">Class teacher responsibilities</li>
+                        </ul>
+                    </td>
+                    <td
+                        style="width:33%;background:#fff;border:1px solid #e2e8f0;border-radius:20px;padding:22px;vertical-align:top;box-shadow:0 2px 12px rgba(15,23,42,.06);border-top:3px solid #10b981;">
+                        <div
+                            style="background:linear-gradient(135deg,#d1fae5,#a7f3d0);border-radius:14px;width:48px;height:48px;text-align:center;line-height:48px;font-size:22px;margin-bottom:14px;">
+                            📚</div>
+                        <strong style="font-size:15px;color:#1e293b;display:block;margin-bottom:10px;">Academic
+                            Management</strong>
+                        <ul style="margin:0;padding-left:18px;color:#64748b;font-size:13.5px;">
+                            <li style="margin-bottom:5px;">Academic years and terms</li>
+                            <li style="margin-bottom:5px;">Grades, classes and sections</li>
+                            <li style="margin-bottom:5px;">Subjects and grade scales</li>
+                            <li style="margin-bottom:5px;">Timetable planning</li>
+                        </ul>
+                    </td>
+                </tr>
+                <tr>
+                    <td
+                        style="width:33%;background:#fff;border:1px solid #e2e8f0;border-radius:20px;padding:22px;vertical-align:top;box-shadow:0 2px 12px rgba(15,23,42,.06);border-top:3px solid #f59e0b;">
+                        <div
+                            style="background:linear-gradient(135deg,#fef3c7,#fde68a);border-radius:14px;width:48px;height:48px;text-align:center;line-height:48px;font-size:22px;margin-bottom:14px;">
+                            ✅</div>
+                        <strong
+                            style="font-size:15px;color:#1e293b;display:block;margin-bottom:10px;">Attendance</strong>
+                        <ul style="margin:0;padding-left:18px;color:#64748b;font-size:13.5px;">
+                            <li style="margin-bottom:5px;">Class-wise daily attendance</li>
+                            <li style="margin-bottom:5px;">Present, Absent, Late and Excused</li>
+                            <li style="margin-bottom:5px;">Submit and lock attendance records</li>
+                        </ul>
+                    </td>
+                    <td
+                        style="width:33%;background:#fff;border:1px solid #e2e8f0;border-radius:20px;padding:22px;vertical-align:top;box-shadow:0 2px 12px rgba(15,23,42,.06);border-top:3px solid #ec4899;">
+                        <div
+                            style="background:linear-gradient(135deg,#fce7f3,#fbcfe8);border-radius:14px;width:48px;height:48px;text-align:center;line-height:48px;font-size:22px;margin-bottom:14px;">
+                            📝</div>
+                        <strong style="font-size:15px;color:#1e293b;display:block;margin-bottom:10px;">Exams &amp;
+                            Results</strong>
+                        <ul style="margin:0;padding-left:18px;color:#64748b;font-size:13.5px;">
+                            <li style="margin-bottom:5px;">Exam setup and mark entry</li>
+                            <li style="margin-bottom:5px;">Automatic percentage and grading</li>
+                            <li style="margin-bottom:5px;">Pass/fail calculation</li>
+                            <li style="margin-bottom:5px;">Report card printing</li>
+                        </ul>
+                    </td>
+                    <td
+                        style="width:33%;background:#fff;border:1px solid #e2e8f0;border-radius:20px;padding:22px;vertical-align:top;box-shadow:0 2px 12px rgba(15,23,42,.06);border-top:3px solid #f97316;">
+                        <div
+                            style="background:linear-gradient(135deg,#ffedd5,#fed7aa);border-radius:14px;width:48px;height:48px;text-align:center;line-height:48px;font-size:22px;margin-bottom:14px;">
+                            💳</div>
+                        <strong style="font-size:15px;color:#1e293b;display:block;margin-bottom:10px;">Fee
+                            Management</strong>
+                        <ul style="margin:0;padding-left:18px;color:#64748b;font-size:13.5px;">
+                            <li style="margin-bottom:5px;">Fee heads and structures</li>
+                            <li style="margin-bottom:5px;">Student fee invoices</li>
+                            <li style="margin-bottom:5px;">Paid and outstanding amounts</li>
+                            <li style="margin-bottom:5px;">Payment status tracking</li>
+                        </ul>
+                    </td>
+                </tr>
+            </table>
+        </div>
 
-        <!-- REQUIREMENTS -->
-        <section class="section" id="requirements">
-            <div class="kicker">03 · Requirements</div>
-            <h2 class="title">
-                <span class="icon" style="background:linear-gradient(135deg,#e0f2fe,#bae6fd)">⚙️</span>
+        <hr style="border:none;border-top:1px solid #e2e8f0;margin:0 0 40px;">
+
+        <!-- ═══════════════════════════════════════ -->
+        <!-- SECTION 03: REQUIREMENTS               -->
+        <!-- ═══════════════════════════════════════ -->
+        <div id="requirements" style="margin-bottom:50px;">
+            <div
+                style="display:inline-block;background:rgba(124,58,237,.08);border:1px solid rgba(124,58,237,.18);border-radius:999px;padding:4px 14px;font-size:11px;font-weight:900;color:#7c3aed;letter-spacing:2px;text-transform:uppercase;margin-bottom:10px;">
+                03 · Requirements</div>
+            <h2 style="font-size:26px;font-weight:800;margin:0 0 18px;letter-spacing:-.5px;color:#1e293b;">
+                <span
+                    style="display:inline-block;background:linear-gradient(135deg,#e0f2fe,#bae6fd);border-radius:12px;width:40px;height:40px;text-align:center;line-height:40px;font-size:18px;margin-right:10px;vertical-align:middle;">⚙️</span>
                 System requirements
             </h2>
-            <div class="table-wrap">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Requirement</th>
-                            <th>Specification</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><strong>Odoo</strong></td>
-                            <td>19.0 — Community or Enterprise <span class="badge green">Required</span></td>
-                        </tr>
-                        <tr>
-                            <td><strong>Python</strong></td>
-                            <td>3.10 or higher</td>
-                        </tr>
-                        <tr>
-                            <td><strong>PostgreSQL</strong></td>
-                            <td>14 or higher</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Operating System</strong></td>
-                            <td>Ubuntu 20.04+ / Debian 11+ for production; Windows for development</td>
-                        </tr>
-                        <tr>
-                            <td><strong>RAM</strong></td>
-                            <td>Minimum 4 GB; 8 GB recommended for production with 100+ concurrent users</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Dependency</strong></td>
-                            <td><code>base</code> only</td>
-                        </tr>
-                        <tr>
-                            <td><strong>License</strong></td>
-                            <td>LGPL-3 <span class="badge purple">Open Source</span></td>
-                        </tr>
-                    </tbody>
-                </table>
+
+            <table
+                style="width:100%;border-collapse:collapse;border-radius:18px;overflow:hidden;box-shadow:0 2px 16px rgba(15,23,42,.08);border:1px solid #e2e8f0;">
+                <thead>
+                    <tr>
+                        <th
+                            style="background:linear-gradient(135deg,#1e1b4b,#4f46e5);color:#fff;text-align:left;padding:14px 18px;font-size:12px;font-weight:800;letter-spacing:.5px;text-transform:uppercase;width:30%;">
+                            Requirement</th>
+                        <th
+                            style="background:linear-gradient(135deg,#312e81,#6366f1);color:#fff;text-align:left;padding:14px 18px;font-size:12px;font-weight:800;letter-spacing:.5px;text-transform:uppercase;">
+                            Specification</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td
+                            style="padding:13px 18px;border-bottom:1px solid #e2e8f0;font-size:13.5px;font-weight:700;color:#1e293b;background:#fff;">
+                            Odoo</td>
+                        <td
+                            style="padding:13px 18px;border-bottom:1px solid #e2e8f0;font-size:13.5px;color:#64748b;background:#fff;">
+                            19.0 — Community or Enterprise &nbsp;<span
+                                style="background:#d1fae5;color:#065f46;border-radius:999px;padding:2px 10px;font-size:10.5px;font-weight:800;">Required</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td
+                            style="padding:13px 18px;border-bottom:1px solid #e2e8f0;font-size:13.5px;font-weight:700;color:#1e293b;background:#f8f7ff;">
+                            Python</td>
+                        <td
+                            style="padding:13px 18px;border-bottom:1px solid #e2e8f0;font-size:13.5px;color:#64748b;background:#f8f7ff;">
+                            3.10 or higher</td>
+                    </tr>
+                    <tr>
+                        <td
+                            style="padding:13px 18px;border-bottom:1px solid #e2e8f0;font-size:13.5px;font-weight:700;color:#1e293b;background:#fff;">
+                            PostgreSQL</td>
+                        <td
+                            style="padding:13px 18px;border-bottom:1px solid #e2e8f0;font-size:13.5px;color:#64748b;background:#fff;">
+                            14 or higher</td>
+                    </tr>
+                    <tr>
+                        <td
+                            style="padding:13px 18px;border-bottom:1px solid #e2e8f0;font-size:13.5px;font-weight:700;color:#1e293b;background:#f8f7ff;">
+                            Operating System</td>
+                        <td
+                            style="padding:13px 18px;border-bottom:1px solid #e2e8f0;font-size:13.5px;color:#64748b;background:#f8f7ff;">
+                            Ubuntu 20.04+ / Debian 11+ for production; Windows for development</td>
+                    </tr>
+                    <tr>
+                        <td
+                            style="padding:13px 18px;border-bottom:1px solid #e2e8f0;font-size:13.5px;font-weight:700;color:#1e293b;background:#fff;">
+                            RAM</td>
+                        <td
+                            style="padding:13px 18px;border-bottom:1px solid #e2e8f0;font-size:13.5px;color:#64748b;background:#fff;">
+                            Minimum 4 GB; 8 GB recommended for production with 100+ concurrent users</td>
+                    </tr>
+                    <tr>
+                        <td
+                            style="padding:13px 18px;border-bottom:1px solid #e2e8f0;font-size:13.5px;font-weight:700;color:#1e293b;background:#f8f7ff;">
+                            Dependency</td>
+                        <td
+                            style="padding:13px 18px;border-bottom:1px solid #e2e8f0;font-size:13.5px;color:#64748b;background:#f8f7ff;">
+                            <code
+                                style="background:#f1f5f9;border:1px solid #e2e8f0;border-radius:6px;padding:2px 8px;font-size:12px;color:#1e293b;">base</code>
+                            only</td>
+                    </tr>
+                    <tr>
+                        <td style="padding:13px 18px;font-size:13.5px;font-weight:700;color:#1e293b;background:#fff;">
+                            License</td>
+                        <td style="padding:13px 18px;font-size:13.5px;color:#64748b;background:#fff;">LGPL-3 &nbsp;<span
+                                style="background:#ede9fe;color:#5b21b6;border-radius:999px;padding:2px 10px;font-size:10.5px;font-weight:800;">Open
+                                Source</span></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <!-- Warning callout -->
+            <div
+                style="background:linear-gradient(135deg,#fef3c7,#fde68a22);border-left:4px solid #f59e0b;border-radius:14px;padding:16px 18px;margin-top:18px;color:#78350f;font-size:13.5px;line-height:1.6;">
+                ⚠️ &nbsp;<strong>Version compatibility:</strong> This release is built for Odoo 19.0. Avoid installing
+                it on older Odoo versions.
             </div>
-            <div class="callout warning"><strong>Version compatibility:</strong> This release is built for Odoo 19.0.
-                Avoid installing it on older Odoo versions.</div>
-        </section>
+        </div>
 
-        <div class="divider"></div>
+        <hr style="border:none;border-top:1px solid #e2e8f0;margin:0 0 40px;">
 
-        <!-- INSTALLATION -->
-        <section class="section" id="installation">
-            <div class="kicker">04 · Installation</div>
-            <h2 class="title">
-                <span class="icon" style="background:linear-gradient(135deg,#d1fae5,#a7f3d0)">📦</span>
+        <!-- ═══════════════════════════════════════ -->
+        <!-- SECTION 04: INSTALLATION               -->
+        <!-- ═══════════════════════════════════════ -->
+        <div id="installation" style="margin-bottom:50px;">
+            <div
+                style="display:inline-block;background:rgba(124,58,237,.08);border:1px solid rgba(124,58,237,.18);border-radius:999px;padding:4px 14px;font-size:11px;font-weight:900;color:#7c3aed;letter-spacing:2px;text-transform:uppercase;margin-bottom:10px;">
+                04 · Installation</div>
+            <h2 style="font-size:26px;font-weight:800;margin:0 0 20px;letter-spacing:-.5px;color:#1e293b;">
+                <span
+                    style="display:inline-block;background:linear-gradient(135deg,#d1fae5,#a7f3d0);border-radius:12px;width:40px;height:40px;text-align:center;line-height:40px;font-size:18px;margin-right:10px;vertical-align:middle;">📦</span>
                 Install in a few steps
             </h2>
-            <div class="steps">
-                <div class="step">
-                    <div class="num">1</div>
-                    <div class="step-body">
-                        <strong>Enable Developer Mode</strong>
-                        <span>Open Settings → General Settings → Developer Tools and activate developer mode.</span>
-                    </div>
-                </div>
-                <div class="step">
-                    <div class="num">2</div>
-                    <div class="step-body">
-                        <strong>Open Apps</strong>
-                        <span>Open the Apps menu and remove the default Apps category filter if necessary.</span>
-                    </div>
-                </div>
-                <div class="step">
-                    <div class="num">3</div>
-                    <div class="step-body">
-                        <strong>Search the module</strong>
-                        <span>Search for <strong>School Management System</strong> by SmartDesk Solution and click
-                            Install.</span>
-                    </div>
-                </div>
-                <div class="step">
-                    <div class="num">4</div>
-                    <div class="step-body">
-                        <strong>Verify</strong>
-                        <span>The School Management menu should appear after installation is complete.</span>
-                    </div>
+
+            <!-- Step 1 -->
+            <div style="display:flex;gap:14px;align-items:flex-start;margin-bottom:14px;">
+                <div
+                    style="flex:none;width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,#7c3aed,#6366f1);color:#fff;font-weight:900;font-size:15px;text-align:center;line-height:38px;box-shadow:0 4px 14px rgba(99,102,241,.35);">
+                    1</div>
+                <div
+                    style="background:#fff;border:1px solid #e2e8f0;border-left:3px solid #7c3aed;border-radius:16px;padding:14px 18px;flex:1;box-shadow:0 2px 10px rgba(15,23,42,.06);">
+                    <strong style="font-size:14px;color:#1e293b;">Enable Developer Mode</strong>
+                    <span style="display:block;color:#64748b;font-size:13.5px;margin-top:4px;">Open Settings → General
+                        Settings → Developer Tools and activate developer mode.</span>
                 </div>
             </div>
-            <div class="callout"><strong>Manual installation:</strong> For a ZIP installation, place the module in your
-                custom addons path, restart Odoo, update the Apps list and install it from Apps.</div>
-        </section>
 
-        <div class="divider"></div>
+            <!-- Step 2 -->
+            <div style="display:flex;gap:14px;align-items:flex-start;margin-bottom:14px;">
+                <div
+                    style="flex:none;width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,#7c3aed,#6366f1);color:#fff;font-weight:900;font-size:15px;text-align:center;line-height:38px;box-shadow:0 4px 14px rgba(99,102,241,.35);">
+                    2</div>
+                <div
+                    style="background:#fff;border:1px solid #e2e8f0;border-left:3px solid #6366f1;border-radius:16px;padding:14px 18px;flex:1;box-shadow:0 2px 10px rgba(15,23,42,.06);">
+                    <strong style="font-size:14px;color:#1e293b;">Open Apps</strong>
+                    <span style="display:block;color:#64748b;font-size:13.5px;margin-top:4px;">Open the Apps menu and
+                        remove the default Apps category filter if necessary.</span>
+                </div>
+            </div>
 
-        <!-- SETUP -->
-        <section class="section" id="setup">
-            <div class="kicker">05 · Quick Setup</div>
-            <h2 class="title">
-                <span class="icon" style="background:linear-gradient(135deg,#fce7f3,#fbcfe8)">🧭</span>
+            <!-- Step 3 -->
+            <div style="display:flex;gap:14px;align-items:flex-start;margin-bottom:14px;">
+                <div
+                    style="flex:none;width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,#7c3aed,#6366f1);color:#fff;font-weight:900;font-size:15px;text-align:center;line-height:38px;box-shadow:0 4px 14px rgba(99,102,241,.35);">
+                    3</div>
+                <div
+                    style="background:#fff;border:1px solid #e2e8f0;border-left:3px solid #3b82f6;border-radius:16px;padding:14px 18px;flex:1;box-shadow:0 2px 10px rgba(15,23,42,.06);">
+                    <strong style="font-size:14px;color:#1e293b;">Search the module</strong>
+                    <span style="display:block;color:#64748b;font-size:13.5px;margin-top:4px;">Search for <strong>School
+                            Management System</strong> by SmartDesk Solution and click Install.</span>
+                </div>
+            </div>
+
+            <!-- Step 4 -->
+            <div style="display:flex;gap:14px;align-items:flex-start;margin-bottom:18px;">
+                <div
+                    style="flex:none;width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,#7c3aed,#6366f1);color:#fff;font-weight:900;font-size:15px;text-align:center;line-height:38px;box-shadow:0 4px 14px rgba(99,102,241,.35);">
+                    4</div>
+                <div
+                    style="background:#fff;border:1px solid #e2e8f0;border-left:3px solid #10b981;border-radius:16px;padding:14px 18px;flex:1;box-shadow:0 2px 10px rgba(15,23,42,.06);">
+                    <strong style="font-size:14px;color:#1e293b;">Verify</strong>
+                    <span style="display:block;color:#64748b;font-size:13.5px;margin-top:4px;">The School Management
+                        menu should appear after installation is complete.</span>
+                </div>
+            </div>
+
+            <!-- Info callout -->
+            <div
+                style="background:linear-gradient(135deg,#ede9fe,#e0e7ff);border-left:4px solid #6366f1;border-radius:14px;padding:16px 18px;color:#4c1d95;font-size:13.5px;line-height:1.6;">
+                💡 &nbsp;<strong>Manual installation:</strong> For a ZIP installation, place the module in your custom
+                addons path, restart Odoo, update the Apps list and install it from Apps.
+            </div>
+        </div>
+
+        <hr style="border:none;border-top:1px solid #e2e8f0;margin:0 0 40px;">
+
+        <!-- ═══════════════════════════════════════ -->
+        <!-- SECTION 05: QUICK SETUP                -->
+        <!-- ═══════════════════════════════════════ -->
+        <div id="setup" style="margin-bottom:50px;">
+            <div
+                style="display:inline-block;background:rgba(124,58,237,.08);border:1px solid rgba(124,58,237,.18);border-radius:999px;padding:4px 14px;font-size:11px;font-weight:900;color:#7c3aed;letter-spacing:2px;text-transform:uppercase;margin-bottom:10px;">
+                05 · Quick Setup</div>
+            <h2 style="font-size:26px;font-weight:800;margin:0 0 8px;letter-spacing:-.5px;color:#1e293b;">
+                <span
+                    style="display:inline-block;background:linear-gradient(135deg,#fce7f3,#fbcfe8);border-radius:12px;width:40px;height:40px;text-align:center;line-height:40px;font-size:18px;margin-right:10px;vertical-align:middle;">🧭</span>
                 Recommended configuration order
             </h2>
-            <p class="lead">Set up the academic foundation first, then add people and operational records.</p>
-            <div class="modules">
-                <div class="module">
-                    <div class="module-num">1</div>
-                    <b>Academic Year</b>
-                    <span>Create the current year and terms.</span>
-                </div>
-                <div class="module">
-                    <div class="module-num">2</div>
-                    <b>Grades</b>
-                    <span>Define grade levels and curriculum.</span>
-                </div>
-                <div class="module">
-                    <div class="module-num">3</div>
-                    <b>Subjects</b>
-                    <span>Add subjects and grading rules.</span>
-                </div>
-                <div class="module">
-                    <div class="module-num">4</div>
-                    <b>Classes</b>
-                    <span>Create sections and assign teachers.</span>
-                </div>
-                <div class="module">
-                    <div class="module-num">5</div>
-                    <b>Teachers</b>
-                    <span>Add faculty and subject links.</span>
-                </div>
-                <div class="module">
-                    <div class="module-num">6</div>
-                    <b>Students</b>
-                    <span>Add parents, students and enrollment.</span>
-                </div>
-                <div class="module">
-                    <div class="module-num">7</div>
-                    <b>Fees</b>
-                    <span>Configure fee heads and structures.</span>
-                </div>
-                <div class="module">
-                    <div class="module-num">8</div>
-                    <b>Operations</b>
-                    <span>Start attendance, exams and daily workflows.</span>
-                </div>
-            </div>
-        </section>
+            <p style="color:#64748b;font-size:15px;margin:0 0 22px;">Set up the academic foundation first, then add
+                people and operational records.</p>
 
-        <div class="divider"></div>
+            <table style="width:100%;border-collapse:separate;border-spacing:12px;">
+                <tr>
+                    <td
+                        style="background:#fff;border:1px solid #e2e8f0;border-radius:16px;padding:18px 14px;text-align:center;vertical-align:top;box-shadow:0 2px 10px rgba(15,23,42,.06);border-bottom:3px solid #7c3aed;">
+                        <div
+                            style="background:linear-gradient(135deg,#7c3aed,#6366f1);color:#fff;border-radius:50%;width:28px;height:28px;line-height:28px;text-align:center;font-size:12px;font-weight:900;margin:0 auto 10px;">
+                            1</div>
+                        <strong style="display:block;font-size:13px;color:#1e293b;margin-bottom:5px;">Academic
+                            Year</strong>
+                        <span style="font-size:12px;color:#64748b;">Create the current year and terms.</span>
+                    </td>
+                    <td
+                        style="background:#fff;border:1px solid #e2e8f0;border-radius:16px;padding:18px 14px;text-align:center;vertical-align:top;box-shadow:0 2px 10px rgba(15,23,42,.06);border-bottom:3px solid #6366f1;">
+                        <div
+                            style="background:linear-gradient(135deg,#7c3aed,#6366f1);color:#fff;border-radius:50%;width:28px;height:28px;line-height:28px;text-align:center;font-size:12px;font-weight:900;margin:0 auto 10px;">
+                            2</div>
+                        <strong style="display:block;font-size:13px;color:#1e293b;margin-bottom:5px;">Grades</strong>
+                        <span style="font-size:12px;color:#64748b;">Define grade levels and curriculum.</span>
+                    </td>
+                    <td
+                        style="background:#fff;border:1px solid #e2e8f0;border-radius:16px;padding:18px 14px;text-align:center;vertical-align:top;box-shadow:0 2px 10px rgba(15,23,42,.06);border-bottom:3px solid #3b82f6;">
+                        <div
+                            style="background:linear-gradient(135deg,#7c3aed,#6366f1);color:#fff;border-radius:50%;width:28px;height:28px;line-height:28px;text-align:center;font-size:12px;font-weight:900;margin:0 auto 10px;">
+                            3</div>
+                        <strong style="display:block;font-size:13px;color:#1e293b;margin-bottom:5px;">Subjects</strong>
+                        <span style="font-size:12px;color:#64748b;">Add subjects and grading rules.</span>
+                    </td>
+                    <td
+                        style="background:#fff;border:1px solid #e2e8f0;border-radius:16px;padding:18px 14px;text-align:center;vertical-align:top;box-shadow:0 2px 10px rgba(15,23,42,.06);border-bottom:3px solid #10b981;">
+                        <div
+                            style="background:linear-gradient(135deg,#7c3aed,#6366f1);color:#fff;border-radius:50%;width:28px;height:28px;line-height:28px;text-align:center;font-size:12px;font-weight:900;margin:0 auto 10px;">
+                            4</div>
+                        <strong style="display:block;font-size:13px;color:#1e293b;margin-bottom:5px;">Classes</strong>
+                        <span style="font-size:12px;color:#64748b;">Create sections and assign teachers.</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td
+                        style="background:#fff;border:1px solid #e2e8f0;border-radius:16px;padding:18px 14px;text-align:center;vertical-align:top;box-shadow:0 2px 10px rgba(15,23,42,.06);border-bottom:3px solid #f59e0b;">
+                        <div
+                            style="background:linear-gradient(135deg,#7c3aed,#6366f1);color:#fff;border-radius:50%;width:28px;height:28px;line-height:28px;text-align:center;font-size:12px;font-weight:900;margin:0 auto 10px;">
+                            5</div>
+                        <strong style="display:block;font-size:13px;color:#1e293b;margin-bottom:5px;">Teachers</strong>
+                        <span style="font-size:12px;color:#64748b;">Add faculty and subject links.</span>
+                    </td>
+                    <td
+                        style="background:#fff;border:1px solid #e2e8f0;border-radius:16px;padding:18px 14px;text-align:center;vertical-align:top;box-shadow:0 2px 10px rgba(15,23,42,.06);border-bottom:3px solid #ec4899;">
+                        <div
+                            style="background:linear-gradient(135deg,#7c3aed,#6366f1);color:#fff;border-radius:50%;width:28px;height:28px;line-height:28px;text-align:center;font-size:12px;font-weight:900;margin:0 auto 10px;">
+                            6</div>
+                        <strong style="display:block;font-size:13px;color:#1e293b;margin-bottom:5px;">Students</strong>
+                        <span style="font-size:12px;color:#64748b;">Add parents, students and enrollment.</span>
+                    </td>
+                    <td
+                        style="background:#fff;border:1px solid #e2e8f0;border-radius:16px;padding:18px 14px;text-align:center;vertical-align:top;box-shadow:0 2px 10px rgba(15,23,42,.06);border-bottom:3px solid #f97316;">
+                        <div
+                            style="background:linear-gradient(135deg,#7c3aed,#6366f1);color:#fff;border-radius:50%;width:28px;height:28px;line-height:28px;text-align:center;font-size:12px;font-weight:900;margin:0 auto 10px;">
+                            7</div>
+                        <strong style="display:block;font-size:13px;color:#1e293b;margin-bottom:5px;">Fees</strong>
+                        <span style="font-size:12px;color:#64748b;">Configure fee heads and structures.</span>
+                    </td>
+                    <td
+                        style="background:#fff;border:1px solid #e2e8f0;border-radius:16px;padding:18px 14px;text-align:center;vertical-align:top;box-shadow:0 2px 10px rgba(15,23,42,.06);border-bottom:3px solid #14b8a6;">
+                        <div
+                            style="background:linear-gradient(135deg,#7c3aed,#6366f1);color:#fff;border-radius:50%;width:28px;height:28px;line-height:28px;text-align:center;font-size:12px;font-weight:900;margin:0 auto 10px;">
+                            8</div>
+                        <strong
+                            style="display:block;font-size:13px;color:#1e293b;margin-bottom:5px;">Operations</strong>
+                        <span style="font-size:12px;color:#64748b;">Start attendance, exams and daily workflows.</span>
+                    </td>
+                </tr>
+            </table>
+        </div>
 
-        <!-- SCREENSHOTS -->
-        <section class="section" id="screenshots">
-            <div class="kicker">06 · Screenshots</div>
-            <h2 class="title">
-                <span class="icon" style="background:linear-gradient(135deg,#fef3c7,#fde68a)">🖼️</span>
+        <hr style="border:none;border-top:1px solid #e2e8f0;margin:0 0 40px;">
+
+        <!-- ═══════════════════════════════════════ -->
+        <!-- SECTION 06: SCREENSHOTS                -->
+        <!-- ═══════════════════════════════════════ -->
+        <div id="screenshots" style="margin-bottom:50px;">
+            <div
+                style="display:inline-block;background:rgba(124,58,237,.08);border:1px solid rgba(124,58,237,.18);border-radius:999px;padding:4px 14px;font-size:11px;font-weight:900;color:#7c3aed;letter-spacing:2px;text-transform:uppercase;margin-bottom:10px;">
+                06 · Screenshots</div>
+            <h2 style="font-size:26px;font-weight:800;margin:0 0 20px;letter-spacing:-.5px;color:#1e293b;">
+                <span
+                    style="display:inline-block;background:linear-gradient(135deg,#fef3c7,#fde68a);border-radius:12px;width:40px;height:40px;text-align:center;line-height:40px;font-size:18px;margin-right:10px;vertical-align:middle;">🖼️</span>
                 See the system in action
             </h2>
-            <div class="two">
-                <div class="shot">
-                    <img src="images/student_form.png" alt="Student Management Form">
-                    <div class="caption">Student management form</div>
-                </div>
-                <div class="shot">
-                    <img src="images/teacher_form.png" alt="Teacher and Faculty Form">
-                    <div class="caption">Teacher & faculty information</div>
-                </div>
-                <div class="shot">
-                    <img src="images/subjects.png" alt="Subjects and Courses">
-                    <div class="caption">Subjects & courses</div>
-                </div>
-                <div class="shot">
-                    <img src="images/report_card.png" alt="Academic Report Card">
-                    <div class="caption">Academic report card</div>
-                </div>
-            </div>
-        </section>
 
-        <div class="divider"></div>
+            <table style="width:100%;border-collapse:separate;border-spacing:14px;">
+                <tr>
+                    <td
+                        style="width:50%;background:#fff;border:1px solid #e2e8f0;border-radius:18px;padding:10px;box-shadow:0 4px 18px rgba(15,23,42,.09);vertical-align:top;">
+                        <img src="images/student_form.png" alt="Student Management Form"
+                            style="width:100%;display:block;border-radius:12px;height:auto;">
+                        <div style="font-size:12px;color:#64748b;padding:10px 6px 4px;font-weight:700;">📷 &nbsp;Student
+                            management form</div>
+                    </td>
+                    <td
+                        style="width:50%;background:#fff;border:1px solid #e2e8f0;border-radius:18px;padding:10px;box-shadow:0 4px 18px rgba(15,23,42,.09);vertical-align:top;">
+                        <img src="images/teacher_form.png" alt="Teacher and Faculty Form"
+                            style="width:100%;display:block;border-radius:12px;height:auto;">
+                        <div style="font-size:12px;color:#64748b;padding:10px 6px 4px;font-weight:700;">📷 &nbsp;Teacher
+                            &amp; faculty information</div>
+                    </td>
+                </tr>
+                <tr>
+                    <td
+                        style="width:50%;background:#fff;border:1px solid #e2e8f0;border-radius:18px;padding:10px;box-shadow:0 4px 18px rgba(15,23,42,.09);vertical-align:top;">
+                        <img src="images/subjects.png" alt="Subjects and Courses"
+                            style="width:100%;display:block;border-radius:12px;height:auto;">
+                        <div style="font-size:12px;color:#64748b;padding:10px 6px 4px;font-weight:700;">📷
+                            &nbsp;Subjects &amp; courses</div>
+                    </td>
+                    <td
+                        style="width:50%;background:#fff;border:1px solid #e2e8f0;border-radius:18px;padding:10px;box-shadow:0 4px 18px rgba(15,23,42,.09);vertical-align:top;">
+                        <img src="images/report_card.png" alt="Academic Report Card"
+                            style="width:100%;display:block;border-radius:12px;height:auto;">
+                        <div style="font-size:12px;color:#64748b;padding:10px 6px 4px;font-weight:700;">📷
+                            &nbsp;Academic report card</div>
+                    </td>
+                </tr>
+            </table>
+        </div>
 
-        <!-- REPORTS -->
-        <section class="section" id="reports">
-            <div class="kicker">07 · Reports & Analytics</div>
-            <h2 class="title">
-                <span class="icon" style="background:linear-gradient(135deg,#ccfbf1,#99f6e4)">📊</span>
+        <hr style="border:none;border-top:1px solid #e2e8f0;margin:0 0 40px;">
+
+        <!-- ═══════════════════════════════════════ -->
+        <!-- SECTION 07: REPORTS & ANALYTICS        -->
+        <!-- ═══════════════════════════════════════ -->
+        <div id="reports" style="margin-bottom:50px;">
+            <div
+                style="display:inline-block;background:rgba(124,58,237,.08);border:1px solid rgba(124,58,237,.18);border-radius:999px;padding:4px 14px;font-size:11px;font-weight:900;color:#7c3aed;letter-spacing:2px;text-transform:uppercase;margin-bottom:10px;">
+                07 · Reports &amp; Analytics</div>
+            <h2 style="font-size:26px;font-weight:800;margin:0 0 8px;letter-spacing:-.5px;color:#1e293b;">
+                <span
+                    style="display:inline-block;background:linear-gradient(135deg,#ccfbf1,#99f6e4);border-radius:12px;width:40px;height:40px;text-align:center;line-height:40px;font-size:18px;margin-right:10px;vertical-align:middle;">📊</span>
                 Clear information for better decisions
             </h2>
-            <p class="lead">The module includes PDF reporting and visual information for student and fee-related
-                analysis.</p>
-            <div class="grid">
-                <div class="card">
-                    <div class="card-icon" style="background:linear-gradient(135deg,#ede9fe,#ddd6fe)">🎓</div>
-                    <h3>Academic Reports</h3>
-                    <p>Generate academic report cards with student results and grading information.</p>
-                </div>
-                <div class="card">
-                    <div class="card-icon" style="background:linear-gradient(135deg,#ffedd5,#fed7aa)">💰</div>
-                    <h3>Fee Reports</h3>
-                    <p>Review student fee invoices, paid amounts and outstanding balances.</p>
-                </div>
-                <div class="card">
-                    <div class="card-icon" style="background:linear-gradient(135deg,#e0f2fe,#bae6fd)">📈</div>
-                    <h3>Analytics Dashboards</h3>
-                    <p>Use the included dashboards to get a quick view of student and fee information.</p>
+            <p style="color:#64748b;font-size:15px;margin:0 0 22px;">The module includes PDF reporting and visual
+                information for student and fee-related analysis.</p>
+
+            <table style="width:100%;border-collapse:separate;border-spacing:14px;margin-bottom:0;">
+                <tr>
+                    <td
+                        style="width:33%;background:#fff;border:1px solid #e2e8f0;border-radius:20px;padding:22px;vertical-align:top;box-shadow:0 2px 12px rgba(15,23,42,.06);border-top:3px solid #7c3aed;">
+                        <div
+                            style="background:linear-gradient(135deg,#ede9fe,#ddd6fe);border-radius:14px;width:48px;height:48px;text-align:center;line-height:48px;font-size:22px;margin-bottom:14px;">
+                            🎓</div>
+                        <strong style="font-size:15px;color:#1e293b;display:block;margin-bottom:8px;">Academic
+                            Reports</strong>
+                        <p style="margin:0;font-size:13.5px;color:#64748b;">Generate academic report cards with student
+                            results and grading information.</p>
+                    </td>
+                    <td
+                        style="width:33%;background:#fff;border:1px solid #e2e8f0;border-radius:20px;padding:22px;vertical-align:top;box-shadow:0 2px 12px rgba(15,23,42,.06);border-top:3px solid #f59e0b;">
+                        <div
+                            style="background:linear-gradient(135deg,#ffedd5,#fed7aa);border-radius:14px;width:48px;height:48px;text-align:center;line-height:48px;font-size:22px;margin-bottom:14px;">
+                            💰</div>
+                        <strong style="font-size:15px;color:#1e293b;display:block;margin-bottom:8px;">Fee
+                            Reports</strong>
+                        <p style="margin:0;font-size:13.5px;color:#64748b;">Review student fee invoices, paid amounts
+                            and outstanding balances.</p>
+                    </td>
+                    <td
+                        style="width:33%;background:#fff;border:1px solid #e2e8f0;border-radius:20px;padding:22px;vertical-align:top;box-shadow:0 2px 12px rgba(15,23,42,.06);border-top:3px solid #06b6d4;">
+                        <div
+                            style="background:linear-gradient(135deg,#e0f2fe,#bae6fd);border-radius:14px;width:48px;height:48px;text-align:center;line-height:48px;font-size:22px;margin-bottom:14px;">
+                            📈</div>
+                        <strong style="font-size:15px;color:#1e293b;display:block;margin-bottom:8px;">Analytics
+                            Dashboards</strong>
+                        <p style="margin:0;font-size:13.5px;color:#64748b;">Use the included dashboards to get a quick
+                            view of student and fee information.</p>
+                    </td>
+                </tr>
+            </table>
+
+            <table style="width:100%;border-collapse:separate;border-spacing:14px;margin-top:0;">
+                <tr>
+                    <td
+                        style="width:50%;background:#fff;border:1px solid #e2e8f0;border-radius:18px;padding:10px;box-shadow:0 4px 18px rgba(15,23,42,.09);vertical-align:top;">
+                        <img src="images/academic_report.png" alt="Academic Report"
+                            style="width:100%;display:block;border-radius:12px;height:auto;">
+                        <div style="font-size:12px;color:#64748b;padding:10px 6px 4px;font-weight:700;">📷
+                            &nbsp;Academic report output</div>
+                    </td>
+                    <td
+                        style="width:50%;background:#fff;border:1px solid #e2e8f0;border-radius:18px;padding:10px;box-shadow:0 4px 18px rgba(15,23,42,.09);vertical-align:top;">
+                        <img src="images/analytics.png" alt="Analytics Dashboard"
+                            style="width:100%;display:block;border-radius:12px;height:auto;">
+                        <div style="font-size:12px;color:#64748b;padding:10px 6px 4px;font-weight:700;">📷
+                            &nbsp;Analytics dashboard</div>
+                    </td>
+                </tr>
+                <tr>
+                    <td
+                        style="width:50%;background:#fff;border:1px solid #e2e8f0;border-radius:18px;padding:10px;box-shadow:0 4px 18px rgba(15,23,42,.09);vertical-align:top;">
+                        <img src="images/fee_statement.png" alt="Student Fee Invoices"
+                            style="width:100%;display:block;border-radius:12px;height:auto;">
+                        <div style="font-size:12px;color:#64748b;padding:10px 6px 4px;font-weight:700;">📷 &nbsp;Student
+                            fee invoices</div>
+                    </td>
+                    <td
+                        style="width:50%;background:#fff;border:1px solid #e2e8f0;border-radius:18px;padding:10px;box-shadow:0 4px 18px rgba(15,23,42,.09);vertical-align:top;">
+                        <img src="images/fee_dashboard.png" alt="Fee Financial Analytics"
+                            style="width:100%;display:block;border-radius:12px;height:auto;">
+                        <div style="font-size:12px;color:#64748b;padding:10px 6px 4px;font-weight:700;">📷 &nbsp;Fee
+                            financial analytics</div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+        <hr style="border:none;border-top:1px solid #e2e8f0;margin:0 0 40px;">
+
+        <!-- ═══════════════════════════════════════ -->
+        <!-- SECTION 08: SUPPORT                    -->
+        <!-- ═══════════════════════════════════════ -->
+        <div id="support" style="margin-bottom:50px;">
+            <div
+                style="background:linear-gradient(135deg,#1e1b4b 0%,#312e81 40%,#4f46e5 75%,#6366f1 100%);border-radius:24px;padding:52px 40px;text-align:center;color:#fff;box-shadow:0 16px 48px rgba(15,23,42,.18);">
+                <h2 style="font-size:32px;font-weight:900;margin:0 0 12px;letter-spacing:-.5px;color:#fff;">Need help?
+                    🤝</h2>
+                <p
+                    style="color:rgba(255,255,255,.82);max-width:580px;margin:0 auto 28px;font-size:15px;line-height:1.7;">
+                    For installation, configuration or module-related support, contact SmartDesk Solution using the
+                    details below. We're happy to help you get started.</p>
+                <div>
+                    <a href="mailto:info@smartdesksolution.com"
+                        style="display:inline-block;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.22);border-radius:12px;padding:11px 20px;font-size:13.5px;font-weight:700;color:#fff;text-decoration:none;margin:5px;">✉️
+                        Email Support</a>
+                    <a href="tel:+966579602616"
+                        style="display:inline-block;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.22);border-radius:12px;padding:11px 20px;font-size:13.5px;font-weight:700;color:#fff;text-decoration:none;margin:5px;">📞
+                        +966 579 602 616</a>
+                    <a href="https://www.smartdesksolution.com" target="_blank"
+                        style="display:inline-block;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.22);border-radius:12px;padding:11px 20px;font-size:13.5px;font-weight:700;color:#fff;text-decoration:none;margin:5px;">🌐
+                        Visit Website</a>
                 </div>
             </div>
-            <div class="two">
-                <div class="shot">
-                    <img src="images/academic_report.png" alt="Academic Report">
-                    <div class="caption">Academic report output</div>
-                </div>
-                <div class="shot">
-                    <img src="images/analytics.png" alt="Analytics Dashboard">
-                    <div class="caption">Analytics dashboard</div>
-                </div>
-                <div class="shot">
-                    <img src="images/fee_statement.png" alt="Student Fee Invoices">
-                    <div class="caption">Student fee invoices</div>
-                </div>
-                <div class="shot">
-                    <img src="images/fee_dashboard.png" alt="Fee Financial Analytics">
-                    <div class="caption">Fee financial analytics</div>
-                </div>
-            </div>
-        </section>
+        </div>
 
-        <div class="divider"></div>
-
-        <!-- SUPPORT -->
-        <section class="section" id="support">
-            <div class="support">
-                <div class="support-deco support-deco-1"></div>
-                <div class="support-deco support-deco-2"></div>
-                <div class="support-inner">
-                    <h2>Need help? 🤝</h2>
-                    <p>For installation, configuration or module-related support, contact SmartDesk Solution using the
-                        details below. We're happy to help you get started.</p>
-                    <div class="support-links">
-                        <a href="mailto:info@smartdesksolution.com">✉️ Email Support</a>
-                        <a href="tel:+966579602616">📞 +966 579 602 616</a>
-                        <a href="https://www.smartdesksolution.com" target="_blank">🌐 Visit Website</a>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <div class="footer">
-            <span>SDS School Management System</span>
-            <span>Odoo 19</span>
-            <span>v19.0.1.0.0</span>
-            <span>LGPL-3</span>
-            <span>SmartDesk Solution</span>
+        <!-- FOOTER -->
+        <div style="text-align:center;padding-top:24px;">
+            <span
+                style="display:inline-block;background:rgba(99,102,241,.08);border:1px solid rgba(99,102,241,.15);border-radius:999px;padding:4px 12px;font-size:12px;color:#64748b;font-weight:600;margin:3px;">SDS
+                School Management System</span>
+            <span
+                style="display:inline-block;background:rgba(99,102,241,.08);border:1px solid rgba(99,102,241,.15);border-radius:999px;padding:4px 12px;font-size:12px;color:#64748b;font-weight:600;margin:3px;">Odoo
+                19</span>
+            <span
+                style="display:inline-block;background:rgba(99,102,241,.08);border:1px solid rgba(99,102,241,.15);border-radius:999px;padding:4px 12px;font-size:12px;color:#64748b;font-weight:600;margin:3px;">v19.0.1.0.0</span>
+            <span
+                style="display:inline-block;background:rgba(99,102,241,.08);border:1px solid rgba(99,102,241,.15);border-radius:999px;padding:4px 12px;font-size:12px;color:#64748b;font-weight:600;margin:3px;">LGPL-3</span>
+            <span
+                style="display:inline-block;background:rgba(99,102,241,.08);border:1px solid rgba(99,102,241,.15);border-radius:999px;padding:4px 12px;font-size:12px;color:#64748b;font-weight:600;margin:3px;">SmartDesk
+                Solution</span>
         </div>
 
     </div>
