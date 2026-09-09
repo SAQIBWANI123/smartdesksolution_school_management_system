@@ -4,849 +4,555 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SDS School Management System — Odoo 19 Documentation</title>
+    <title>SDS School Management System | Odoo 19</title>
 </head>
 
 <body
-    style="margin:0;padding:0;background:#f4f7fb;color:#172033;font-family:Arial,Helvetica,sans-serif;line-height:1.65;">
+    style="margin:0;padding:0;background:#f4f7fb;color:#172033;font-family:Arial,Helvetica,sans-serif;line-height:1.7;">
 
-    <div style="max-width:1180px;margin:0 auto;padding:24px 14px 60px;">
-
-        <!-- TOP BAR -->
-        <div
-            style="background:#ffffff;border:1px solid #e5eaf2;border-radius:22px;padding:14px 18px;box-shadow:0 10px 30px rgba(18,32,56,.07);">
-            <table style="width:100%;border-collapse:collapse;">
-                <tr>
-                    <td style="width:30%;vertical-align:middle;padding:4px 8px;">
-                        <div style="display:flex;align-items:center;gap:10px;">
-                            <div
-                                style="width:46px;height:46px;border-radius:14px;background:linear-gradient(135deg,#4f46e5,#06b6d4);color:#fff;text-align:center;line-height:46px;font-weight:900;font-size:12px;">
-                                SDS</div>
-                            <div>
-                                <div style="font-size:14px;font-weight:800;color:#172033;">Smart Desk Solution</div>
-                                <div style="font-size:11px;color:#748094;">School Management</div>
-                            </div>
-                        </div>
-                    </td>
-                    <td style="width:45%;text-align:center;vertical-align:middle;padding:4px 8px;">
-                        <span
-                            style="display:inline-block;margin:3px;padding:7px 10px;border-radius:20px;background:#eef2ff;color:#4338ca;font-size:11px;font-weight:800;">Students</span>
-                        <span
-                            style="display:inline-block;margin:3px;padding:7px 10px;border-radius:20px;color:#64748b;font-size:11px;font-weight:700;">Academics</span>
-                        <span
-                            style="display:inline-block;margin:3px;padding:7px 10px;border-radius:20px;color:#64748b;font-size:11px;font-weight:700;">Admissions</span>
-                        <span
-                            style="display:inline-block;margin:3px;padding:7px 10px;border-radius:20px;color:#64748b;font-size:11px;font-weight:700;">Fees</span>
-                        <span
-                            style="display:inline-block;margin:3px;padding:7px 10px;border-radius:20px;color:#64748b;font-size:11px;font-weight:700;">Reports</span>
-                    </td>
-                    <td style="width:25%;text-align:right;vertical-align:middle;padding:4px 8px;">
-                        <span
-                            style="display:inline-block;padding:9px 13px;border-radius:18px;background:#f8fafc;border:1px solid #dbe3ee;color:#334155;font-size:12px;font-weight:800;">
-                            <span
-                                style="display:inline-block;width:9px;height:9px;border-radius:50%;background:#10b981;margin-right:6px;"></span>
-                            Odoo 19
-                        </span>
-                    </td>
-                </tr>
-            </table>
-        </div>
+    <div style="max-width:1120px;margin:0 auto;padding:24px 18px 70px;">
 
         <!-- HERO -->
         <div
-            style="margin-top:22px;border-radius:30px;overflow:hidden;border:1px solid #dfe5f1;background:linear-gradient(135deg,#eef2ff 0%,#f7fbff 52%,#ecfeff 100%);box-shadow:0 24px 60px rgba(30,41,59,.12);">
-            <table style="width:100%;border-collapse:collapse;">
-                <tr>
-                    <td style="width:56%;vertical-align:middle;padding:54px 38px 48px;">
-                        <div
-                            style="display:inline-block;padding:7px 12px;border-radius:999px;background:#ffffff;border:1px solid #dbe4ff;color:#4338ca;font-size:11px;font-weight:900;letter-spacing:1.4px;text-transform:uppercase;">
-                            Complete • Modern • Odoo 19
-                        </div>
-                        <h1
-                            style="margin:17px 0 14px;font-size:46px;line-height:1.08;letter-spacing:-1.2px;color:#101828;">
-                            School Management<br>
-                            <span
-                                style="background:linear-gradient(90deg,#4338ca,#0891b2);-webkit-background-clip:text;background-clip:text;color:transparent;">System</span>
-                        </h1>
-                        <p style="margin:0 0 20px;max-width:650px;font-size:16px;color:#596579;line-height:1.8;">
-                            A complete Odoo solution for managing students, parents, teachers, academic structures,
-                            admissions, attendance, examinations, fees, transport, hostel, library and reporting
-                            from one connected school-management environment.
-                        </p>
-
-                        <table style="width:100%;border-collapse:collapse;margin:12px 0 22px;">
-                            <tr>
-                                <td style="padding:5px 0;color:#334155;font-size:13px;font-weight:700;">✓ Centralized
-                                    student records</td>
-                                <td style="padding:5px 0;color:#334155;font-size:13px;font-weight:700;">✓ Academic &amp;
-                                    examination workflow</td>
-                            </tr>
-                            <tr>
-                                <td style="padding:5px 0;color:#334155;font-size:13px;font-weight:700;">✓ Admission
-                                    &amp; application management</td>
-                                <td style="padding:5px 0;color:#334155;font-size:13px;font-weight:700;">✓ Fee tracking
-                                    &amp; reporting</td>
-                            </tr>
-                        </table>
-
-                        <a href="#features"
-                            style="display:inline-block;text-decoration:none;padding:12px 22px;border-radius:999px;background:linear-gradient(135deg,#4f46e5,#06b6d4);color:#ffffff;font-size:13px;font-weight:900;box-shadow:0 10px 22px rgba(79,70,229,.22);">Explore
-                            Features →</a>
-                        <a href="#screenshots"
-                            style="display:inline-block;text-decoration:none;margin-left:8px;padding:11px 20px;border-radius:999px;background:#ffffff;border:1px solid #cbd5e1;color:#334155;font-size:13px;font-weight:900;">View
-                            Screenshots</a>
-                    </td>
-
-                    <td style="width:44%;vertical-align:middle;padding:30px 28px;">
-                        <!-- Inline SVG illustration = no external dependency -->
-                        <div
-                            style="background:#ffffff;border:1px solid #dbe4ee;border-radius:24px;padding:16px;box-shadow:0 20px 45px rgba(30,41,59,.12);">
-                            <svg viewBox="0 0 620 420" width="100%" role="img"
-                                aria-label="School management dashboard illustration"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <defs>
-                                    <linearGradient id="g1" x1="0" x2="1">
-                                        <stop offset="0" stop-color="#4f46e5" />
-                                        <stop offset="1" stop-color="#06b6d4" />
-                                    </linearGradient>
-                                </defs>
-                                <rect width="620" height="420" rx="22" fill="#f8fafc" />
-                                <rect x="28" y="26" width="564" height="55" rx="14" fill="url(#g1)" />
-                                <circle cx="57" cy="54" r="12" fill="#fff" opacity=".9" />
-                                <rect x="82" y="43" width="130" height="9" rx="4.5" fill="#fff" opacity=".9" />
-                                <rect x="82" y="58" width="80" height="7" rx="3.5" fill="#fff" opacity=".45" />
-                                <rect x="28" y="98" width="128" height="294" rx="15" fill="#111827" />
-                                <rect x="48" y="120" width="88" height="10" rx="5" fill="#94a3b8" />
-                                <rect x="48" y="148" width="74" height="10" rx="5" fill="#4f46e5" />
-                                <rect x="48" y="177" width="86" height="10" rx="5" fill="#64748b" />
-                                <rect x="48" y="206" width="68" height="10" rx="5" fill="#64748b" />
-                                <rect x="48" y="235" width="83" height="10" rx="5" fill="#64748b" />
-                                <rect x="48" y="264" width="72" height="10" rx="5" fill="#64748b" />
-                                <rect x="176" y="98" width="416" height="92" rx="15" fill="#fff" stroke="#e2e8f0" />
-                                <rect x="196" y="120" width="86" height="14" rx="7" fill="#1e293b" />
-                                <rect x="196" y="145" width="124" height="8" rx="4" fill="#cbd5e1" />
-                                <circle cx="515" cy="142" r="27" fill="#e0f2fe" />
-                                <path d="M503 143l9 9 18-21" fill="none" stroke="#0891b2" stroke-width="7"
-                                    stroke-linecap="round" stroke-linejoin="round" />
-                                <rect x="176" y="208" width="196" height="184" rx="15" fill="#fff" stroke="#e2e8f0" />
-                                <rect x="394" y="208" width="198" height="184" rx="15" fill="#fff" stroke="#e2e8f0" />
-                                <rect x="196" y="230" width="80" height="11" rx="5.5" fill="#334155" />
-                                <rect x="196" y="258" width="145" height="10" rx="5" fill="#eef2ff" />
-                                <rect x="196" y="280" width="118" height="10" rx="5" fill="#eef2ff" />
-                                <rect x="196" y="302" width="95" height="10" rx="5" fill="#eef2ff" />
-                                <rect x="196" y="332" width="124" height="28" rx="9" fill="#4f46e5" />
-                                <rect x="414" y="230" width="88" height="11" rx="5.5" fill="#334155" />
-                                <circle cx="494" cy="306" r="53" fill="#ecfeff" />
-                                <path d="M494 253 A53 53 0 0 1 539 334 L494 306 Z" fill="#06b6d4" />
-                                <path d="M494 306 L539 334 A53 53 0 0 1 452 347 Z" fill="#4f46e5" />
-                                <path d="M494 306 L452 347 A53 53 0 0 1 494 253 Z" fill="#c7d2fe" />
-                            </svg>
-                            <div style="text-align:center;margin-top:8px;color:#64748b;font-size:11px;font-weight:700;">
-                                Unified school operations dashboard</div>
-                        </div>
-                    </td>
-                </tr>
-            </table>
-        </div>
-
-        <!-- QUICK FACTS -->
-        <div
-            style="margin-top:18px;background:#ffffff;border:1px solid #e5eaf2;border-radius:20px;padding:10px;box-shadow:0 10px 28px rgba(18,32,56,.06);">
-            <table style="width:100%;border-collapse:collapse;">
-                <tr>
-                    <td style="width:20%;text-align:center;padding:12px;border-right:1px solid #e8edf4;">
-                        <div style="font-size:21px;font-weight:900;color:#4338ca;">19.0</div>
-                        <div style="font-size:11px;color:#64748b;font-weight:700;">Odoo Version</div>
-                    </td>
-                    <td style="width:20%;text-align:center;padding:12px;border-right:1px solid #e8edf4;">
-                        <div style="font-size:21px;font-weight:900;color:#0891b2;">Education</div>
-                        <div style="font-size:11px;color:#64748b;font-weight:700;">Category</div>
-                    </td>
-                    <td style="width:20%;text-align:center;padding:12px;border-right:1px solid #e8edf4;">
-                        <div style="font-size:21px;font-weight:900;color:#059669;">LGPL-3</div>
-                        <div style="font-size:11px;color:#64748b;font-weight:700;">License</div>
-                    </td>
-                    <td style="width:20%;text-align:center;padding:12px;border-right:1px solid #e8edf4;">
-                        <div style="font-size:21px;font-weight:900;color:#7c3aed;">Complete</div>
-                        <div style="font-size:11px;color:#64748b;font-weight:700;">School Workflow</div>
-                    </td>
-                    <td style="width:20%;text-align:center;padding:12px;">
-                        <div style="font-size:21px;font-weight:900;color:#0f172a;">19.0.1.0.0</div>
-                        <div style="font-size:11px;color:#64748b;font-weight:700;">Module Version</div>
-                    </td>
-                </tr>
-            </table>
-        </div>
-
-        <!-- OVERVIEW -->
-        <div id="overview" style="margin-top:58px;">
+            style="background:linear-gradient(135deg,#102a56 0%,#174b86 55%,#087f9c 100%);border-radius:28px;padding:52px 44px;margin-bottom:22px;color:#ffffff;box-shadow:0 18px 45px rgba(16,42,86,.20);">
             <div
-                style="display:inline-block;padding:6px 11px;border-radius:999px;background:#eef2ff;color:#4338ca;font-size:11px;font-weight:900;letter-spacing:1.2px;text-transform:uppercase;">
-                01 • Overview</div>
-            <h2 style="margin:12px 0 10px;font-size:31px;color:#0f172a;">Everything Your School Needs in One Place</h2>
-            <p style="margin:0;max-width:880px;color:#64748b;font-size:15px;">
-                The SDS School Management System centralizes core school administration in Odoo.
-                Staff can manage connected student, parent, teacher, academic, attendance, examination,
-                fee and facility records while using list views, forms, dashboards and printable reports.
+                style="display:inline-block;background:#ffffff;color:#0f4b82;border-radius:30px;padding:8px 16px;font-size:14px;font-weight:800;letter-spacing:.8px;margin-bottom:18px;">
+                ODOO 19 • EDUCATION • SCHOOL MANAGEMENT
+            </div>
+            <h1 style="margin:0 0 16px;font-size:48px;line-height:1.08;font-weight:900;color:#ffffff;">
+                SDS School Management System
+            </h1>
+            <p style="margin:0 0 24px;max-width:900px;font-size:19px;line-height:1.75;color:#f4f9ff;">
+                A complete school administration solution for Odoo 19 that connects students,
+                admissions, parents, teachers, academics, attendance, examinations, fees,
+                transport, hostel, library and reporting in one organized workflow.
             </p>
-        </div>
-
-        <!-- FEATURES -->
-        <div id="features" style="margin-top:48px;">
-            <div style="text-align:center;">
-                <div
-                    style="display:inline-block;padding:6px 11px;border-radius:999px;background:#ecfeff;color:#0e7490;font-size:11px;font-weight:900;letter-spacing:1.2px;text-transform:uppercase;">
-                    02 • Core Features</div>
-                <h2 style="margin:12px 0 8px;font-size:31px;color:#0f172a;">Powerful School Management Capabilities</h2>
-                <p style="margin:0 auto;max-width:780px;color:#64748b;font-size:14px;">Designed around a connected
-                    school workflow rather than isolated screens.</p>
-            </div>
-
-            <table style="width:100%;border-collapse:separate;border-spacing:12px;margin-top:22px;">
-                <tr>
-                    <td style="width:25%;vertical-align:top;">
-                        <div
-                            style="min-height:175px;background:#fff;border:1px solid #e4eaf2;border-radius:20px;padding:20px;box-shadow:0 10px 28px rgba(15,23,42,.06);">
-                            <div
-                                style="width:46px;height:46px;border-radius:14px;background:#eef2ff;color:#4338ca;text-align:center;line-height:46px;font-weight:900;">
-                                ST</div>
-                            <h3 style="margin:13px 0 7px;font-size:17px;">Student Management</h3>
-                            <p style="margin:0;color:#64748b;font-size:12px;">Central student profile with registration,
-                                academic, personal, contact and admission information.</p>
-                        </div>
-                    </td>
-                    <td style="width:25%;vertical-align:top;">
-                        <div
-                            style="min-height:175px;background:#fff;border:1px solid #e4eaf2;border-radius:20px;padding:20px;box-shadow:0 10px 28px rgba(15,23,42,.06);">
-                            <div
-                                style="width:46px;height:46px;border-radius:14px;background:#ecfeff;color:#0e7490;text-align:center;line-height:46px;font-weight:900;">
-                                PG</div>
-                            <h3 style="margin:13px 0 7px;font-size:17px;">Parents &amp; Guardians</h3>
-                            <p style="margin:0;color:#64748b;font-size:12px;">Maintain guardian contacts and connect one
-                                or multiple guardians to students.</p>
-                        </div>
-                    </td>
-                    <td style="width:25%;vertical-align:top;">
-                        <div
-                            style="min-height:175px;background:#fff;border:1px solid #e4eaf2;border-radius:20px;padding:20px;box-shadow:0 10px 28px rgba(15,23,42,.06);">
-                            <div
-                                style="width:46px;height:46px;border-radius:14px;background:#f5f3ff;color:#7c3aed;text-align:center;line-height:46px;font-weight:900;">
-                                TF</div>
-                            <h3 style="margin:13px 0 7px;font-size:17px;">Teachers &amp; Faculty</h3>
-                            <p style="margin:0;color:#64748b;font-size:12px;">Manage faculty profiles, professional
-                                information, subjects and class responsibilities.</p>
-                        </div>
-                    </td>
-                    <td style="width:25%;vertical-align:top;">
-                        <div
-                            style="min-height:175px;background:#fff;border:1px solid #e4eaf2;border-radius:20px;padding:20px;box-shadow:0 10px 28px rgba(15,23,42,.06);">
-                            <div
-                                style="width:46px;height:46px;border-radius:14px;background:#ecfdf5;color:#047857;text-align:center;line-height:46px;font-weight:900;">
-                                AC</div>
-                            <h3 style="margin:13px 0 7px;font-size:17px;">Academic Management</h3>
-                            <p style="margin:0;color:#64748b;font-size:12px;">Configure academic years, terms, grades,
-                                classes, sections, subjects and timetables.</p>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td style="width:25%;vertical-align:top;">
-                        <div
-                            style="min-height:175px;background:#fff;border:1px solid #e4eaf2;border-radius:20px;padding:20px;box-shadow:0 10px 28px rgba(15,23,42,.06);">
-                            <div
-                                style="width:46px;height:46px;border-radius:14px;background:#fff7ed;color:#c2410c;text-align:center;line-height:46px;font-weight:900;">
-                                AT</div>
-                            <h3 style="margin:13px 0 7px;font-size:17px;">Attendance</h3>
-                            <p style="margin:0;color:#64748b;font-size:12px;">Record and review student attendance as
-                                part of daily school operations.</p>
-                        </div>
-                    </td>
-                    <td style="width:25%;vertical-align:top;">
-                        <div
-                            style="min-height:175px;background:#fff;border:1px solid #e4eaf2;border-radius:20px;padding:20px;box-shadow:0 10px 28px rgba(15,23,42,.06);">
-                            <div
-                                style="width:46px;height:46px;border-radius:14px;background:#fdf2f8;color:#be185d;text-align:center;line-height:46px;font-weight:900;">
-                                EX</div>
-                            <h3 style="margin:13px 0 7px;font-size:17px;">Examinations &amp; Results</h3>
-                            <p style="margin:0;color:#64748b;font-size:12px;">Manage exams, marks, grading, pass/fail
-                                status and academic results.</p>
-                        </div>
-                    </td>
-                    <td style="width:25%;vertical-align:top;">
-                        <div
-                            style="min-height:175px;background:#fff;border:1px solid #e4eaf2;border-radius:20px;padding:20px;box-shadow:0 10px 28px rgba(15,23,42,.06);">
-                            <div
-                                style="width:46px;height:46px;border-radius:14px;background:#eff6ff;color:#1d4ed8;text-align:center;line-height:46px;font-weight:900;">
-                                FE</div>
-                            <h3 style="margin:13px 0 7px;font-size:17px;">Fee Management</h3>
-                            <p style="margin:0;color:#64748b;font-size:12px;">Define fee heads and structures, generate
-                                student invoices and track paid/due amounts.</p>
-                        </div>
-                    </td>
-                    <td style="width:25%;vertical-align:top;">
-                        <div
-                            style="min-height:175px;background:#fff;border:1px solid #e4eaf2;border-radius:20px;padding:20px;box-shadow:0 10px 28px rgba(15,23,42,.06);">
-                            <div
-                                style="width:46px;height:46px;border-radius:14px;background:#f0fdfa;color:#0f766e;text-align:center;line-height:46px;font-weight:900;">
-                                TR</div>
-                            <h3 style="margin:13px 0 7px;font-size:17px;">Transport &amp; Hostel</h3>
-                            <p style="margin:0;color:#64748b;font-size:12px;">Maintain vehicles, routes, registrations,
-                                hostel buildings, rooms and allocations.</p>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td style="width:25%;vertical-align:top;">
-                        <div
-                            style="min-height:175px;background:#fff;border:1px solid #e4eaf2;border-radius:20px;padding:20px;box-shadow:0 10px 28px rgba(15,23,42,.06);">
-                            <div
-                                style="width:46px;height:46px;border-radius:14px;background:#fefce8;color:#a16207;text-align:center;line-height:46px;font-weight:900;">
-                                LB</div>
-                            <h3 style="margin:13px 0 7px;font-size:17px;">Library</h3>
-                            <p style="margin:0;color:#64748b;font-size:12px;">Manage library books, issue records,
-                                returns and student library activity.</p>
-                        </div>
-                    </td>
-                    <td style="width:25%;vertical-align:top;">
-                        <div
-                            style="min-height:175px;background:#fff;border:1px solid #e4eaf2;border-radius:20px;padding:20px;box-shadow:0 10px 28px rgba(15,23,42,.06);">
-                            <div
-                                style="width:46px;height:46px;border-radius:14px;background:#f1f5f9;color:#334155;text-align:center;line-height:46px;font-weight:900;">
-                                RP</div>
-                            <h3 style="margin:13px 0 7px;font-size:17px;">Reports &amp; Analytics</h3>
-                            <p style="margin:0;color:#64748b;font-size:12px;">Use analytical views and printable
-                                documents to review school information.</p>
-                        </div>
-                    </td>
-                    <td style="width:25%;vertical-align:top;">
-                        <div
-                            style="min-height:175px;background:#fff;border:1px solid #e4eaf2;border-radius:20px;padding:20px;box-shadow:0 10px 28px rgba(15,23,42,.06);">
-                            <div
-                                style="width:46px;height:46px;border-radius:14px;background:#eef2ff;color:#4338ca;text-align:center;line-height:46px;font-weight:900;">
-                                ID</div>
-                            <h3 style="margin:13px 0 7px;font-size:17px;">Student ID Cards</h3>
-                            <p style="margin:0;color:#64748b;font-size:12px;">Generate printable identification
-                                information from student records.</p>
-                        </div>
-                    </td>
-                    <td style="width:25%;vertical-align:top;">
-                        <div
-                            style="min-height:175px;background:#fff;border:1px solid #e4eaf2;border-radius:20px;padding:20px;box-shadow:0 10px 28px rgba(15,23,42,.06);">
-                            <div
-                                style="width:46px;height:46px;border-radius:14px;background:#ecfeff;color:#0e7490;text-align:center;line-height:46px;font-weight:900;">
-                                RC</div>
-                            <h3 style="margin:13px 0 7px;font-size:17px;">Report Cards</h3>
-                            <p style="margin:0;color:#64748b;font-size:12px;">Prepare academic report cards containing
-                                student, subject, marks and result information.</p>
-                        </div>
-                    </td>
-                </tr>
-            </table>
-        </div>
-
-        <!-- ADMISSION -->
-        <div id="admission"
-            style="margin-top:58px;background:linear-gradient(135deg,#eef2ff,#f8fbff);border:1px solid #dbe4f2;border-radius:26px;padding:34px;">
-            <div
-                style="display:inline-block;padding:6px 11px;border-radius:999px;background:#ffffff;color:#4338ca;border:1px solid #dbe4ff;font-size:11px;font-weight:900;letter-spacing:1.2px;text-transform:uppercase;">
-                03 • Admission</div>
-            <h2 style="margin:12px 0 10px;font-size:30px;color:#0f172a;">Student Admission &amp; Application Management
-            </h2>
-            <p style="margin:0 0 20px;color:#64748b;font-size:14px;max-width:850px;">
-                Organize the admission journey from applicant information to the internal student record.
-                The student form can store registration, academic, personal, guardian, contact and admission details.
-            </p>
-
-            <table style="width:100%;border-collapse:collapse;">
-                <tr>
-                    <td style="width:50%;vertical-align:top;padding:8px 18px 8px 0;">
-                        <div style="background:#ffffff;border:1px solid #e3e9f2;border-radius:18px;padding:20px;">
-                            <h3 style="margin:0 0 12px;color:#312e81;font-size:18px;">Admission Form</h3>
-                            <div style="color:#475569;font-size:13px;">
-                                ✓ Student registration information<br>
-                                ✓ Academic year, grade and class<br>
-                                ✓ Date of birth and personal details<br>
-                                ✓ Parent / guardian details<br>
-                                ✓ Contact and address information<br>
-                                ✓ Admission date and student status
-                            </div>
-                        </div>
-                    </td>
-                    <td style="width:50%;vertical-align:top;padding:8px 0 8px 18px;">
-                        <div style="background:#ffffff;border:1px solid #e3e9f2;border-radius:18px;padding:20px;">
-                            <h3 style="margin:0 0 12px;color:#0e7490;font-size:18px;">Admission Workflow</h3>
-                            <div style="color:#475569;font-size:13px;">
-                                <strong>1.</strong> Capture applicant/student information<br>
-                                <strong>2.</strong> Review academic and guardian data<br>
-                                <strong>3.</strong> Confirm admission details<br>
-                                <strong>4.</strong> Create/activate the student record<br>
-                                <strong>5.</strong> Continue with fees, attendance and academics
-                            </div>
-                        </div>
-                    </td>
-                </tr>
-            </table>
-
-            <div
-                style="margin-top:18px;padding:15px 18px;border-left:4px solid #4f46e5;border-radius:0 14px 14px 0;background:#ffffff;color:#475569;font-size:12px;">
-                <strong style="color:#312e81;">Portal / Online Admission:</strong>
-                If your deployment includes the Odoo Website/Portal extension, the admission process can be extended
-                with a public application form for applicants or parents, followed by staff review and internal
-                admission.
-                A public portal form is an extension of the internal school-management workflow and should be enabled
-                only
-                when the Website/Portal components are installed.
+            <div style="display:flex;flex-wrap:wrap;gap:10px;">
+                <span
+                    style="background:#ffffff;color:#123d70;border-radius:22px;padding:9px 15px;font-size:14px;font-weight:800;">✓
+                    Odoo 19</span>
+                <span
+                    style="background:#ffffff;color:#123d70;border-radius:22px;padding:9px 15px;font-size:14px;font-weight:800;">✓
+                    Integrated Workflow</span>
+                <span
+                    style="background:#ffffff;color:#123d70;border-radius:22px;padding:9px 15px;font-size:14px;font-weight:800;">✓
+                    Student &amp; Academic Records</span>
+                <span
+                    style="background:#ffffff;color:#123d70;border-radius:22px;padding:9px 15px;font-size:14px;font-weight:800;">✓
+                    Fees &amp; Reports</span>
             </div>
         </div>
 
-        <!-- STUDENT SCREENSHOT -->
-        <div id="screenshots" style="margin-top:58px;">
-            <div style="text-align:center;">
-                <div
-                    style="display:inline-block;padding:6px 11px;border-radius:999px;background:#f0fdfa;color:#0f766e;font-size:11px;font-weight:900;letter-spacing:1.2px;text-transform:uppercase;">
-                    04 • Application Screenshots</div>
-                <h2 style="margin:12px 0 8px;font-size:31px;color:#0f172a;">See the System in Action</h2>
-                <p style="margin:0 auto;max-width:780px;color:#64748b;font-size:14px;">
-                    The documentation is prepared to display the supplied Odoo screenshots in clean, presentation-ready
-                    frames.
-                </p>
-            </div>
-
-            <table style="width:100%;border-collapse:separate;border-spacing:12px;margin-top:22px;">
-                <tr>
-                    <td style="width:50%;vertical-align:top;">
-                        <div
-                            style="background:#fff;border:1px solid #e3e8f0;border-radius:20px;padding:14px;box-shadow:0 12px 32px rgba(15,23,42,.07);">
-                            <img src="images/student_form.png" alt="Student Management Form"
-                                style="display:block;width:100%;height:330px;object-fit:contain;background:#f8fafc;border:1px solid #e2e8f0;border-radius:14px;">
-                            <h3 style="margin:14px 4px 4px;color:#312e81;font-size:18px;">Student Management</h3>
-                            <p style="margin:0 4px;color:#64748b;font-size:12px;">Student profile, academic information,
-                                personal details, guardian links and admission information.</p>
-                        </div>
-                    </td>
-                    <td style="width:50%;vertical-align:top;">
-                        <div
-                            style="background:#fff;border:1px solid #e3e8f0;border-radius:20px;padding:14px;box-shadow:0 12px 32px rgba(15,23,42,.07);">
-                            <img src="images/teacher_form.png" alt="Teacher Management Form"
-                                style="display:block;width:100%;height:330px;object-fit:contain;background:#f8fafc;border:1px solid #e2e8f0;border-radius:14px;">
-                            <h3 style="margin:14px 4px 4px;color:#0e7490;font-size:18px;">Teachers &amp; Faculty</h3>
-                            <p style="margin:0 4px;color:#64748b;font-size:12px;">Professional information, contact
-                                details, subjects taught and class-teacher responsibilities.</p>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td style="width:50%;vertical-align:top;">
-                        <div
-                            style="background:#fff;border:1px solid #e3e8f0;border-radius:20px;padding:14px;box-shadow:0 12px 32px rgba(15,23,42,.07);">
-                            <img src="images/subjects.png" alt="Subjects and Courses"
-                                style="display:block;width:100%;height:330px;object-fit:contain;background:#f8fafc;border:1px solid #e2e8f0;border-radius:14px;">
-                            <h3 style="margin:14px 4px 4px;color:#4338ca;font-size:18px;">Subjects &amp; Courses</h3>
-                            <p style="margin:0 4px;color:#64748b;font-size:12px;">Manage subject names, codes, types,
-                                maximum marks, pass marks and academic information.</p>
-                        </div>
-                    </td>
-                    <td style="width:50%;vertical-align:top;">
-                        <div
-                            style="background:#fff;border:1px solid #e3e8f0;border-radius:20px;padding:14px;box-shadow:0 12px 32px rgba(15,23,42,.07);">
-                            <img src="images/report_card.png" alt="Academic Report Card"
-                                style="display:block;width:100%;height:330px;object-fit:contain;background:#f8fafc;border:1px solid #e2e8f0;border-radius:14px;">
-                            <h3 style="margin:14px 4px 4px;color:#047857;font-size:18px;">Academic Report Card</h3>
-                            <p style="margin:0 4px;color:#64748b;font-size:12px;">Printable student identity, class,
-                                subject-wise marks, result status and academic summary.</p>
-                        </div>
-                    </td>
-                </tr>
-            </table>
-        </div>
-
-        <!-- ACADEMICS -->
-        <div style="margin-top:58px;">
-            <div
-                style="display:inline-block;padding:6px 11px;border-radius:999px;background:#f5f3ff;color:#6d28d9;font-size:11px;font-weight:900;letter-spacing:1.2px;text-transform:uppercase;">
-                05 • Academics</div>
-            <h2 style="margin:12px 0 10px;font-size:30px;color:#0f172a;">Academic Structure &amp; Examination Management
-            </h2>
-            <p style="margin:0 0 20px;color:#64748b;font-size:14px;max-width:900px;">
-                Configure the academic structure before daily student operations. Academic years, terms, grades,
-                classes, sections, subjects, timetables and grading rules provide the foundation for attendance and
-                examinations.
-            </p>
-
-            <table style="width:100%;border-collapse:separate;border-spacing:10px;">
-                <tr>
-                    <td style="width:33.33%;vertical-align:top;">
-                        <div style="background:#fff;border:1px solid #e3e8f0;border-radius:18px;padding:20px;">
-                            <h3 style="margin:0 0 8px;color:#312e81;">Academic Years &amp; Terms</h3>
-                            <p style="margin:0;color:#64748b;font-size:12px;">Define start/end dates, active/current
-                                year and multiple academic terms.</p>
-                        </div>
-                    </td>
-                    <td style="width:33.33%;vertical-align:top;">
-                        <div style="background:#fff;border:1px solid #e3e8f0;border-radius:18px;padding:20px;">
-                            <h3 style="margin:0 0 8px;color:#0e7490;">Grades, Classes &amp; Sections</h3>
-                            <p style="margin:0;color:#64748b;font-size:12px;">Organize grade levels and class sections
-                                used by students and teachers.</p>
-                        </div>
-                    </td>
-                    <td style="width:33.33%;vertical-align:top;">
-                        <div style="background:#fff;border:1px solid #e3e8f0;border-radius:18px;padding:20px;">
-                            <h3 style="margin:0 0 8px;color:#047857;">Exams &amp; Results</h3>
-                            <p style="margin:0;color:#64748b;font-size:12px;">Record subject marks, calculate
-                                totals/percentages and support grading and result status.</p>
-                        </div>
-                    </td>
-                </tr>
-            </table>
-
-            <div
-                style="margin-top:14px;background:#fff;border:1px solid #e3e8f0;border-radius:20px;padding:14px;box-shadow:0 12px 32px rgba(15,23,42,.06);">
-                <img src="images/subjects.png" alt="Academic Subjects Screenshot"
-                    style="display:block;width:100%;height:350px;object-fit:contain;background:#f8fafc;border-radius:14px;">
-            </div>
-        </div>
-
-        <!-- ATTENDANCE + FEES -->
-        <table style="width:100%;border-collapse:separate;border-spacing:12px;margin-top:58px;">
+        <!-- QUICK INFO -->
+        <table style="width:100%;border-collapse:separate;border-spacing:10px;margin:0 0 34px;">
             <tr>
-                <td style="width:50%;vertical-align:top;">
-                    <div
-                        style="background:#ffffff;border:1px solid #e3e8f0;border-radius:22px;padding:25px;min-height:210px;box-shadow:0 12px 32px rgba(15,23,42,.06);">
-                        <div
-                            style="display:inline-block;padding:6px 10px;border-radius:999px;background:#fff7ed;color:#c2410c;font-size:10px;font-weight:900;">
-                            06 • ATTENDANCE</div>
-                        <h2 style="margin:12px 0 8px;font-size:24px;">Daily Attendance</h2>
-                        <p style="margin:0;color:#64748b;font-size:13px;">
-                            Record student attendance and keep attendance information connected to the student's
-                            academic context.
-                            Attendance information can support operational review and student analytics.
-                        </p>
-                        <div
-                            style="margin-top:15px;padding:12px;border-radius:12px;background:#fff7ed;color:#9a3412;font-size:12px;font-weight:700;">
-                            Student → Class → Attendance Register → Attendance Status → Reporting
-                        </div>
-                    </div>
+                <td
+                    style="width:25%;background:#ffffff;border:1px solid #dce5ef;border-radius:18px;padding:20px;text-align:center;vertical-align:top;box-shadow:0 8px 24px rgba(20,40,70,.07);">
+                    <div style="font-size:28px;font-weight:900;color:#0b6690;">19</div>
+                    <div style="font-size:16px;font-weight:800;color:#172033;">Odoo Version</div>
+                    <div style="font-size:14px;color:#5c6b7e;">Odoo 19.0</div>
                 </td>
-                <td style="width:50%;vertical-align:top;">
-                    <div
-                        style="background:#ffffff;border:1px solid #e3e8f0;border-radius:22px;padding:25px;min-height:210px;box-shadow:0 12px 32px rgba(15,23,42,.06);">
-                        <div
-                            style="display:inline-block;padding:6px 10px;border-radius:999px;background:#eff6ff;color:#1d4ed8;font-size:10px;font-weight:900;">
-                            07 • FEES</div>
-                        <h2 style="margin:12px 0 8px;font-size:24px;">Fee Management</h2>
-                        <p style="margin:0;color:#64748b;font-size:13px;">
-                            Define fee heads and structures, create student fee invoices, record payments and monitor
-                            outstanding amounts.
-                        </p>
-                        <div
-                            style="margin-top:15px;padding:12px;border-radius:12px;background:#eff6ff;color:#1e40af;font-size:12px;font-weight:700;">
-                            Fee Head → Fee Structure → Student Invoice → Payment → Due / Receipt
-                        </div>
-                    </div>
+                <td
+                    style="width:25%;background:#ffffff;border:1px solid #dce5ef;border-radius:18px;padding:20px;text-align:center;vertical-align:top;box-shadow:0 8px 24px rgba(20,40,70,.07);">
+                    <div style="font-size:28px;font-weight:900;color:#0b6690;">EDU</div>
+                    <div style="font-size:16px;font-weight:800;color:#172033;">Category</div>
+                    <div style="font-size:14px;color:#5c6b7e;">Education</div>
+                </td>
+                <td
+                    style="width:25%;background:#ffffff;border:1px solid #dce5ef;border-radius:18px;padding:20px;text-align:center;vertical-align:top;box-shadow:0 8px 24px rgba(20,40,70,.07);">
+                    <div style="font-size:28px;font-weight:900;color:#0b6690;">LGPL</div>
+                    <div style="font-size:16px;font-weight:800;color:#172033;">License</div>
+                    <div style="font-size:14px;color:#5c6b7e;">LGPL-3</div>
+                </td>
+                <td
+                    style="width:25%;background:#ffffff;border:1px solid #dce5ef;border-radius:18px;padding:20px;text-align:center;vertical-align:top;box-shadow:0 8px 24px rgba(20,40,70,.07);">
+                    <div style="font-size:22px;font-weight:900;color:#0b6690;">19.0.1.0.0</div>
+                    <div style="font-size:16px;font-weight:800;color:#172033;">Module Version</div>
+                    <div style="font-size:14px;color:#5c6b7e;">Smart Desk Solution</div>
                 </td>
             </tr>
         </table>
 
-        <div
-            style="margin-top:14px;background:#fff;border:1px solid #e3e8f0;border-radius:20px;padding:14px;box-shadow:0 12px 32px rgba(15,23,42,.06);">
-            <table style="width:100%;border-collapse:separate;border-spacing:12px;">
+        <!-- OVERVIEW -->
+        <section
+            style="background:#ffffff;border:1px solid #dce5ef;border-radius:24px;padding:34px;margin-bottom:34px;box-shadow:0 10px 30px rgba(20,40,70,.06);">
+            <div
+                style="font-size:14px;font-weight:900;letter-spacing:1.2px;text-transform:uppercase;color:#087f9c;margin-bottom:8px;">
+                01 • Overview</div>
+            <h2 style="margin:0 0 14px;font-size:34px;line-height:1.2;color:#122a4d;">Everything Your School Needs in
+                One Place</h2>
+            <p style="margin:0 0 16px;font-size:17px;color:#39495f;">
+                The SDS School Management System centralizes daily academic and administrative work inside Odoo.
+                Staff can maintain structured student records, connect parents and teachers, organize academic
+                structures, record attendance, manage examinations, track fees and generate school reports.
+            </p>
+            <p style="margin:0;font-size:17px;color:#39495f;">
+                The objective is simple: keep school information connected, searchable and easy to manage
+                while reducing repetitive manual administration.
+            </p>
+        </section>
+
+        <!-- CORE FEATURES -->
+        <section style="margin-bottom:34px;">
+            <div
+                style="font-size:14px;font-weight:900;letter-spacing:1.2px;text-transform:uppercase;color:#087f9c;margin-bottom:8px;">
+                02 • Core Features</div>
+            <h2 style="margin:0 0 20px;font-size:34px;line-height:1.2;color:#122a4d;">Powerful School Management Modules
+            </h2>
+
+            <table style="width:100%;border-collapse:separate;border-spacing:10px;">
                 <tr>
-                    <td style="width:50%;vertical-align:top;">
-                        <img src="images/fee_statement.png" alt="Student Fee Invoices"
-                            style="display:block;width:100%;height:330px;object-fit:contain;background:#f8fafc;border-radius:14px;border:1px solid #e2e8f0;">
-                        <h3 style="margin:12px 4px 4px;color:#1d4ed8;font-size:18px;">Student Fee Invoices</h3>
-                        <p style="margin:0 4px;color:#64748b;font-size:12px;">Invoice number, student, invoice date, due
-                            date, total, paid amount, due amount and status.</p>
+                    <td
+                        style="width:33.33%;vertical-align:top;background:#ffffff;border:1px solid #dce5ef;border-radius:20px;padding:24px;box-shadow:0 8px 24px rgba(20,40,70,.06);">
+                        <div style="font-size:28px;margin-bottom:10px;">👨‍🎓</div>
+                        <h3 style="margin:0 0 9px;font-size:21px;color:#123b6d;">Student Management</h3>
+                        <p style="margin:0;font-size:16px;color:#4c5c70;">Maintain student profiles, registration
+                            information, class, section, roll number, academic year, admission details, contacts and
+                            related school records.</p>
                     </td>
-                    <td style="width:50%;vertical-align:top;">
-                        <img src="images/fee_dashboard.png" alt="Fee and Student Analytics Dashboard"
-                            style="display:block;width:100%;height:330px;object-fit:contain;background:#f8fafc;border-radius:14px;border:1px solid #e2e8f0;">
-                        <h3 style="margin:12px 4px 4px;color:#4338ca;font-size:18px;">Analytics &amp; Financial Review
-                        </h3>
-                        <p style="margin:0 4px;color:#64748b;font-size:12px;">Use available analytical views to group
-                            and review school and fee-related information.</p>
+                    <td
+                        style="width:33.33%;vertical-align:top;background:#ffffff;border:1px solid #dce5ef;border-radius:20px;padding:24px;box-shadow:0 8px 24px rgba(20,40,70,.06);">
+                        <div style="font-size:28px;margin-bottom:10px;">🧾</div>
+                        <h3 style="margin:0 0 9px;font-size:21px;color:#123b6d;">Admission Management</h3>
+                        <p style="margin:0;font-size:16px;color:#4c5c70;">Capture structured admission information and
+                            connect a student's academic, personal, parent and guardian information from the beginning.
+                        </p>
+                    </td>
+                    <td
+                        style="width:33.33%;vertical-align:top;background:#ffffff;border:1px solid #dce5ef;border-radius:20px;padding:24px;box-shadow:0 8px 24px rgba(20,40,70,.06);">
+                        <div style="font-size:28px;margin-bottom:10px;">👨‍👩‍👧</div>
+                        <h3 style="margin:0 0 9px;font-size:21px;color:#123b6d;">Parents &amp; Guardians</h3>
+                        <p style="margin:0;font-size:16px;color:#4c5c70;">Keep guardian information connected with
+                            student records, making family and student administration easier to maintain.</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td
+                        style="vertical-align:top;background:#ffffff;border:1px solid #dce5ef;border-radius:20px;padding:24px;box-shadow:0 8px 24px rgba(20,40,70,.06);">
+                        <div style="font-size:28px;margin-bottom:10px;">👨‍🏫</div>
+                        <h3 style="margin:0 0 9px;font-size:21px;color:#123b6d;">Teachers &amp; Faculty</h3>
+                        <p style="margin:0;font-size:16px;color:#4c5c70;">Manage teacher profiles, qualifications,
+                            specialization, joining date, contact information, subjects and class responsibilities.</p>
+                    </td>
+                    <td
+                        style="vertical-align:top;background:#ffffff;border:1px solid #dce5ef;border-radius:20px;padding:24px;box-shadow:0 8px 24px rgba(20,40,70,.06);">
+                        <div style="font-size:28px;margin-bottom:10px;">🏫</div>
+                        <h3 style="margin:0 0 9px;font-size:21px;color:#123b6d;">Academic Management</h3>
+                        <p style="margin:0;font-size:16px;color:#4c5c70;">Configure academic years, grades, classes,
+                            sections, subjects, subject codes, pass marks and maximum marks.</p>
+                    </td>
+                    <td
+                        style="vertical-align:top;background:#ffffff;border:1px solid #dce5ef;border-radius:20px;padding:24px;box-shadow:0 8px 24px rgba(20,40,70,.06);">
+                        <div style="font-size:28px;margin-bottom:10px;">📅</div>
+                        <h3 style="margin:0 0 9px;font-size:21px;color:#123b6d;">Attendance</h3>
+                        <p style="margin:0;font-size:16px;color:#4c5c70;">Record and review student attendance and keep
+                            daily attendance information connected to school operations.</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td
+                        style="vertical-align:top;background:#ffffff;border:1px solid #dce5ef;border-radius:20px;padding:24px;box-shadow:0 8px 24px rgba(20,40,70,.06);">
+                        <div style="font-size:28px;margin-bottom:10px;">📝</div>
+                        <h3 style="margin:0 0 9px;font-size:21px;color:#123b6d;">Examinations &amp; Results</h3>
+                        <p style="margin:0;font-size:16px;color:#4c5c70;">Create examinations, maintain marks and result
+                            information, and generate academic report cards.</p>
+                    </td>
+                    <td
+                        style="vertical-align:top;background:#ffffff;border:1px solid #dce5ef;border-radius:20px;padding:24px;box-shadow:0 8px 24px rgba(20,40,70,.06);">
+                        <div style="font-size:28px;margin-bottom:10px;">💳</div>
+                        <h3 style="margin:0 0 9px;font-size:21px;color:#123b6d;">Fee Management</h3>
+                        <p style="margin:0;font-size:16px;color:#4c5c70;">Manage student fee invoices, paid and
+                            outstanding amounts, invoice status, receipts and fee-related financial information.</p>
+                    </td>
+                    <td
+                        style="vertical-align:top;background:#ffffff;border:1px solid #dce5ef;border-radius:20px;padding:24px;box-shadow:0 8px 24px rgba(20,40,70,.06);">
+                        <div style="font-size:28px;margin-bottom:10px;">🚌</div>
+                        <h3 style="margin:0 0 9px;font-size:21px;color:#123b6d;">Transport &amp; Facilities</h3>
+                        <p style="margin:0;font-size:16px;color:#4c5c70;">Maintain transport, route and facility-related
+                            school information, including supported hostel and operational records.</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td
+                        style="vertical-align:top;background:#ffffff;border:1px solid #dce5ef;border-radius:20px;padding:24px;box-shadow:0 8px 24px rgba(20,40,70,.06);">
+                        <div style="font-size:28px;margin-bottom:10px;">📚</div>
+                        <h3 style="margin:0 0 9px;font-size:21px;color:#123b6d;">Library</h3>
+                        <p style="margin:0;font-size:16px;color:#4c5c70;">Manage books and issue information and keep
+                            track of books associated with students.</p>
+                    </td>
+                    <td
+                        style="vertical-align:top;background:#ffffff;border:1px solid #dce5ef;border-radius:20px;padding:24px;box-shadow:0 8px 24px rgba(20,40,70,.06);">
+                        <div style="font-size:28px;margin-bottom:10px;">📊</div>
+                        <h3 style="margin:0 0 9px;font-size:21px;color:#123b6d;">Reports &amp; Analytics</h3>
+                        <p style="margin:0;font-size:16px;color:#4c5c70;">Turn school records into useful management
+                            information with analytical views and printable school documents.</p>
+                    </td>
+                    <td
+                        style="vertical-align:top;background:#ffffff;border:1px solid #dce5ef;border-radius:20px;padding:24px;box-shadow:0 8px 24px rgba(20,40,70,.06);">
+                        <div style="font-size:28px;margin-bottom:10px;">🪪</div>
+                        <h3 style="margin:0 0 9px;font-size:21px;color:#123b6d;">ID Cards &amp; Report Cards</h3>
+                        <p style="margin:0;font-size:16px;color:#4c5c70;">Generate printable student identification
+                            cards, academic report cards and fee receipts from managed records.</p>
                     </td>
                 </tr>
             </table>
-        </div>
+        </section>
 
-        <!-- OPERATIONS -->
-        <div
-            style="margin-top:58px;background:linear-gradient(135deg,#0f172a,#172554 55%,#164e63);border-radius:26px;padding:34px;color:#fff;">
+        <!-- ADMISSION -->
+        <section
+            style="background:#eaf6fb;border:1px solid #bfe3ee;border-radius:24px;padding:34px;margin-bottom:34px;">
             <div
-                style="display:inline-block;padding:6px 11px;border-radius:999px;background:rgba(255,255,255,.12);color:#c7d2fe;font-size:11px;font-weight:900;letter-spacing:1.2px;text-transform:uppercase;">
-                08 • Operations &amp; Facilities</div>
-            <h2 style="margin:12px 0 10px;font-size:30px;color:#fff;">Transport, Hostel &amp; Library</h2>
-            <p style="margin:0 0 22px;color:#cbd5e1;font-size:14px;max-width:900px;">
-                Keep operational school facilities connected with student records and day-to-day administration.
+                style="font-size:14px;font-weight:900;letter-spacing:1.2px;text-transform:uppercase;color:#087f9c;margin-bottom:8px;">
+                03 • Admission &amp; Portal</div>
+            <h2 style="margin:0 0 14px;font-size:34px;color:#122a4d;">A Structured Admission Journey</h2>
+            <p style="margin:0 0 18px;font-size:17px;color:#30465b;">
+                Admission is the starting point of the student lifecycle. The system is designed to keep
+                admission information organized before it becomes part of the regular student, academic and
+                administrative workflow.
             </p>
             <table style="width:100%;border-collapse:separate;border-spacing:10px;">
                 <tr>
-                    <td style="width:33.33%;vertical-align:top;">
-                        <div
-                            style="min-height:150px;padding:20px;border-radius:18px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.13);">
-                            <div style="font-size:24px;">🚌</div>
-                            <h3 style="margin:9px 0 6px;color:#fff;font-size:17px;">Transport</h3>
-                            <p style="margin:0;color:#cbd5e1;font-size:12px;">Vehicles, routes and student transport
-                                registrations.</p>
-                        </div>
+                    <td
+                        style="width:33.33%;background:#ffffff;border-radius:18px;padding:22px;vertical-align:top;border:1px solid #cfe5ed;">
+                        <h3 style="margin:0 0 8px;font-size:20px;color:#0b5f84;">1. Application</h3>
+                        <p style="margin:0;font-size:16px;color:#4b5d6e;">Capture applicant/student information in a
+                            structured admission form.</p>
                     </td>
-                    <td style="width:33.33%;vertical-align:top;">
-                        <div
-                            style="min-height:150px;padding:20px;border-radius:18px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.13);">
-                            <div style="font-size:24px;">🏠</div>
-                            <h3 style="margin:9px 0 6px;color:#fff;font-size:17px;">Hostel</h3>
-                            <p style="margin:0;color:#cbd5e1;font-size:12px;">Buildings, rooms and student hostel
-                                allocations.</p>
-                        </div>
+                    <td
+                        style="width:33.33%;background:#ffffff;border-radius:18px;padding:22px;vertical-align:top;border:1px solid #cfe5ed;">
+                        <h3 style="margin:0 0 8px;font-size:20px;color:#0b5f84;">2. Review</h3>
+                        <p style="margin:0;font-size:16px;color:#4b5d6e;">School staff can review the information before
+                            confirming the student record.</p>
                     </td>
-                    <td style="width:33.33%;vertical-align:top;">
-                        <div
-                            style="min-height:150px;padding:20px;border-radius:18px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.13);">
-                            <div style="font-size:24px;">📚</div>
-                            <h3 style="margin:9px 0 6px;color:#fff;font-size:17px;">Library</h3>
-                            <p style="margin:0;color:#cbd5e1;font-size:12px;">Books, issue records, returns and student
-                                library activity.</p>
-                        </div>
+                    <td
+                        style="width:33.33%;background:#ffffff;border-radius:18px;padding:22px;vertical-align:top;border:1px solid #cfe5ed;">
+                        <h3 style="margin:0 0 8px;font-size:20px;color:#0b5f84;">3. Enrollment</h3>
+                        <p style="margin:0;font-size:16px;color:#4b5d6e;">Connect the student with academic,
+                            parent/guardian and operational records.</p>
                     </td>
                 </tr>
             </table>
-        </div>
+            <div
+                style="margin-top:18px;background:#fff8e6;border-left:5px solid #e6a700;border-radius:0 14px 14px 0;padding:17px 19px;font-size:16px;color:#634900;">
+                <strong>Portal note:</strong> A public Website/Portal admission application requires the corresponding
+                Odoo Website/Portal implementation or extension. The internal admission workflow and public portal
+                application should be treated as separate layers.
+            </div>
+        </section>
+
+        <!-- PROJECT IMAGES -->
+        <section style="margin-bottom:34px;">
+            <div
+                style="font-size:14px;font-weight:900;letter-spacing:1.2px;text-transform:uppercase;color:#087f9c;margin-bottom:8px;">
+                04 • Project Screenshots</div>
+            <h2 style="margin:0 0 10px;font-size:34px;color:#122a4d;">Real Project Visuals, Explained Clearly</h2>
+            <p style="margin:0 0 22px;font-size:17px;color:#45566b;">
+                The following images are the project visuals supplied for this documentation. Each image is presented
+                at a readable size with a dedicated explanation instead of being placed as a small decorative thumbnail.
+            </p>
+
+            <div
+                style="background:#ffffff;border:1px solid #dce5ef;border-radius:24px;padding:22px;margin-bottom:22px;box-shadow:0 10px 28px rgba(20,40,70,.06);">
+                <h3 style="margin:0 0 8px;font-size:24px;color:#123b6d;">Operations &amp; Facilities</h3>
+                <p style="margin:0 0 16px;font-size:16px;color:#4a5b70;">
+                    This project visual presents the operational layer of the school system. It highlights
+                    transportation, buildings/hostel facilities and library activities as connected areas of
+                    school administration. The layout is intended to keep operational information close to
+                    the student's wider administrative workflow.
+                </p>
+                <img src="images/operations_facilities.png" alt="Operations and Facilities project visual"
+                    style="display:block;width:100%;height:auto;max-height:560px;object-fit:contain;border:1px solid #cfdbe7;border-radius:16px;background:#ffffff;">
+            </div>
+
+            <div
+                style="background:#ffffff;border:1px solid #dce5ef;border-radius:24px;padding:22px;margin-bottom:22px;box-shadow:0 10px 28px rgba(20,40,70,.06);">
+                <h3 style="margin:0 0 8px;font-size:24px;color:#123b6d;">Complete Workflow</h3>
+                <p style="margin:0 0 16px;font-size:16px;color:#4a5b70;">
+                    This visual communicates the idea of a unified school workflow: academic setup, admission,
+                    student administration, daily operations, results and reporting should work as connected stages
+                    rather than isolated processes.
+                </p>
+                <img src="images/workflow_section.png" alt="Complete school workflow project visual"
+                    style="display:block;width:100%;height:auto;max-height:560px;object-fit:contain;border:1px solid #cfdbe7;border-radius:16px;background:#ffffff;">
+            </div>
+
+            <div
+                style="background:#ffffff;border:1px solid #dce5ef;border-radius:24px;padding:22px;margin-bottom:22px;box-shadow:0 10px 28px rgba(20,40,70,.06);">
+                <h3 style="margin:0 0 8px;font-size:24px;color:#123b6d;">Unified School Operations Dashboard Visual</h3>
+                <p style="margin:0 0 16px;font-size:16px;color:#4a5b70;">
+                    The supplied dashboard visual represents the central-management concept of the application:
+                    school information is grouped into one place so administrators can move between academic,
+                    student and operational activities with less fragmentation.
+                </p>
+                <img src="images/workflow_dashboard.png" alt="Unified school operations dashboard visual"
+                    style="display:block;width:100%;height:auto;max-height:620px;object-fit:contain;border:1px solid #cfdbe7;border-radius:16px;background:#ffffff;">
+            </div>
+
+            <div
+                style="background:#ffffff;border:1px solid #dce5ef;border-radius:24px;padding:22px;box-shadow:0 10px 28px rgba(20,40,70,.06);">
+                <h3 style="margin:0 0 8px;font-size:24px;color:#123b6d;">Support &amp; Product Footer</h3>
+                <p style="margin:0 0 16px;font-size:16px;color:#4a5b70;">
+                    The supplied footer visual shows the support-oriented closing area of the documentation,
+                    including Smart Desk Solution branding, support messaging and product/version information.
+                    It provides a clear final contact point for installation, configuration and customization
+                    assistance.
+                </p>
+                <img src="images/support_footer.png" alt="Smart Desk Solution support footer visual"
+                    style="display:block;width:100%;height:auto;max-height:620px;object-fit:contain;border:1px solid #cfdbe7;border-radius:16px;background:#ffffff;">
+            </div>
+        </section>
+
+        <!-- FEES -->
+        <section
+            style="background:#ffffff;border:1px solid #dce5ef;border-radius:24px;padding:34px;margin-bottom:34px;box-shadow:0 10px 30px rgba(20,40,70,.06);">
+            <div
+                style="font-size:14px;font-weight:900;letter-spacing:1.2px;text-transform:uppercase;color:#087f9c;margin-bottom:8px;">
+                05 • Fee Management</div>
+            <h2 style="margin:0 0 14px;font-size:34px;color:#122a4d;">Clear Student Fee Tracking</h2>
+            <p style="margin:0 0 18px;font-size:17px;color:#405166;">
+                Fee management brings financial information into the same student-centered workflow.
+                Administrators can manage fee invoices, monitor paid and outstanding amounts, review invoice status
+                and generate fee receipts.
+            </p>
+            <table style="width:100%;border-collapse:separate;border-spacing:10px;">
+                <tr>
+                    <td
+                        style="width:33.33%;vertical-align:top;background:#f5fbfd;border:1px solid #cfe5ed;border-radius:18px;padding:22px;">
+                        <h3 style="margin:0 0 8px;font-size:20px;color:#0b5f84;">Invoices</h3>
+                        <p style="margin:0;font-size:16px;color:#4c5d70;">Create and maintain student fee invoices and
+                            related financial records.</p>
+                    </td>
+                    <td
+                        style="width:33.33%;vertical-align:top;background:#f5fbfd;border:1px solid #cfe5ed;border-radius:18px;padding:22px;">
+                        <h3 style="margin:0 0 8px;font-size:20px;color:#0b5f84;">Outstanding Amounts</h3>
+                        <p style="margin:0;font-size:16px;color:#4c5d70;">Identify paid, due and outstanding amounts for
+                            better follow-up.</p>
+                    </td>
+                    <td
+                        style="width:33.33%;vertical-align:top;background:#f5fbfd;border:1px solid #cfe5ed;border-radius:18px;padding:22px;">
+                        <h3 style="margin:0 0 8px;font-size:20px;color:#0b5f84;">Receipts &amp; Analytics</h3>
+                        <p style="margin:0;font-size:16px;color:#4c5d70;">Generate receipts and review available
+                            fee-related financial information.</p>
+                    </td>
+                </tr>
+            </table>
+        </section>
+
+        <!-- ACADEMICS -->
+        <section style="margin-bottom:34px;">
+            <div
+                style="font-size:14px;font-weight:900;letter-spacing:1.2px;text-transform:uppercase;color:#087f9c;margin-bottom:8px;">
+                06 • Academic &amp; Examination Management</div>
+            <h2 style="margin:0 0 18px;font-size:34px;color:#122a4d;">Build the Academic Structure, Then Track Results
+            </h2>
+            <table style="width:100%;border-collapse:separate;border-spacing:10px;">
+                <tr>
+                    <td
+                        style="width:25%;vertical-align:top;background:#ffffff;border:1px solid #dce5ef;border-radius:18px;padding:21px;box-shadow:0 7px 22px rgba(20,40,70,.05);">
+                        <h3 style="margin:0 0 8px;font-size:19px;color:#123b6d;">Academic Year</h3>
+                        <p style="margin:0;font-size:15px;color:#506074;">Define the academic period used by school
+                            records.</p>
+                    </td>
+                    <td
+                        style="width:25%;vertical-align:top;background:#ffffff;border:1px solid #dce5ef;border-radius:18px;padding:21px;box-shadow:0 7px 22px rgba(20,40,70,.05);">
+                        <h3 style="margin:0 0 8px;font-size:19px;color:#123b6d;">Grades &amp; Classes</h3>
+                        <p style="margin:0;font-size:15px;color:#506074;">Organize grade levels, classes and sections.
+                        </p>
+                    </td>
+                    <td
+                        style="width:25%;vertical-align:top;background:#ffffff;border:1px solid #dce5ef;border-radius:18px;padding:21px;box-shadow:0 7px 22px rgba(20,40,70,.05);">
+                        <h3 style="margin:0 0 8px;font-size:19px;color:#123b6d;">Subjects</h3>
+                        <p style="margin:0;font-size:15px;color:#506074;">Configure subject names, codes, types and
+                            marks.</p>
+                    </td>
+                    <td
+                        style="width:25%;vertical-align:top;background:#ffffff;border:1px solid #dce5ef;border-radius:18px;padding:21px;box-shadow:0 7px 22px rgba(20,40,70,.05);">
+                        <h3 style="margin:0 0 8px;font-size:19px;color:#123b6d;">Exams &amp; Results</h3>
+                        <p style="margin:0;font-size:15px;color:#506074;">Manage examinations, marks, results and report
+                            cards.</p>
+                    </td>
+                </tr>
+            </table>
+        </section>
 
         <!-- WORKFLOW -->
-        <div style="margin-top:58px;">
-            <div style="text-align:center;">
-                <div
-                    style="display:inline-block;padding:6px 11px;border-radius:999px;background:#ecfeff;color:#0e7490;font-size:11px;font-weight:900;letter-spacing:1.2px;text-transform:uppercase;">
-                    09 • Complete Workflow</div>
-                <h2 style="margin:12px 0 8px;font-size:31px;color:#0f172a;">From Setup to Graduation</h2>
-                <p style="margin:0;color:#64748b;font-size:14px;">A connected operational flow for school administrators
-                    and staff.</p>
-            </div>
-
-            <table style="width:100%;border-collapse:separate;border-spacing:8px;margin-top:24px;">
+        <section style="background:#102a56;border-radius:24px;padding:36px;margin-bottom:34px;color:#ffffff;">
+            <div
+                style="font-size:14px;font-weight:900;letter-spacing:1.2px;text-transform:uppercase;color:#8fe5f4;margin-bottom:8px;">
+                07 • End-to-End Workflow</div>
+            <h2 style="margin:0 0 20px;font-size:34px;color:#ffffff;">From Admission to Reporting</h2>
+            <table style="width:100%;border-collapse:separate;border-spacing:8px;">
                 <tr>
-                    <td style="width:16.66%;vertical-align:top;text-align:center;">
-                        <div
-                            style="background:#fff;border:1px solid #e3e8f0;border-radius:18px;padding:18px 10px;min-height:155px;">
-                            <div
-                                style="margin:auto;width:40px;height:40px;border-radius:50%;background:#eef2ff;color:#4338ca;line-height:40px;font-weight:900;">
-                                01</div>
-                            <h3 style="font-size:14px;margin:10px 0 5px;">Setup</h3>
-                            <p style="font-size:11px;color:#64748b;margin:0;">Years, grades, classes, sections and
-                                subjects.</p>
-                        </div>
+                    <td
+                        style="width:16.66%;background:#ffffff;color:#172033;border-radius:16px;padding:18px 12px;text-align:center;vertical-align:top;">
+                        <div style="font-size:24px;font-weight:900;color:#087f9c;">01</div>
+                        <h3 style="margin:6px 0;font-size:17px;">Setup</h3>
+                        <p style="margin:0;font-size:14px;color:#536276;">Years, grades, classes, sections and subjects.
+                        </p>
                     </td>
-                    <td style="width:16.66%;vertical-align:top;text-align:center;">
-                        <div
-                            style="background:#fff;border:1px solid #e3e8f0;border-radius:18px;padding:18px 10px;min-height:155px;">
-                            <div
-                                style="margin:auto;width:40px;height:40px;border-radius:50%;background:#ecfeff;color:#0e7490;line-height:40px;font-weight:900;">
-                                02</div>
-                            <h3 style="font-size:14px;margin:10px 0 5px;">Admission</h3>
-                            <p style="font-size:11px;color:#64748b;margin:0;">Applicant, student and guardian
-                                information.</p>
-                        </div>
+                    <td
+                        style="width:16.66%;background:#ffffff;color:#172033;border-radius:16px;padding:18px 12px;text-align:center;vertical-align:top;">
+                        <div style="font-size:24px;font-weight:900;color:#087f9c;">02</div>
+                        <h3 style="margin:6px 0;font-size:17px;">Admission</h3>
+                        <p style="margin:0;font-size:14px;color:#536276;">Student and parent/guardian information.</p>
                     </td>
-                    <td style="width:16.66%;vertical-align:top;text-align:center;">
-                        <div
-                            style="background:#fff;border:1px solid #e3e8f0;border-radius:18px;padding:18px 10px;min-height:155px;">
-                            <div
-                                style="margin:auto;width:40px;height:40px;border-radius:50%;background:#f5f3ff;color:#7c3aed;line-height:40px;font-weight:900;">
-                                03</div>
-                            <h3 style="font-size:14px;margin:10px 0 5px;">Academics</h3>
-                            <p style="font-size:11px;color:#64748b;margin:0;">Teachers, subjects, classes and timetable.
-                            </p>
-                        </div>
+                    <td
+                        style="width:16.66%;background:#ffffff;color:#172033;border-radius:16px;padding:18px 12px;text-align:center;vertical-align:top;">
+                        <div style="font-size:24px;font-weight:900;color:#087f9c;">03</div>
+                        <h3 style="margin:6px 0;font-size:17px;">Academics</h3>
+                        <p style="margin:0;font-size:14px;color:#536276;">Teachers, subjects and examinations.</p>
                     </td>
-                    <td style="width:16.66%;vertical-align:top;text-align:center;">
-                        <div
-                            style="background:#fff;border:1px solid #e3e8f0;border-radius:18px;padding:18px 10px;min-height:155px;">
-                            <div
-                                style="margin:auto;width:40px;height:40px;border-radius:50%;background:#fff7ed;color:#c2410c;line-height:40px;font-weight:900;">
-                                04</div>
-                            <h3 style="font-size:14px;margin:10px 0 5px;">Operations</h3>
-                            <p style="font-size:11px;color:#64748b;margin:0;">Attendance, fees, transport, hostel and
-                                library.</p>
-                        </div>
+                    <td
+                        style="width:16.66%;background:#ffffff;color:#172033;border-radius:16px;padding:18px 12px;text-align:center;vertical-align:top;">
+                        <div style="font-size:24px;font-weight:900;color:#087f9c;">04</div>
+                        <h3 style="margin:6px 0;font-size:17px;">Operations</h3>
+                        <p style="margin:0;font-size:14px;color:#536276;">Attendance, fees, transport, hostel and
+                            library.</p>
                     </td>
-                    <td style="width:16.66%;vertical-align:top;text-align:center;">
-                        <div
-                            style="background:#fff;border:1px solid #e3e8f0;border-radius:18px;padding:18px 10px;min-height:155px;">
-                            <div
-                                style="margin:auto;width:40px;height:40px;border-radius:50%;background:#eff6ff;color:#1d4ed8;line-height:40px;font-weight:900;">
-                                05</div>
-                            <h3 style="font-size:14px;margin:10px 0 5px;">Results</h3>
-                            <p style="font-size:11px;color:#64748b;margin:0;">Marks, grading, analytics and report
-                                cards.</p>
-                        </div>
+                    <td
+                        style="width:16.66%;background:#ffffff;color:#172033;border-radius:16px;padding:18px 12px;text-align:center;vertical-align:top;">
+                        <div style="font-size:24px;font-weight:900;color:#087f9c;">05</div>
+                        <h3 style="margin:6px 0;font-size:17px;">Results</h3>
+                        <p style="margin:0;font-size:14px;color:#536276;">Marks, results and academic review.</p>
                     </td>
-                    <td style="width:16.66%;vertical-align:top;text-align:center;">
-                        <div
-                            style="background:#fff;border:1px solid #e3e8f0;border-radius:18px;padding:18px 10px;min-height:155px;">
-                            <div
-                                style="margin:auto;width:40px;height:40px;border-radius:50%;background:#ecfdf5;color:#047857;line-height:40px;font-weight:900;">
-                                06</div>
-                            <h3 style="font-size:14px;margin:10px 0 5px;">Reporting</h3>
-                            <p style="font-size:11px;color:#64748b;margin:0;">Printable documents and management
-                                information.</p>
-                        </div>
+                    <td
+                        style="width:16.66%;background:#ffffff;color:#172033;border-radius:16px;padding:18px 12px;text-align:center;vertical-align:top;">
+                        <div style="font-size:24px;font-weight:900;color:#087f9c;">06</div>
+                        <h3 style="margin:6px 0;font-size:17px;">Reporting</h3>
+                        <p style="margin:0;font-size:14px;color:#536276;">Printable documents and management
+                            information.</p>
                     </td>
                 </tr>
             </table>
-        </div>
+        </section>
 
         <!-- REPORTS -->
-        <div
-            style="margin-top:58px;background:linear-gradient(135deg,#312e81,#4338ca 55%,#0e7490);border-radius:26px;padding:34px;">
-            <div style="text-align:center;">
-                <div
-                    style="display:inline-block;padding:6px 11px;border-radius:999px;background:rgba(255,255,255,.12);color:#c7d2fe;font-size:11px;font-weight:900;letter-spacing:1.2px;text-transform:uppercase;">
-                    10 • Reports</div>
-                <h2 style="margin:12px 0 8px;font-size:30px;color:#fff;">Professional Printable Reports</h2>
-                <p style="margin:0 auto 22px;max-width:800px;color:#dbeafe;font-size:14px;">Turn operational records
-                    into documents that can be reviewed, printed and shared.</p>
-            </div>
+        <section
+            style="background:#eaf6fb;border:1px solid #bfe3ee;border-radius:24px;padding:34px;margin-bottom:34px;">
+            <div
+                style="font-size:14px;font-weight:900;letter-spacing:1.2px;text-transform:uppercase;color:#087f9c;margin-bottom:8px;">
+                08 • Reports</div>
+            <h2 style="margin:0 0 14px;font-size:34px;color:#122a4d;">Useful Printable School Documents</h2>
             <table style="width:100%;border-collapse:separate;border-spacing:10px;">
                 <tr>
-                    <td style="width:33.33%;vertical-align:top;">
-                        <div
-                            style="padding:20px;border-radius:18px;background:rgba(255,255,255,.10);border:1px solid rgba(255,255,255,.15);min-height:130px;">
-                            <h3 style="margin:0 0 8px;color:#fff;font-size:17px;">Student ID Card</h3>
-                            <p style="margin:0;color:#dbeafe;font-size:12px;">Printable identification information from
-                                student records.</p>
-                        </div>
+                    <td
+                        style="width:33.33%;background:#ffffff;border:1px solid #cfe5ed;border-radius:18px;padding:22px;vertical-align:top;">
+                        <h3 style="margin:0 0 8px;font-size:20px;color:#0b5f84;">Student ID Card</h3>
+                        <p style="margin:0;font-size:16px;color:#4c5d70;">Printable identification information generated
+                            from student records.</p>
                     </td>
-                    <td style="width:33.33%;vertical-align:top;">
-                        <div
-                            style="padding:20px;border-radius:18px;background:rgba(255,255,255,.10);border:1px solid rgba(255,255,255,.15);min-height:130px;">
-                            <h3 style="margin:0 0 8px;color:#fff;font-size:17px;">Academic Report Card</h3>
-                            <p style="margin:0;color:#dbeafe;font-size:12px;">Student identity, class, subject-wise
-                                marks and result information.</p>
-                        </div>
+                    <td
+                        style="width:33.33%;background:#ffffff;border:1px solid #cfe5ed;border-radius:18px;padding:22px;vertical-align:top;">
+                        <h3 style="margin:0 0 8px;font-size:20px;color:#0b5f84;">Academic Report Card</h3>
+                        <p style="margin:0;font-size:16px;color:#4c5d70;">Student academic details, marks and result
+                            information in printable form.</p>
                     </td>
-                    <td style="width:33.33%;vertical-align:top;">
-                        <div
-                            style="padding:20px;border-radius:18px;background:rgba(255,255,255,.10);border:1px solid rgba(255,255,255,.15);min-height:130px;">
-                            <h3 style="margin:0 0 8px;color:#fff;font-size:17px;">Fee Payment Receipt</h3>
-                            <p style="margin:0;color:#dbeafe;font-size:12px;">Printable fee payment information for
-                                school administration.</p>
-                        </div>
+                    <td
+                        style="width:33.33%;background:#ffffff;border:1px solid #cfe5ed;border-radius:18px;padding:22px;vertical-align:top;">
+                        <h3 style="margin:0 0 8px;font-size:20px;color:#0b5f84;">Fee Receipt</h3>
+                        <p style="margin:0;font-size:16px;color:#4c5d70;">Printable fee payment information for school
+                            administration and records.</p>
                     </td>
                 </tr>
             </table>
-            <div style="margin-top:20px;background:#fff;border-radius:16px;padding:8px;">
-                <img src="images/report_card.png" alt="Academic Report Card Preview"
-                    style="display:block;width:100%;height:350px;object-fit:contain;border-radius:10px;background:#f8fafc;">
-            </div>
-        </div>
-
-        <!-- INSTALLATION -->
-        <div style="margin-top:58px;">
-            <div style="text-align:center;">
-                <div
-                    style="display:inline-block;padding:6px 11px;border-radius:999px;background:#f0fdf4;color:#15803d;font-size:11px;font-weight:900;letter-spacing:1.2px;text-transform:uppercase;">
-                    11 • Installation</div>
-                <h2 style="margin:12px 0 8px;font-size:31px;color:#0f172a;">Get Started in Four Steps</h2>
-            </div>
-            <table style="width:100%;border-collapse:separate;border-spacing:10px;margin-top:22px;">
-                <tr>
-                    <td style="width:25%;vertical-align:top;">
-                        <div
-                            style="background:#fff;border:1px solid #e3e8f0;border-radius:18px;padding:20px;min-height:150px;">
-                            <div style="font-size:11px;font-weight:900;color:#4338ca;">01</div>
-                            <h3 style="margin:8px 0 6px;font-size:16px;">Copy the Module</h3>
-                            <p style="margin:0;color:#64748b;font-size:12px;">Place the module in a directory included
-                                in Odoo's <strong>addons_path</strong>.</p>
-                        </div>
-                    </td>
-                    <td style="width:25%;vertical-align:top;">
-                        <div
-                            style="background:#fff;border:1px solid #e3e8f0;border-radius:18px;padding:20px;min-height:150px;">
-                            <div style="font-size:11px;font-weight:900;color:#0e7490;">02</div>
-                            <h3 style="margin:8px 0 6px;font-size:16px;">Restart Odoo</h3>
-                            <p style="margin:0;color:#64748b;font-size:12px;">Restart the Odoo server so the new module
-                                path is available.</p>
-                        </div>
-                    </td>
-                    <td style="width:25%;vertical-align:top;">
-                        <div
-                            style="background:#fff;border:1px solid #e3e8f0;border-radius:18px;padding:20px;min-height:150px;">
-                            <div style="font-size:11px;font-weight:900;color:#7c3aed;">03</div>
-                            <h3 style="margin:8px 0 6px;font-size:16px;">Update Apps</h3>
-                            <p style="margin:0;color:#64748b;font-size:12px;">Update the Odoo Apps list and search for
-                                the School Management System.</p>
-                        </div>
-                    </td>
-                    <td style="width:25%;vertical-align:top;">
-                        <div
-                            style="background:#fff;border:1px solid #e3e8f0;border-radius:18px;padding:20px;min-height:150px;">
-                            <div style="font-size:11px;font-weight:900;color:#047857;">04</div>
-                            <h3 style="margin:8px 0 6px;font-size:16px;">Install &amp; Configure</h3>
-                            <p style="margin:0;color:#64748b;font-size:12px;">Install the module and configure academic
-                                structures before entering operational data.</p>
-                        </div>
-                    </td>
-                </tr>
-            </table>
-        </div>
+        </section>
 
         <!-- TECHNICAL -->
-        <div style="margin-top:58px;background:#ffffff;border:1px solid #e3e8f0;border-radius:24px;padding:30px;">
+        <section
+            style="background:#ffffff;border:1px solid #dce5ef;border-radius:24px;padding:34px;margin-bottom:34px;box-shadow:0 10px 30px rgba(20,40,70,.06);">
             <div
-                style="display:inline-block;padding:6px 11px;border-radius:999px;background:#f1f5f9;color:#334155;font-size:11px;font-weight:900;letter-spacing:1.2px;text-transform:uppercase;">
-                12 • Technical Information</div>
-            <h2 style="margin:12px 0 18px;font-size:30px;color:#0f172a;">Technical &amp; Compatibility Information</h2>
-            <table style="width:100%;border-collapse:collapse;">
+                style="font-size:14px;font-weight:900;letter-spacing:1.2px;text-transform:uppercase;color:#087f9c;margin-bottom:8px;">
+                09 • Technical Information</div>
+            <h2 style="margin:0 0 20px;font-size:34px;color:#122a4d;">Built for Odoo 19</h2>
+            <table style="width:100%;border-collapse:collapse;font-size:16px;">
                 <tr>
-                    <td style="width:50%;padding:10px 20px 10px 0;vertical-align:top;border-right:1px solid #e8edf4;">
-                        <div style="padding:12px 0;border-bottom:1px solid #edf1f5;"><strong
-                                style="color:#4338ca;">Technical Module</strong><br><span
-                                style="color:#64748b;font-size:13px;">school_management</span></div>
-                        <div style="padding:12px 0;border-bottom:1px solid #edf1f5;"><strong
-                                style="color:#4338ca;">Version</strong><br><span
-                                style="color:#64748b;font-size:13px;">19.0.1.0.0</span></div>
-                        <div style="padding:12px 0;"><strong style="color:#4338ca;">Odoo</strong><br><span
-                                style="color:#64748b;font-size:13px;">19.0</span></div>
+                    <td style="padding:14px;border-bottom:1px solid #e1e8ef;font-weight:800;color:#123b6d;width:35%;">
+                        Technical Module</td>
+                    <td style="padding:14px;border-bottom:1px solid #e1e8ef;color:#42546a;">school_management</td>
+                </tr>
+                <tr>
+                    <td style="padding:14px;border-bottom:1px solid #e1e8ef;font-weight:800;color:#123b6d;">Version</td>
+                    <td style="padding:14px;border-bottom:1px solid #e1e8ef;color:#42546a;">19.0.1.0.0</td>
+                </tr>
+                <tr>
+                    <td style="padding:14px;border-bottom:1px solid #e1e8ef;font-weight:800;color:#123b6d;">Odoo</td>
+                    <td style="padding:14px;border-bottom:1px solid #e1e8ef;color:#42546a;">19.0</td>
+                </tr>
+                <tr>
+                    <td style="padding:14px;border-bottom:1px solid #e1e8ef;font-weight:800;color:#123b6d;">Category
                     </td>
-                    <td style="width:50%;padding:10px 0 10px 20px;vertical-align:top;">
-                        <div style="padding:12px 0;border-bottom:1px solid #edf1f5;"><strong
-                                style="color:#0e7490;">Category</strong><br><span
-                                style="color:#64748b;font-size:13px;">Education</span></div>
-                        <div style="padding:12px 0;border-bottom:1px solid #edf1f5;"><strong
-                                style="color:#0e7490;">License</strong><br><span
-                                style="color:#64748b;font-size:13px;">LGPL-3</span></div>
-                        <div style="padding:12px 0;"><strong style="color:#0e7490;">Application</strong><br><span
-                                style="color:#64748b;font-size:13px;">Yes</span></div>
+                    <td style="padding:14px;border-bottom:1px solid #e1e8ef;color:#42546a;">Education</td>
+                </tr>
+                <tr>
+                    <td style="padding:14px;border-bottom:1px solid #e1e8ef;font-weight:800;color:#123b6d;">License</td>
+                    <td style="padding:14px;border-bottom:1px solid #e1e8ef;color:#42546a;">LGPL-3</td>
+                </tr>
+                <tr>
+                    <td style="padding:14px;border-bottom:1px solid #e1e8ef;font-weight:800;color:#123b6d;">Author</td>
+                    <td style="padding:14px;border-bottom:1px solid #e1e8ef;color:#42546a;">Smart Desk Solution</td>
+                </tr>
+            </table>
+        </section>
+
+        <!-- INSTALLATION -->
+        <section style="margin-bottom:34px;">
+            <div
+                style="font-size:14px;font-weight:900;letter-spacing:1.2px;text-transform:uppercase;color:#087f9c;margin-bottom:8px;">
+                10 • Installation</div>
+            <h2 style="margin:0 0 18px;font-size:34px;color:#122a4d;">Get Started in Four Steps</h2>
+            <table style="width:100%;border-collapse:separate;border-spacing:10px;">
+                <tr>
+                    <td
+                        style="width:25%;background:#ffffff;border:1px solid #dce5ef;border-radius:18px;padding:22px;vertical-align:top;">
+                        <div style="font-size:25px;font-weight:900;color:#087f9c;">01</div>
+                        <h3 style="margin:8px 0;font-size:19px;color:#123b6d;">Copy the Module</h3>
+                        <p style="margin:0;font-size:15px;color:#536276;">Place the module in an Odoo directory included
+                            in <strong>addons_path</strong>.</p>
+                    </td>
+                    <td
+                        style="width:25%;background:#ffffff;border:1px solid #dce5ef;border-radius:18px;padding:22px;vertical-align:top;">
+                        <div style="font-size:25px;font-weight:900;color:#087f9c;">02</div>
+                        <h3 style="margin:8px 0;font-size:19px;color:#123b6d;">Restart Odoo</h3>
+                        <p style="margin:0;font-size:15px;color:#536276;">Restart the Odoo server after adding or
+                            changing the module.</p>
+                    </td>
+                    <td
+                        style="width:25%;background:#ffffff;border:1px solid #dce5ef;border-radius:18px;padding:22px;vertical-align:top;">
+                        <div style="font-size:25px;font-weight:900;color:#087f9c;">03</div>
+                        <h3 style="margin:8px 0;font-size:19px;color:#123b6d;">Update Apps</h3>
+                        <p style="margin:0;font-size:15px;color:#536276;">Update the Apps list so the module can be
+                            discovered by Odoo.</p>
+                    </td>
+                    <td
+                        style="width:25%;background:#ffffff;border:1px solid #dce5ef;border-radius:18px;padding:22px;vertical-align:top;">
+                        <div style="font-size:25px;font-weight:900;color:#087f9c;">04</div>
+                        <h3 style="margin:8px 0;font-size:19px;color:#123b6d;">Install</h3>
+                        <p style="margin:0;font-size:15px;color:#536276;">Search for the School Management System and
+                            install it.</p>
                     </td>
                 </tr>
             </table>
-        </div>
+        </section>
 
         <!-- SUPPORT -->
-        <div
-            style="margin-top:58px;text-align:center;border-radius:26px;padding:38px 22px;background:linear-gradient(135deg,#312e81,#4338ca 55%,#0891b2);box-shadow:0 20px 50px rgba(49,46,129,.20);">
-            <div
-                style="display:inline-flex;align-items:center;justify-content:center;width:52px;height:52px;border-radius:16px;background:rgba(255,255,255,.14);color:#fff;font-size:13px;font-weight:900;">
-                SDS</div>
-            <div
-                style="margin-top:12px;color:#c7d2fe;font-size:11px;font-weight:900;letter-spacing:1.5px;text-transform:uppercase;">
+        <section
+            style="background:linear-gradient(135deg,#102a56,#087f9c);border-radius:26px;padding:42px 34px;text-align:center;color:#ffffff;box-shadow:0 18px 42px rgba(16,42,86,.18);">
+            <div style="font-size:14px;font-weight:900;letter-spacing:1.5px;text-transform:uppercase;color:#b8f3fb;">
                 Smart Desk Solution</div>
-            <h2 style="margin:8px 0 8px;color:#fff;font-size:30px;">Need Support?</h2>
-            <p style="margin:0 auto 16px;max-width:720px;color:#dbeafe;font-size:14px;">
-                For installation, configuration, customization or module-related assistance, contact the support team.
+            <h2 style="margin:8px 0 12px;font-size:36px;color:#ffffff;">Need Support?</h2>
+            <p style="max-width:760px;margin:0 auto 18px;font-size:17px;line-height:1.75;color:#eefcff;">
+                For installation, configuration, customization or module-related assistance,
+                contact the Smart Desk Solution support team.
             </p>
-            <a href="mailto:info@smartdesksolution.com"
-                style="color:#fff;text-decoration:none;font-weight:900;font-size:13px;">info@smartdesksolution.com</a>
-            <span style="color:#cbd5e1;padding:0 8px;">•</span>
-            <a href="https://www.smartdesksolution.com" target="_blank"
-                style="color:#fff;text-decoration:none;font-weight:900;font-size:13px;">www.smartdesksolution.com</a>
-        </div>
+            <p style="margin:0;font-size:17px;font-weight:800;color:#ffffff;">
+                info@smartdesksolution.com &nbsp; • &nbsp; www.smartdesksolution.com
+            </p>
+        </section>
 
-        <!-- FOOTER -->
-        <div style="margin-top:22px;padding:22px;text-align:center;color:#64748b;font-size:11px;">
-            <strong style="color:#334155;">SDS School Management System</strong> • Odoo 19 • Smart Desk Solution<br>
-            Version 19.0.1.0.0
+        <div style="text-align:center;padding:25px 10px 0;font-size:14px;color:#627186;">
+            <strong style="color:#243a59;">SDS School Management System</strong>
+            &nbsp;•&nbsp; Odoo 19 &nbsp;•&nbsp; Smart Desk Solution
+            <br>Version 19.0.1.0.0
         </div>
 
     </div>
