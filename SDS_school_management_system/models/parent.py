@@ -16,5 +16,7 @@ class SchoolParent(models.Model):
     email = fields.Char(string='Email')
     phone = fields.Char(string='Phone')
     mobile = fields.Char(string='Mobile')
+    user_id = fields.Many2one('res.users', string='Portal User', copy=False,
+                               help='Portal account allowed to view this guardian\'s children and fee statements.')
     student_ids = fields.Many2many('school.student', string='Children / Wards')
     emergency_contact = fields.Boolean(string='Is Emergency Contact', default=True)

@@ -36,6 +36,7 @@
                             <field name="phone"/>
                             <field name="mobile"/>
                             <field name="email"/>
+                            <field name="user_id"/>
                         </group>
                     </group>
                     <notebook>

@@ -1,6 +1,6 @@
 {
     'name': 'School Management System',
-    'version': '19.0.1.1.0',
+    'version': '19.0.1.2.0',
     'category': 'Education',
     'author': 'SmartDeskSolution',
     'maintainer': 'SmartDeskSolution',
@@ -55,8 +55,9 @@ Key Features:
         'demo/school_demo_data.xml',
     ],
     'images': [
-    'static/description/icon.png',
-],
+        'static/description/icon.png',
+        'static/description/banner.png',
+    ],
     'installable': True,
     'application': True,
     'license': 'LGPL-3',
