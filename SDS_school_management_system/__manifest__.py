@@ -58,6 +58,13 @@ Key Features:
         'static/description/icon.png',
         'static/description/banner.png',
     ],
+    'assets': {
+        'web.assets_backend': [
+            'SDS_school_management_system/static/src/js/school_dashboard.js',
+            'SDS_school_management_system/static/src/xml/school_dashboard.xml',
+            'SDS_school_management_system/static/src/scss/school_dashboard.scss',
+        ],
+    },
     'installable': True,
     'application': True,
     'license': 'LGPL-3',

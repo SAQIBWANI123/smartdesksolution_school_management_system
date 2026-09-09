@@ -9,6 +9,13 @@ class SchoolPortal(http.Controller):
     _MAX_DOCUMENT_SIZE = 5 * 1024 * 1024
     _MAX_DOCUMENTS = 10
     _ALLOWED_DOCUMENT_EXTENSIONS = {'.pdf', '.jpg', '.jpeg', '.png', '.doc', '.docx'}
+    _FEE_STATE_LABELS = {
+        'draft': 'Draft',
+        'posted': 'Posted / Invoiced',
+        'paid': 'Fully Paid',
+        'partially_paid': 'Partially Paid',
+        'cancelled': 'Cancelled',
+    }
 
     def _admission_form_values(self, error=None):
         grades = request.env['school.grade'].sudo().search([], order='sequence, name')
@@ -93,5 +100,57 @@ class SchoolPortal(http.Controller):
     def my_fees(self, **kw):
         parents = request.env['school.parent'].sudo().search([('user_id', '=', request.env.user.id)])
         students = request.env['school.student'].sudo().search([('parent_ids', 'in', parents.ids)])
-        fees = request.env['school.student.fee'].sudo().search([('student_id', 'in', students.ids)])
-        return request.render('SDS_school_management_system.portal_fee_list', {'students': students, 'fees': fees})
+        selected_student = students.filtered(lambda student: student.id == int(kw['student_id'])) if kw.get('student_id', '').isdigit() else students
+        if kw.get('student_id') and not selected_student:
+            return request.not_found()
+        fees = request.env['school.student.fee'].sudo().search([('student_id', 'in', selected_student.ids)])
+        return request.render('SDS_school_management_system.portal_fee_list', {
+            'students': students,
+            'fees': fees,
+            'total_amount': sum(fee.amount_total for fee in fees),
+            'total_paid': sum(fee.amount_paid for fee in fees),
+            'total_due': sum(fee.amount_due for fee in fees),
+            'fee_state_labels': self._FEE_STATE_LABELS,
+        })
+
+    def _portal_students(self):
+        parents = request.env['school.parent'].sudo().search([('user_id', '=', request.env.user.id)])
+        return request.env['school.student'].sudo().search([('parent_ids', 'in', parents.ids)], order='name')
+
+    @http.route('/my/school/students', type='http', auth='user', website=True)
+    def my_students(self, **kw):
+        return request.render('SDS_school_management_system.portal_student_list', {
+            'students': self._portal_students(),
+        })
+
+    @http.route('/my/school/students/<int:student_id>', type='http', auth='user', website=True)
+    def my_student_detail(self, student_id, **kw):
+        student = self._portal_students().filtered(lambda record: record.id == student_id)
+        if not student:
+            return request.not_found()
+        student = student[0]
+        attendance = request.env['school.attendance.line'].sudo().search([
+            ('student_id', '=', student.id), ('attendance_id.state', '=', 'done'),
+        ], order='attendance_id.date desc')
+        results = request.env['school.exam.result'].sudo().search([
+            ('student_id', '=', student.id),
+        ], order='exam_id.date_start desc')
+        return request.render('SDS_school_management_system.portal_student_detail', {
+            'student': student,
+            'attendance': attendance,
+            'results': results,
+        })
+
+    @http.route('/my/school/fees/<int:fee_id>', type='http', auth='user', website=True)
+    def my_fee_detail(self, fee_id, **kw):
+        parents = request.env['school.parent'].sudo().search([('user_id', '=', request.env.user.id)])
+        students = request.env['school.student'].sudo().search([('parent_ids', 'in', parents.ids)])
+        fee = request.env['school.student.fee'].sudo().search([
+            ('id', '=', fee_id), ('student_id', 'in', students.ids),
+        ], limit=1)
+        if not fee:
+            return request.not_found()
+        return request.render('SDS_school_management_system.portal_fee_detail', {
+            'fee': fee,
+            'fee_state_labels': self._FEE_STATE_LABELS,
+        })

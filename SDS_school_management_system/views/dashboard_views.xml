@@ -51,7 +51,17 @@
         </field>
     </record>
 
-    <!-- Action for Student Dashboard -->
+    <!-- Unified school dashboard -->
+    <record id="action_school_dashboard" model="ir.actions.client">
+        <field name="name">School Dashboard</field>
+        <field name="tag">school_management_dashboard</field>
+    </record>
+
+    <record id="menu_school_dashboard" model="ir.ui.menu">
+        <field name="action" ref="action_school_dashboard"/>
+    </record>
+
+    <!-- Deeper analytics actions -->
     <record id="action_school_dashboard_students" model="ir.actions.act_window">
         <field name="name">School Student Analytics Dashboard</field>
         <field name="res_model">school.student</field>

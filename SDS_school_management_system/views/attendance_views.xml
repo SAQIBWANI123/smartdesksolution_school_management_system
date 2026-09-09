@@ -23,7 +23,7 @@
         <field name="arch" type="xml">
             <form string="Class Attendance Register">
                 <header>
-                    <button name="action_load_students" string="Load Class Roster" type="object" class="btn-primary" invisible="state != 'draft'"/>
+                    <button name="action_load_students" string="Reload Class Roster" type="object" class="btn-primary" invisible="state != 'draft'"/>
                     <button name="action_submit" string="Submit Attendance" type="object" class="btn-success" invisible="state != 'draft'"/>
                     <field name="state" widget="statusbar" statusbar_visible="draft,done"/>
                 </header>
@@ -47,15 +47,19 @@
                     <notebook>
                         <page string="Student Roster &amp; Status">
                             <field name="line_ids">
-                                <list editable="bottom">
-                                    <field name="roll_number"/>
-                                    <field name="student_id"/>
+                                <list editable="bottom" create="0" delete="0">
+                                     <field name="roll_number" readonly="1"/>
+                                     <field name="student_id" readonly="1"/>
                                     <field name="state" widget="badge"
                                            decoration-success="state == 'present'"
                                            decoration-danger="state == 'absent'"
+                                         decoration-primary="state == 'leave'"
                                            decoration-warning="state == 'late'"
-                                           decoration-info="state == 'excused'"/>
-                                    <field name="remarks"/>
+                                         decoration-info="state == 'excused'"
+                                         placeholder="Select status"/>
+                                     <field name="absence_reason"
+                                         placeholder="Required for absent or on leave"
+                                         required="state in ['absent', 'leave']"/>
                                 </list>
                             </field>
                         </page>

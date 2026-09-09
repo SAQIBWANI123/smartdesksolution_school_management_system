@@ -20,6 +20,20 @@
         <field name="arch" type="xml">
             <form string="Parent / Guardian Profile">
                 <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button class="oe_stat_button" icon="fa-child" type="object" name="action_view_children">
+                            <div class="o_field_widget o_stat_info"><span class="o_stat_text">Children</span></div>
+                        </button>
+                        <button class="oe_stat_button" icon="fa-money" type="object" name="action_view_fees">
+                            <div class="o_field_widget o_stat_info"><span class="o_stat_text">Fees</span></div>
+                        </button>
+                        <button class="oe_stat_button" icon="fa-calendar-check-o" type="object" name="action_view_attendance">
+                            <div class="o_field_widget o_stat_info"><span class="o_stat_text">Attendance</span></div>
+                        </button>
+                        <button class="oe_stat_button" icon="fa-graduation-cap" type="object" name="action_view_exam_results">
+                            <div class="o_field_widget o_stat_info"><span class="o_stat_text">Results</span></div>
+                        </button>
+                    </div>
                     <div class="oe_title">
                         <h1>
                             <field name="name" placeholder="Full Name" required="1"/>

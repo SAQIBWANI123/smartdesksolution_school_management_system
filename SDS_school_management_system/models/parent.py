@@ -20,3 +20,35 @@ class SchoolParent(models.Model):
                                help='Portal account allowed to view this guardian\'s children and fee statements.')
     student_ids = fields.Many2many('school.student', string='Children / Wards')
     emergency_contact = fields.Boolean(string='Is Emergency Contact', default=True)
+
+    def _children_action(self, name, model, extra_domain=None):
+        self.ensure_one()
+        domain = [('student_id', 'in', self.student_ids.ids)]
+        if extra_domain:
+            domain += extra_domain
+        return {
+            'type': 'ir.actions.act_window',
+            'name': name,
+            'res_model': model,
+            'view_mode': 'list,form',
+            'domain': domain,
+        }
+
+    def action_view_children(self):
+        self.ensure_one()
+        return {
+            'type': 'ir.actions.act_window',
+            'name': 'Children / Wards',
+            'res_model': 'school.student',
+            'view_mode': 'list,form',
+            'domain': [('id', 'in', self.student_ids.ids)],
+        }
+
+    def action_view_fees(self):
+        return self._children_action('Children Fee Statements', 'school.student.fee')
+
+    def action_view_attendance(self):
+        return self._children_action('Children Attendance', 'school.attendance.line')
+
+    def action_view_exam_results(self):
+        return self._children_action('Children Exam Results', 'school.exam.result')
