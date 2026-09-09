@@ -98,7 +98,7 @@
         <field name="arch" type="xml">
             <form string="Book Issue Record">
                 <header>
-                    <button name="action_return_book" string="Return Book" type="object" class="oe_highlight" invisible="state != 'issued'"/>
+                    <button name="action_return_book" string="Return Book" type="object" class="btn-primary" invisible="state != 'issued'"/>
                     <field name="state" widget="statusbar" statusbar_visible="issued,returned"/>
                 </header>
                 <sheet>

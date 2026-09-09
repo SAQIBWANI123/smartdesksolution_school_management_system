@@ -103,7 +103,7 @@
         <field name="arch" type="xml">
             <form string="Student Fee Statement">
                 <header>
-                    <button name="action_post" string="Post Fee Invoice" type="object" class="oe_highlight" invisible="state != 'draft'"/>
+                    <button name="action_post" string="Post Fee Invoice" type="object" class="btn-primary" invisible="state != 'draft'"/>
                     <button name="action_register_payment" string="Register Full Payment" type="object" class="btn-success" invisible="state not in ['posted', 'partially_paid']"/>
                     <field name="state" widget="statusbar" statusbar_visible="draft,posted,partially_paid,paid"/>
                 </header>

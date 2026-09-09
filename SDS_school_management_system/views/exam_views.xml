@@ -108,7 +108,7 @@
         <field name="arch" type="xml">
             <form string="Student Report Card">
                 <header>
-                    <button name="action_generate_lines" string="Auto-Fetch Subjects" type="object" class="oe_highlight"/>
+                    <button name="action_generate_lines" string="Auto-Fetch Subjects" type="object" class="btn-primary"/>
                 </header>
                 <sheet>
                     <div class="oe_title">

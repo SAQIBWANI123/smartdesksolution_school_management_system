@@ -1,14 +1,16 @@
 {
     'name': 'School Management System',
-    'version': '19.0.1.0.0',
+    'version': '19.0.1.1.0',
     'category': 'Education',
-    'author': 'smartdesksolution',
-    'summary': 'Complete Enterprise School Management System for Odoo 19',
+    'author': 'SmartDeskSolution',
+    'maintainer': 'SmartDeskSolution',
+    'summary': 'Complete School Management with Admissions, Fees and Parent Portal',
     'description': """
 Comprehensive School Management System for Odoo 19.
+Developed by SmartDeskSolution | www.smartdesksolution.com | info@smartdesksolution.com
 Key Features:
 - Academic Year, Terms, Grade Levels, Classes & Sections
-- Student Admission & Profile Management with Parent Portal
+- Student Admission, Online Application Portal & Profile Management
 - Teacher & Staff Management
 - Daily & Subject Attendance Tracking with Alerts
 - Examinations, Grading Scale, Marks Entry & Report Cards
@@ -20,13 +22,14 @@ Key Features:
 - Analytics Dashboard & Graphic Reports
 - Print PDF Reports (Student ID Cards, Academic Transcripts, Fee Receipts)
     """,
-    'website': 'https://www.odoo.com',
-    'depends': ['base'],
+    'website': 'https://www.smartdesksolution.com',
+    'depends': ['base', 'mail', 'website', 'portal'],
     'data': [
         'security/school_security.xml',
         'security/ir.model.access.csv',
         'data/school_sequence_data.xml',
         'views/menus.xml',
+        'views/admission_views.xml',
         'views/dashboard_views.xml',
         'views/academic_year_views.xml',
         'views/grade_level_views.xml',
@@ -42,6 +45,7 @@ Key Features:
         'views/transport_views.xml',
         'views/hostel_views.xml',
         'views/library_views.xml',
+        'views/portal_templates.xml',
         'report/school_reports.xml',
         'report/report_student_id_card.xml',
         'report/report_student_report_card.xml',

@@ -10,7 +10,7 @@
         id="menu_school_root"
         name="School Management"
         sequence="10"
-        web_icon="school_management,static/description/icon.png"
+        web_icon="SDS_school_management_system,static/description/icon.png"
         groups="base.group_user"
     />
 
@@ -96,7 +96,7 @@
         name="Configuration"
         parent="menu_school_root"
         sequence="100"
-        groups="school_management.group_school_manager"
+        groups="SDS_school_management_system.group_school_manager"
     />
 
 </odoo>

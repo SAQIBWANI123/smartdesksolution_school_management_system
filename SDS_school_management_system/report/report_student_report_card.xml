@@ -7,20 +7,20 @@
                     <div class="page">
                         <div class="text-center mb-4">
                             <h2 style="font-weight: bold; color: #1a365d;">ACADEMIC REPORT CARD</h2>
-                            <h4 class="text-muted"><t t-esc="doc.exam_id.name"/></h4>
+                            <h4 class="text-muted"><t t-out="doc.exam_id.name"/></h4>
                         </div>
 
                         <!-- Student & Exam Details Header -->
                         <div class="row mb-4" style="background-color: #f7fafc; padding: 15px; border-radius: 8px; border: 1px solid #e2e8f0;">
                             <div class="col-6">
-                                <p><strong>Student Name:</strong> <t t-esc="doc.student_id.name"/></p>
-                                <p><strong>Registration ID:</strong> <t t-esc="doc.student_id.student_id_code"/></p>
-                                <p><strong>Class / Section:</strong> <t t-esc="doc.class_id.name"/></p>
+                                <p><strong>Student Name:</strong> <t t-out="doc.student_id.name"/></p>
+                                <p><strong>Registration ID:</strong> <t t-out="doc.student_id.student_id_code"/></p>
+                                <p><strong>Class / Section:</strong> <t t-out="doc.class_id.name"/></p>
                             </div>
                             <div class="col-6">
-                                <p><strong>Academic Year:</strong> <t t-esc="doc.exam_id.academic_year_id.name"/></p>
-                                <p><strong>Roll Number:</strong> <t t-esc="doc.student_id.roll_number"/></p>
-                                <p><strong>Report Date:</strong> <t t-esc="context_timestamp(datetime.datetime.now()).strftime('%Y-%m-%d')"/></p>
+                                <p><strong>Academic Year:</strong> <t t-out="doc.exam_id.academic_year_id.name"/></p>
+                                <p><strong>Roll Number:</strong> <t t-out="doc.student_id.roll_number"/></p>
+                                <p><strong>Report Date:</strong> <t t-out="context_timestamp(datetime.datetime.now()).strftime('%Y-%m-%d')"/></p>
                             </div>
                         </div>
 
@@ -38,10 +38,10 @@
                             <tbody>
                                 <t t-foreach="doc.line_ids" t-as="line">
                                     <tr>
-                                        <td><t t-esc="line.subject_id.name"/></td>
-                                        <td class="text-center"><t t-esc="line.max_marks"/></td>
-                                        <td class="text-center"><t t-esc="line.pass_marks"/></td>
-                                        <td class="text-center" style="font-weight: bold;"><t t-esc="line.obtained_marks"/></td>
+                                        <td><t t-out="line.subject_id.name"/></td>
+                                        <td class="text-center"><t t-out="line.max_marks"/></td>
+                                        <td class="text-center"><t t-out="line.pass_marks"/></td>
+                                        <td class="text-center" style="font-weight: bold;"><t t-out="line.obtained_marks"/></td>
                                         <td class="text-center">
                                             <span t-if="line.result == 'pass'" class="badge bg-success" style="color:white; padding: 5px 10px;">PASS</span>
                                             <span t-else="" class="badge bg-danger" style="color:white; padding: 5px 10px;">FAIL</span>
@@ -57,7 +57,7 @@
                                 <div class="p-3" style="border: 1px dashed #cbd5e0; border-radius: 6px;">
                                     <strong>Class Teacher Remarks:</strong>
                                     <p class="mt-2 text-muted" style="min-height: 50px;">
-                                        <t t-esc="doc.teacher_comments or 'Demonstrates steady academic effort and positive class conduct.'"/>
+                                        <t t-out="doc.teacher_comments or 'Demonstrates steady academic effort and positive class conduct.'"/>
                                     </p>
                                 </div>
                             </div>
@@ -65,15 +65,15 @@
                                 <table class="table table-sm table-borderless bg-light p-2">
                                     <tr>
                                         <td><strong>Total Marks:</strong></td>
-                                        <td class="text-end"><t t-esc="doc.total_obtained_marks"/> / <t t-esc="doc.total_max_marks"/></td>
+                                        <td class="text-end"><t t-out="doc.total_obtained_marks"/> / <t t-out="doc.total_max_marks"/></td>
                                     </tr>
                                     <tr>
                                         <td><strong>Percentage:</strong></td>
-                                        <td class="text-end" style="font-size: 16px; font-weight: bold;"><t t-esc="'%.2f' % doc.percentage"/>%</td>
+                                        <td class="text-end" style="font-size: 16px; font-weight: bold;"><t t-out="'%.2f' % doc.percentage"/>%</td>
                                     </tr>
                                     <tr>
                                         <td><strong>Grade Letter:</strong></td>
-                                        <td class="text-end" style="font-size: 18px; font-weight: bold; color: #2b6cb0;"><t t-esc="doc.final_grade"/></td>
+                                        <td class="text-end" style="font-size: 18px; font-weight: bold; color: #2b6cb0;"><t t-out="doc.final_grade"/></td>
                                     </tr>
                                     <tr>
                                         <td><strong>Overall Result:</strong></td>

@@ -7,22 +7,22 @@
                     <div class="page">
                         <div class="text-center mb-4">
                             <h2 style="font-weight: bold; color: #2d3748;">SCHOOL FEE RECEIPT / STATEMENT</h2>
-                            <h4 class="text-muted"><t t-esc="doc.name"/></h4>
+                            <h4 class="text-muted"><t t-out="doc.name"/></h4>
                         </div>
 
                         <div class="row mb-4" style="background-color: #f7fafc; padding: 15px; border-radius: 8px; border: 1px solid #e2e8f0;">
                             <div class="col-6">
-                                <p><strong>Student Name:</strong> <t t-esc="doc.student_id.name"/></p>
-                                <p><strong>Registration ID:</strong> <t t-esc="doc.student_id.student_id_code"/></p>
-                                <p><strong>Class:</strong> <t t-esc="doc.class_id.name"/></p>
+                                <p><strong>Student Name:</strong> <t t-out="doc.student_id.name"/></p>
+                                <p><strong>Registration ID:</strong> <t t-out="doc.student_id.student_id_code"/></p>
+                                <p><strong>Class:</strong> <t t-out="doc.class_id.name"/></p>
                             </div>
                             <div class="col-6">
-                                <p><strong>Invoice Date:</strong> <t t-esc="doc.date_invoice"/></p>
-                                <p><strong>Due Date:</strong> <t t-esc="doc.date_due"/></p>
+                                <p><strong>Invoice Date:</strong> <t t-out="doc.date_invoice"/></p>
+                                <p><strong>Due Date:</strong> <t t-out="doc.date_due"/></p>
                                 <p><strong>Payment Status:</strong> 
                                     <span t-if="doc.state == 'paid'" class="badge bg-success">FULLY PAID</span>
                                     <span t-elif="doc.state == 'partially_paid'" class="badge bg-warning">PARTIALLY PAID</span>
-                                    <span t-else="" class="badge bg-secondary"><t t-esc="doc.state.upper()"/></span>
+                                    <span t-else="" class="badge bg-secondary"><t t-out="doc.state.upper()"/></span>
                                 </p>
                             </div>
                         </div>
@@ -40,10 +40,10 @@
                                 <t t-set="idx" t-value="1"/>
                                 <t t-foreach="doc.line_ids" t-as="line">
                                     <tr>
-                                        <td><t t-esc="idx"/></td>
-                                        <td><t t-esc="line.fee_head_id.name"/></td>
-                                        <td><t t-esc="line.remarks or '-'"/></td>
-                                        <td class="text-end"><t t-esc="'%.2f' % line.amount"/></td>
+                                        <td><t t-out="idx"/></td>
+                                        <td><t t-out="line.fee_head_id.name"/></td>
+                                        <td><t t-out="line.remarks or '-'"/></td>
+                                        <td class="text-end"><t t-out="'%.2f' % line.amount"/></td>
                                     </tr>
                                     <t t-set="idx" t-value="idx + 1"/>
                                 </t>
@@ -55,15 +55,15 @@
                                 <table class="table table-sm table-borderless bg-light p-2">
                                     <tr>
                                         <td><strong>Total Fee Amount:</strong></td>
-                                        <td class="text-end" style="font-size: 16px; font-weight: bold;"><t t-esc="'%.2f' % doc.amount_total"/></td>
+                                        <td class="text-end" style="font-size: 16px; font-weight: bold;"><t t-out="'%.2f' % doc.amount_total"/></td>
                                     </tr>
                                     <tr>
                                         <td><strong>Amount Paid:</strong></td>
-                                        <td class="text-end" style="color: green;"><t t-esc="'%.2f' % doc.amount_paid"/></td>
+                                        <td class="text-end" style="color: green;"><t t-out="'%.2f' % doc.amount_paid"/></td>
                                     </tr>
                                     <tr style="border-top: 2px solid #cbd5e0;">
                                         <td><strong>Balance Due:</strong></td>
-                                        <td class="text-end" style="font-size: 18px; font-weight: bold; color: #c53030;"><t t-esc="'%.2f' % doc.amount_due"/></td>
+                                        <td class="text-end" style="font-size: 18px; font-weight: bold; color: #c53030;"><t t-out="'%.2f' % doc.amount_due"/></td>
                                     </tr>
                                 </table>
                             </div>

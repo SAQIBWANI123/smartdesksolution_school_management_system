@@ -23,7 +23,7 @@
         <field name="arch" type="xml">
             <form string="Class Attendance Register">
                 <header>
-                    <button name="action_load_students" string="Load Class Roster" type="object" class="oe_highlight" invisible="state != 'draft'"/>
+                    <button name="action_load_students" string="Load Class Roster" type="object" class="btn-primary" invisible="state != 'draft'"/>
                     <button name="action_submit" string="Submit Attendance" type="object" class="btn-success" invisible="state != 'draft'"/>
                     <field name="state" widget="statusbar" statusbar_visible="draft,done"/>
                 </header>

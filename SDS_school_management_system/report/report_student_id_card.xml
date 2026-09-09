@@ -22,18 +22,18 @@
                                     </t>
                                 </div>
                                 <div class="col-8">
-                                    <h4 style="font-weight: bold; color: #111; margin-bottom: 5px;"><t t-esc="doc.name"/></h4>
-                                    <p style="margin-bottom: 3px;"><strong>Reg. ID:</strong> <span t-esc="doc.student_id_code"/></p>
-                                    <p style="margin-bottom: 3px;"><strong>Grade/Class:</strong> <span t-esc="doc.class_id.name"/></p>
-                                    <p style="margin-bottom: 3px;"><strong>Roll No:</strong> <span t-esc="doc.roll_number"/></p>
-                                    <p style="margin-bottom: 3px;"><strong>Blood Group:</strong> <span t-esc="doc.blood_group and doc.blood_group.upper() or 'N/A'"/></p>
+                                    <h4 style="font-weight: bold; color: #111; margin-bottom: 5px;"><t t-out="doc.name"/></h4>
+                                    <p style="margin-bottom: 3px;"><strong>Reg. ID:</strong> <span t-out="doc.student_id_code"/></p>
+                                    <p style="margin-bottom: 3px;"><strong>Grade/Class:</strong> <span t-out="doc.class_id.name"/></p>
+                                    <p style="margin-bottom: 3px;"><strong>Roll No:</strong> <span t-out="doc.roll_number"/></p>
+                                    <p style="margin-bottom: 3px;"><strong>Blood Group:</strong> <span t-out="doc.blood_group and doc.blood_group.upper() or 'N/A'"/></p>
                                 </div>
                             </div>
                             
                             <div class="mt-4 pt-2 border-top text-center">
-                                <p class="small text-muted mb-1">Emergency Contact: <t t-esc="doc.phone or doc.email or 'School Office'"/></p>
+                                <p class="small text-muted mb-1">Emergency Contact: <t t-out="doc.phone or doc.email or 'School Office'"/></p>
                                 <div style="font-family: monospace; font-size: 14px; letter-spacing: 2px; color: #555;">
-                                    *<t t-esc="doc.student_id_code"/>*
+                                    *<t t-out="doc.student_id_code"/>*
                                 </div>
                             </div>
                         </div>
