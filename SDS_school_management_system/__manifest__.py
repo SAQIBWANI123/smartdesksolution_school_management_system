@@ -64,6 +64,9 @@ Key Features:
             'SDS_school_management_system/static/src/xml/school_dashboard.xml',
             'SDS_school_management_system/static/src/scss/school_dashboard.scss',
         ],
+        'web.assets_frontend': [
+            'SDS_school_management_system/static/src/css/portal.css',
+        ],
     },
     'installable': True,
     'application': True,

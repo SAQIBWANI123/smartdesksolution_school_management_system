@@ -22,22 +22,40 @@ class SchoolDashboard extends Component {
         this.state.loading = true;
         this.state.error = false;
         try {
-            const [students, enrolledStudents, teachers, pendingAdmissions, feeTotals, feeStates, admissions] = await Promise.all([
+            const [
+                students,
+                enrolledStudents,
+                teachers,
+                pendingAdmissions,
+                feeTotals,
+                feeStates,
+                admissions,
+            ] = await Promise.all([
                 this.orm.searchCount("school.student", []),
                 this.orm.searchCount("school.student", [["state", "=", "enrolled"]]),
                 this.orm.searchCount("school.teacher", []),
                 this.orm.searchCount("school.admission", [["state", "in", ["new", "review"]]]),
-                this.orm.call("school.student.fee", "read_group", [[], ["amount_total:sum", "amount_paid:sum", "amount_due:sum"], []]),
-                this.orm.call("school.student.fee", "read_group", [[], ["amount_total:sum"], ["state"]]),
+                this.orm.call("school.student.fee", "read_group", [
+                    [],
+                    ["amount_total:sum", "amount_paid:sum", "amount_due:sum"],
+                    [],
+                ]),
+                this.orm.call("school.student.fee", "read_group", [
+                    [],
+                    ["amount_total:sum"],
+                    ["state"],
+                ]),
                 this.orm.searchRead(
                     "school.admission",
                     [],
                     ["name", "student_name", "grade_id", "state", "create_date"],
-                    { order: "create_date desc", limit: 5 }
+                    { order: "create_date desc", limit: 6 }
                 ),
             ]);
+
             const totals = feeTotals[0] || {};
             const totalBilled = totals.amount_total || 0;
+
             this.state.metrics = {
                 students,
                 enrolledStudents,
@@ -47,11 +65,15 @@ class SchoolDashboard extends Component {
                 totalPaid: totals.amount_paid || 0,
                 totalDue: totals.amount_due || 0,
             };
+
             this.state.feeStates = feeStates.map((item) => ({
-                label: item.state ? item.state[1] : "Undefined",
+                label: item.state ? item.state[1] : "Unknown",
                 amount: item.amount_total || 0,
-                percentage: totalBilled ? Math.round(((item.amount_total || 0) / totalBilled) * 100) : 0,
+                percentage: totalBilled
+                    ? Math.round(((item.amount_total || 0) / totalBilled) * 100)
+                    : 0,
             }));
+
             this.state.admissions = admissions;
         } catch (error) {
             console.error("Unable to load school dashboard", error);
@@ -81,22 +103,46 @@ class SchoolDashboard extends Component {
 
     getGreeting() {
         const hour = new Date().getHours();
-        if (hour < 12) {
-            return "Good morning";
-        }
-        if (hour < 18) {
-            return "Good afternoon";
-        }
+        if (hour < 12) return "Good morning";
+        if (hour < 18) return "Good afternoon";
         return "Good evening";
     }
 
     formatStatus(state) {
-        return {
-            new: "New",
-            review: "Under Review",
-            approved: "Approved",
-            rejected: "Rejected",
-        }[state] || state || "Unknown";
+        return (
+            {
+                new: "New",
+                review: "Under Review",
+                approved: "Approved",
+                rejected: "Rejected",
+            }[state] ||
+            state ||
+            "Unknown"
+        );
+    }
+
+    /** Returns SVG stroke-dasharray for donut chart.
+     *  Circumference of r=32 circle ≈ 201.
+     */
+    getDashArray(paid, billed) {
+        const circ = 201;
+        if (!billed || billed === 0) return `0 ${circ}`;
+        const filled = Math.min(Math.round((paid / billed) * circ), circ);
+        return `${filled} ${circ - filled}`;
+    }
+
+    /** Fee collection percentage (0–100) */
+    getCollectionPct() {
+        const { totalPaid = 0, totalBilled = 0 } = this.state.metrics;
+        if (!totalBilled) return 0;
+        return Math.round((totalPaid / totalBilled) * 100);
+    }
+
+    /** Enrollment rate: enrolled / total */
+    getEnrollPct() {
+        const { enrolledStudents = 0, students = 0 } = this.state.metrics;
+        if (!students) return 0;
+        return Math.round((enrolledStudents / students) * 100);
     }
 }
 

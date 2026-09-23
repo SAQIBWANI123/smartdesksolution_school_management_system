@@ -2,100 +2,357 @@
 <templates xml:space="preserve">
     <t t-name="SDS_school_management_system.SchoolDashboard">
         <main class="sds_dashboard">
-            <header class="sds_dashboard_header">
-                <div>
-                    <p class="sds_eyebrow">School operations</p>
-                    <h1><t t-esc="getGreeting()"/>, <t t-esc="env.services.user ? env.services.user.userName : 'there'"/>.</h1>
-                    <p class="sds_subtitle">A clear view of your school's activity and priorities.</p>
+
+            <!-- ── HEADER ───────────────────────────────────────────── -->
+            <header class="sds_header">
+                <div class="sds_header_left">
+                    <div class="sds_header_badge">
+                        <i class="fa fa-graduation-cap"/>
+                        <span>SmartDesk School</span>
+                    </div>
+                    <h1 class="sds_header_title">
+                        <t t-esc="getGreeting()"/>,
+                        <span class="sds_highlight"><t t-esc="env.services.user ? env.services.user.userName : 'there'"/></span> 👋
+                    </h1>
+                    <p class="sds_header_sub">Here's what's happening at your school today.</p>
                 </div>
-                <button class="btn sds_refresh" t-on-click="loadDashboard" title="Refresh dashboard">
-                    <i class="fa fa-refresh me-2"/>Refresh
-                </button>
+                <div class="sds_header_actions">
+                    <button class="sds_btn_ghost" t-on-click="loadDashboard" title="Refresh dashboard">
+                        <i class="fa fa-refresh"/> Refresh
+                    </button>
+                    <button class="sds_btn_primary" data-action="SDS_school_management_system.action_school_admission" t-on-click="openAction">
+                        <i class="fa fa-plus"/> New Admission
+                    </button>
+                </div>
             </header>
 
+            <!-- ── LOADING / ERROR ──────────────────────────────────── -->
             <t t-if="state.loading">
-                <section class="sds_loading">Loading your dashboard...</section>
+                <div class="sds_loading_wrap">
+                    <div class="sds_spinner"/>
+                    <p>Loading dashboard…</p>
+                </div>
             </t>
             <t t-elif="state.error">
-                <section class="alert alert-danger sds_error">
-                    Dashboard data could not be loaded. Please refresh or check your access rights.
-                </section>
+                <div class="sds_error_wrap">
+                    <i class="fa fa-exclamation-circle"/>
+                    <p>Dashboard data could not be loaded. Please refresh or check your access rights.</p>
+                    <button class="sds_btn_primary" t-on-click="loadDashboard">Try Again</button>
+                </div>
             </t>
             <t t-else="">
-                <section class="sds_metrics">
-                    <button class="sds_metric sds_metric_teal" data-action="SDS_school_management_system.action_school_student" t-on-click="openAction">
-                        <span class="sds_metric_icon"><i class="fa fa-users"/></span>
-                        <span class="sds_metric_label">Total students</span>
-                        <strong><t t-esc="formatNumber(state.metrics.students)"/></strong>
-                        <small><t t-esc="formatNumber(state.metrics.enrolledStudents)"/> currently enrolled</small>
+
+                <!-- ── KPI CARDS ──────────────────────────────────────── -->
+                <section class="sds_kpi_row">
+
+                    <button class="sds_kpi sds_kpi_indigo"
+                            data-action="SDS_school_management_system.action_school_student"
+                            t-on-click="openAction">
+                        <div class="sds_kpi_ring">
+                            <svg viewBox="0 0 56 56" class="sds_ring_svg">
+                                <circle cx="28" cy="28" r="22" class="sds_ring_bg"/>
+                                <circle cx="28" cy="28" r="22" class="sds_ring_fill" style="stroke-dasharray: 88 138; stroke: rgba(255,255,255,.7)"/>
+                            </svg>
+                            <i class="fa fa-users"/>
+                        </div>
+                        <div class="sds_kpi_body">
+                            <span class="sds_kpi_label">Total Students</span>
+                            <strong class="sds_kpi_value"><t t-esc="formatNumber(state.metrics.students)"/></strong>
+                            <span class="sds_kpi_sub">
+                                <i class="fa fa-circle sds_dot_green"/> <t t-esc="formatNumber(state.metrics.enrolledStudents)"/> enrolled
+                            </span>
+                        </div>
+                        <i class="fa fa-arrow-right sds_kpi_arrow"/>
                     </button>
-                    <button class="sds_metric sds_metric_amber" data-action="SDS_school_management_system.action_school_admission" t-on-click="openAction">
-                        <span class="sds_metric_icon"><i class="fa fa-inbox"/></span>
-                        <span class="sds_metric_label">Admission queue</span>
-                        <strong><t t-esc="formatNumber(state.metrics.pendingAdmissions)"/></strong>
-                        <small>new or under review</small>
+
+                    <button class="sds_kpi sds_kpi_amber"
+                            data-action="SDS_school_management_system.action_school_admission"
+                            t-on-click="openAction">
+                        <div class="sds_kpi_ring">
+                            <svg viewBox="0 0 56 56" class="sds_ring_svg">
+                                <circle cx="28" cy="28" r="22" class="sds_ring_bg"/>
+                                <circle cx="28" cy="28" r="22" class="sds_ring_fill" style="stroke-dasharray: 55 138; stroke: rgba(255,255,255,.7)"/>
+                            </svg>
+                            <i class="fa fa-inbox"/>
+                        </div>
+                        <div class="sds_kpi_body">
+                            <span class="sds_kpi_label">Pending Admissions</span>
+                            <strong class="sds_kpi_value"><t t-esc="formatNumber(state.metrics.pendingAdmissions)"/></strong>
+                            <span class="sds_kpi_sub"><i class="fa fa-clock-o"/> awaiting review</span>
+                        </div>
+                        <i class="fa fa-arrow-right sds_kpi_arrow"/>
                     </button>
-                    <button class="sds_metric sds_metric_blue" data-action="SDS_school_management_system.action_school_teacher" t-on-click="openAction">
-                        <span class="sds_metric_icon"><i class="fa fa-graduation-cap"/></span>
-                        <span class="sds_metric_label">Teaching team</span>
-                        <strong><t t-esc="formatNumber(state.metrics.teachers)"/></strong>
-                        <small>active teacher records</small>
+
+                    <button class="sds_kpi sds_kpi_teal"
+                            data-action="SDS_school_management_system.action_school_teacher"
+                            t-on-click="openAction">
+                        <div class="sds_kpi_ring">
+                            <svg viewBox="0 0 56 56" class="sds_ring_svg">
+                                <circle cx="28" cy="28" r="22" class="sds_ring_bg"/>
+                                <circle cx="28" cy="28" r="22" class="sds_ring_fill" style="stroke-dasharray: 100 138; stroke: rgba(255,255,255,.7)"/>
+                            </svg>
+                            <i class="fa fa-graduation-cap"/>
+                        </div>
+                        <div class="sds_kpi_body">
+                            <span class="sds_kpi_label">Teaching Staff</span>
+                            <strong class="sds_kpi_value"><t t-esc="formatNumber(state.metrics.teachers)"/></strong>
+                            <span class="sds_kpi_sub"><i class="fa fa-check-circle"/> active records</span>
+                        </div>
+                        <i class="fa fa-arrow-right sds_kpi_arrow"/>
                     </button>
-                    <button class="sds_metric sds_metric_coral" data-action="SDS_school_management_system.action_school_student_fee" t-on-click="openAction">
-                        <span class="sds_metric_icon"><i class="fa fa-credit-card"/></span>
-                        <span class="sds_metric_label">Outstanding fees</span>
-                        <strong><t t-esc="formatAmount(state.metrics.totalDue)"/></strong>
-                        <small>of <t t-esc="formatAmount(state.metrics.totalBilled)"/> billed</small>
+
+                    <button class="sds_kpi sds_kpi_rose"
+                            data-action="SDS_school_management_system.action_school_student_fee"
+                            t-on-click="openAction">
+                        <div class="sds_kpi_ring">
+                            <svg viewBox="0 0 56 56" class="sds_ring_svg">
+                                <circle cx="28" cy="28" r="22" class="sds_ring_bg"/>
+                                <circle cx="28" cy="28" r="22" class="sds_ring_fill" style="stroke-dasharray: 70 138; stroke: rgba(255,255,255,.7)"/>
+                            </svg>
+                            <i class="fa fa-credit-card"/>
+                        </div>
+                        <div class="sds_kpi_body">
+                            <span class="sds_kpi_label">Outstanding Fees</span>
+                            <strong class="sds_kpi_value"><t t-esc="formatAmount(state.metrics.totalDue)"/></strong>
+                            <span class="sds_kpi_sub"><i class="fa fa-bar-chart"/> of <t t-esc="formatAmount(state.metrics.totalBilled)"/> billed</span>
+                        </div>
+                        <i class="fa fa-arrow-right sds_kpi_arrow"/>
                     </button>
+
                 </section>
 
-                <section class="sds_content_grid">
-                    <div class="sds_panel sds_panel_wide">
-                        <div class="sds_panel_header">
-                            <div><p class="sds_eyebrow">Latest activity</p><h2>Admission applications</h2></div>
-                            <button class="btn btn-link sds_link" data-action="SDS_school_management_system.action_school_admission" t-on-click="openAction">View all <i class="fa fa-arrow-right ms-1"/></button>
-                        </div>
-                        <div class="table-responsive">
-                            <table class="table sds_table">
-                                <thead><tr><th>Application</th><th>Student</th><th>Grade</th><th>Status</th></tr></thead>
-                                <tbody>
-                                    <tr t-foreach="state.admissions" t-as="admission" t-key="admission.id">
-                                        <td><strong><t t-esc="admission.name"/></strong></td>
-                                        <td><t t-esc="admission.student_name"/></td>
-                                        <td><t t-esc="admission.grade_id ? admission.grade_id[1] : 'Not selected'"/></td>
-                                        <td><span t-attf-class="sds_status sds_status_#{admission.state}"><t t-esc="formatStatus(admission.state)"/></span></td>
-                                    </tr>
-                                    <tr t-if="!state.admissions.length"><td colspan="4" class="sds_empty">No admission applications yet.</td></tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
+                <!-- ── MAIN GRID ──────────────────────────────────────── -->
+                <section class="sds_main_grid">
 
-                    <div class="sds_panel">
-                        <div class="sds_panel_header"><div><p class="sds_eyebrow">Finance</p><h2>Fee collection</h2></div><i class="fa fa-pie-chart sds_panel_icon"/></div>
-                        <div class="sds_fee_total"><strong><t t-esc="formatAmount(state.metrics.totalPaid)"/></strong><span>collected</span></div>
-                        <div class="sds_fee_bars">
-                            <div t-foreach="state.feeStates" t-as="feeState" t-key="feeState.label" class="sds_fee_row">
-                                <div><span><t t-esc="feeState.label"/></span><strong><t t-esc="formatAmount(feeState.amount)"/></strong></div>
-                                <div class="sds_progress"><span t-att-style="'width: ' + feeState.percentage + '%'"/></div>
+                    <!-- LEFT COLUMN -->
+                    <div class="sds_col_left">
+
+                        <!-- Recent Admissions Table -->
+                        <div class="sds_card">
+                            <div class="sds_card_head">
+                                <div>
+                                    <p class="sds_eyebrow"><i class="fa fa-bell-o"/> Latest Activity</p>
+                                    <h2>Recent Admissions</h2>
+                                </div>
+                                <button class="sds_link_btn"
+                                        data-action="SDS_school_management_system.action_school_admission"
+                                        t-on-click="openAction">
+                                    View all <i class="fa fa-long-arrow-right"/>
+                                </button>
                             </div>
-                            <p t-if="!state.feeStates" class="sds_empty">No fee data yet.</p>
+                            <div class="table-responsive">
+                                <table class="sds_table">
+                                    <thead>
+                                        <tr>
+                                            <th>Application</th>
+                                            <th>Student Name</th>
+                                            <th>Grade</th>
+                                            <th>Status</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr t-foreach="state.admissions" t-as="adm" t-key="adm.id">
+                                            <td>
+                                                <span class="sds_ref"><i class="fa fa-file-text-o"/> <t t-esc="adm.name"/></span>
+                                            </td>
+                                            <td>
+                                                <div class="sds_avatar_row">
+                                                    <div class="sds_avatar"><t t-esc="(adm.student_name || 'N')[0].toUpperCase()"/></div>
+                                                    <span><t t-esc="adm.student_name"/></span>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <span class="sds_tag_grade"><t t-esc="adm.grade_id ? adm.grade_id[1] : '—'"/></span>
+                                            </td>
+                                            <td>
+                                                <span t-attf-class="sds_badge sds_badge_#{adm.state}">
+                                                    <t t-esc="formatStatus(adm.state)"/>
+                                                </span>
+                                            </td>
+                                        </tr>
+                                        <tr t-if="!state.admissions.length">
+                                            <td colspan="4" class="sds_empty_cell">
+                                                <i class="fa fa-inbox"/> No admission applications yet.
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
-                        <button class="btn sds_panel_button" data-action="SDS_school_management_system.action_school_dashboard_fees" t-on-click="openAction">Open fee analytics <i class="fa fa-arrow-right ms-1"/></button>
+
+                        <!-- Quick Shortcuts -->
+                        <div class="sds_card sds_shortcuts_card">
+                            <div class="sds_card_head">
+                                <div>
+                                    <p class="sds_eyebrow"><i class="fa fa-th"/> Workspaces</p>
+                                    <h2>Quick Access</h2>
+                                </div>
+                            </div>
+                            <div class="sds_shortcuts_grid">
+                                <button class="sds_shortcut sds_sc_indigo"
+                                        data-action="SDS_school_management_system.action_school_student"
+                                        t-on-click="openAction">
+                                    <div class="sds_sc_icon"><i class="fa fa-users"/></div>
+                                    <span>Students</span>
+                                    <small>Directory &amp; enrollment</small>
+                                </button>
+                                <button class="sds_shortcut sds_sc_teal"
+                                        data-action="SDS_school_management_system.action_school_attendance"
+                                        t-on-click="openAction">
+                                    <div class="sds_sc_icon"><i class="fa fa-check-square-o"/></div>
+                                    <span>Attendance</span>
+                                    <small>Daily registers</small>
+                                </button>
+                                <button class="sds_shortcut sds_sc_amber"
+                                        data-action="SDS_school_management_system.action_school_exam"
+                                        t-on-click="openAction">
+                                    <div class="sds_sc_icon"><i class="fa fa-bar-chart"/></div>
+                                    <span>Examinations</span>
+                                    <small>Results &amp; grading</small>
+                                </button>
+                                <button class="sds_shortcut sds_sc_blue"
+                                        data-action="SDS_school_management_system.action_school_library_book"
+                                        t-on-click="openAction">
+                                    <div class="sds_sc_icon"><i class="fa fa-book"/></div>
+                                    <span>Library</span>
+                                    <small>Books &amp; issues</small>
+                                </button>
+                                <button class="sds_shortcut sds_sc_purple"
+                                        data-action="SDS_school_management_system.action_school_dashboard_students"
+                                        t-on-click="openAction">
+                                    <div class="sds_sc_icon"><i class="fa fa-line-chart"/></div>
+                                    <span>Analytics</span>
+                                    <small>Trends &amp; stats</small>
+                                </button>
+                                <button class="sds_shortcut sds_sc_rose"
+                                        data-action="SDS_school_management_system.action_school_student_fee"
+                                        t-on-click="openAction">
+                                    <div class="sds_sc_icon"><i class="fa fa-money"/></div>
+                                    <span>Fee Statements</span>
+                                    <small>Invoices &amp; payments</small>
+                                </button>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- RIGHT COLUMN -->
+                    <div class="sds_col_right">
+
+                        <!-- Fee Summary Card -->
+                        <div class="sds_card sds_fee_card">
+                            <div class="sds_card_head">
+                                <div>
+                                    <p class="sds_eyebrow"><i class="fa fa-pie-chart"/> Finance</p>
+                                    <h2>Fee Overview</h2>
+                                </div>
+                                <button class="sds_link_btn"
+                                        data-action="SDS_school_management_system.action_school_dashboard_fees"
+                                        t-on-click="openAction">
+                                    Analytics <i class="fa fa-long-arrow-right"/>
+                                </button>
+                            </div>
+
+                            <!-- Donut-style summary -->
+                            <div class="sds_fee_summary">
+                                <div class="sds_fee_donut">
+                                    <svg viewBox="0 0 80 80">
+                                        <circle cx="40" cy="40" r="32" class="sds_donut_bg"/>
+                                        <circle cx="40" cy="40" r="32" class="sds_donut_paid"
+                                                t-att-style="'stroke-dasharray: ' + getDashArray(state.metrics.totalPaid, state.metrics.totalBilled) + '; stroke-dashoffset: -50'"/>
+                                    </svg>
+                                    <div class="sds_donut_label">
+                                        <strong><t t-esc="getCollectionPct()"/>%</strong>
+                                        <small>collected</small>
+                                    </div>
+                                </div>
+                                <div class="sds_fee_nums">
+                                    <div class="sds_fee_num">
+                                        <span class="sds_fee_dot sds_dot_green"/>
+                                        <div>
+                                            <small>Collected</small>
+                                            <strong><t t-esc="formatAmount(state.metrics.totalPaid)"/></strong>
+                                        </div>
+                                    </div>
+                                    <div class="sds_fee_num">
+                                        <span class="sds_fee_dot sds_dot_red"/>
+                                        <div>
+                                            <small>Outstanding</small>
+                                            <strong><t t-esc="formatAmount(state.metrics.totalDue)"/></strong>
+                                        </div>
+                                    </div>
+                                    <div class="sds_fee_num">
+                                        <span class="sds_fee_dot sds_dot_gray"/>
+                                        <div>
+                                            <small>Total Billed</small>
+                                            <strong><t t-esc="formatAmount(state.metrics.totalBilled)"/></strong>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Per-state progress bars -->
+                            <div class="sds_fee_bars">
+                                <div t-foreach="state.feeStates" t-as="fs" t-key="fs.label" class="sds_fee_bar_row">
+                                    <div class="sds_fee_bar_meta">
+                                        <span><t t-esc="fs.label"/></span>
+                                        <strong><t t-esc="formatAmount(fs.amount)"/></strong>
+                                    </div>
+                                    <div class="sds_prog_track">
+                                        <div class="sds_prog_fill" t-att-style="'width: ' + fs.percentage + '%'"/>
+                                    </div>
+                                    <span class="sds_prog_pct"><t t-esc="fs.percentage"/>%</span>
+                                </div>
+                                <p t-if="!state.feeStates.length" class="sds_empty_cell">No fee data yet.</p>
+                            </div>
+                        </div>
+
+                        <!-- Enrollment Snapshot -->
+                        <div class="sds_card sds_enroll_card">
+                            <div class="sds_card_head">
+                                <div>
+                                    <p class="sds_eyebrow"><i class="fa fa-users"/> Enrollment</p>
+                                    <h2>Student Snapshot</h2>
+                                </div>
+                            </div>
+                            <div class="sds_enroll_stats">
+                                <div class="sds_enroll_stat">
+                                    <div class="sds_enroll_icon sds_ic_indigo"><i class="fa fa-user-plus"/></div>
+                                    <div>
+                                        <strong><t t-esc="formatNumber(state.metrics.students)"/></strong>
+                                        <small>Total Registered</small>
+                                    </div>
+                                </div>
+                                <div class="sds_enroll_div"/>
+                                <div class="sds_enroll_stat">
+                                    <div class="sds_enroll_icon sds_ic_teal"><i class="fa fa-check"/></div>
+                                    <div>
+                                        <strong><t t-esc="formatNumber(state.metrics.enrolledStudents)"/></strong>
+                                        <small>Currently Enrolled</small>
+                                    </div>
+                                </div>
+                                <div class="sds_enroll_div"/>
+                                <div class="sds_enroll_stat">
+                                    <div class="sds_enroll_icon sds_ic_amber"><i class="fa fa-inbox"/></div>
+                                    <div>
+                                        <strong><t t-esc="formatNumber(state.metrics.pendingAdmissions)"/></strong>
+                                        <small>Pending Admissions</small>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Enrollment bar -->
+                            <div class="sds_enroll_bar_wrap">
+                                <div class="sds_enroll_bar_track">
+                                    <div class="sds_enroll_bar_fill"
+                                         t-att-style="'width: ' + getEnrollPct() + '%'"/>
+                                </div>
+                                <span class="sds_enroll_pct"><t t-esc="getEnrollPct()"/>% enrollment rate</span>
+                            </div>
+                        </div>
+
                     </div>
                 </section>
 
-                <section class="sds_panel sds_quick_panel">
-                    <div class="sds_panel_header"><div><p class="sds_eyebrow">Shortcuts</p><h2>Go to a workspace</h2></div></div>
-                    <div class="sds_quick_grid">
-                        <button data-action="SDS_school_management_system.action_school_student" t-on-click="openAction"><i class="fa fa-users"/><span>Students</span><small>Directory and enrollment</small></button>
-                        <button data-action="SDS_school_management_system.action_school_attendance" t-on-click="openAction"><i class="fa fa-check-square-o"/><span>Attendance</span><small>Daily registers</small></button>
-                        <button data-action="SDS_school_management_system.action_school_exam" t-on-click="openAction"><i class="fa fa-bar-chart"/><span>Exams</span><small>Results and grading</small></button>
-                        <button data-action="SDS_school_management_system.action_school_library_book" t-on-click="openAction"><i class="fa fa-book"/><span>Library</span><small>Books and issues</small></button>
-                        <button data-action="SDS_school_management_system.action_school_dashboard_students" t-on-click="openAction"><i class="fa fa-line-chart"/><span>Student analytics</span><small>Trends and demographics</small></button>
-                        <button data-action="SDS_school_management_system.action_school_student_fee" t-on-click="openAction"><i class="fa fa-money"/><span>Fee statements</span><small>Invoices and payments</small></button>
-                    </div>
-                </section>
             </t>
         </main>
     </t>

@@ -23,6 +23,15 @@
             <field name="company_id" eval="False"/>
         </record>
 
+        <!-- Grade Sequence -->
+        <record id="seq_school_grade" model="ir.sequence">
+            <field name="name">Grade Sequence</field>
+            <field name="code">school.grade</field>
+            <field name="prefix">GRD/</field>
+            <field name="padding">4</field>
+            <field name="company_id" eval="False"/>
+        </record>
+
         <!-- Exam Sequence -->
         <record id="seq_school_exam" model="ir.sequence">
             <field name="name">Exam Sequence</field>
