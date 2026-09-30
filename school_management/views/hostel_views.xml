@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Hostel Building -->
+    <record id="view_school_hostel_building_tree" model="ir.ui.view">
+        <field name="name">school.hostel.building.list</field>
+        <field name="model">school.hostel.building</field>
+        <field name="arch" type="xml">
+            <list string="Hostels &amp; Blocks">
+                <field name="code"/>
+                <field name="name"/>
+                <field name="type"/>
+                <field name="warden_name"/>
+                <field name="warden_phone"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_school_hostel_building_form" model="ir.ui.view">
+        <field name="name">school.hostel.building.form</field>
+        <field name="model">school.hostel.building</field>
+        <field name="arch" type="xml">
+            <form string="Hostel Block">
+                <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name" placeholder="e.g. Boys Hostel - Block A"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="code"/>
+                            <field name="type"/>
+                        </group>
+                        <group>
+                            <field name="warden_name"/>
+                            <field name="warden_phone"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Hostel Rooms">
+                            <field name="room_ids">
+                                <list editable="bottom">
+                                    <field name="name"/>
+                                    <field name="capacity"/>
+                                    <field name="occupied_count"/>
+                                    <field name="monthly_rent"/>
+                                </list>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_school_hostel_building" model="ir.actions.act_window">
+        <field name="name">Hostels &amp; Blocks</field>
+        <field name="res_model">school.hostel.building</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <!-- Hostel Room Allocations -->
+    <record id="view_school_hostel_allocation_tree" model="ir.ui.view">
+        <field name="name">school.hostel.allocation.list</field>
+        <field name="model">school.hostel.allocation</field>
+        <field name="arch" type="xml">
+            <list string="Hostel Room Allocations" editable="bottom">
+                <field name="student_id"/>
+                <field name="room_id"/>
+                <field name="date_allocated"/>
+                <field name="state" widget="badge"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="action_school_hostel_allocation" model="ir.actions.act_window">
+        <field name="name">Hostel Bed Allocations</field>
+        <field name="res_model">school.hostel.allocation</field>
+        <field name="view_mode">list</field>
+    </record>
+
+    <!-- Menus -->
+    <menuitem id="menu_school_hostel_building"
+              name="Hostels &amp; Rooms"
+              parent="menu_school_services_root"
+              action="action_school_hostel_building"
+              sequence="3"/>
+
+    <menuitem id="menu_school_hostel_allocation"
+              name="Room Allocations"
+              parent="menu_school_services_root"
+              action="action_school_hostel_allocation"
+              sequence="4"/>
+</odoo>

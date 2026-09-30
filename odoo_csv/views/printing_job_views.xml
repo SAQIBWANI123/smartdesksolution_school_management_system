@@ -1,0 +1,321 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+
+    <!-- ========================================================= -->
+    <!-- LIST VIEW -->
+    <!-- ========================================================= -->
+
+    <record id="printing_job_list_view" model="ir.ui.view">
+
+        <field name="name">printing.job.list</field>
+        <field name="model">printing.job</field>
+
+        <field name="arch" type="xml">
+
+            <list string="Printing Jobs">
+
+                <field name="job_id"/>
+                <field name="job_name"/>
+                <field name="owner_name"/>
+                <field name="document_pages"/>
+                <field name="final_status"/>
+                <field name="job_type"/>
+                <field name="print_mode"/>
+                <field name="print_duration"/>
+                <field name="printed_pages"/>
+                <field name="printed_copies"/>
+                <field name="paper_name"/>
+                <field name="total_ink_usage"/>
+                <field name="stop_count"/>
+
+            </list>
+
+        </field>
+
+    </record>
+
+
+    <!-- ========================================================= -->
+    <!-- FORM VIEW -->
+    <!-- ========================================================= -->
+
+    <record id="printing_job_form_view" model="ir.ui.view">
+
+        <field name="name">printing.job.form</field>
+        <field name="model">printing.job</field>
+
+        <field name="arch" type="xml">
+
+            <form string="Printing Job">
+
+                <sheet>
+
+                    <!-- ================================================= -->
+                    <!-- JOB DETAILS -->
+                    <!-- ================================================= -->
+
+                    <group string="Job Details">
+
+                        <group string="Basic Information">
+
+                            <field name="job_id" readonly="1"/>
+                            <field name="job_name" readonly="1"/>
+                            <field name="owner_name" readonly="1"/>
+                            <field name="hostname" readonly="1"/>
+
+                        </group>
+
+
+                        <group string="Document Information">
+
+                            <field name="document_pages" readonly="1"/>
+                            <field name="original_size" readonly="1"/>
+                            <field name="final_status" readonly="1"/>
+                            <field name="job_type" readonly="1"/>
+
+                        </group>
+
+                    </group>
+
+
+                    <!-- ================================================= -->
+                    <!-- NOTEBOOK -->
+                    <!-- ================================================= -->
+
+                    <notebook>
+
+                        <!-- ============================================= -->
+                        <!-- PRINT INFORMATION -->
+                        <!-- ============================================= -->
+
+                        <page
+                            string="Print Information"
+                            name="print_information"
+                        >
+
+                            <group string="Print Metrics">
+
+                                <group string="Settings &amp; Performance">
+
+                                    <field name="job_category" readonly="1"/>
+                                    <field name="print_mode" readonly="1"/>
+                                    <field name="print_duration" readonly="1"/>
+                                    <field name="print_speed" readonly="1"/>
+
+                                </group>
+
+
+                                <group string="Output Statistics">
+
+                                    <field name="printed_pages" readonly="1"/>
+                                    <field name="printed_copies" readonly="1"/>
+                                    <field name="total_pages" readonly="1"/>
+
+                                </group>
+
+                            </group>
+
+                        </page>
+
+
+                        <!-- ============================================= -->
+                        <!-- PAPER INFORMATION -->
+                        <!-- ============================================= -->
+
+                        <page
+                            string="Paper Information"
+                            name="paper_information"
+                        >
+
+                            <group string="Paper Details">
+
+                                <group string="Media Properties">
+
+                                    <field name="paper_name" readonly="1"/>
+                                    <field name="paper_type" readonly="1"/>
+
+                                </group>
+
+                            </group>
+
+                        </page>
+
+
+                        <!-- ============================================= -->
+                        <!-- INK USAGE -->
+                        <!-- ============================================= -->
+
+                        <page
+                            string="Ink Usage"
+                            name="ink_usage"
+                        >
+
+                            <group string="Consumables Breakdown">
+
+                                <group string="Primary Colors">
+
+                                    <field name="total_ink_usage" readonly="1"/>
+                                    <field name="cyan_ink_usage" readonly="1"/>
+                                    <field name="magenta_ink_usage" readonly="1"/>
+
+                                </group>
+
+
+                                <group string="Secondary Colors">
+
+                                    <field name="yellow_ink_usage" readonly="1"/>
+                                    <field name="black_ink_usage" readonly="1"/>
+
+                                </group>
+
+                            </group>
+
+                        </page>
+
+
+                        <!-- ============================================= -->
+                        <!-- OTHER INFORMATION -->
+                        <!-- ============================================= -->
+
+                        <page
+                            string="Other Information"
+                            name="other_information"
+                        >
+
+                            <group string="Diagnostics &amp; Notes">
+
+                                <group string="Execution Logs">
+
+                                    <field name="stop_count" readonly="1"/>
+                                    <field name="error" readonly="1"/>
+                                    <field name="job_comment" readonly="1"/>
+
+                                </group>
+
+                            </group>
+
+                        </page>
+
+                    </notebook>
+
+                </sheet>
+
+            </form>
+
+        </field>
+
+    </record>
+
+
+    <!-- ========================================================= -->
+    <!-- SEARCH VIEW -->
+    <!-- ========================================================= -->
+
+    <record id="printing_job_search_view" model="ir.ui.view">
+
+        <field name="name">printing.job.search</field>
+        <field name="model">printing.job</field>
+
+        <field name="arch" type="xml">
+
+            <search string="Search Printing Jobs">
+
+                <!-- ============================================= -->
+                <!-- SEARCH FIELDS -->
+                <!-- ============================================= -->
+
+                <field name="job_id"/>
+                <field name="job_name"/>
+                <field name="owner_name"/>
+                <field name="paper_name"/>
+                <field name="final_status"/>
+                <field name="job_type"/>
+
+
+                <!-- ============================================= -->
+                <!-- FILTERS -->
+                <!-- ============================================= -->
+
+
+                <filter
+                    name="completed"
+                    string="Completed"
+                    domain="[('final_status', '=', 'Completed')]"
+                />
+
+                <filter
+                    name="has_error"
+                    string="Has Error"
+                    domain="[('error', '!=', False)]"
+                />
+
+
+                <!-- ============================================= -->
+                <!-- GROUP BY -->
+                <!-- ============================================= -->
+
+                <group>
+
+
+                    <filter
+                        name="group_by_job_type"
+                        string="Job Type"
+                        context="{'group_by': 'job_type'}"
+                    />
+
+                    <filter
+                        name="group_by_job_id"
+                        string="Job ID"
+                        context="{'group_by': 'job_id'}"
+                    />
+
+                    <filter
+                        name="group_by_paper_name"
+                        string="Paper"
+                        context="{'group_by': 'paper_name'}"
+                    />
+
+                    <filter
+                        name="group_by_paper_type"
+                        string="Paper Type"
+                        context="{'group_by': 'paper_type'}"
+                    />
+
+                </group>
+
+            </search>
+
+        </field>
+
+    </record>
+
+
+    <!-- ========================================================= -->
+    <!-- WINDOW ACTION -->
+    <!-- ========================================================= -->
+
+    <record id="printing_job_action" model="ir.actions.act_window">
+
+        <field name="name">Printing Jobs</field>
+
+        <field name="res_model">printing.job</field>
+
+        <field name="view_mode">list,form</field>
+
+        <field name="search_view_id" ref="printing_job_search_view"/>
+
+    </record>
+
+
+    <!-- ========================================================= -->
+    <!-- MENU -->
+    <!-- ========================================================= -->
+
+    <menuitem
+        id="printing_job_menu"
+        name="Printing Jobs"
+        action="printing_job_action"
+    />
+
+</odoo>

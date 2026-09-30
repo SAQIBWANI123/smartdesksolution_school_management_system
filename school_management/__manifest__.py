@@ -1,16 +1,13 @@
 {
     'name': 'School Management System',
-    'version': '19.0.1.2.1',
+    'version': '19.0.1.0.0',
     'category': 'Education',
-    'author': 'SmartDeskSolution',
-    'maintainer': 'SmartDeskSolution',
-    'summary': 'Complete School Management with Admissions, Fees and Parent Portal',
+    'summary': 'Complete Enterprise School Management System for Odoo 19',
     'description': """
 Comprehensive School Management System for Odoo 19.
-Developed by SmartDeskSolution | www.smartdesksolution.com | info@smartdesksolution.com
 Key Features:
 - Academic Year, Terms, Grade Levels, Classes & Sections
-- Student Admission, Online Application Portal & Profile Management
+- Student Admission & Profile Management with Parent Portal
 - Teacher & Staff Management
 - Daily & Subject Attendance Tracking with Alerts
 - Examinations, Grading Scale, Marks Entry & Report Cards
@@ -22,14 +19,13 @@ Key Features:
 - Analytics Dashboard & Graphic Reports
 - Print PDF Reports (Student ID Cards, Academic Transcripts, Fee Receipts)
     """,
-    'website': 'https://www.smartdesksolution.com',
-    'depends': ['base', 'mail', 'web', 'website', 'portal'],
+    'website': 'https://www.odoo.com',
+    'depends': ['base'],
     'data': [
         'security/school_security.xml',
         'security/ir.model.access.csv',
         'data/school_sequence_data.xml',
         'views/menus.xml',
-        'views/admission_views.xml',
         'views/dashboard_views.xml',
         'views/academic_year_views.xml',
         'views/grade_level_views.xml',
@@ -45,7 +41,6 @@ Key Features:
         'views/transport_views.xml',
         'views/hostel_views.xml',
         'views/library_views.xml',
-        'views/portal_templates.xml',
         'report/school_reports.xml',
         'report/report_student_id_card.xml',
         'report/report_student_report_card.xml',
@@ -54,20 +49,6 @@ Key Features:
     'demo': [
         'demo/school_demo_data.xml',
     ],
-    'images': [
-        'static/description/icon.png',
-        'static/description/banner.png',
-    ],
-    'assets': {
-        'web.assets_backend': [
-            'SDS_school_management_system/static/src/js/school_dashboard.js',
-            'SDS_school_management_system/static/src/xml/school_dashboard.xml',
-            'SDS_school_management_system/static/src/scss/school_dashboard.scss',
-        ],
-        'web.assets_frontend': [
-            'SDS_school_management_system/static/src/css/portal.css',
-        ],
-    },
     'installable': True,
     'application': True,
     'license': 'LGPL-3',
